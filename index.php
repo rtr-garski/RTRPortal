@@ -28,9 +28,9 @@
                         <div>
                             
                             <?php
-                                $pageTitle = "Application Intelligence";
+                                $pageTitle = "Test Index";
                                 $pageSubTitle1 = "Config";
-                                $pageSubTitle2 = "Application Intel";
+                                $pageSubTitle2 = "Intel";
 
                                 include 'partials/app-pagetitle.php';
                             ?>
