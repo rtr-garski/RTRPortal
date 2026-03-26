@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 $publicKey = "project_public_c135d3e92da03f46e10eeddcf2b825f8_f3L4-00fb8b7b4014f3ddee19ec39312d103e";
 $secretKey = "secret_key_c4cdac4063ecec23de88e5ff04b8d2da_b_pT51d8e072c04e2b4194f89c09497cea260";
@@ -44,7 +46,13 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, [
     'task' => $task,
     'file' => new CURLFile($filePath)
 ]);
-curl_exec($ch);
+
+$response = curl_exec($ch);
+
+if (!$response) {
+    die("Upload failed: " . curl_error($ch));
+}
+
 curl_close($ch);
 
 // 4. PROCESS
