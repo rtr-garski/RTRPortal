@@ -20,7 +20,6 @@
     <div id="result" class="mt-3"></div>
   </div>
 </div>
-
 <script>
 document.getElementById('fileInput').addEventListener('change', function() {
     let file = this.files[0];
@@ -31,49 +30,60 @@ document.getElementById('fileInput').addEventListener('change', function() {
 
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "compress.php", true);
+    xhr.responseType = "blob";
 
     let progressWrapper = document.getElementById('progressWrapper');
     let progressBar = document.getElementById('progressBar');
     let result = document.getElementById('result');
 
     progressWrapper.classList.remove("d-none");
+    result.innerHTML = "<div class='text-muted'>Uploading...</div>";
 
+    // ✅ Upload progress
     xhr.upload.onprogress = function(e) {
         if (e.lengthComputable) {
             let percent = Math.round((e.loaded / e.total) * 100);
             progressBar.style.width = percent + "%";
             progressBar.innerText = percent + "%";
+
+            if (percent === 100) {
+                progressBar.innerText = "Processing...";
+            }
         }
     };
 
     xhr.onload = function() {
-      if (xhr.status === 200 && xhr.response.size > 0) {
 
-          let blob = new Blob([xhr.response], { type: "application/pdf" });
-          let url = window.URL.createObjectURL(blob);
+        let contentType = xhr.getResponseHeader("Content-Type");
 
-          let a = document.createElement("a");
-          a.href = url;
-          a.download = "testcompressed.pdf";
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
+        // ✅ Check if response is actually PDF
+        if (xhr.status === 200 && contentType && contentType.includes("application/pdf")) {
 
-          result.innerHTML = "<div class='alert alert-success'>Compressed & Fake!</div>";
+            let blob = xhr.response;
 
-      } else {
-          result.innerHTML = "<div class='alert alert-danger'>Server returned empty file</div>";
-      }
+            let url = window.URL.createObjectURL(blob);
+
+            let a = document.createElement("a");
+            a.href = url;
+            a.download = "compressed.pdf";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+
+            result.innerHTML = "<div class='alert alert-success'>✅ Compressed successfully</div>";
+
+        } else {
+            // ❌ Handle backend error properly
+            xhr.response.text().then(text => {
+                result.innerHTML = "<div class='alert alert-danger'>❌ " + text + "</div>";
+            });
+        }
     };
 
     xhr.onerror = function() {
-        result.innerHTML = "<div class='alert alert-danger'>Network error</div>";
+        result.innerHTML = "<div class='alert alert-danger'>❌ Network error</div>";
     };
 
-    console.log(xhr.status);
-    console.log(xhr.response);
-
-    xhr.responseType = "blob";
     xhr.send(formData);
 });
 </script>
