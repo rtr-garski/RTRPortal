@@ -47,8 +47,11 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, [
     'task' => $task,
     'file' => new CURLFile($filePath)
 ]);
-curl_exec($ch);
+$uploadResponse = json_decode(curl_exec($ch));
 curl_close($ch);
+
+$serverFilename = $uploadResponse->server_filename;
+$originalFilename = $_FILES['pdf']['name'];
 
 // PROCESS
 file_get_contents("$server/v1/process", false, stream_context_create([
@@ -58,7 +61,10 @@ file_get_contents("$server/v1/process", false, stream_context_create([
         'content' => json_encode([
             "task" => $task,
             "tool" => "compress",
-            "compression_level" => "recommended"
+            "compression_level" => "recommended",
+            "files" => [
+                ["server_filename" => $serverFilename, "filename" => $originalFilename]
+            ]
         ])
     ]
 ]));
