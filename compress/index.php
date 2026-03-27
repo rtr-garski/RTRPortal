@@ -54,7 +54,7 @@ document.getElementById('fileInput').addEventListener('change', function() {
 
           let a = document.createElement("a");
           a.href = url;
-          a.download = "testcompressed.pdf";
+          a.download = "testcompresseds.pdf";
           document.body.appendChild(a);
           a.click();
           a.remove();
