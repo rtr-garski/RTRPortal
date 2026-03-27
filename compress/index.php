@@ -54,12 +54,12 @@ document.getElementById('fileInput').addEventListener('change', function() {
 
           let a = document.createElement("a");
           a.href = url;
-          a.download = "compressed.pdf";
+          a.download = "testcompressed.pdf";
           document.body.appendChild(a);
           a.click();
           a.remove();
 
-          result.innerHTML = "<div class='alert alert-success'>Compressed & downloaded!</div>";
+          result.innerHTML = "<div class='alert alert-success'>Compressed & Fake!</div>";
 
       } else {
           result.innerHTML = "<div class='alert alert-danger'>Server returned empty file</div>";
