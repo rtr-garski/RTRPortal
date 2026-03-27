@@ -47,21 +47,31 @@ document.getElementById('fileInput').addEventListener('change', function() {
     };
 
     xhr.onload = function() {
-        if (xhr.status === 200) {
-            // download file automatically
-            let blob = new Blob([xhr.response], { type: "application/pdf" });
-            let url = window.URL.createObjectURL(blob);
+      if (xhr.status === 200 && xhr.response.size > 0) {
 
-            let a = document.createElement("a");
-            a.href = url;
-            a.download = "compressed.pdf";
-            a.click();
+          let blob = new Blob([xhr.response], { type: "application/pdf" });
+          let url = window.URL.createObjectURL(blob);
 
-            result.innerHTML = "<div class='alert alert-success'>Compressed & downloaded!</div>";
-        } else {
-            result.innerHTML = "<div class='alert alert-danger'>Error compressing file</div>";
-        }
+          let a = document.createElement("a");
+          a.href = url;
+          a.download = "compressed.pdf";
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+
+          result.innerHTML = "<div class='alert alert-success'>Compressed & downloaded!</div>";
+
+      } else {
+          result.innerHTML = "<div class='alert alert-danger'>Server returned empty file</div>";
+      }
     };
+
+    xhr.onerror = function() {
+        result.innerHTML = "<div class='alert alert-danger'>Network error</div>";
+    };
+
+    console.log(xhr.status);
+    console.log(xhr.response);
 
     xhr.responseType = "blob";
     xhr.send(formData);

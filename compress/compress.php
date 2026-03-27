@@ -98,3 +98,9 @@ if (!$data) {
 }
 
 echo "✅ DONE (file size: " . strlen($data) . " bytes)";
+
+header("Content-Type: application/pdf");
+header("Content-Disposition: attachment; filename=compressed.pdf");
+
+readfile("$server/v1/download/$task");
+exit;
