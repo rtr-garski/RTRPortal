@@ -1,20 +1,19 @@
 <?php
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+ob_clean();
+ini_set('display_errors', 0);
 
 $publicKey = "project_public_c135d3e92da03f46e10eeddcf2b825f8_f3L4-00fb8b7b4014f3ddee19ec39312d103e";
 $secretKey = "secret_key_c4cdac4063ecec23de88e5ff04b8d2da_b_pT51d8e072c04e2b4194f89c09497cea260";
 
-
 if (!isset($_FILES['pdf'])) {
-    die("❌ No file uploaded");
+    http_response_code(400);
+    exit;
 }
 
 $filePath = $_FILES['pdf']['tmp_name'];
 
-echo "STEP 1: AUTH<br>";
-
+// AUTH
 $auth = json_decode(file_get_contents("https://api.ilovepdf.com/v1/auth", false, stream_context_create([
     'http' => [
         'method' => 'POST',
@@ -26,15 +25,9 @@ $auth = json_decode(file_get_contents("https://api.ilovepdf.com/v1/auth", false,
     ]
 ])));
 
-if (!$auth || !isset($auth->token)) {
-    die("❌ AUTH FAILED: " . json_encode($auth));
-}
-
 $token = $auth->token;
 
-echo "✅ AUTH OK<br>";
-echo "STEP 2: START TASK<br>";
-
+// START
 $start = json_decode(file_get_contents("https://api.ilovepdf.com/v1/start/compress", false, stream_context_create([
     'http' => [
         'method' => 'POST',
@@ -42,16 +35,10 @@ $start = json_decode(file_get_contents("https://api.ilovepdf.com/v1/start/compre
     ]
 ])));
 
-if (!$start || !isset($start->task)) {
-    die("❌ TASK START FAILED: " . json_encode($start));
-}
-
 $task = $start->task;
 $server = $start->server;
 
-echo "✅ TASK CREATED<br>";
-echo "STEP 3: UPLOAD<br>";
-
+// UPLOAD
 $ch = curl_init("$server/v1/upload");
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -60,19 +47,11 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, [
     'task' => $task,
     'file' => new CURLFile($filePath)
 ]);
-
-$response = curl_exec($ch);
-
-if (!$response) {
-    die("❌ UPLOAD FAILED: " . curl_error($ch));
-}
-
+curl_exec($ch);
 curl_close($ch);
 
-echo "✅ UPLOAD OK<br>";
-echo "STEP 4: PROCESS<br>";
-
-$process = file_get_contents("$server/v1/process", false, stream_context_create([
+// PROCESS
+file_get_contents("$server/v1/process", false, stream_context_create([
     'http' => [
         'method' => 'POST',
         'header' => "Authorization: Bearer $token\r\nContent-Type: application/json\r\n",
@@ -84,23 +63,21 @@ $process = file_get_contents("$server/v1/process", false, stream_context_create(
     ]
 ]));
 
-if (!$process) {
-    die("❌ PROCESS FAILED");
-}
+// DOWNLOAD (clean)
+$ch = curl_init("$server/v1/download/$task");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, ["Authorization: Bearer $token"]);
+$data = curl_exec($ch);
+curl_close($ch);
 
-echo "✅ PROCESS OK<br>";
-echo "STEP 5: DOWNLOAD<br>";
+// CLEAN OUTPUT AGAIN
+if (ob_get_length()) ob_end_clean();
 
-$data = file_get_contents("$server/v1/download/$task");
-
-if (!$data) {
-    die("❌ DOWNLOAD FAILED");
-}
-
-echo "✅ DONE (file size: " . strlen($data) . " bytes)";
-
+// HEADERS
 header("Content-Type: application/pdf");
+header("Content-Length: " . strlen($data));
 header("Content-Disposition: attachment; filename=compressed.pdf");
 
-readfile("$server/v1/download/$task");
+// OUTPUT
+echo $data;
 exit;
