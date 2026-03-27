@@ -14,19 +14,38 @@ function sendError($message, $code = 500) {
     exit;
 }
 
-function apiPost($url, $headers, $body = null, $json = true) {
-    $opts = [
-        'http' => [
-            'method' => 'POST',
-            'header' => implode("\r\n", $headers) . "\r\n",
-            'ignore_errors' => true,
-        ]
-    ];
-    if ($body !== null) {
-        $opts['http']['content'] = $json ? json_encode($body) : $body;
+function curlPost($url, $headers, $fields = null, $isJson = false) {
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [
+        CURLOPT_POST           => true,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER     => $headers,
+        CURLOPT_SSL_VERIFYPEER => true,
+        CURLOPT_TIMEOUT        => 120,
+    ]);
+    if ($fields !== null) {
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $isJson ? json_encode($fields) : $fields);
     }
-    $result = file_get_contents($url, false, stream_context_create($opts));
-    return $result !== false ? json_decode($result) : null;
+    $response   = curl_exec($ch);
+    $httpCode   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $curlError  = curl_error($ch);
+    curl_close($ch);
+    return [$response, $httpCode, $curlError];
+}
+
+function curlGet($url, $headers) {
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER     => $headers,
+        CURLOPT_SSL_VERIFYPEER => true,
+        CURLOPT_TIMEOUT        => 120,
+    ]);
+    $response  = curl_exec($ch);
+    $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $curlError = curl_error($ch);
+    curl_close($ch);
+    return [$response, $httpCode, $curlError];
 }
 
 // Validate upload
@@ -43,80 +62,91 @@ if (mime_content_type($filePath) !== 'application/pdf') {
 }
 
 // AUTH
-$auth = apiPost('https://api.ilovepdf.com/v1/auth', ['Content-Type: application/json'], [
-    'public_key' => $publicKey,
-    'secret_key' => $secretKey,
-]);
+[$authRaw, $authCode, $authErr] = curlPost(
+    'https://api.ilovepdf.com/v1/auth',
+    ['Content-Type: application/json'],
+    ['public_key' => $publicKey],
+    true
+);
 
+if ($authErr || $authCode !== 200) {
+    sendError('ilovepdf auth failed. HTTP ' . $authCode . '. ' . $authErr);
+}
+
+$auth = json_decode($authRaw);
 if (empty($auth->token)) {
-    sendError('Authentication with ilovepdf failed.');
+    sendError('ilovepdf auth: no token returned. Response: ' . $authRaw);
 }
 
 $token = $auth->token;
 
 // START TASK
-$start = apiPost('https://api.ilovepdf.com/v1/start/compress', [
-    "Authorization: Bearer $token"
-]);
+[$startRaw, $startCode, $startErr] = curlPost(
+    'https://api.ilovepdf.com/v1/start/compress',
+    ["Authorization: Bearer $token"]
+);
 
+if ($startErr || $startCode !== 200) {
+    sendError('Failed to start task. HTTP ' . $startCode . '. ' . $startErr);
+}
+
+$start = json_decode($startRaw);
 if (empty($start->task) || empty($start->server)) {
-    sendError('Failed to start compression task.');
+    sendError('Start task missing task/server. Response: ' . $startRaw);
 }
 
 $task   = $start->task;
 $server = $start->server;
 
 // UPLOAD FILE
-$ch = curl_init("$server/v1/upload");
-curl_setopt_array($ch, [
-    CURLOPT_POST           => true,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HTTPHEADER     => ["Authorization: Bearer $token"],
-    CURLOPT_POSTFIELDS     => [
+[$uploadRaw, $uploadCode, $uploadErr] = curlPost(
+    "$server/v1/upload",
+    ["Authorization: Bearer $token"],
+    [
         'task' => $task,
         'file' => new CURLFile($filePath, 'application/pdf', $originalName),
-    ],
-]);
-$uploadResponse = json_decode(curl_exec($ch));
-$uploadStatus   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-curl_close($ch);
+    ]
+);
 
-if ($uploadStatus !== 200 || empty($uploadResponse->server_filename)) {
-    sendError('Failed to upload file to ilovepdf.');
+if ($uploadErr || $uploadCode !== 200) {
+    sendError('Upload failed. HTTP ' . $uploadCode . '. ' . $uploadErr);
 }
 
-$serverFilename   = $uploadResponse->server_filename;
+$upload = json_decode($uploadRaw);
+if (empty($upload->server_filename)) {
+    sendError('Upload: no server_filename. Response: ' . $uploadRaw);
+}
+
+$serverFilename   = $upload->server_filename;
 $downloadFilename = pathinfo($originalName, PATHINFO_FILENAME) . '_compressed.pdf';
 
 // PROCESS
-$process = apiPost("$server/v1/process", [
-    "Authorization: Bearer $token",
-    "Content-Type: application/json",
-], [
-    'task'              => $task,
-    'tool'              => 'compress',
-    'compression_level' => 'recommended',
-    'files'             => [
-        ['server_filename' => $serverFilename, 'filename' => $originalName]
+[$processRaw, $processCode, $processErr] = curlPost(
+    "$server/v1/process",
+    ["Authorization: Bearer $token", "Content-Type: application/json"],
+    [
+        'task'              => $task,
+        'tool'              => 'compress',
+        'compression_level' => 'recommended',
+        'files'             => [
+            ['server_filename' => $serverFilename, 'filename' => $originalName]
+        ],
     ],
-]);
+    true
+);
 
-if (empty($process->download_filename) && empty($process->status)) {
-    sendError('Compression processing failed.');
+if ($processErr || $processCode !== 200) {
+    sendError('Process failed. HTTP ' . $processCode . '. Response: ' . $processRaw . '. ' . $processErr);
 }
 
 // DOWNLOAD
-$ch = curl_init("$server/v1/download/$task");
-curl_setopt_array($ch, [
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HTTPHEADER     => ["Authorization: Bearer $token"],
-]);
-$data       = curl_exec($ch);
-$httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-curl_close($ch);
+[$data, $downloadCode, $downloadErr] = curlGet(
+    "$server/v1/download/$task",
+    ["Authorization: Bearer $token"]
+);
 
-if ($httpStatus !== 200 || empty($data)) {
-    sendError('Failed to download compressed file.');
+if ($downloadErr || $downloadCode !== 200 || empty($data)) {
+    sendError('Download failed. HTTP ' . $downloadCode . '. ' . $downloadErr);
 }
 
 ob_end_clean();
