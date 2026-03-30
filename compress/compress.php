@@ -81,7 +81,7 @@ if (empty($auth->token)) {
 $token = $auth->token;
 
 // START TASK
-[$startRaw, $startCode, $startErr] = curlPost(
+[$startRaw, $startCode, $startErr] = curlGet(
     'https://api.ilovepdf.com/v1/start/compress',
     ["Authorization: Bearer $token"]
 );
