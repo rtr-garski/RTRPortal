@@ -96,7 +96,7 @@ if (empty($start->task) || empty($start->server)) {
 }
 
 $task   = $start->task;
-$server = $start->server;
+$server = 'https://' . $start->server;
 
 // UPLOAD FILE
 [$uploadRaw, $uploadCode, $uploadErr] = curlPost(
