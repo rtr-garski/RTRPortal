@@ -127,7 +127,9 @@ $downloadFilename = pathinfo($originalName, PATHINFO_FILENAME) . '_compressed.pd
     [
         'task'              => $task,
         'tool'              => 'compress',
-        'compression_level' => 'recommended',
+        'compression_level' => in_array($_POST['compression_level'] ?? '', ['extreme', 'recommended', 'low'])
+                                   ? $_POST['compression_level']
+                                   : 'recommended',
         'files'             => [
             ['server_filename' => $serverFilename, 'filename' => $originalName]
         ],

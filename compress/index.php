@@ -41,6 +41,17 @@
       <span class="text-muted ms-2" id="fileSize"></span>
     </div>
 
+    <div class="mb-3">
+      <label for="compressionLevel" class="form-label small fw-semibold">Compression Level</label>
+      <select id="compressionLevel" class="form-select form-select-sm">
+        <option value="extreme">Extreme</option>
+        <option value="recommended" selected>Recommended</option>
+        <option value="low">Low</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary w-100 mb-3 d-none" id="compressBtn">Compress PDF</button>
+
     <div class="progress d-none mb-3" id="progressWrapper" style="height:22px">
       <div class="progress-bar progress-bar-striped progress-bar-animated"
            id="progressBar" role="progressbar" style="width:0%">0%</div>
@@ -51,30 +62,35 @@
 </div>
 
 <script>
-  const dropZone    = document.getElementById('dropZone');
-  const fileInput   = document.getElementById('fileInput');
-  const fileInfo    = document.getElementById('fileInfo');
-  const fileName    = document.getElementById('fileName');
-  const fileSize    = document.getElementById('fileSize');
+  const dropZone     = document.getElementById('dropZone');
+  const fileInput    = document.getElementById('fileInput');
+  const fileInfo     = document.getElementById('fileInfo');
+  const fileName     = document.getElementById('fileName');
+  const fileSize     = document.getElementById('fileSize');
   const progressWrap = document.getElementById('progressWrapper');
-  const progressBar = document.getElementById('progressBar');
-  const result      = document.getElementById('result');
+  const progressBar  = document.getElementById('progressBar');
+  const result       = document.getElementById('result');
+  const compressBtn  = document.getElementById('compressBtn');
+  const levelSelect  = document.getElementById('compressionLevel');
 
-  // Click to browse
+  let selectedFile = null;
+
   dropZone.addEventListener('click', () => fileInput.click());
-
-  // Drag & drop
   dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
   dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
   dropZone.addEventListener('drop', e => {
     e.preventDefault();
     dropZone.classList.remove('dragover');
     const file = e.dataTransfer.files[0];
-    if (file) handleFile(file);
+    if (file) setFile(file);
   });
 
   fileInput.addEventListener('change', function() {
-    if (this.files[0]) handleFile(this.files[0]);
+    if (this.files[0]) setFile(this.files[0]);
+  });
+
+  compressBtn.addEventListener('click', () => {
+    if (selectedFile) compress(selectedFile);
   });
 
   function formatBytes(bytes) {
@@ -83,25 +99,29 @@
     return (bytes / 1048576).toFixed(2) + ' MB';
   }
 
-  function handleFile(file) {
+  function setFile(file) {
     if (file.type !== 'application/pdf') {
       result.innerHTML = "<div class='alert alert-warning'>Please select a valid PDF file.</div>";
       return;
     }
-
-    // Show file info
+    selectedFile = file;
     fileName.textContent = file.name;
     fileSize.textContent = formatBytes(file.size);
     fileInfo.classList.remove('d-none');
+    compressBtn.classList.remove('d-none');
+    result.innerHTML = '';
+  }
 
-    // Reset UI
+  function compress(file) {
     result.innerHTML = '';
     progressWrap.classList.remove('d-none');
     progressBar.style.width = '0%';
     progressBar.textContent = '0%';
+    compressBtn.disabled = true;
 
     const formData = new FormData();
     formData.append('pdf', file);
+    formData.append('compression_level', levelSelect.value);
 
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'compress.php', true);
@@ -117,13 +137,14 @@
 
     xhr.onload = function() {
       progressWrap.classList.add('d-none');
+      compressBtn.disabled = false;
       const contentType = xhr.getResponseHeader('Content-Type');
 
       if (xhr.status === 200 && contentType && contentType.includes('application/pdf')) {
-        const originalSize  = file.size;
+        const originalSize   = file.size;
         const compressedSize = parseInt(xhr.getResponseHeader('X-Compressed-Size')) || xhr.response.size;
-        const saved         = originalSize - compressedSize;
-        const savedPct      = ((saved / originalSize) * 100).toFixed(1);
+        const saved          = originalSize - compressedSize;
+        const savedPct       = ((saved / originalSize) * 100).toFixed(1);
 
         const url = URL.createObjectURL(xhr.response);
         const a   = document.createElement('a');
@@ -153,6 +174,7 @@
 
     xhr.onerror = function() {
       progressWrap.classList.add('d-none');
+      compressBtn.disabled = false;
       result.innerHTML = "<div class='alert alert-danger'>❌ Network error. Please try again.</div>";
     };
 
