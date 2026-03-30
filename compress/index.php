@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PDF Compressor v2</title>
+  <title>PDF Compressor - Garski</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body { background: #f0f2f5; }
@@ -27,7 +27,7 @@
 <div class="container py-5" style="max-width:540px">
   <div class="card shadow-sm p-4">
     <h5 class="mb-1 fw-bold">PDF Compressor</h5>
-    <p class="text-muted small mb-3">Powered by IlovePDF API</p>
+    <p class="text-muted small mb-3">250MB Max File Size</p>
 
     <div class="drop-zone mb-3" id="dropZone">
       <div class="icon">📄</div>
