@@ -27,7 +27,7 @@
 <div class="container py-5" style="max-width:540px">
   <div class="card shadow-sm p-4">
     <h5 class="mb-1 fw-bold">PDF Compressor</h5>
-    <p class="text-muted small mb-3">Powered by ilovepdf API</p>
+    <p class="text-muted small mb-3">Powered by IlovePDF API</p>
 
     <div class="drop-zone mb-3" id="dropZone">
       <div class="icon">📄</div>
