@@ -70,12 +70,12 @@ if (mime_content_type($filePath) !== 'application/pdf') {
 );
 
 if ($authErr || $authCode !== 200) {
-    sendError('ilovepdf auth failed. HTTP ' . $authCode . '. ' . $authErr);
+    sendError('[Step 1 - Auth] HTTP ' . $authCode . '. cURL: ' . $authErr . '. Response: ' . $authRaw);
 }
 
 $auth = json_decode($authRaw);
 if (empty($auth->token)) {
-    sendError('ilovepdf auth: no token returned. Response: ' . $authRaw);
+    sendError('[Step 1 - Auth] No token returned. Response: ' . $authRaw);
 }
 
 $token = $auth->token;
@@ -87,12 +87,12 @@ $token = $auth->token;
 );
 
 if ($startErr || $startCode !== 200) {
-    sendError('Failed to start task. HTTP ' . $startCode . '. ' . $startErr);
+    sendError('[Step 2 - Start Task] HTTP ' . $startCode . '. cURL: ' . $startErr . '. Response: ' . $startRaw);
 }
 
 $start = json_decode($startRaw);
 if (empty($start->task) || empty($start->server)) {
-    sendError('Start task missing task/server. Response: ' . $startRaw);
+    sendError('[Step 2 - Start Task] Missing task/server. Response: ' . $startRaw);
 }
 
 $task   = $start->task;
@@ -109,12 +109,12 @@ $server = 'https://' . $start->server;
 );
 
 if ($uploadErr || $uploadCode !== 200) {
-    sendError('Upload failed. HTTP ' . $uploadCode . '. ' . $uploadErr);
+    sendError('[Step 3 - Upload] HTTP ' . $uploadCode . '. cURL: ' . $uploadErr . '. Response: ' . $uploadRaw);
 }
 
 $upload = json_decode($uploadRaw);
 if (empty($upload->server_filename)) {
-    sendError('Upload: no server_filename. Response: ' . $uploadRaw);
+    sendError('[Step 3 - Upload] No server_filename. Response: ' . $uploadRaw);
 }
 
 $serverFilename   = $upload->server_filename;
@@ -138,7 +138,7 @@ $downloadFilename = pathinfo($originalName, PATHINFO_FILENAME) . '_compressed.pd
 );
 
 if ($processErr || $processCode !== 200) {
-    sendError('Process failed. HTTP ' . $processCode . '. Response: ' . $processRaw . '. ' . $processErr);
+    sendError('[Step 4 - Process] HTTP ' . $processCode . '. cURL: ' . $processErr . '. Response: ' . $processRaw);
 }
 
 // DOWNLOAD
@@ -148,7 +148,7 @@ if ($processErr || $processCode !== 200) {
 );
 
 if ($downloadErr || $downloadCode !== 200 || empty($data)) {
-    sendError('Download failed. HTTP ' . $downloadCode . '. ' . $downloadErr);
+    sendError('[Step 5 - Download] HTTP ' . $downloadCode . '. cURL: ' . $downloadErr);
 }
 
 ob_end_clean();

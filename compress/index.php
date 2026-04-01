@@ -166,9 +166,14 @@
           </div>`;
       } else {
         xhr.response.text().then(text => {
-          let msg = 'Compression failed.';
-          try { msg = JSON.parse(text).error || msg; } catch(e) {}
-          result.innerHTML = `<div class='alert alert-danger'>❌ ${msg}</div>`;
+          let msg = 'Unknown error (no response).';
+          try {
+            const json = JSON.parse(text);
+            msg = json.error || JSON.stringify(json);
+          } catch(e) {
+            msg = text || 'Empty response from server.';
+          }
+          result.innerHTML = `<div class='alert alert-danger'><strong>❌ Error:</strong><br><pre class="mb-0 mt-1" style="white-space:pre-wrap;font-size:0.85em">${msg}</pre></div>`;
         });
       }
     };
