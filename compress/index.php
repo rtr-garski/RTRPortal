@@ -102,7 +102,7 @@
 
   function setFile(file) {
     if (file.type !== 'application/pdf') {
-      result.innerHTML = "<div class='alert alert-warning'>Please select a valid PDF file.</div>";
+      result.innerHTML = "<div class='alert alert-warning'>Please select a valid PDF file</div>";
       return;
     }
     selectedFile = file;
