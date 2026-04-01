@@ -53,9 +53,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Default POST URL pointing to create-order.php on the same server
-$defaultUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http')
-    . '://' . $_SERVER['HTTP_HOST']
-    . rtrim(dirname($_SERVER['REQUEST_URI']), '/') . '/create-order.php';
+$scheme     = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+              || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
+              ? 'https' : 'http';
+$host       = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'];
+$dir        = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+$defaultUrl = $scheme . '://' . $host . $dir . '/create-order.php';
 
 // Preserve form values on re-render
 $fApiKey   = htmlspecialchars($_POST['api_key']   ?? 'K4AwY7EZCRMkUfRPnc2qFCZusN9uPvBH9cT8HjXcrBfHJ492HH', ENT_QUOTES, 'UTF-8');
