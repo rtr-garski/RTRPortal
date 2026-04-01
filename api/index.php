@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Preserve form values on re-render
 $fApiKey   = htmlspecialchars($_POST['api_key']   ?? '', ENT_QUOTES, 'UTF-8');
-$fPostUrl  = htmlspecialchars($_POST['post_url']  ?? 'http://localhost/api/create-order.php', ENT_QUOTES, 'UTF-8');
+$fPostUrl  = htmlspecialchars($_POST['post_url']  ?? 'create-order.php', ENT_QUOTES, 'UTF-8');
 $fJsonBody = htmlspecialchars($_POST['json_body'] ?? '{
   "customer_name": "John Smith",
   "customer_email": "john@example.com",
@@ -169,7 +169,7 @@ if ($statusCode) {
                         <div class="mb-3">
                             <label class="form-label" for="post_url">POST URL</label>
                             <input type="url" class="form-control" id="post_url" name="post_url"
-                                   value="<?= $fPostUrl ?>" required placeholder="https://yoursite.com/api/create-order.php">
+                                   value="<?= $fPostUrl ?>" required placeholder="create-order.php">
                         </div>
 
                         <div class="mb-3">
