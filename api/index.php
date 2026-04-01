@@ -52,9 +52,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+// Default POST URL pointing to create-order.php on the same server
+$defaultUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http')
+    . '://' . $_SERVER['HTTP_HOST']
+    . rtrim(dirname($_SERVER['REQUEST_URI']), '/') . '/create-order.php';
+
 // Preserve form values on re-render
-$fApiKey   = htmlspecialchars($_POST['api_key']   ?? '', ENT_QUOTES, 'UTF-8');
-$fPostUrl  = htmlspecialchars($_POST['post_url']  ?? 'create-order.php', ENT_QUOTES, 'UTF-8');
+$fApiKey   = htmlspecialchars($_POST['api_key']   ?? 'K4AwY7EZCRMkUfRPnc2qFCZusN9uPvBH9cT8HjXcrBfHJ492HH', ENT_QUOTES, 'UTF-8');
+$fPostUrl  = htmlspecialchars($_POST['post_url']  ?? $defaultUrl, ENT_QUOTES, 'UTF-8');
 $fJsonBody = htmlspecialchars($_POST['json_body'] ?? '{
   "customer_name": "John Smith",
   "customer_email": "john@example.com",
