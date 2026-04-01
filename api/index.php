@@ -1,5 +1,8 @@
 <?php
 
+define('API_INCLUDED', true);
+require_once __DIR__ . '/create-order.php';
+
 $result       = null;
 $statusCode   = null;
 $responseTime = null;
@@ -8,61 +11,47 @@ $error        = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $apiKey   = trim($_POST['api_key']   ?? '');
-    $postUrl  = trim($_POST['post_url']  ?? '');
     $jsonBody = trim($_POST['json_body'] ?? '');
 
-    // Basic server-side checks
-    if (empty($apiKey) || empty($postUrl) || empty($jsonBody)) {
+    if (empty($apiKey) || empty($jsonBody)) {
         $error = "All fields are required.";
-    } elseif (!filter_var($postUrl, FILTER_VALIDATE_URL)) {
-        $error = "Post URL is not a valid URL.";
-    } elseif (json_decode($jsonBody) === null) {
-        $error = "JSON body is not valid JSON.";
     } else {
         $start = microtime(true);
 
-        $ch = curl_init($postUrl);
-        curl_setopt_array($ch, [
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_POST           => true,
-            CURLOPT_POSTFIELDS     => $jsonBody,
-            CURLOPT_HTTPHEADER     => [
-                'Content-Type: application/json',
-                'X-API-Key: ' . $apiKey,
-            ],
-            CURLOPT_TIMEOUT        => 15,
-            CURLOPT_SSL_VERIFYPEER => true,
-        ]);
-
-        $responseBody = curl_exec($ch);
-        $statusCode   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $curlError    = curl_error($ch);
-        curl_close($ch);
-
-        $responseTime = round((microtime(true) - $start) * 1000); // ms
-
-        if ($curlError) {
-            $error = "cURL error: " . htmlspecialchars($curlError, ENT_QUOTES, 'UTF-8');
+        if ($apiKey !== API_TOKEN) {
+            $statusCode = 401;
+            $result     = json_encode(["success" => false, "message" => "Unauthorized - Invalid API Key", "data" => null], JSON_PRETTY_PRINT);
         } else {
-            $decoded = json_decode($responseBody, true);
-            $result  = $decoded !== null
-                ? json_encode($decoded, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
-                : htmlspecialchars($responseBody, ENT_QUOTES, 'UTF-8');
+            $input = json_decode($jsonBody, true);
+            if ($input === null) {
+                $error = "JSON body is not valid JSON.";
+            } else {
+                $validationError = validateOrderPayload($input);
+                if ($validationError) {
+                    $statusCode = 400;
+                    $result     = json_encode(["success" => false, "message" => $validationError, "data" => null], JSON_PRETTY_PRINT);
+                } else {
+                    $order      = buildOrder($input);
+                    $statusCode = 201;
+                    $result     = json_encode(["success" => true, "message" => "Order created successfully", "data" => $order], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+                }
+            }
         }
+
+        $responseTime = round((microtime(true) - $start) * 1000);
     }
 }
 
-// Default POST URL pointing to create-order.php on the same server
-$scheme     = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-              || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
-              ? 'https' : 'http';
-$host       = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'];
-$dir        = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
-$defaultUrl = $scheme . '://' . $host . $dir . '/create-order.php';
+// Endpoint URL for display / cURL preview only
+$scheme      = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+               || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
+               ? 'https' : 'http';
+$host        = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'];
+$dir         = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+$endpointUrl = htmlspecialchars($scheme . '://' . $host . $dir . '/create-order.php', ENT_QUOTES, 'UTF-8');
 
 // Preserve form values on re-render
-$fApiKey   = htmlspecialchars($_POST['api_key']   ?? 'K4AwY7EZCRMkUfRPnc2qFCZusN9uPvBH9cT8HjXcrBfHJ492HH', ENT_QUOTES, 'UTF-8');
-$fPostUrl  = htmlspecialchars($_POST['post_url']  ?? $defaultUrl, ENT_QUOTES, 'UTF-8');
+$fApiKey   = htmlspecialchars($_POST['api_key']   ?? API_TOKEN, ENT_QUOTES, 'UTF-8');
 $fJsonBody = htmlspecialchars($_POST['json_body'] ?? '{
   "customer_name": "John Smith",
   "customer_email": "john@example.com",
@@ -88,9 +77,9 @@ $fJsonBody = htmlspecialchars($_POST['json_body'] ?? '{
 // Status badge colour
 $badgeClass = 'secondary';
 if ($statusCode) {
-    if ($statusCode >= 200 && $statusCode < 300) $badgeClass = 'success';
-    elseif ($statusCode >= 400 && $statusCode < 500) $badgeClass = 'warning';
-    elseif ($statusCode >= 500) $badgeClass = 'danger';
+    if ($statusCode >= 200 && $statusCode < 300)      $badgeClass = 'success';
+    elseif ($statusCode >= 400 && $statusCode < 500)  $badgeClass = 'warning';
+    elseif ($statusCode >= 500)                        $badgeClass = 'danger';
 }
 ?>
 <!DOCTYPE html>
@@ -117,6 +106,17 @@ if ($statusCode) {
 
         .form-label { font-size: .85rem; font-weight: 600; color: #444; }
         .form-control, .form-control:focus { font-size: .875rem; }
+
+        .endpoint-bar {
+            background: #272c3f;
+            color: #7ec8e3;
+            border-radius: .4rem;
+            padding: .5rem .85rem;
+            font-family: 'Courier New', monospace;
+            font-size: .78rem;
+            word-break: break-all;
+        }
+        .endpoint-bar .method { color: #ffcb6b; font-weight: 700; margin-right: .5rem; }
 
         textarea.mono { font-family: 'Courier New', monospace; font-size: .8rem; }
 
@@ -160,7 +160,7 @@ if ($statusCode) {
 
 <div class="page-header">
     <h1>API Tester</h1>
-    <span>Send a POST request and inspect the response</span>
+    <span>Create Order &mdash; direct PHP execution</span>
 </div>
 
 <div class="container-fluid px-4">
@@ -172,13 +172,14 @@ if ($statusCode) {
                 <div class="card-header py-3">Request</div>
                 <div class="card-body">
 
-                    <form method="POST" id="apiForm">
-
-                        <div class="mb-3">
-                            <label class="form-label" for="post_url">POST URL</label>
-                            <input type="url" class="form-control" id="post_url" name="post_url"
-                                   value="<?= $fPostUrl ?>" required placeholder="create-order.php">
+                    <div class="mb-3">
+                        <label class="form-label">Endpoint</label>
+                        <div class="endpoint-bar">
+                            <span class="method">POST</span><?= $endpointUrl ?>
                         </div>
+                    </div>
+
+                    <form method="POST" id="apiForm">
 
                         <div class="mb-3">
                             <label class="form-label" for="api_key">
@@ -212,7 +213,7 @@ if ($statusCode) {
                     <button class="btn btn-sm btn-outline-secondary" id="copyBtn" type="button">Copy</button>
                 </div>
                 <div class="card-body p-0">
-                    <div class="curl-preview" id="curlPreview">Fill in the fields above to preview the cURL command.</div>
+                    <div class="curl-preview" id="curlPreview"></div>
                 </div>
             </div>
         </div>
@@ -235,10 +236,9 @@ if ($statusCode) {
                     <?php if ($error): ?>
                         <div class="result-box error"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></div>
                     <?php elseif ($result !== null): ?>
-                        <div class="result-box"><?= $result ?></div>
+                        <div class="result-box"><?= htmlspecialchars($result, ENT_QUOTES, 'UTF-8') ?></div>
                     <?php else: ?>
-                        <div class="result-box" style="color:#555;">
-// Response will appear here after you send a request.</div>
+                        <div class="result-box" style="color:#555;">// Response will appear here after you send a request.</div>
                     <?php endif; ?>
                 </div>
             </div>
@@ -248,7 +248,7 @@ if ($statusCode) {
 </div>
 
 <script>
-    const urlEl    = document.getElementById('post_url');
+    const endpoint = <?= json_encode($scheme . '://' . $host . $dir . '/create-order.php') ?>;
     const keyEl    = document.getElementById('api_key');
     const bodyEl   = document.getElementById('json_body');
     const preview  = document.getElementById('curlPreview');
@@ -259,12 +259,11 @@ if ($statusCode) {
     }
 
     function updatePreview() {
-        const url  = urlEl.value  || '<POST_URL>';
         const key  = keyEl.value  || '<API_KEY>';
         const body = bodyEl.value || '{}';
 
         preview.innerHTML =
-            `<span class="kw">curl</span> <span class="opt">-X POST</span> <span class="str">"${escapeHtml(url)}"</span> \\\n` +
+            `<span class="kw">curl</span> <span class="opt">-X POST</span> <span class="str">"${escapeHtml(endpoint)}"</span> \\\n` +
             `  <span class="opt">-H</span> <span class="str">"Content-Type: application/json"</span> \\\n` +
             `  <span class="opt">-H</span> <span class="str">"X-API-Key: ${escapeHtml(key)}"</span> \\\n` +
             `  <span class="opt">-d</span> <span class="str">'${escapeHtml(body)}'</span>`;
@@ -290,22 +289,20 @@ if ($statusCode) {
         } catch (_) {}
     }
 
-    [urlEl, keyEl, bodyEl].forEach(el => el.addEventListener('input', updatePreview));
+    [keyEl, bodyEl].forEach(el => el.addEventListener('input', updatePreview));
     bodyEl.addEventListener('input', validateJson);
     bodyEl.addEventListener('blur',  formatJson);
 
     document.getElementById('copyBtn').addEventListener('click', function () {
-        const url  = urlEl.value  || '';
         const key  = keyEl.value  || '';
         const body = bodyEl.value || '{}';
-        const cmd  = `curl -X POST "${url}" \\\n  -H "Content-Type: application/json" \\\n  -H "X-API-Key: ${key}" \\\n  -d '${body}'`;
+        const cmd  = `curl -X POST "${endpoint}" \\\n  -H "Content-Type: application/json" \\\n  -H "X-API-Key: ${key}" \\\n  -d '${body}'`;
         navigator.clipboard.writeText(cmd).then(() => {
             this.textContent = 'Copied!';
             setTimeout(() => this.textContent = 'Copy', 1500);
         });
     });
 
-    // Init preview on page load
     updatePreview();
     validateJson();
 </script>

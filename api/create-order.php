@@ -140,4 +140,6 @@ function handleOrderRequest() {
     sendResponse(true, "Order created successfully", $order, 201);
 }
 
-handleOrderRequest();
+if (!defined('API_INCLUDED')) {
+    handleOrderRequest();
+}
