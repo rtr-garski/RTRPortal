@@ -12,7 +12,7 @@
 
 <body>
 
-    <div class="app-wrap">
+    <div class="app-wrap">lstat
 
         <?php include 'partials/app-header.php'; ?>
 
@@ -28,7 +28,7 @@
                         <div>
                             
                             <?php
-                                $pageTitle = "Garski 22 Index";
+                                $pageTitle = "Garski New Update Index";
                                 $pageSubTitle1 = "Config";
                                 $pageSubTitle2 = "Intel";
 
