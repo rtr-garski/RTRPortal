@@ -28,9 +28,9 @@
                         <div>
                             
                             <?php
-                                $pageTitle = "Garski New Update Index";
-                                $pageSubTitle1 = "Config";
-                                $pageSubTitle2 = "Intel";
+                                $pageTitle = "Garski New Update Index2";
+                                $pageSubTitle1 = "Config2";
+                                $pageSubTitle2 = "Intel2";
 
                                 include 'partials/app-pagetitle.php';
                             ?>
