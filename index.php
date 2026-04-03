@@ -28,7 +28,7 @@
                         <div>
                             
                             <?php
-                                $pageTitle = "Garski New Update 2:01 AM Index";
+                                $pageTitle = "Garski New Update 2:02 AM Index";
                                 $pageSubTitle1 = "Config";
                                 $pageSubTitle2 = "Intel";
 
