@@ -34,25 +34,38 @@ $ref = $data['ref'];
 // Log incoming request
 file_put_contents($logFile, date('c') . " - Received push: $ref\n", FILE_APPEND);
 
-// 6. Deploy based on branch
+// 6. Debug: log environment info
+file_put_contents($logFile, date('c') . " - Running as user: " . trim(shell_exec('whoami')) . "\n", FILE_APPEND);
+file_put_contents($logFile, date('c') . " - exec() enabled: " . (function_exists('exec') ? 'yes' : 'no') . "\n", FILE_APPEND);
+file_put_contents($logFile, date('c') . " - git path: " . trim(shell_exec('which git')) . "\n", FILE_APPEND);
+
+// 7. Deploy based on branch
 $output = [];
+$returnCode = null;
 
 if ($ref === 'refs/heads/rtrdev/garski') {
-    exec('bash /var/www/html/RTRGarski/deploy.sh 2>&1', $output);
+    $script = '/var/www/html/RTRGarski/deploy.sh';
+    file_put_contents($logFile, date('c') . " - Script exists: " . (file_exists($script) ? 'yes' : 'no') . "\n", FILE_APPEND);
+    file_put_contents($logFile, date('c') . " - Script executable: " . (is_executable($script) ? 'yes' : 'no') . "\n", FILE_APPEND);
+    exec('bash ' . $script . ' 2>&1', $output, $returnCode);
 } elseif ($ref === 'refs/heads/rtrdev/andrew') {
-    exec('bash /var/www/html/RTRAndrew/deploy.sh 2>&1', $output);
+    $script = '/var/www/html/RTRAndrew/deploy.sh';
+    exec('bash ' . $script . ' 2>&1', $output, $returnCode);
 } elseif ($ref === 'refs/heads/staging') {
-    exec('bash /var/www/html/RTRStage/deploy.sh 2>&1', $output);
+    $script = '/var/www/html/RTRStage/deploy.sh';
+    exec('bash ' . $script . ' 2>&1', $output, $returnCode);
 } elseif ($ref === 'refs/heads/production') {
-    exec('bash /var/www/html/RTRPortal/deploy.sh 2>&1', $output);
+    $script = '/var/www/html/RTRPortal/deploy.sh';
+    exec('bash ' . $script . ' 2>&1', $output, $returnCode);
 } else {
     file_put_contents($logFile, date('c') . " - Unknown branch: $ref\n", FILE_APPEND);
     exit('Branch not handled');
 }
 
-// 7. Log execution output
+// 8. Log execution output
 file_put_contents(
     $logFile,
+    date('c') . " - Return code: $returnCode\n" .
     date('c') . " - Deploy output:\n" . implode("\n", $output) . "\n\n",
     FILE_APPEND
 );
