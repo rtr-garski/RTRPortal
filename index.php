@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="alert alert-warning">
-                        Truly aa Game-Changer in Admin Dashboards22222
+                        Truly aaaaaa Game-Changer in Admin Dashboards
                         <button type="button" class="ms-2 btn btn-outline-secondary btn-icon rounded-circle waves-effect waves-themed" data-action="playsound" data-soundpath="media/sound/" data-soundfile="appintel.mp3" aria-label="Play Introduction">
                             <svg class="sa-icon">
                                 <use href="../source/smartadmin/icons/sprite.svg#volume-2" />
