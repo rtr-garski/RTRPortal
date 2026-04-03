@@ -28,7 +28,7 @@
                         <div>
                             
                             <?php
-                                $pageTitle = "Garski New Update 2:02 AM Index";
+                                $pageTitle = "Garski Index";
                                 $pageSubTitle1 = "Config";
                                 $pageSubTitle2 = "Intel";
 
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="alert alert-warning">
-                        Truly a Game-Changer in Admin Dashboards
+                        Truly a Game-Changer in Admin Dashboards 2:05AM
                         <button type="button" class="ms-2 btn btn-outline-secondary btn-icon rounded-circle waves-effect waves-themed" data-action="playsound" data-soundpath="media/sound/" data-soundfile="appintel.mp3" aria-label="Play Introduction">
                             <svg class="sa-icon">
                                 <use href="../source/smartadmin/icons/sprite.svg#volume-2" />
