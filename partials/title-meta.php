@@ -6,4 +6,4 @@
 <meta name="author" content="WebAppLayers" />
 
 <!-- App favicon -->
-<link rel="shortcut icon" href="assets/images/favicon.ico" />
+<link rel="shortcut icon" href="../source/inspinia5/assets/images/favicon.ico" />

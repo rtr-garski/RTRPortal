@@ -424,7 +424,7 @@
                                                 </div>
                                                 <p class="mb-1 text-muted">Launched the real-time chat feature across all user accounts.</p>
                                                 <div class="d-flex align-items-center gap-2">
-                                                    <img src="assets/images/users/user-6.jpg" alt="Natalie Brooks" class="rounded-circle avatar-xxs" />
+                                                    <img src="../source/inspinia5/assets/images/users/user-6.jpg" alt="Natalie Brooks" class="rounded-circle avatar-xxs" />
                                                     <a href="pages-profile.php" class="fw-medium link-reset text-muted">Natalie Brooks</a>
                                                 </div>
 
@@ -444,7 +444,7 @@
                                                 </div>
                                                 <p class="mb-1 text-muted">Reviewed sprint progress and discussed remaining tasks with the dev team.</p>
                                                 <div class="d-flex align-items-center gap-2">
-                                                    <img src="assets/images/users/user-4.jpg" alt="Oliver Grant" class="rounded-circle avatar-xxs" />
+                                                    <img src="../source/inspinia5/assets/images/users/user-4.jpg" alt="Oliver Grant" class="rounded-circle avatar-xxs" />
                                                     <a href="pages-profile.php" class="fw-medium link-reset text-muted">Oliver Grant</a>
                                                 </div>
 
@@ -464,7 +464,7 @@
                                                 </div>
                                                 <p class="mb-1 text-muted">Updated component spacing and colors for improved accessibility.</p>
                                                 <div class="d-flex align-items-center gap-2">
-                                                    <img src="assets/images/users/user-9.jpg" alt="Clara Jensen" class="rounded-circle avatar-xxs" />
+                                                    <img src="../source/inspinia5/assets/images/users/user-9.jpg" alt="Clara Jensen" class="rounded-circle avatar-xxs" />
                                                     <a href="pages-profile.php" class="fw-medium link-reset text-muted">Clara Jensen</a>
                                                 </div>
 
@@ -484,7 +484,7 @@
                                                 </div>
                                                 <p class="mb-1 text-muted">Improved DB query performance, reducing load time by 35%.</p>
                                                 <div class="d-flex align-items-center gap-2">
-                                                    <img src="assets/images/users/user-10.jpg" alt="Leo Armstrong" class="rounded-circle avatar-xxs" />
+                                                    <img src="../source/inspinia5/assets/images/users/user-10.jpg" alt="Leo Armstrong" class="rounded-circle avatar-xxs" />
                                                     <a href="pages-profile.php" class="fw-medium link-reset text-muted">Leo Armstrong</a>
                                                 </div>
 
@@ -504,7 +504,7 @@
                                                 </div>
                                                 <p class="mb-1 text-muted">Completed internal security audit with no critical issues found.</p>
                                                 <div class="d-flex align-items-center gap-2">
-                                                    <img src="assets/images/users/user-8.jpg" alt="Liam Carter" class="rounded-circle avatar-xxs" />
+                                                    <img src="../source/inspinia5/assets/images/users/user-8.jpg" alt="Liam Carter" class="rounded-circle avatar-xxs" />
                                                     <a href="pages-profile.php" class="fw-medium link-reset text-muted">Liam Carter</a>
                                                 </div>
 
@@ -524,7 +524,7 @@
                                                 </div>
                                                 <p class="mb-1 text-muted">Michael Lee has joined the development team as a Frontend Engineer.</p>
                                                 <div class="d-flex align-items-center gap-2">
-                                                    <img src="assets/images/users/user-7.jpg" alt="Emma Davis" class="rounded-circle avatar-xxs" />
+                                                    <img src="../source/inspinia5/assets/images/users/user-7.jpg" alt="Emma Davis" class="rounded-circle avatar-xxs" />
                                                     <a href="pages-profile.php" class="fw-medium link-reset text-muted">Emma Davis</a>
                                                 </div>
                                             </div>
@@ -551,7 +551,7 @@
                                 <div class="card-body bg-light-subtle border-bottom border-dashed">
                                     <div class="d-flex gap-2">
                                         <div class="me-2 flex-shrink-0">
-                                            <img src="assets/images/message-mail.png" height="36" alt="message img" />
+                                            <img src="../source/inspinia5/assets/images/message-mail.png" height="36" alt="message img" />
                                         </div>
                                         <div class="flex-grow-1">
                                             <h4 class="fs-sm mb-1">New messages</h4>
@@ -567,7 +567,7 @@
                                         <li class="list-group-item px-0 border-light">
                                             <div class="d-flex gap-2">
                                                 <div class="me-2 flex-shrink-0">
-                                                    <img src="assets/images/users/user-8.jpg" class="avatar-md rounded-circle" alt="user-8" />
+                                                    <img src="../source/inspinia5/assets/images/users/user-8.jpg" class="avatar-md rounded-circle" alt="user-8" />
                                                 </div>
                                                 <div class="flex-grow-1 text-muted">
                                                     <h6 class="text-body mb-1 fs-base d-flex justify-content-between">
@@ -603,7 +603,7 @@
                                         <li class="list-group-item px-0 border-light">
                                             <div class="d-flex gap-2">
                                                 <div class="me-2 flex-shrink-0">
-                                                    <img src="assets/images/users/user-10.jpg" class="avatar-md rounded-circle" alt="user-10" />
+                                                    <img src="../source/inspinia5/assets/images/users/user-10.jpg" class="avatar-md rounded-circle" alt="user-10" />
                                                 </div>
                                                 <div class="flex-grow-1 text-muted">
                                                     <h6 class="text-body mb-1 fs-base d-flex justify-content-between">
@@ -620,7 +620,7 @@
                                         <li class="list-group-item px-0 border-light">
                                             <div class="d-flex gap-2">
                                                 <div class="me-2 flex-shrink-0">
-                                                    <img src="assets/images/users/user-1.jpg" class="avatar-md rounded-circle" alt="user-1" />
+                                                    <img src="../source/inspinia5/assets/images/users/user-1.jpg" class="avatar-md rounded-circle" alt="user-1" />
                                                 </div>
                                                 <div class="flex-grow-1 text-muted">
                                                     <h6 class="text-body mb-1 fs-base d-flex justify-content-between">
@@ -637,7 +637,7 @@
                                         <li class="list-group-item px-0 border-light">
                                             <div class="d-flex gap-2">
                                                 <div class="me-2 flex-shrink-0">
-                                                    <img src="assets/images/users/user-6.jpg" class="avatar-md rounded-circle" alt="user-6" />
+                                                    <img src="../source/inspinia5/assets/images/users/user-6.jpg" class="avatar-md rounded-circle" alt="user-6" />
                                                 </div>
                                                 <div class="flex-grow-1 text-muted">
                                                     <h6 class="text-body mb-1 fs-base d-flex justify-content-between">
@@ -677,9 +677,9 @@
         <?php include('partials/customizer.php'); ?> <?php include('partials/footer-scripts.php'); ?>
 
         <!-- E Charts js -->
-        <script src="assets/plugins/echarts/echarts.min.js"></script>
+        <script src="../source/inspinia5/assets/plugins/echarts/echarts.min.js"></script>
 
         <!-- Dashboard js -->
-        <script src="assets/js/pages/dashboard-projects.js"></script>
+        <script src="../source/inspinia5/assets/js/pages/dashboard-projects.js"></script>
     </body>
 </html>

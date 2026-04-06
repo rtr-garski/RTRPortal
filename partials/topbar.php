@@ -6,20 +6,20 @@
                 <!-- Logo light -->
                 <a href="index.php" class="logo-light">
                     <span class="logo-lg">
-                        <img src="assets/images/logo.png" alt="logo" />
+                        <img src="../source/inspinia5/assets/images/logo.png" alt="logo" />
                     </span>
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="small logo" />
+                        <img src="../source/inspinia5/assets/images/logo-sm.png" alt="small logo" />
                     </span>
                 </a>
 
                 <!-- Logo Dark -->
                 <a href="index.php" class="logo-dark">
                     <span class="logo-lg">
-                        <img src="assets/images/logo-black.png" alt="dark logo" />
+                        <img src="../source/inspinia5/assets/images/logo-black.png" alt="dark logo" />
                     </span>
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="small logo" />
+                        <img src="../source/inspinia5/assets/images/logo-sm.png" alt="small logo" />
                     </span>
                 </a>
             </div>
@@ -349,7 +349,7 @@
                                 <a href="javascript:void(0);" class="dropdown-item rounded text-center py-2">
                                     <span class="avatar-sm d-block mx-auto mb-1">
                                         <span class="avatar-title text-bg-light rounded-circle">
-                                            <img src="assets/images/logos/google.svg" alt="Google Logo" height="18" />
+                                            <img src="../source/inspinia5/assets/images/logos/google.svg" alt="Google Logo" height="18" />
                                         </span>
                                     </span>
                                     <span class="align-middle fw-medium">Google</span>
@@ -360,7 +360,7 @@
                                 <a href="javascript:void(0);" class="dropdown-item rounded text-center py-2">
                                     <span class="avatar-sm d-block mx-auto mb-1">
                                         <span class="avatar-title text-bg-light rounded-circle">
-                                            <img src="assets/images/logos/figma.svg" alt="Figma Logo" height="18" />
+                                            <img src="../source/inspinia5/assets/images/logos/figma.svg" alt="Figma Logo" height="18" />
                                         </span>
                                     </span>
                                     <span class="align-middle fw-medium">Figma</span>
@@ -371,7 +371,7 @@
                                 <a href="javascript:void(0);" class="dropdown-item rounded text-center py-2">
                                     <span class="avatar-sm d-block mx-auto mb-1">
                                         <span class="avatar-title text-bg-light rounded-circle">
-                                            <img src="assets/images/logos/slack.svg" alt="Slack Logo" height="18" />
+                                            <img src="../source/inspinia5/assets/images/logos/slack.svg" alt="Slack Logo" height="18" />
                                         </span>
                                     </span>
                                     <span class="align-middle fw-medium">Slack</span>
@@ -382,7 +382,7 @@
                                 <a href="javascript:void(0);" class="dropdown-item rounded text-center py-2">
                                     <span class="avatar-sm d-block mx-auto mb-1">
                                         <span class="avatar-title text-bg-light rounded-circle">
-                                            <img src="assets/images/logos/dropbox.svg" alt="Dropbox Logo" height="18" />
+                                            <img src="../source/inspinia5/assets/images/logos/dropbox.svg" alt="Dropbox Logo" height="18" />
                                         </span>
                                     </span>
                                     <span class="align-middle fw-medium">Dropbox</span>
@@ -441,7 +441,7 @@
                             <div class="dropdown-item notification-item py-2 text-wrap active" id="message-1">
                                 <span class="d-flex gap-3">
                                     <span class="flex-shrink-0">
-                                        <img src="assets/images/users/user-1.jpg" class="avatar-md rounded-circle" alt="User Avatar" />
+                                        <img src="../source/inspinia5/assets/images/users/user-1.jpg" class="avatar-md rounded-circle" alt="User Avatar" />
                                     </span>
                                     <span class="flex-grow-1 text-muted">
                                         <span class="fw-medium text-body">Liam Carter</span>
@@ -460,7 +460,7 @@
                             <div class="dropdown-item notification-item py-2 text-wrap" id="message-2">
                                 <span class="d-flex gap-3">
                                     <span class="flex-shrink-0">
-                                        <img src="assets/images/users/user-2.jpg" class="avatar-md rounded-circle" alt="User Avatar" />
+                                        <img src="../source/inspinia5/assets/images/users/user-2.jpg" class="avatar-md rounded-circle" alt="User Avatar" />
                                     </span>
                                     <span class="flex-grow-1 text-muted">
                                         <span class="fw-medium text-body">Ava Mitchell</span>
@@ -500,7 +500,7 @@
                             <div class="dropdown-item notification-item py-2 text-wrap" id="message-4">
                                 <span class="d-flex gap-3">
                                     <span class="flex-shrink-0">
-                                        <img src="assets/images/users/user-4.jpg" class="avatar-md rounded-circle" alt="User Avatar" />
+                                        <img src="../source/inspinia5/assets/images/users/user-4.jpg" class="avatar-md rounded-circle" alt="User Avatar" />
                                     </span>
                                     <span class="flex-grow-1 text-muted">
                                         <span class="fw-medium text-body">Sophia Taylor</span>
@@ -519,7 +519,7 @@
                             <div class="dropdown-item notification-item py-2 text-wrap" id="message-5">
                                 <span class="d-flex gap-3">
                                     <span class="flex-shrink-0">
-                                        <img src="assets/images/users/user-5.jpg" class="avatar-md rounded-circle" alt="User Avatar" />
+                                        <img src="../source/inspinia5/assets/images/users/user-5.jpg" class="avatar-md rounded-circle" alt="User Avatar" />
                                     </span>
                                     <span class="flex-grow-1 text-muted">
                                         <span class="fw-medium text-body">Ethan Moore</span>
@@ -538,7 +538,7 @@
                             <div class="dropdown-item notification-item py-2 text-wrap" id="message-6">
                                 <span class="d-flex gap-3">
                                     <span class="flex-shrink-0">
-                                        <img src="assets/images/users/user-6.jpg" class="avatar-md rounded-circle" alt="User Avatar" />
+                                        <img src="../source/inspinia5/assets/images/users/user-6.jpg" class="avatar-md rounded-circle" alt="User Avatar" />
                                     </span>
                                     <span class="flex-grow-1 text-muted">
                                         <span class="fw-medium text-body">Olivia White</span>
@@ -840,36 +840,36 @@
             <div id="language-selector" class="topbar-item">
                 <div class="dropdown">
                     <button class="topbar-link fw-bold" data-bs-toggle="dropdown" type="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="assets/images/flags/us.svg" alt="user-image" class="rounded me-2" height="18" id="selected-language-image" />
+                        <img src="../source/inspinia5/assets/images/flags/us.svg" alt="user-image" class="rounded me-2" height="18" id="selected-language-image" />
                         <span id="selected-language-code">EN</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="en" title="English">
-                            <img src="assets/images/flags/us.svg" alt="English" class="me-1 rounded" height="18" data-translator-image="" />
+                            <img src="../source/inspinia5/assets/images/flags/us.svg" alt="English" class="me-1 rounded" height="18" data-translator-image="" />
                             <span class="align-middle">English</span>
                         </a>
                         <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="de" title="German">
-                            <img src="assets/images/flags/de.svg" alt="German" class="me-1 rounded" height="18" data-translator-image="" />
+                            <img src="../source/inspinia5/assets/images/flags/de.svg" alt="German" class="me-1 rounded" height="18" data-translator-image="" />
                             <span class="align-middle">Deutsch</span>
                         </a>
                         <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="it" title="Italian">
-                            <img src="assets/images/flags/it.svg" alt="Italian" class="me-1 rounded" height="18" data-translator-image="" />
+                            <img src="../source/inspinia5/assets/images/flags/it.svg" alt="Italian" class="me-1 rounded" height="18" data-translator-image="" />
                             <span class="align-middle">Italiano</span>
                         </a>
                         <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="es" title="Spanish">
-                            <img src="assets/images/flags/es.svg" alt="Spanish" class="me-1 rounded" height="18" data-translator-image="" />
+                            <img src="../source/inspinia5/assets/images/flags/es.svg" alt="Spanish" class="me-1 rounded" height="18" data-translator-image="" />
                             <span class="align-middle">Español</span>
                         </a>
                         <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="ru" title="Russian">
-                            <img src="assets/images/flags/ru.svg" alt="Russian" class="me-1 rounded" height="18" data-translator-image="" />
+                            <img src="../source/inspinia5/assets/images/flags/ru.svg" alt="Russian" class="me-1 rounded" height="18" data-translator-image="" />
                             <span class="align-middle">Русский</span>
                         </a>
                         <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="hi" title="Hindi">
-                            <img src="assets/images/flags/in.svg" alt="Hindi" class="me-1 rounded" height="18" data-translator-image="" />
+                            <img src="../source/inspinia5/assets/images/flags/in.svg" alt="Hindi" class="me-1 rounded" height="18" data-translator-image="" />
                             <span class="align-middle">हिन्दी</span>
                         </a>
                         <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="ar" title="Arabic">
-                            <img src="assets/images/flags/sa.svg" alt="Arabic" class="me-1 rounded" height="18" data-translator-image="" />
+                            <img src="../source/inspinia5/assets/images/flags/sa.svg" alt="Arabic" class="me-1 rounded" height="18" data-translator-image="" />
                             <span class="align-middle">عربي</span>
                         </a>
                     </div>
@@ -881,7 +881,7 @@
             <div id="simple-user-dropdown" class="topbar-item nav-user">
                 <div class="dropdown">
                     <a class="topbar-link dropdown-toggle drop-arrow-none px-2" data-bs-toggle="dropdown" href="#!" aria-haspopup="false" aria-expanded="false">
-                        <img src="assets/images/users/user-1.jpg" width="32" class="rounded-circle me-lg-2 d-flex" alt="user-image" />
+                        <img src="../source/inspinia5/assets/images/users/user-1.jpg" width="32" class="rounded-circle me-lg-2 d-flex" alt="user-image" />
                         <div class="d-lg-flex align-items-center gap-1 d-none">
                             <h5 class="my-0">Damian D.</h5>
                             <i class="ti ti-chevron-down align-middle"></i>

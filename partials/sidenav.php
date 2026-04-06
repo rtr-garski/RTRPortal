@@ -2,13 +2,13 @@
     <!-- Brand Logo -->
     <a href="index.php" class="logo">
         <span class="logo logo-light">
-            <span class="logo-lg"><img src="assets/images/logo.png" alt="logo" /></span>
-            <span class="logo-sm"><img src="assets/images/logo-sm.png" alt="small logo" /></span>
+            <span class="logo-lg"><img src="../source/inspinia5/assets/images/logo.png" alt="logo" /></span>
+            <span class="logo-sm"><img src="../source/inspinia5/assets/images/logo-sm.png" alt="small logo" /></span>
         </span>
 
         <span class="logo logo-dark">
-            <span class="logo-lg"><img src="assets/images/logo-black.png" alt="dark logo" /></span>
-            <span class="logo-sm"><img src="assets/images/logo-sm.png" alt="small logo" /></span>
+            <span class="logo-lg"><img src="../source/inspinia5/assets/images/logo-black.png" alt="dark logo" /></span>
+            <span class="logo-sm"><img src="../source/inspinia5/assets/images/logo-sm.png" alt="small logo" /></span>
         </span>
     </a>
 
@@ -27,7 +27,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <a href="#!" class="link-reset">
-                        <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle mb-2 avatar-md" />
+                        <img src="../source/inspinia5/assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle mb-2 avatar-md" />
                         <span class="sidenav-user-name fw-bold">Damian D.</span>
                         <span class="fs-12 fw-semibold" data-lang="user-role">Art Director</span>
                     </a>
