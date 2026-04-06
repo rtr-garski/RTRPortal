@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <?php $title = "Projects Dashboard"; include('./partials/title-meta.php'); ?> <?php include('./partials/head-css.php'); ?>
+        <?php $title = "Projects Dashboard"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
     </head>
 
     <body>
         <!-- Begin page -->
         <div class="wrapper">
-            <?php include('./partials/topbar.php'); ?> <?php include('./partials/sidenav.php'); ?>
+            <?php include('partials/topbar.php'); ?> <?php include('partials/sidenav.php'); ?>
 
             <!-- ============================================================== -->
             <!-- Start Main Content -->
@@ -665,7 +665,7 @@
                 </div>
                 <!-- container -->
 
-                <?php include('./partials/footer.php'); ?>
+                <?php include('partials/footer.php'); ?>
             </div>
 
             <!-- ============================================================== -->
@@ -674,7 +674,7 @@
         </div>
         <!-- END wrapper -->
 
-        <?php include('./partials/customizer.php'); ?> <?php include('./partials/footer-scripts.php'); ?>
+        <?php include('partials/customizer.php'); ?> <?php include('partials/footer-scripts.php'); ?>
 
         <!-- E Charts js -->
         <script src="assets/plugins/echarts/echarts.min.js"></script>
