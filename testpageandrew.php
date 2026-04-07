@@ -1,6 +1,6 @@
 <?php
 
-//phpinfo();
-echo 'Hello Garski!';
+phpinfo();
+//echo 'Hello Garski!';
 
 ?>
