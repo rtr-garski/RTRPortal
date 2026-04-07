@@ -1,5 +1,5 @@
 <div class="offcanvas offcanvas-end overflow-hidden" tabindex="-1" id="theme-settings-offcanvas">
-    <div class="d-flex justify-content-between text-bg-primary gap-2 p-3" style="background-image: url(assets/images/settings-bg.png)">
+    <div class="d-flex justify-content-between text-bg-primary gap-2 p-3" style="background-image: url(../source/inspinia5/assets/images/settings-bg.png)">
         <div>
             <h5 class="mb-1 fw-bold text-white text-uppercase">Admin Customizer</h5>
             <p class="text-white text-opacity-75 fst-italic fw-medium mb-0">Easily configure layout, styles, and preferences for your admin interface.</p>
