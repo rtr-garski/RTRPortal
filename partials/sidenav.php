@@ -23,7 +23,7 @@
     </button>
 
     <div class="scrollbar" data-simplebar="">
-        <div id="user-profile-settings" class="sidenav-user" style="background: url(assets/images/user-bg-pattern.svg)">
+        <div id="user-profile-settings" class="sidenav-user" style="background: url(../source/inspinia5/assets/images/user-bg-pattern.svg)">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <a href="#!" class="link-reset">
