@@ -8,6 +8,7 @@ $result       = null;
 $statusCode   = null;
 $responseTime = null;
 $formError    = null;
+$curlCommand  = null;   // shown after a successful submission
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -56,6 +57,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $decoded = json_decode($raw, true);
                 $result  = json_encode($decoded, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
+                // Build the equivalent cURL command to show after success
+                if ($statusCode >= 200 && $statusCode < 300) {
+                    $curlCommand = 'curl -X POST "' . $receiverUrl . '" \\' . "\n"
+                                 . '  -H "Content-Type: application/json" \\' . "\n"
+                                 . '  -H "X-API-Key: ' . $apiKey . '" \\' . "\n"
+                                 . '  -d \'' . $jsonBody . "'";
+                }
             }
         }
 
@@ -101,14 +110,16 @@ $fJsonBody = htmlspecialchars($_POST['json_body'] ?? '{
       "claim_no": "SF-2023-001"
     }
   ],
-  "opposing_counsel": {
-    "name": "Jane Doe",
-    "address": "456 Law Ave",
-    "city": "Los Angeles",
-    "state": "CA",
-    "zip": "90001",
-    "phone": "213-555-0300"
-  },
+  "opposing_counsel": [
+    {
+      "name": "Jane Doe",
+      "address": "456 Law Ave",
+      "city": "Los Angeles",
+      "state": "CA",
+      "zip": "90001",
+      "phone": "213-555-0300"
+    }
+  ],
   "employer_name": "ABC Company Inc.",
   "patient": {
     "name": "John Patient",
@@ -122,7 +133,7 @@ $fJsonBody = htmlspecialchars($_POST['json_body'] ?? '{
   "records_locations": [
     {
       "priority": "standard",
-      "record_type": "Option1",
+      "record_type": "medical",
       "date_needed": "2024-03-01",
       "location": {
         "name": "UCLA Medical Center",
@@ -332,6 +343,22 @@ if ($statusCode) {
                 </div>
             </div>
 
+            <!-- cURL Equivalent (shown after successful submission) -->
+            <?php if ($curlCommand): ?>
+            <div class="card border-success" style="border-width:1px!important">
+                <div class="card-header d-flex justify-content-between align-items-center" style="background:#f0fdf4;border-bottom:1px solid #bbf7d0">
+                    <span class="text-success fw-semibold">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="me-1 mb-1" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                        Submission Accepted — cURL Equivalent
+                    </span>
+                    <button class="btn btn-sm btn-outline-success" id="copyCurlResult" type="button">Copy</button>
+                </div>
+                <div class="card-body p-0">
+                    <div class="curl-preview" id="curlResultBox"><?= htmlspecialchars($curlCommand, ENT_QUOTES, 'UTF-8') ?></div>
+                </div>
+            </div>
+            <?php endif; ?>
+
             <!-- Schema Reference -->
             <div class="card">
                 <div class="card-header">Request Schema</div>
@@ -393,9 +420,9 @@ if ($statusCode) {
                             </tr>
                             <tr>
                                 <td class="ps-3"><code>opposing_counsel</code></td>
-                                <td>object</td>
-                                <td><span class="badge-opt">optional</span></td>
-                                <td class="pe-3 text-muted"><code>name</code>, <code>address</code>, <code>city</code>, <code>state</code>, <code>zip</code>, <code>phone</code></td>
+                                <td>array</td>
+                                <td><span class="badge-opt">optional</span> <span class="badge-multi">multiple</span></td>
+                                <td class="pe-3 text-muted">Each: <code>name*</code>, <code>address</code>, <code>city</code>, <code>state</code>, <code>zip</code>, <code>phone</code></td>
                             </tr>
                             <tr>
                                 <td class="ps-3"><code>employer_name</code></td>
@@ -447,7 +474,21 @@ if ($statusCode) {
                                 <td class="ps-3"><code>&nbsp;&nbsp;.record_type</code></td>
                                 <td>string</td>
                                 <td><span class="badge-req">required</span></td>
-                                <td class="pe-3 text-muted"><code>Option1</code>, <code>Option2</code>, <code>Option3</code></td>
+                                <td class="pe-3">
+                                    <div class="mb-1 text-muted" style="font-size:.74rem">Accepts flexible aliases — normalized &amp; resolved server-side. Canonical values:</div>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <code>medical</code>
+                                        <code>billing</code>
+                                        <code>xray</code> <span class="text-muted" style="font-size:.72rem">/ mri / imaging / films / radiology</span>
+                                        <code>claimfile</code> <span class="text-muted" style="font-size:.72rem">/ claim</span>
+                                        <code>employmentandpayroll</code>
+                                        <code>payroll</code>
+                                        <code>employment</code>
+                                        <code>wcic</code> <span class="text-muted" style="font-size:.72rem">/ wcicinfo / defendant</span>
+                                        <code>nonprivileged</code> <span class="text-muted" style="font-size:.72rem">/ nonpriv</span>
+                                        <code>pharmacy</code> <span class="text-muted" style="font-size:.72rem">/ prescription / rx</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="ps-3"><code>&nbsp;&nbsp;.date_needed</code></td>
@@ -536,6 +577,18 @@ if ($statusCode) {
 
     updatePreview();
     validateJson();
+
+    // Copy the cURL result box (rendered server-side after success)
+    const copyCurlResult = document.getElementById('copyCurlResult');
+    if (copyCurlResult) {
+        copyCurlResult.addEventListener('click', function () {
+            const text = document.getElementById('curlResultBox').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                this.textContent = 'Copied!';
+                setTimeout(() => this.textContent = 'Copy', 1500);
+            });
+        });
+    }
 </script>
 
 </body>

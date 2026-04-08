@@ -17,10 +17,79 @@ define('ALLOWED_SUBTYPES', [
     'Trial Depo Subpoena for WCAB',
 ]);
 
-define('ALLOWED_RECORD_TYPES', [
-    'Option1',
-    'Option2',
-    'Option3',
+// Record type alias map.
+// Keys are every accepted input value (lowercased, stripped of spaces/punctuation).
+// Values are the canonical display names stored/returned.
+define('RECORD_TYPE_ALIASES', [
+    // Medical
+    'medical'                   => 'Medical',
+    'medicalrecords'            => 'Medical',
+    'medrecords'                => 'Medical',
+    'med'                       => 'Medical',
+
+    // Billing
+    'billing'                   => 'Billing',
+    'billingrecords'            => 'Billing',
+    'bill'                      => 'Billing',
+    'bills'                     => 'Billing',
+
+    // XRay / MRI / Images / Films
+    'xray'                      => 'XRay/MRI Images/Films',
+    'xrays'                     => 'XRay/MRI Images/Films',
+    'mri'                       => 'XRay/MRI Images/Films',
+    'xraymri'                   => 'XRay/MRI Images/Films',
+    'xrayimages'                => 'XRay/MRI Images/Films',
+    'imaging'                   => 'XRay/MRI Images/Films',
+    'images'                    => 'XRay/MRI Images/Films',
+    'films'                     => 'XRay/MRI Images/Films',
+    'xrayfilms'                 => 'XRay/MRI Images/Films',
+    'radiology'                 => 'XRay/MRI Images/Films',
+
+    // Claim File
+    'claimfile'                 => 'Claim File',
+    'claim'                     => 'Claim File',
+    'claims'                    => 'Claim File',
+    'claimrecords'              => 'Claim File',
+
+    // Employment and Payroll (combined)
+    'employmentandpayroll'      => 'Employment and Payroll',
+    'employmentpayroll'         => 'Employment and Payroll',
+    'empandpayroll'             => 'Employment and Payroll',
+    'emppayroll'                => 'Employment and Payroll',
+
+    // Payroll only
+    'payroll'                   => 'Payroll',
+    'payrollrecords'            => 'Payroll',
+
+    // Employment only
+    'employment'                => 'Employment',
+    'employmentrecords'         => 'Employment',
+    'emp'                       => 'Employment',
+
+    // WCIC Information for Defendant/Employer
+    'wcic'                      => 'WCIC Information for Defendant/Employer',
+    'wcicinformation'           => 'WCIC Information for Defendant/Employer',
+    'wcicdefendant'             => 'WCIC Information for Defendant/Employer',
+    'wcicemployer'              => 'WCIC Information for Defendant/Employer',
+    'wcicinfo'                  => 'WCIC Information for Defendant/Employer',
+    'defendant'                 => 'WCIC Information for Defendant/Employer',
+    'defendantemployer'         => 'WCIC Information for Defendant/Employer',
+
+    // Non-Privileged
+    'nonprivileged'             => 'Non-Privileged',
+    'non-privileged'            => 'Non-Privileged',
+    'nonpriv'                   => 'Non-Privileged',
+    'nonprov'                   => 'Non-Privileged',   // common misspelling
+    'nonprivledged'             => 'Non-Privileged',   // common misspelling
+    'nonprivliged'              => 'Non-Privileged',   // common misspelling
+
+    // Pharmacy / Prescription
+    'pharmacy'                  => 'Pharmacy Prescription',
+    'prescription'              => 'Pharmacy Prescription',
+    'prescriptions'             => 'Pharmacy Prescription',
+    'pharmacyprescription'      => 'Pharmacy Prescription',
+    'rx'                        => 'Pharmacy Prescription',
+    'pharmacyrecords'           => 'Pharmacy Prescription',
 ]);
 
 define('ALLOWED_PRIORITIES', ['standard', 'rush']);
@@ -123,9 +192,13 @@ function validateInsuranceCarrier(array $carrier, int $index): array {
     ];
 }
 
-function validateOpposingCounsel(array $data): array {
+function validateOpposingCounsel(array $data, int $index): array {
+    $ctx = "opposing_counsel[$index]";
+    if (empty($data['name'])) {
+        sendResponse(false, "$ctx.name is required", null, 400);
+    }
     return [
-        'name'    => isset($data['name'])    ? clean($data['name'])    : null,
+        'name'    => clean($data['name']),
         'address' => isset($data['address']) ? clean($data['address']) : null,
         'city'    => isset($data['city'])    ? clean($data['city'])    : null,
         'state'   => isset($data['state'])   ? clean($data['state'])   : null,
@@ -161,9 +234,18 @@ function validateRecordsLocation(array $rec, int $index): array {
     if (empty($rec['record_type'])) {
         sendResponse(false, "$ctx.record_type is required", null, 400);
     }
-    if (!in_array($rec['record_type'], ALLOWED_RECORD_TYPES)) {
-        sendResponse(false, "$ctx.record_type must be one of: " . implode(', ', ALLOWED_RECORD_TYPES), null, 400);
+
+    // Normalize: lowercase, strip spaces, hyphens, underscores, slashes
+    $rtNormalized = preg_replace('/[\s\-_\/]+/', '', strtolower(trim($rec['record_type'])));
+    $aliases      = RECORD_TYPE_ALIASES;
+
+    if (!isset($aliases[$rtNormalized])) {
+        $canonical = array_unique(array_values($aliases));
+        sort($canonical);
+        sendResponse(false, "$ctx.record_type \"$rec[record_type]\" was not recognized. Accepted values: " . implode(', ', $canonical), null, 400);
     }
+
+    $resolvedRecordType = $aliases[$rtNormalized];
     if (empty($rec['date_needed'])) {
         sendResponse(false, "$ctx.date_needed is required", null, 400);
     }
@@ -186,7 +268,7 @@ function validateRecordsLocation(array $rec, int $index): array {
 
     return [
         'priority'            => $priority,
-        'record_type'         => $rec['record_type'],
+        'record_type'         => $resolvedRecordType,
         'date_needed'         => $rec['date_needed'],
         'location'            => [
             'name'    => clean($rec['location']['name']),
@@ -308,10 +390,15 @@ function handleRequest(): void {
         }
     }
 
-    // ── Opposing Counsel (optional) ──────────────────────────────────────────
-    $opposingCounsel = null;
-    if (!empty($input['opposing_counsel']) && is_array($input['opposing_counsel'])) {
-        $opposingCounsel = validateOpposingCounsel($input['opposing_counsel']);
+    // ── Opposing Counsel (optional, multiple) ────────────────────────────────
+    $opposingCounsel = [];
+    if (!empty($input['opposing_counsel'])) {
+        if (!is_array($input['opposing_counsel'])) {
+            sendResponse(false, "opposing_counsel must be an array", null, 400);
+        }
+        foreach ($input['opposing_counsel'] as $i => $counsel) {
+            $opposingCounsel[] = validateOpposingCounsel($counsel, $i);
+        }
     }
 
     // ── Employer Name ────────────────────────────────────────────────────────

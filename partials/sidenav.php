@@ -76,6 +76,12 @@
             <ul class="side-nav">
                 <li class="side-nav-title mt-2" data-lang="main">Main</li>
                 <li class="side-nav-item">
+                    <a href="apiportal/index.php" class="side-nav-link">
+                        <span class="menu-icon"><i class="ti ti-api"></i></span>
+                        <span class="menu-text">API Portal</span>
+                    </a>
+                </li>
+                <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#dashboards" aria-expanded="false" aria-controls="dashboards" class="side-nav-link">
                         <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
                         <span class="menu-text" data-lang="dashboards">Dashboards</span>
