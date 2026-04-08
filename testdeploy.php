@@ -3,16 +3,16 @@
 //$secret = 'pBVLdomFKHaTpGBqHYD7C3Jfr';
 
 // Log file
-$logFile = '/var/www/html/deploy.log';
+// $logFile = '/var/www/html/deploy.log';
 
 // 1. Read payload
 $payload = file_get_contents('php://input');
 
 // 2. Get signature
-$signature = $_SERVER['HTTP_X_HUB_SIGNATURE_256'] ?? '';
+// $signature = $_SERVER['HTTP_X_HUB_SIGNATURE_256'] ?? '';
 
 // 3. Create hash
-$hash = 'sha256=' . hash_hmac('sha256', $payload, $secret);
+// $hash = 'sha256=' . hash_hmac('sha256', $payload, $secret);
 
 // 4. Validate signature
 /*if (!hash_equals($hash, $signature)) {
@@ -25,44 +25,50 @@ $hash = 'sha256=' . hash_hmac('sha256', $payload, $secret);
 $data = json_decode($payload, true);
 
 if (!isset($data['ref'])) {
-    file_put_contents($logFile, date('c') . " - No ref found\n", FILE_APPEND);
+    // file_put_contents($logFile, date('c') . " - No ref found\n", FILE_APPEND);
     exit('No ref found');
 }
 
 $ref = $data['ref'];
 
 // Log incoming request
-file_put_contents($logFile, date('c') . " - Received push: $ref\n", FILE_APPEND);
-echo "Received push: $ref\n";
+// file_put_contents($logFile, date('c') . " - Received push: $ref\n", FILE_APPEND);
+// echo "Received push: $ref\n";
 
 // 6. Debug: log environment info
-$user = trim(shell_exec('whoami'));
-$execEnabled = function_exists('exec') ? 'yes' : 'no';
-$gitPath = trim(shell_exec('which git'));
+// $user = trim(shell_exec('whoami'));
+// $execEnabled = function_exists('exec') ? 'yes' : 'no';
+// $gitPath = trim(shell_exec('which git'));
+// 
+// file_put_contents($logFile, date('c') . " - Running as user: $user\n", FILE_APPEND);
+// file_put_contents($logFile, date('c') . " - exec() enabled: $execEnabled\n", FILE_APPEND);
+// file_put_contents($logFile, date('c') . " - git path: $gitPath\n", FILE_APPEND);
 
-file_put_contents($logFile, date('c') . " - Running as user: $user\n", FILE_APPEND);
-file_put_contents($logFile, date('c') . " - exec() enabled: $execEnabled\n", FILE_APPEND);
-file_put_contents($logFile, date('c') . " - git path: $gitPath\n", FILE_APPEND);
-
-echo "Running as user: $user\n";
-echo "exec() enabled: $execEnabled\n";
-echo "git path: $gitPath\n";
+// echo "Running as user: $user\n";
+// echo "exec() enabled: $execEnabled\n";
+// echo "git path: $gitPath\n";
 
 // 7. Deploy based on branch
-$output = [];
-$returnCode = null;
+// $output = [];
+// $returnCode = null;
 
 if ($ref === 'refs/heads/rtrdev/garski') {
     $script = '/var/www/html/RTRGarski/deploy.sh';
-    $exists = file_exists($script) ? 'yes' : 'no';
-    $executable = is_executable($script) ? 'yes' : 'no';
-    file_put_contents($logFile, date('c') . " - Script exists: $exists\n", FILE_APPEND);
-    file_put_contents($logFile, date('c') . " - Script executable: $executable\n", FILE_APPEND);
-    echo "Script exists: $exists\n";
-    echo "Script executable: $executable\n";
+    // $exists = file_exists($script) ? 'yes' : 'no';
+    // $executable = is_executable($script) ? 'yes' : 'no';
+    // file_put_contents($logFile, date('c') . " - Script exists: $exists\n", FILE_APPEND);
+    // file_put_contents($logFile, date('c') . " - Script executable: $executable\n", FILE_APPEND);
+    // echo "Script exists: $exists\n";
+    // echo "Script executable: $executable\n";
     exec('bash ' . $script . ' 2>&1', $output, $returnCode);
 } elseif ($ref === 'refs/heads/rtrdev/andrew') {
     $script = '/var/www/html/RTRAndrew/deploy.sh';
+    // $exists = file_exists($script) ? 'yes' : 'no';
+    // $executable = is_executable($script) ? 'yes' : 'no';
+    // file_put_contents($logFile, date('c') . " - Script exists: $exists\n", FILE_APPEND);
+    // file_put_contents($logFile, date('c') . " - Script executable: $executable\n", FILE_APPEND);
+    // echo "Script exists: $exists\n";
+    // echo "Script executable: $executable\n";
     exec('bash ' . $script . ' 2>&1', $output, $returnCode);
 } elseif ($ref === 'refs/heads/staging') {
     $script = '/var/www/html/RTRStage/deploy.sh';
@@ -77,15 +83,15 @@ if ($ref === 'refs/heads/rtrdev/garski') {
 }
 
 // 8. Log execution output
-$deployOutput = implode("\n", $output);
-file_put_contents(
-    $logFile,
-    date('c') . " - Return code: $returnCode\n" .
-    date('c') . " - Deploy output:\n" . $deployOutput . "\n\n",
-    FILE_APPEND
-);
+// $deployOutput = implode("\n", $output);
+// file_put_contents(
+//     $logFile,
+//     date('c') . " - Return code: $returnCode\n" .
+//     date('c') . " - Deploy output:\n" . $deployOutput . "\n\n",
+//     FILE_APPEND
+// );
 
-echo "Return code: $returnCode\n";
-echo "Deploy output:\n$deployOutput\n";
+// echo "Return code: $returnCode\n";
+// echo "Deploy output:\n$deployOutput\n";
 
 ?>
