@@ -1,8 +1,9 @@
 <?php require_once 'config/db.php'; ?>
+<?php $order_id = isset($_GET['order_id']) ? $_GET['order_id'] : null; ?>
 <!doctype html>
 <html lang="en">
 	<head>
-		<?php $title = "Orders"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
+		<?php $title = "Order"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
 	</head>
 
 	<body>
@@ -16,7 +17,7 @@
 
 			<div class="content-page">
 				<div class="container-fluid">
-					<?php   $subtitle = "Order Details"; $title = "Order Details"; include('partials/page-title.php'); ?>
+					<?php   $subtitle = "Order"; $title = "Order Details"; include('partials/page-title.php'); ?>
 
 					<div class="row justify-content-center">
 						<div class="col-xxl-10">
@@ -26,7 +27,7 @@
 									<div class="card">
 										<div class="card-header align-items-start p-4">
 											<div>
-												<h3 class="mb-1 d-flex fs-xl align-items-center">Order #WB20100</h3>
+												<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order_id) ?></h3>
 												<p class="text-muted mb-3"><i class="ti ti-calendar"></i> 24 Apr, 2025 <small class="text-muted">10:10 AM</small></p>
 												<span class="badge badge-soft-success fs-xxs badge-label"><i class="ti ti-circle-filled fs-sm align-middle"></i> Paid</span>
 												<span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-truck fs-sm align-middle"></i> Shipped</span>
