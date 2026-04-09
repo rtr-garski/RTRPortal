@@ -1,3 +1,4 @@
+<?php require_once 'config/db.php'; ?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -184,7 +185,7 @@
                                 </div>
 
                                 <div class="table-responsive">
-                                    <table class="table table-custom table-centered table-select table-hover w-100 mb-0">
+                                    <table class="table table-custom table-centered table-select table-hover w-100 mb-0" id="test1">
                                         <thead class="bg-light align-middle bg-opacity-25 thead-sm">
                                             <tr class="text-uppercase fs-xxs">
                                                 <th class="ps-3" style="width: 1%">
@@ -555,6 +556,44 @@
                         <!-- end col -->
                     </div>
                     <!-- end row -->
+
+                    <?php
+                        $stmt = $pdo->query("SELECT __kp_API_Input_Order_ID, Employer_Name, Pat_Name, Pat_Name_AKA FROM API_Input_Orders");
+                        $orders = $stmt->fetchAll();
+                    ?>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header border-light">
+                                    <h5 class="mb-0">API Input Orders</h5>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-custom table-centered table-hover w-100 mb-0" id="api-orders">
+                                        <thead class="bg-light align-middle bg-opacity-25 thead-sm">
+                                            <tr class="text-uppercase fs-xxs">
+                                                <th>Order ID</th>
+                                                <th>Employer Name</th>
+                                                <th>Patient Name</th>
+                                                <th>Patient Name AKA</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($orders as $row): ?>
+                                            <tr>
+                                                <td><?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?></td>
+                                                <td><?= htmlspecialchars($row['Employer_Name']) ?></td>
+                                                <td><?= htmlspecialchars($row['Pat_Name']) ?></td>
+                                                <td><?= htmlspecialchars($row['Pat_Name_AKA']) ?></td>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end api orders row -->
+
                 </div>
                 <!-- container -->
 
