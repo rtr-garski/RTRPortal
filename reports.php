@@ -28,7 +28,7 @@
 												<i class="ti ti-check"></i>
 											</span>
 										</div>
-										<h3 class="mb-0">1,240</h3>
+										<h3 class="mb-0">10</h3>
 									</div>
 									<p class="mb-0">
 										Completed Orders
@@ -47,11 +47,11 @@
 												<i class="ti ti-alarm-snooze"></i>
 											</span>
 										</div>
-										<h3 class="mb-0">320</h3>
+										<h3 class="mb-0">0</h3>
 									</div>
 									<p class="mb-0">
 										Pending Orders
-										<span class="float-end badge badge-soft-warning">-1.12%</span>
+										<!-- <span class="float-end badge badge-soft-warning">-1.12%</span> -->
 									</p>
 								</div>
 							</div>
@@ -85,7 +85,7 @@
 												<i class="ti ti-shopping-cart"></i>
 											</span>
 										</div>
-										<h3 class="mb-0">540</h3>
+										<h3 class="mb-0">6</h3>
 									</div>
 									<p class="mb-0">
 										New Orders
@@ -133,7 +133,7 @@
 										<span class="me-2 fw-semibold">Filter By:</span>
 
 										<!-- Payment Status Filter -->
-										<div class="app-search">
+										<!-- <div class="app-search">
 											<select data-table-filter="payment-status" class="form-select form-control my-1 my-md-0">
 												<option value="All">Payment Status</option>
 												<option value="Paid">Paid</option>
@@ -142,14 +142,14 @@
 												<option value="Refunded">Refunded</option>
 											</select>
 											<i class="ti ti-credit-card app-search-icon text-muted"></i>
-										</div>
+										</div> -->
 
 										<!-- Delivery Status Filter -->
 										<div class="app-search">
 											<select data-table-filter="order-status" class="form-select form-control my-1 my-md-0">
-												<option value="All">Delivery Status</option>
+												<option value="All">Order Status</option>
+												<option value="New">New</option>
 												<option value="Processing">Processing</option>
-												<option value="Shipped">Shipped</option>
 												<option value="Delivered">Delivered</option>
 												<option value="Cancelled">Cancelled</option>
 											</select>
