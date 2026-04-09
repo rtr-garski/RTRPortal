@@ -139,7 +139,7 @@
                     <div class="collapse" id="tables">
                         <ul class="sub-menu">
                             <li class="side-nav-item">
-                                <a href="tables-static.php" class="side-nav-link">
+                                <a href="reports.php" class="side-nav-link">
                                     <span class="menu-text">API Submission</span>
                                 </a>
                             </li>
