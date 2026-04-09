@@ -207,7 +207,7 @@
 												<td class="ps-3">
 													<input class="form-check-input form-check-input-light fs-14 product-item-check mt-0" type="checkbox" value="option" />
 												</td>
-												<td><?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?></td>
+												<td><h5 class="fs-sm mb-0 fw-medium"><a href="#" class="link-reset">#<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?></a></h5></td>
 												<td><?= htmlspecialchars($row['Employer_Name']) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name']) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name_AKA']) ?></td>
