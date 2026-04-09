@@ -3,6 +3,6 @@
 echo 'abc';
 echo '<br>';
 
-phpinfo();
+//phpinfo();
 
 ?>
