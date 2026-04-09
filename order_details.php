@@ -193,7 +193,7 @@
 														<h5 class="mb-1">Order Served</h5>
 													</div>
 												</div>
->
+
 												<div class="timeline-item d-flex align-items-stretch">
 													<div class="timeline-time pe-3 text-muted">Last Friday, 5:00 PM</div>
 													<div class="timeline-dot bg-success"></div>
