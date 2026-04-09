@@ -1,5 +1,21 @@
 <?php require_once 'config/db.php'; ?>
-<?php $order_id = isset($_GET['order_id']) ? $_GET['order_id'] : null; ?>
+<?php
+$order_id = isset($_GET['order_id']) ? $_GET['order_id'] : null;
+
+if (!$order_id) {
+    header('Location: reports.php');
+    exit;
+}
+
+$stmt = $pdo->prepare("SELECT __kp_API_Input_Order_ID, Employer_Name, Pat_Name, Pat_Name_AKA FROM API_Input_Orders WHERE __kp_API_Input_Order_ID = ?");
+$stmt->execute([$order_id]);
+$order = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$order) {
+    header('Location: reports.php');
+    exit;
+}
+?>
 <!doctype html>
 <html lang="en">
 	<head>
@@ -27,7 +43,7 @@
 									<div class="card">
 										<div class="card-header align-items-start p-4">
 											<div>
-												<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order_id) ?></h3>
+												<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
 												<p class="text-muted mb-3"><i class="ti ti-calendar"></i> 24 Apr, 2025 <small class="text-muted">10:10 AM</small></p>
 												<span class="badge badge-soft-success fs-xxs badge-label"><i class="ti ti-circle-filled fs-sm align-middle"></i> Paid</span>
 												<span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-truck fs-sm align-middle"></i> Shipped</span>
@@ -235,7 +251,7 @@
 												</div>
 												<div>
 													<h5 class="mb-1 d-flex align-items-center">
-														<a href="#!" class="link-reset">Sophia Carter</a>
+														<a href="#!" class="link-reset"><?= htmlspecialchars($order['Pat_Name']) ?></a>
 														<img src="../source/inspinia5/assets/images/flags/gb.svg" alt="UK" class="ms-2 rounded-circle" height="16" />
 													</h5>
 													<p class="text-muted mb-0">Since 2020</p>
