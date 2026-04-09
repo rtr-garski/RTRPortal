@@ -1,6 +1,6 @@
 <?php
 
-echo 'abcde';
+echo 'abcdef';
 echo '<br>';
 
 //phpinfo();
