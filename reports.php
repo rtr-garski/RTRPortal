@@ -118,7 +118,7 @@
 
 					<div class="row">
 						<div class="col-12">
-							<div data-table data-table-rows-per-page="8" class="card">
+							<div data-table data-table-rows-per-page="5" class="card">
 								<div class="card-header border-light justify-content-between">
 									<div class="d-flex gap-2">
 										<div class="app-search">
