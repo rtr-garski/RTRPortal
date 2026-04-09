@@ -1,12 +1,5 @@
 <?php
 
-// ═══════════════════════════════════════════════════════════════════════════════
-//  Shared validation & build logic
-//  Included by both receiver.php (HTTP endpoint) and index.php (portal tester)
-// ═══════════════════════════════════════════════════════════════════════════════
-
-// ─── Constants ────────────────────────────────────────────────────────────────
-
 if (!defined('API_TOKEN')) {
     define('API_TOKEN', 'K4AwY7EZCRMkUfRPnc2qFCZusN9uPvBH9cT8HjXcrBfHJ492HH');
 }

@@ -1,11 +1,5 @@
 <?php
 
-// ═══════════════════════════════════════════════════════════════════════════════
-//  API Receiver — Production
-//  Endpoint: POST /apiportal/receiver.php
-//  Auth:     X-API-Key header
-// ═══════════════════════════════════════════════════════════════════════════════
-
 require_once __DIR__ . '/functions2.php';
 require_once __DIR__ . '/db2.php';
 
