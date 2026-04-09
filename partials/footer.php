@@ -7,8 +7,8 @@
                 <script>
                     document.write(new Date().getFullYear())
                 </script>
-                Inspinia By
-                <span class="fw-semibold">WebAppLayers</span>
+                RealTimeRecords by
+                <span class="fw-semibold">RecordHost.Net</span>
             </div>
             <div class="col-md-6">
                 <div class="text-md-end d-none d-md-block">
