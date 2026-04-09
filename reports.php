@@ -66,7 +66,7 @@
 												<i class="ti ti-x"></i>
 											</span>
 										</div>
-										<h3 class="mb-0">87</h3>
+										<h3 class="mb-0">1</h3>
 									</div>
 									<p class="mb-0">
 										Canceled Orders
@@ -250,6 +250,6 @@
 		<?php include('partials/customizer.php'); ?> <?php include('partials/footer-scripts.php'); ?>
 
 		<!-- Custom table -->
-		
+		<script src="../source/inspinia5/assets/js/pages/custom-table.js"></script>
 	</body>
 </html>
