@@ -197,7 +197,7 @@
 												<th>Order ID</th>
 												<th>Employer Name</th>
 												<th>Patient Name</th>
-												<th>Patient Name AKA</th>
+												<th>Patient AKA</th>
 											</tr>
 										</thead>
 										<tbody>
