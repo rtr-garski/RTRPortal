@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<?php $title = "Order Detail"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
+		<?php $title = "Orders"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
 	</head>
 
 	<body>
@@ -16,7 +16,7 @@
 
 			<div class="content-page">
 				<div class="container-fluid">
-					<?php   $subtitle = "Order Detail"; $title = "Orders"; include('partials/page-title.php'); ?>
+					<?php   $subtitle = "Order Details"; $title = "Order Details"; include('partials/page-title.php'); ?>
 
 					<div class="row justify-content-center">
 						<div class="col-xxl-10">
