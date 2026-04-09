@@ -191,6 +191,9 @@
 									<table class="table table-custom table-centered table-select table-hover w-100 mb-0" id="api-orders">
 										<thead class="bg-light align-middle bg-opacity-25 thead-sm">
 											<tr class="text-uppercase fs-xxs">
+												<th class="ps-3" style="width: 1%">
+													<input data-table-select-all class="form-check-input form-check-input-light fs-14 mt-0" type="checkbox" value="option" />
+												</th>
 												<th>Order ID</th>
 												<th>Employer Name</th>
 												<th>Patient Name</th>
@@ -200,6 +203,9 @@
 										<tbody>
 											<?php foreach ($orders as $row): ?>
 											<tr>
+												<td class="ps-3">
+													<input class="form-check-input form-check-input-light fs-14 product-item-check mt-0" type="checkbox" value="option" />
+												</td>
 												<td><?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?></td>
 												<td><?= htmlspecialchars($row['Employer_Name']) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name']) ?></td>
