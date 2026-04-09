@@ -197,8 +197,10 @@
 												<div class="timeline-item d-flex align-items-stretch">
 													<div class="timeline-time pe-3 text-muted">Last Friday, 5:00 PM</div>
 													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3">
+													<div class="timeline-content ps-3 pb-5">
 														<h5 class="mb-1">Order Verified</h5>
+														<p class="mb-1 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+														<span class="fw-semibold fs-xxs">By OE Agent1</span>
 													</div>
 												</div>
 
@@ -207,14 +209,7 @@
 													<div class="timeline-dot bg-success"></div>
 													<div class="timeline-content ps-3 pb-5">
 														<h5 class="mb-1">Order Received</h5>
-													</div>
-												</div>
-
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted">Last Friday, 4:00 PM</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Order Received</h5>
+														<p class="mb-1 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 													</div>
 												</div>
 
