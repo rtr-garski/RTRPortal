@@ -6,8 +6,8 @@
 //  Auth:     X-API-Key header
 // ═══════════════════════════════════════════════════════════════════════════════
 
-require_once __DIR__ . '/functions.php';
-require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/functions2.php';
+require_once __DIR__ . '/db2.php';
 
 // ─── CORS ─────────────────────────────────────────────────────────────────────
 
