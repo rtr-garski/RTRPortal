@@ -318,13 +318,12 @@ if (!$order) {
 
 									<div class="card">
 										<div class="card-header justify-content-between border-dashed">
-											<h4 class="card-title">Shipping Address</h4>
+											<h4 class="card-title">Employer Details</h4>
 											<a href="#!" class="btn btn-default btn-sm btn-icon rounded-circle"><i class="ti ti-pencil fs-lg"></i></a>
 										</div>
 										<!-- end card-header -->
 
 										<div class="card-body">
-											<iframe src="https://www.google.com/maps/embed/v1/place?q=New+York+University&key=AIzaSyBSFRN6WWGYwmFi498qXXsD2UwkbmD74v4" style="width: 100%; height: 180px; overflow: hidden; border: 0"></iframe>
 											<div class="d-flex align-items-start my-3">
 												<div class="flex-grow-1">
 													<h5 class="mb-2">John Doe</h5>
@@ -405,6 +404,236 @@ if (!$order) {
 					</div>
 					
 						
+					<!--fieldrow-->
+					<div class="row justify-content-center">
+						<div class="col-xxl-10">
+
+							<!-- Case Info -->
+							<div class="card mb-3">
+								<div class="card-header"><h4 class="card-title mb-0">Case Information</h4></div>
+								<div class="card-body">
+									<div class="row g-3">
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">Subtype</label>
+											<input type="text" class="form-control" value="IMR" readonly>
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">Case No.</label>
+											<input type="text" class="form-control" value="ADJ1234567" readonly>
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">DOI Start</label>
+											<input type="text" class="form-control" value="2023-01-15" readonly>
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">DOI End</label>
+											<input type="text" class="form-control" value="2023-06-30" readonly>
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">Letter of Rep Date</label>
+											<input type="text" class="form-control" value="2023-02-01" readonly>
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">Employer</label>
+											<input type="text" class="form-control" value="ABC Company Inc." readonly>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Court Venue -->
+							<div class="card mb-3">
+								<div class="card-header"><h4 class="card-title mb-0">Court Venue</h4></div>
+								<div class="card-body">
+									<div class="row g-3">
+										<div class="col-md-4">
+											<label class="form-label fw-semibold">Name</label>
+											<input type="text" class="form-control" value="WCAB Los Angeles" readonly>
+										</div>
+										<div class="col-md-4">
+											<label class="form-label fw-semibold">Address</label>
+											<input type="text" class="form-control" value="320 W 4th St" readonly>
+										</div>
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">City</label>
+											<input type="text" class="form-control" value="Los Angeles" readonly>
+										</div>
+										<div class="col-md-1">
+											<label class="form-label fw-semibold">State</label>
+											<input type="text" class="form-control" value="CA" readonly>
+										</div>
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">Phone</label>
+											<input type="text" class="form-control" value="213-555-0100" readonly>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Patient -->
+							<div class="card mb-3">
+								<div class="card-header"><h4 class="card-title mb-0">Patient</h4></div>
+								<div class="card-body">
+									<div class="row g-3">
+										<div class="col-md-4">
+											<label class="form-label fw-semibold">Name</label>
+											<input type="text" class="form-control" value="John Patient" readonly>
+										</div>
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">DOB</label>
+											<input type="text" class="form-control" value="1980-05-15" readonly>
+										</div>
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">SSN</label>
+											<input type="text" class="form-control" value="123-45-6789" readonly>
+										</div>
+										<div class="col-md-4">
+											<label class="form-label fw-semibold">Street</label>
+											<input type="text" class="form-control" value="789 Patient St" readonly>
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">City</label>
+											<input type="text" class="form-control" value="Los Angeles" readonly>
+										</div>
+										<div class="col-md-1">
+											<label class="form-label fw-semibold">State</label>
+											<input type="text" class="form-control" value="CA" readonly>
+										</div>
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">ZIP</label>
+											<input type="text" class="form-control" value="90002" readonly>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Insurance Carriers -->
+							<div class="card mb-3">
+								<div class="card-header"><h4 class="card-title mb-0">Insurance Carrier</h4></div>
+								<div class="card-body">
+									<div class="row g-3">
+										<div class="col-md-4">
+											<label class="form-label fw-semibold">Carrier Name</label>
+											<input type="text" class="form-control" value="State Fund Insurance" readonly>
+										</div>
+										<div class="col-md-4">
+											<label class="form-label fw-semibold">Address</label>
+											<input type="text" class="form-control" value="123 Insurance Blvd" readonly>
+										</div>
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">City</label>
+											<input type="text" class="form-control" value="Sacramento" readonly>
+										</div>
+										<div class="col-md-1">
+											<label class="form-label fw-semibold">State</label>
+											<input type="text" class="form-control" value="CA" readonly>
+										</div>
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">ZIP</label>
+											<input type="text" class="form-control" value="95814" readonly>
+										</div>
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">Phone</label>
+											<input type="text" class="form-control" value="916-555-0200" readonly>
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">Claim No.</label>
+											<input type="text" class="form-control" value="SF-2023-001" readonly>
+										</div>
+										<div class="col-md-12"><hr class="my-1"></div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">Adjuster Name</label>
+											<input type="text" class="form-control" value="John Smith" readonly>
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">Adjuster Phone</label>
+											<input type="text" class="form-control" value="916-555-0201" readonly>
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">Adjuster Fax</label>
+											<input type="text" class="form-control" value="916-555-0202" readonly>
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">Adjuster Email</label>
+											<input type="text" class="form-control" value="john.smith@statefund.com" readonly>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Opposing Counsel -->
+							<div class="card mb-3">
+								<div class="card-header"><h4 class="card-title mb-0">Opposing Counsel</h4></div>
+								<div class="card-body">
+									<div class="row g-3">
+										<div class="col-md-4">
+											<label class="form-label fw-semibold">Name</label>
+											<input type="text" class="form-control" value="Jane Doe" readonly>
+										</div>
+										<div class="col-md-4">
+											<label class="form-label fw-semibold">Address</label>
+											<input type="text" class="form-control" value="456 Law Ave" readonly>
+										</div>
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">City</label>
+											<input type="text" class="form-control" value="Los Angeles" readonly>
+										</div>
+										<div class="col-md-1">
+											<label class="form-label fw-semibold">State</label>
+											<input type="text" class="form-control" value="CA" readonly>
+										</div>
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">ZIP</label>
+											<input type="text" class="form-control" value="90001" readonly>
+										</div>
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">Phone</label>
+											<input type="text" class="form-control" value="213-555-0300" readonly>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Records Locations -->
+							<div class="card mb-3">
+								<div class="card-header"><h4 class="card-title mb-0">Records Location</h4></div>
+								<div class="card-body">
+									<div class="row g-3">
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">Priority</label>
+											<input type="text" class="form-control" value="Standard" readonly>
+										</div>
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">Record Type</label>
+											<input type="text" class="form-control" value="Medical" readonly>
+										</div>
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">Date Needed</label>
+											<input type="text" class="form-control" value="2024-03-01" readonly>
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">Location Name</label>
+											<input type="text" class="form-control" value="UCLA Medical Center" readonly>
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">Address</label>
+											<input type="text" class="form-control" value="100 Medical Plaza Dr" readonly>
+										</div>
+										<div class="col-md-2">
+											<label class="form-label fw-semibold">Phone</label>
+											<input type="text" class="form-control" value="310-555-0400" readonly>
+										</div>
+										<div class="col-md-10">
+											<label class="form-label fw-semibold">Special Instructions</label>
+											<input type="text" class="form-control" value="Please call ahead before arrival" readonly>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<!-- end fieldrow -->
 
 				</div>
 				<!-- container -->
