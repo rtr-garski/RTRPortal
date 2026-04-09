@@ -128,6 +128,27 @@
                         <span class="menu-text" data-lang="apps-calendar">Calendar</span>
                     </a>
                 </li>
+
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#reports" aria-expanded="false" aria-controls="reports" class="side-nav-link">
+                        <span class="menu-text" data-lang="reports">Reports</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="reports">
+                        <ul class="sub-menu">
+                            <li class="side-nav-item">
+                                <a href="reports.php" class="side-nav-link">
+                                    <span class="menu-text" data-lang="apps-ecommerce-product-views">API Submission</span>
+                                </a>
+                            </li>
+                            <li class="side-nav-item">
+                                <a href="#" class="side-nav-link">
+                                    <span class="menu-text" data-lang="apps-ecommerce-sales">Sales</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
               
                 <li class="side-nav-item">
                     <a href="#" class="side-nav-link disabled">
