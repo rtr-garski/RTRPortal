@@ -129,27 +129,30 @@
                     </a>
                 </li>
 
+
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#reports" aria-expanded="false" aria-controls="reports" class="side-nav-link">
-                        <span class="menu-text" data-lang="reports">Reports</span>
+                    <a data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables" class="side-nav-link">
+                        <span class="menu-icon"><i class="ti ti-table-column"></i></span>
+                        <span class="menu-text" data-lang="">Reports</span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="reports">
+                    <div class="collapse" id="tables">
                         <ul class="sub-menu">
                             <li class="side-nav-item">
-                                <a href="reports.php" class="side-nav-link">
-                                    <span class="menu-text" data-lang="apps-ecommerce-product-views">API Submission</span>
+                                <a href="tables-static.php" class="side-nav-link">
+                                    <span class="menu-text" data-lang="tables-static">API Submission</span>
                                 </a>
                             </li>
                             <li class="side-nav-item">
                                 <a href="#" class="side-nav-link">
-                                    <span class="menu-text" data-lang="apps-ecommerce-sales">Sales</span>
+                                    <span class="menu-text" data-lang="tables-custom">Custom Tables</span>
                                 </a>
                             </li>
+                           
                         </ul>
                     </div>
                 </li>
-              
+
                 <li class="side-nav-item">
                     <a href="#" class="side-nav-link disabled">
                         <span class="menu-icon"><i class="ti ti-ban"></i></span>
