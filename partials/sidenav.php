@@ -140,12 +140,12 @@
                         <ul class="sub-menu">
                             <li class="side-nav-item">
                                 <a href="tables-static.php" class="side-nav-link">
-                                    <span class="menu-text" data-lang="tables-static">API Submission</span>
+                                    <span class="menu-text">API Submission</span>
                                 </a>
                             </li>
                             <li class="side-nav-item">
                                 <a href="#" class="side-nav-link">
-                                    <span class="menu-text" data-lang="tables-custom">Custom Tables</span>
+                                    <span class="menu-text">Custom Report</span>
                                 </a>
                             </li>
                            
