@@ -180,7 +180,7 @@
 									</div>
 
 									<div class="d-flex gap-1">
-										<a href="#" class="btn btn-danger ms-1"> <i class="ti ti-plus fs-sm me-2"></i> Add Order </a>
+										<a href="#" class="btn btn-primary ms-1"> <i class="ti ti-plus fs-sm me-2"></i> Add Order </a>
 									</div>
 								</div>
 								<?php
