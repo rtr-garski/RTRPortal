@@ -180,7 +180,7 @@
 									</div>
 
 									<div class="d-flex gap-1">
-										<a href="apps-ecommerce-order-add.php" class="btn btn-danger ms-1"> <i class="ti ti-plus fs-sm me-2"></i> Add Order </a>
+										<a href="#" class="btn btn-danger ms-1"> <i class="ti ti-plus fs-sm me-2"></i> Add Order </a>
 									</div>
 								</div>
 								<?php
@@ -213,7 +213,7 @@
 												<td><?= htmlspecialchars($row['Pat_Name_AKA']) ?></td>
 												<td>
 													<div class="d-flex justify-content-center gap-1">
-														<a href="apps-ecommerce-order-details.php" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-eye fs-lg"></i></a>
+														<a href="#" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-eye fs-lg"></i></a>
 														<a href="#" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-edit fs-lg"></i></a>
 														<a href="#" data-table-delete-row class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-trash fs-lg"></i></a>
 													</div>
@@ -250,6 +250,6 @@
 		<?php include('partials/customizer.php'); ?> <?php include('partials/footer-scripts.php'); ?>
 
 		<!-- Custom table -->
-		<script src="../source/inspinia5/assets/js/pages/custom-table.js"></script>
+		
 	</body>
 </html>
