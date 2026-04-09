@@ -55,7 +55,7 @@
 															<td>
 																<div class="d-flex">
 																	<div class="avatar-md me-3">
-																		<img src="assets/images/products/1.png" alt="Wireless Earbuds" class="img-fluid rounded" />
+																		<img src="../source/inspinia5/assets/images/products/1.png" alt="Wireless Earbuds" class="img-fluid rounded" />
 																	</div>
 																	<div>
 																		<h5 class="mb-1">
@@ -75,7 +75,7 @@
 															<td>
 																<div class="d-flex">
 																	<div class="avatar-md me-3">
-																		<img src="assets/images/products/2.png" alt="Smart Watch" class="img-fluid rounded" />
+																		<img src="../source/inspinia5/assets/images/products/2.png" alt="Smart Watch" class="img-fluid rounded" />
 																	</div>
 																	<div>
 																		<h5 class="mb-1">
@@ -95,7 +95,7 @@
 															<td>
 																<div class="d-flex">
 																	<div class="avatar-md me-3">
-																		<img src="assets/images/products/3.png" alt="Gaming Mouse" class="img-fluid rounded" />
+																		<img src="../source/inspinia5/assets/images/products/3.png" alt="Gaming Mouse" class="img-fluid rounded" />
 																	</div>
 																	<div>
 																		<h5 class="mb-1">
@@ -254,12 +254,12 @@
 										<div class="card-body">
 											<div class="d-flex align-items-center mb-4">
 												<div class="me-2">
-													<img src="assets/images/users/user-5.jpg" alt="avatar" class="rounded-circle avatar-lg" />
+													<img src="../source/inspinia5/assets/images/users/user-5.jpg" alt="avatar" class="rounded-circle avatar-lg" />
 												</div>
 												<div>
 													<h5 class="mb-1 d-flex align-items-center">
 														<a href="#!" class="link-reset">Sophia Carter</a>
-														<img src="assets/images/flags/gb.svg" alt="UK" class="ms-2 rounded-circle" height="16" />
+														<img src="../source/inspinia5/assets/images/flags/gb.svg" alt="UK" class="ms-2 rounded-circle" height="16" />
 													</h5>
 													<p class="text-muted mb-0">Since 2020</p>
 												</div>
@@ -389,7 +389,7 @@
 											<!-- Card Details -->
 											<div class="d-flex align-items-center">
 												<div class="avatar-sm me-2">
-													<img src="assets/images/cards/mastercard.svg" alt="Mastercard" class="img-fluid rounded" />
+													<img src="../source/inspinia5/assets/images/cards/mastercard.svg" alt="Mastercard" class="img-fluid rounded" />
 												</div>
 												<div>
 													<h5 class="fs-xs mb-1">Mastercard Ending in 4242</h5>
