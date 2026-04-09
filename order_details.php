@@ -210,6 +210,14 @@
 													</div>
 												</div>
 
+												<div class="timeline-item d-flex align-items-stretch">
+													<div class="timeline-time pe-3 text-muted">Last Friday, 4:00 PM</div>
+													<div class="timeline-dot bg-success"></div>
+													<div class="timeline-content ps-3 pb-5">
+														<h5 class="mb-1">Order Received</h5>
+													</div>
+												</div>
+
 											</div>
 										</div>
 									</div>
