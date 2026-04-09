@@ -1,14 +1,14 @@
 <?php
 
-// ─── Config (must match receiver.php) ─────────────────────────────────────────
-define('API_TOKEN', 'K4AwY7EZCRMkUfRPnc2qFCZusN9uPvBH9cT8HjXcrBfHJ492HH');
+require_once __DIR__ . '/functions.php';
 
-// ─── Simulate the request server-side ─────────────────────────────────────────
+// ─── Process form submission ───────────────────────────────────────────────────
+
 $result       = null;
 $statusCode   = null;
 $responseTime = null;
 $formError    = null;
-$curlCommand  = null;   // shown after a successful submission
+$curlCommand  = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -20,50 +20,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $start = microtime(true);
 
-        // Build a fake request context and include the receiver inline
         if ($apiKey !== API_TOKEN) {
             $statusCode = 401;
-            $result     = json_encode(["success" => false, "message" => "Unauthorized — invalid or missing API key", "data" => null, "timestamp" => date('c')], JSON_PRETTY_PRINT);
+            $result     = json_encode([
+                'success'   => false,
+                'message'   => 'Unauthorized — invalid or missing API key',
+                'data'      => null,
+                'timestamp' => date('c'),
+            ], JSON_PRETTY_PRINT);
+
         } else {
             $input = json_decode($jsonBody, true);
             if ($input === null) {
                 $statusCode = 400;
-                $result     = json_encode(["success" => false, "message" => "Invalid or missing JSON body", "data" => null, "timestamp" => date('c')], JSON_PRETTY_PRINT);
+                $result     = json_encode([
+                    'success'   => false,
+                    'message'   => 'Invalid or missing JSON body',
+                    'data'      => null,
+                    'timestamp' => date('c'),
+                ], JSON_PRETTY_PRINT);
             } else {
-                // Forward to receiver via cURL (self-call)
-                $scheme      = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-                               || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
-                               ? 'https' : 'http';
-                $host        = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'];
-                $dir         = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
-                $receiverUrl = $scheme . '://' . $host . $dir . '/receiver.php';
+                try {
+                    $payload    = buildPayload($input);
+                    $statusCode = 201;
+                    $result     = json_encode([
+                        'success'   => true,
+                        'message'   => 'Submission received successfully',
+                        'data'      => $payload,
+                        'timestamp' => date('c'),
+                    ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
-                $ch = curl_init($receiverUrl);
-                curl_setopt_array($ch, [
-                    CURLOPT_POST           => true,
-                    CURLOPT_POSTFIELDS     => $jsonBody,
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_HTTPHEADER     => [
-                        'Content-Type: application/json',
-                        'X-API-Key: ' . $apiKey,
-                    ],
-                    CURLOPT_TIMEOUT        => 15,
-                    CURLOPT_SSL_VERIFYPEER => false,
-                ]);
+                    // Build the cURL equivalent shown on success
+                    $scheme      = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+                                   || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
+                                   ? 'https' : 'http';
+                    $host        = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'];
+                    $dir         = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+                    $endpointRaw = $scheme . '://' . $host . $dir . '/receiver.php';
 
-                $raw        = curl_exec($ch);
-                $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-                curl_close($ch);
-
-                $decoded = json_decode($raw, true);
-                $result  = json_encode($decoded, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-
-                // Build the equivalent cURL command to show after success
-                if ($statusCode >= 200 && $statusCode < 300) {
-                    $curlCommand = 'curl -X POST "' . $receiverUrl . '" \\' . "\n"
+                    $curlCommand = 'curl -X POST "' . $endpointRaw . '" \\' . "\n"
                                  . '  -H "Content-Type: application/json" \\' . "\n"
                                  . '  -H "X-API-Key: ' . $apiKey . '" \\' . "\n"
-                                 . '  -d \'' . $jsonBody . "'";
+                                 . "  -d '" . $jsonBody . "'";
+
+                } catch (ApiValidationException $e) {
+                    $statusCode = 400;
+                    $result     = json_encode([
+                        'success'   => false,
+                        'message'   => $e->getMessage(),
+                        'data'      => null,
+                        'timestamp' => date('c'),
+                    ], JSON_PRETTY_PRINT);
                 }
             }
         }
@@ -72,7 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Endpoint URL for display
+// ─── Endpoint URL for display ─────────────────────────────────────────────────
+
 $scheme      = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
                || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
                ? 'https' : 'http';
@@ -80,7 +88,8 @@ $host        = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'];
 $dir         = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
 $endpointUrl = htmlspecialchars($scheme . '://' . $host . $dir . '/receiver.php', ENT_QUOTES, 'UTF-8');
 
-// Preserve form values
+// ─── Preserve form values ─────────────────────────────────────────────────────
+
 $fApiKey   = htmlspecialchars($_POST['api_key'] ?? API_TOKEN, ENT_QUOTES, 'UTF-8');
 $fJsonBody = htmlspecialchars($_POST['json_body'] ?? '{
   "subtype": "IMR",
@@ -146,7 +155,8 @@ $fJsonBody = htmlspecialchars($_POST['json_body'] ?? '{
   "attachments": []
 }', ENT_QUOTES, 'UTF-8');
 
-// Status badge colour
+// ─── Status badge colour ──────────────────────────────────────────────────────
+
 $badgeClass = 'secondary';
 if ($statusCode) {
     if ($statusCode >= 200 && $statusCode < 300)     $badgeClass = 'success';
@@ -170,7 +180,6 @@ if ($statusCode) {
 
         body { background: #f4f6f9; font-size: .9rem; }
 
-        /* ── Header ── */
         .page-header {
             background: var(--dark-bg);
             color: #fff;
@@ -180,15 +189,12 @@ if ($statusCode) {
         .page-header h1 { font-size: 1.2rem; margin: 0; font-weight: 600; letter-spacing: .4px; }
         .page-header .subtitle { font-size: .75rem; opacity: .55; }
 
-        /* ── Cards ── */
         .card { border: none; border-radius: .55rem; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
         .card-header { background: #fff; border-bottom: 1px solid #eaeaea; font-weight: 600; font-size: .85rem; padding: .75rem 1.25rem; }
 
-        /* ── Form ── */
         .form-label { font-size: .82rem; font-weight: 600; color: #444; }
         .mono { font-family: 'Courier New', monospace; font-size: .8rem; }
 
-        /* ── Endpoint bar ── */
         .endpoint-bar {
             background: var(--code-bg);
             color: #7ec8e3;
@@ -200,7 +206,6 @@ if ($statusCode) {
         }
         .endpoint-bar .method { color: #ffcb6b; font-weight: 700; margin-right: .5rem; }
 
-        /* ── Result box ── */
         .result-box {
             background: var(--dark-bg);
             color: #a8d8a8;
@@ -217,7 +222,6 @@ if ($statusCode) {
         .result-box.is-error { color: #f08080; }
         .result-box.is-empty { color: #555; }
 
-        /* ── cURL preview ── */
         .curl-preview {
             background: var(--code-bg);
             color: #cdd3e0;
@@ -232,21 +236,22 @@ if ($statusCode) {
         .curl-preview .str { color: #c3e88d; }
         .curl-preview .opt { color: #ffcb6b; }
 
-        /* ── Schema table ── */
         .schema-wrap { overflow-x: auto; }
         .schema-table { font-size: .78rem; min-width: 560px; }
         .schema-table th { background: #f8f9fa; font-size: .74rem; text-transform: uppercase; letter-spacing: .4px; color: #888; }
         .schema-table td { vertical-align: middle; }
-        .badge-req { background: #e8f0fe; color: #3b4bcf; font-size: .68rem; font-weight: 600; padding: .2rem .45rem; border-radius: .25rem; }
-        .badge-opt { background: #f0f0f0; color: #888; font-size: .68rem; font-weight: 600; padding: .2rem .45rem; border-radius: .25rem; }
-        .badge-multi { background: #fff3cd; color: #856404; font-size: .68rem; font-weight: 600; padding: .2rem .45rem; border-radius: .25rem; }
+        .badge-req   { background: #e8f0fe; color: #3b4bcf;  font-size: .68rem; font-weight: 600; padding: .2rem .45rem; border-radius: .25rem; }
+        .badge-opt   { background: #f0f0f0; color: #888;     font-size: .68rem; font-weight: 600; padding: .2rem .45rem; border-radius: .25rem; }
+        .badge-multi { background: #fff3cd; color: #856404;  font-size: .68rem; font-weight: 600; padding: .2rem .45rem; border-radius: .25rem; }
 
-        /* ── Send button ── */
         .btn-send { background: var(--accent); border: none; font-weight: 600; }
         .btn-send:hover  { background: #3b4bcf; }
         .btn-send:active { transform: scale(.98); }
 
         .meta-bar { font-size: .76rem; color: #666; }
+
+        .success-curl-card { border: 1px solid #bbf7d0 !important; }
+        .success-curl-header { background: #f0fdf4; border-bottom: 1px solid #bbf7d0; }
     </style>
 </head>
 <body>
@@ -274,7 +279,7 @@ if ($statusCode) {
                     </div>
 
                     <?php if ($formError): ?>
-                        <div class="alert alert-danger py-2 fs-sm"><?= htmlspecialchars($formError, ENT_QUOTES, 'UTF-8') ?></div>
+                        <div class="alert alert-danger py-2" style="font-size:.82rem"><?= htmlspecialchars($formError, ENT_QUOTES, 'UTF-8') ?></div>
                     <?php endif; ?>
 
                     <form method="POST" id="apiForm">
@@ -291,7 +296,7 @@ if ($statusCode) {
                         <div class="mb-4">
                             <label class="form-label" for="json_body">
                                 JSON Body
-                                <span id="jsonStatus" class="fw-normal ms-2"></span>
+                                <span id="jsonStatus" class="fw-normal ms-2" style="font-size:.78rem"></span>
                             </label>
                             <textarea class="form-control mono" id="json_body" name="json_body"
                                       rows="22" required><?= $fJsonBody ?></textarea>
@@ -305,11 +310,11 @@ if ($statusCode) {
                 </div>
             </div>
 
-            <!-- cURL Preview -->
+            <!-- live cURL preview (updates as user types) -->
             <div class="card mt-3">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     cURL Preview
-                    <button class="btn btn-sm btn-outline-secondary" id="copyBtn" type="button">Copy</button>
+                    <button class="btn btn-sm btn-outline-secondary" id="copyPreviewBtn" type="button">Copy</button>
                 </div>
                 <div class="card-body p-0">
                     <div class="curl-preview" id="curlPreview"></div>
@@ -318,7 +323,7 @@ if ($statusCode) {
 
         </div>
 
-        <!-- ═══ RIGHT: Response + Schema ═════════════════════════════════════ -->
+        <!-- ═══ RIGHT: Response + cURL result + Schema ═══════════════════════ -->
         <div class="col-xl-7 col-lg-6 d-flex flex-column gap-3">
 
             <!-- Response -->
@@ -333,9 +338,7 @@ if ($statusCode) {
                     <?php endif; ?>
                 </div>
                 <div class="card-body">
-                    <?php if ($formError): ?>
-                        <div class="result-box is-error"><?= htmlspecialchars($formError, ENT_QUOTES, 'UTF-8') ?></div>
-                    <?php elseif ($result !== null): ?>
+                    <?php if ($result !== null): ?>
                         <div class="result-box <?= ($statusCode >= 400) ? 'is-error' : '' ?>"><?= htmlspecialchars($result, ENT_QUOTES, 'UTF-8') ?></div>
                     <?php else: ?>
                         <div class="result-box is-empty">// Response will appear here after you send a request.</div>
@@ -343,12 +346,14 @@ if ($statusCode) {
                 </div>
             </div>
 
-            <!-- cURL Equivalent (shown after successful submission) -->
+            <!-- cURL Equivalent — shown only after a successful 2xx response -->
             <?php if ($curlCommand): ?>
-            <div class="card border-success" style="border-width:1px!important">
-                <div class="card-header d-flex justify-content-between align-items-center" style="background:#f0fdf4;border-bottom:1px solid #bbf7d0">
+            <div class="card success-curl-card">
+                <div class="card-header success-curl-header d-flex justify-content-between align-items-center">
                     <span class="text-success fw-semibold">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="me-1 mb-1" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="me-1 mb-1" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
                         Submission Accepted — cURL Equivalent
                     </span>
                     <button class="btn btn-sm btn-outline-success" id="copyCurlResult" type="button">Copy</button>
@@ -366,9 +371,9 @@ if ($statusCode) {
                     <table class="table table-sm table-hover mb-0 schema-table">
                         <thead>
                             <tr>
-                                <th class="ps-3" style="width:30%">Field</th>
+                                <th class="ps-3" style="width:32%">Field</th>
                                 <th style="width:12%">Type</th>
-                                <th style="width:12%"></th>
+                                <th style="width:14%"></th>
                                 <th class="pe-3">Description / Rules</th>
                             </tr>
                         </thead>
@@ -475,18 +480,18 @@ if ($statusCode) {
                                 <td>string</td>
                                 <td><span class="badge-req">required</span></td>
                                 <td class="pe-3">
-                                    <div class="mb-1 text-muted" style="font-size:.74rem">Accepts flexible aliases — normalized &amp; resolved server-side. Canonical values:</div>
-                                    <div class="d-flex flex-wrap gap-1">
+                                    <div class="text-muted mb-1" style="font-size:.74rem">Flexible aliases accepted — normalized server-side. Send any of:</div>
+                                    <div class="d-flex flex-wrap gap-1" style="font-size:.75rem">
                                         <code>medical</code>
                                         <code>billing</code>
-                                        <code>xray</code> <span class="text-muted" style="font-size:.72rem">/ mri / imaging / films / radiology</span>
-                                        <code>claimfile</code> <span class="text-muted" style="font-size:.72rem">/ claim</span>
+                                        <code>xray</code><span class="text-muted">/mri/imaging/films/radiology</span>
+                                        <code>claimfile</code>
                                         <code>employmentandpayroll</code>
                                         <code>payroll</code>
                                         <code>employment</code>
-                                        <code>wcic</code> <span class="text-muted" style="font-size:.72rem">/ wcicinfo / defendant</span>
-                                        <code>nonprivileged</code> <span class="text-muted" style="font-size:.72rem">/ nonpriv</span>
-                                        <code>pharmacy</code> <span class="text-muted" style="font-size:.72rem">/ prescription / rx</span>
+                                        <code>wcic</code>
+                                        <code>nonprivileged</code>
+                                        <code>pharmacy</code><span class="text-muted">/prescription/rx</span>
                                     </div>
                                 </td>
                             </tr>
@@ -567,7 +572,7 @@ if ($statusCode) {
     bodyEl.addEventListener('input', validateJson);
     bodyEl.addEventListener('blur',  formatJson);
 
-    document.getElementById('copyBtn').addEventListener('click', function () {
+    document.getElementById('copyPreviewBtn').addEventListener('click', function () {
         const cmd = `curl -X POST "${endpoint}" \\\n  -H "Content-Type: application/json" \\\n  -H "X-API-Key: ${keyEl.value}" \\\n  -d '${bodyEl.value}'`;
         navigator.clipboard.writeText(cmd).then(() => {
             this.textContent = 'Copied!';
@@ -575,10 +580,7 @@ if ($statusCode) {
         });
     });
 
-    updatePreview();
-    validateJson();
-
-    // Copy the cURL result box (rendered server-side after success)
+    // Copy button for the success cURL result box
     const copyCurlResult = document.getElementById('copyCurlResult');
     if (copyCurlResult) {
         copyCurlResult.addEventListener('click', function () {
@@ -589,6 +591,9 @@ if ($statusCode) {
             });
         });
     }
+
+    updatePreview();
+    validateJson();
 </script>
 
 </body>
