@@ -198,6 +198,7 @@
 												<th>Employer Name</th>
 												<th>Patient Name</th>
 												<th>Patient AKA</th>
+												<th class="text-center" style="width: 1%">Actions</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -210,6 +211,13 @@
 												<td><?= htmlspecialchars($row['Employer_Name']) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name']) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name_AKA']) ?></td>
+												<td>
+													<div class="d-flex justify-content-center gap-1">
+														<a href="apps-ecommerce-order-details.php" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-eye fs-lg"></i></a>
+														<a href="#" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-edit fs-lg"></i></a>
+														<a href="#" data-table-delete-row class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-trash fs-lg"></i></a>
+													</div>
+												</td>
 											</tr>
 											<?php endforeach; ?>
 										</tbody>
