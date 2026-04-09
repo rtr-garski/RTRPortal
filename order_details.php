@@ -149,7 +149,7 @@
 
 									<div class="card">
 										<div class="card-header">
-											<h4 class="card-title">Shipping Activity</h4>
+											<h4 class="card-title">Order Activity</h4>
 										</div>
 										<div class="card-body p-4">
 											<div class="timeline">
@@ -158,10 +158,10 @@
 													<div class="timeline-time pe-3 text-muted"></div>
 													<div class="timeline-dot bg-light"></div>
 													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Pending Delivery</h5>
+														<h5 class="mb-1">Order Delivered</h5>
 														<p class="mb-1 text-muted">The package is out for delivery and will reach you shortly.</p>
 														<p class="mb-1 text-muted fs-xxs">Tracking No: <a href="#!" class="link-primary fw-semibold text-decoration-underline">TRK123456789</a></p>
-														<span class="fw-semibold fs-xxs">By Delivery Agent</span>
+														<span class="fw-semibold fs-xxs">By Rodelaine Raro</span>
 													</div>
 												</div>
 
@@ -170,10 +170,9 @@
 													<div class="timeline-time pe-3 text-muted">Today, 9:00 AM</div>
 													<div class="timeline-dot bg-success"></div>
 													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Out for Delivery</h5>
-														<p class="mb-1 text-muted">Courier picked up the package for final delivery.</p>
-														<p class="mb-1 text-muted fs-xxs">Tracking No: <a href="#!" class="link-primary fw-semibold text-decoration-underline">TRK123456789</a></p>
-														<span class="fs-xxs fw-semibold">By Local Courier</span>
+														<h5 class="mb-1">QA Status</h5>
+														<p class="mb-1 text-muted">Complete Order</p>
+														<span class="fs-xxs fw-semibold">By QA Agent1</span>
 													</div>
 												</div>
 
@@ -182,10 +181,7 @@
 													<div class="timeline-time pe-3 text-muted">Yesterday, 3:15 PM</div>
 													<div class="timeline-dot bg-success"></div>
 													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Arrived at Local Hub</h5>
-														<p class="mb-1 text-muted">Shipment arrived at the nearest delivery center.</p>
-														<p class="mb-1 text-muted fs-xxs">Tracking No: <a href="#!" class="link-primary fw-semibold text-decoration-underline">TRK123456789</a></p>
-														<span class="fs-xxs fw-semibold">By Sorting Facility</span>
+														<h5 class="mb-1">Order Copied</h5>
 													</div>
 												</div>
 
@@ -194,48 +190,26 @@
 													<div class="timeline-time pe-3 text-muted">Monday, 6:00 PM</div>
 													<div class="timeline-dot bg-success"></div>
 													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Departed Transit Facility</h5>
-														<p class="mb-1 text-muted">Package left the main transit facility and is en route to the local hub.</p>
-														<p class="mb-1 text-muted fs-xxs">Tracking No: <a href="#!" class="link-primary fw-semibold text-decoration-underline">TRK123456789</a></p>
-														<span class="fs-xxs fw-semibold">By Central Logistics</span>
+														<h5 class="mb-1">Order Served</h5>
 													</div>
 												</div>
-
-												<!-- Event 5 -->
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted">Monday, 8:00 AM</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Arrived at Transit Facility</h5>
-														<p class="mb-1 text-muted">Package arrived at the central distribution hub for processing.</p>
-														<p class="mb-1 text-muted fs-xxs">Tracking No: <a href="#!" class="link-primary fw-semibold text-decoration-underline">TRK123456789</a></p>
-														<span class="fs-xxs fw-semibold">By Transit Center</span>
-													</div>
-												</div>
-
-												<!-- Event 6 -->
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted">Last Saturday, 2:00 PM</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Dispatched from Warehouse</h5>
-														<p class="mb-1 text-muted">Package was picked up and dispatched by carrier from warehouse.</p>
-														<p class="mb-1 text-muted fs-xxs">Tracking No: <a href="#!" class="link-primary fw-semibold text-decoration-underline">TRK123456789</a></p>
-														<span class="fs-xxs fw-semibold">By Fulfillment Center</span>
-													</div>
-												</div>
-
-												<!-- Event 7 -->
+>
 												<div class="timeline-item d-flex align-items-stretch">
 													<div class="timeline-time pe-3 text-muted">Last Friday, 5:00 PM</div>
 													<div class="timeline-dot bg-success"></div>
 													<div class="timeline-content ps-3">
-														<h5 class="mb-1">Order Confirmed</h5>
-														<p class="mb-1 text-muted">The order was successfully placed and is now being processed.</p>
-														<p class="mb-1 text-muted fs-xxs">Tracking No: <a href="#!" class="link-primary fw-semibold text-decoration-underline">TRK123456789</a></p>
-														<span class="fs-xxs fw-semibold">By Order System</span>
+														<h5 class="mb-1">Order Verified</h5>
 													</div>
 												</div>
+
+												<div class="timeline-item d-flex align-items-stretch">
+													<div class="timeline-time pe-3 text-muted">Last Friday, 4:00 PM</div>
+													<div class="timeline-dot bg-success"></div>
+													<div class="timeline-content ps-3 pb-5">
+														<h5 class="mb-1">Order Received</h5>
+													</div>
+												</div>
+
 											</div>
 										</div>
 									</div>
