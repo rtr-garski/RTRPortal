@@ -18,6 +18,104 @@
 				<div class="container-fluid">
 					<?php $subtitle = "Reports"; $title = "Orders"; include('partials/page-title.php'); ?>
 
+					<div class="row row-cols-xxl-5 row-cols-md-3 row-cols-1 align-items-center g-1">
+						<div class="col">
+							<div class="card mb-1">
+								<div class="card-body">
+									<div class="d-flex align-items-center gap-2 mb-3">
+										<div class="avatar-md flex-shrink-0">
+											<span class="avatar-title text-bg-success rounded-circle fs-22">
+												<i class="ti ti-check"></i>
+											</span>
+										</div>
+										<h3 class="mb-0">0</h3>
+									</div>
+									<p class="mb-0">
+										New Orders
+										<!-- <span class="float-end badge badge-soft-success">+3.34%</span> -->
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="card mb-1">
+								<div class="card-body">
+									<div class="d-flex align-items-center gap-2 mb-3">
+										<div class="avatar-md flex-shrink-0">
+											<span class="avatar-title text-bg-warning rounded-circle fs-22">
+												<i class="ti ti-alarm-snooze"></i>
+											</span>
+										</div>
+										<h3 class="mb-0">0</h3>
+									</div>
+									<p class="mb-0">
+										Pending Orders
+										<!-- <span class="float-end badge badge-soft-warning">-1.12%</span> -->
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="card mb-1">
+								<div class="card-body">
+									<div class="d-flex align-items-center gap-2 mb-3">
+										<div class="avatar-md flex-shrink-0">
+											<span class="avatar-title text-bg-danger rounded-circle fs-22">
+												<i class="ti ti-x"></i>
+											</span>
+										</div>
+										<h3 class="mb-0">0</h3>
+									</div>
+									<p class="mb-0">
+										Canceled Orders
+										<!-- <span class="float-end badge badge-soft-danger">-0.75%</span> -->
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="card mb-1">
+								<div class="card-body">
+									<div class="d-flex align-items-center gap-2 mb-3">
+										<div class="avatar-md flex-shrink-0">
+											<span class="avatar-title text-bg-info rounded-circle fs-22">
+												<i class="ti ti-shopping-cart"></i>
+											</span>
+										</div>
+										<h3 class="mb-0">0</h3>
+									</div>
+									<p class="mb-0">
+										Completed Orders
+										<!-- <span class="float-end badge badge-soft-info">+4.22%</span>
+									</p> -->
+								</div>
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="card mb-1">
+								<div class="card-body">
+									<div class="d-flex align-items-center gap-2 mb-3">
+										<div class="avatar-md flex-shrink-0">
+											<span class="avatar-title text-bg-primary rounded-circle fs-22">
+												<i class="ti ti-refresh"></i>
+											</span>
+										</div>
+										<h3 class="mb-0">0</h3>
+									</div>
+									<p class="mb-0">
+										Returned Orders
+										<!-- <span class="float-end badge badge-soft-primary">+0.56%</span> -->
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end row -->
+
 					<div class="row">
 						<div class="col-12">
 							<div data-table data-table-rows-per-page="10" class="card">
