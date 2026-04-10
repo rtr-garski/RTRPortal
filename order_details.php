@@ -19,7 +19,7 @@ if (!$order) {
 <!doctype html>
 <html lang="en">
 	<head>
-		<?php $title = "Order"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
+		<?php $title = "Order Details"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
 	</head>
 
 	<body>
