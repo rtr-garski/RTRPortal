@@ -7,7 +7,7 @@ if (!$order_id) {
     exit;
 }
 
-$stmt = $pdo->prepare("SELECT __kp_API_Input_Order_ID, Employer_Name, Pat_Name, Pat_Name_AKA FROM API_Input_Orders WHERE __kp_API_Input_Order_ID = ?");
+$stmt = $pdo->prepare("SELECT * FROM API_Input_Orders WHERE __kp_API_Input_Order_ID = ?");
 $stmt->execute([$order_id]);
 $order = $stmt->fetch(PDO::FETCH_ASSOC);
 
