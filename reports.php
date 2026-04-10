@@ -2,6 +2,7 @@
 <?php
 		$stmt = $pdo->query("SELECT * FROM API_Input_Orders");
 		$orders = $stmt->fetchAll();
+		$total = $pdo->query("SELECT COUNT(*) FROM API_Input_Orders")->fetchColumn();
 	?>
 <!doctype html>
 <html lang="en">
@@ -32,11 +33,11 @@
 												<i class="ti ti-check"></i>
 											</span>
 										</div>
-										<h3 class="mb-0">0</h3>
+										<h3 class="mb-0"><?= $total; ?></h3>
 									</div>
 									<p class="mb-0">
-										New Orders
-										<!-- <span class="float-end badge badge-soft-success">+3.34%</span> -->
+										New Request
+										<span class="float-end badge badge-soft-success">+3.34%</span>
 									</p>
 								</div>
 							</div>
