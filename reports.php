@@ -1,4 +1,8 @@
 <?php require_once 'config/db.php'; ?>
+<?php
+		$stmt = $pdo->query("SELECT * FROM API_Input_Orders");
+		$orders = $stmt->fetchAll();
+	?>
 <!doctype html>
 <html lang="en">
 	<head>
@@ -183,10 +187,7 @@
 										<a href="#" class="btn btn-primary ms-1"> <i class="ti ti-plus fs-sm me-2"></i> Add Order </a>
 									</div>
 								</div>
-								<?php
-									$stmt = $pdo->query("SELECT * FROM API_Input_Orders");
-									$orders = $stmt->fetchAll();
-								?>
+								
 								<div class="table-responsive">
 									<table class="table table-custom table-centered table-select table-hover w-100 mb-0" id="api-orders">
 										<thead class="bg-light align-middle bg-opacity-25 thead-sm">
@@ -195,7 +196,7 @@
 													<input data-table-select-all class="form-check-input form-check-input-light fs-14 mt-0" type="checkbox" value="option" />
 												</th>
 												<th>Order ID</th>
-												<th>Ordeer Date
+												<th>Order Date</th>
 												<th>Employer Name</th>
 												<th>Patient Name</th>
 												<th>Location</th>
@@ -212,6 +213,7 @@
 													<input class="form-check-input form-check-input-light fs-14 product-item-check mt-0" type="checkbox" value="option" />
 												</td>
 												<td><h5 class="fs-sm mb-0 fw-medium"><a href="order_details.php?order_id=<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?>" class="link-reset">#<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?></a></h5></td>
+												<td></td>
 												<td><?= htmlspecialchars($row['Employer_Name']) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name']) ?></td>
 												<td><?= htmlspecialchars($row['Pat_AKA']) ?></td>
