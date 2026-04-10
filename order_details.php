@@ -344,7 +344,7 @@ if (!$order) {
 								<div class="col-xl-3">
 									<div class="card">
 										<div class="card-header justify-content-between border-dashed">
-											<h4 class="card-title">Customer Details</h4>
+											<h4 class="card-title">Patient Details</h4>
 											<a href="#!" class="btn btn-default btn-sm btn-icon rounded-circle"><i class="ti ti-pencil fs-lg"></i></a>
 										</div>
 										<!-- end card-header-->
@@ -389,20 +389,10 @@ if (!$order) {
 													<div class="d-flex align-items-center gap-2">
 														<div class="avatar-xs avatar-img-size fs-24">
 															<span class="avatar-title text-bg-light fs-sm rounded-circle">
-																<i class="ti ti-mail"></i>
-															</span>
-														</div>
-														<h5 class="fs-base mb-0 fw-medium"><a href="#" class="link-reset">sophia@designhub.com</a></h5>
-													</div>
-												</li>
-												<li class="mb-2">
-													<div class="d-flex align-items-center gap-2">
-														<div class="avatar-xs avatar-img-size fs-24">
-															<span class="avatar-title text-bg-light fs-sm rounded-circle">
 																<i class="ti ti-phone"></i>
 															</span>
 														</div>
-														<h5 class="fs-base mb-0 fw-medium"><a href="#" class="link-reset">+44 7911 123456</a></h5>
+														<h5 class="fs-base mb-0 fw-medium"><a href="#" class="link-reset"><?= htmlspecialchars($order['Pat_Phone']) ?></a></h5>
 													</div>
 												</li>
 												<li>
@@ -412,7 +402,7 @@ if (!$order) {
 																<i class="ti ti-map-pin"></i>
 															</span>
 														</div>
-														<h5 class="fs-base mb-0 fw-medium">London, UK</h5>
+														<h5 class="fs-base mb-0 fw-medium"><?= htmlspecialchars($order['Pat_Address_City']) ?>, <?= htmlspecialchars($order['Pat_Address_State']) ?></h5>
 													</div>
 												</li>
 											</ul>
