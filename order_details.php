@@ -111,42 +111,6 @@ if (!$order) {
 											</div>
 
 											<hr>
-
-											<!-- Patient -->
-											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Patient</h5>
-											<div class="row g-3 mb-4">
-												<div class="col-md-4">
-													<label class="form-label fw-semibold">Name</label>
-													<input type="text" class="form-control" value="John Patient" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">DOB</label>
-													<input type="text" class="form-control" value="1980-05-15" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">SSN</label>
-													<input type="text" class="form-control" value="123-45-6789" readonly>
-												</div>
-												<div class="col-md-4">
-													<label class="form-label fw-semibold">Street</label>
-													<input type="text" class="form-control" value="789 Patient St" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">City</label>
-													<input type="text" class="form-control" value="Los Angeles" readonly>
-												</div>
-												<div class="col-md-1">
-													<label class="form-label fw-semibold">State</label>
-													<input type="text" class="form-control" value="CA" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">ZIP</label>
-													<input type="text" class="form-control" value="90002" readonly>
-												</div>
-											</div>
-
-											<hr>
-
 											<!-- Insurance Carrier -->
 											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Insurance Carrier</h5>
 											<div class="row g-3 mb-4">
