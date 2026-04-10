@@ -221,7 +221,6 @@
 												<td><?= htmlspecialchars($row['_kf_Service_Subtype_ID_Str']) ?></td>
 												<td></td>
 												<td></td>
-												<td></td>
 												<td>
 													<div class="d-flex justify-content-center gap-1">
 														<a href="#" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-eye fs-lg"></i></a>
