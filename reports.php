@@ -184,7 +184,7 @@
 									</div>
 								</div>
 								<?php
-									$stmt = $pdo->query("SELECT __kp_API_Input_Order_ID, Employer_Name, Pat_Name, Pat_Name_AKA FROM API_Input_Orders");
+									$stmt = $pdo->query("SELECT * FROM API_Input_Orders");
 									$orders = $stmt->fetchAll();
 								?>
 								<div class="table-responsive">
