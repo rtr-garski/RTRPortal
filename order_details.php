@@ -366,7 +366,7 @@ if (!$order) {
 																<i class="ti ti-id"></i>
 															</span>
 														</div>
-														<h5 class="fs-base mb-0 fw-medium"><?= htmlspecialchars($order['Pat_SSN']) ?></h5>
+														<h5 class="fs-base mb-0 fw-medium"><?= htmlspecialchars($order['PAT_SSN']) ?></h5>
 													</div>
 												</li>
 												<li>
