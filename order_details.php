@@ -50,7 +50,7 @@ if (!$order) {
 											</div>
 											<div class="ms-auto">
 												<a href="javascript: void(0);" class="btn btn-light"><i class="ti ti-pencil me-1"></i> Modify</a>
-												<a href="javascript: void(0);" class="btn btn-danger"><i class="ti ti-trash me-1"></i> Delete</a>
+												<a href="javascript: void(0);" class="btn btn-success"><i class="ti ti-send me-1"></i> Release to FileMaker</a>
 											</div>
 										</div>
 										<div class="card-body px-4">
