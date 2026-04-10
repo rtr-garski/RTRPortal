@@ -201,7 +201,7 @@
 												<th>Employer Name</th>
 												<th>Patient Name</th>
 												<th>Location</th>
-												<th>Type of Records</th>
+												<th>Type of Recordss</th>
 												<th>Location</th>
 												<th>Status</th>
 												<th class="text-center" style="width: 1%">Actions</th>
