@@ -352,7 +352,7 @@ if (!$order) {
 										<div class="card-body">
 											<div class="d-flex align-items-center mb-4">
 												<div class="me-2">
-													<img src="../source/inspinia5/assets/images/users/user-5.jpg" alt="avatar" class="rounded-circle avatar-lg" />
+													<a href="#!" class="link-reset"><?= htmlspecialchars($order['Pat_Name']) ?></a>
 												</div>
 												<div>
 													<h5 class="mb-1 d-flex align-items-center">
