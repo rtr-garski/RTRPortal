@@ -352,9 +352,7 @@ if (!$order) {
 										<div class="card-body">
 											<div class="d-flex align-items-center mb-4">
 												<div class="me-2">
-													<div class="avatar-lg rounded-circle bg-primary d-flex align-items-center justify-content-center text-white fw-bold fs-xl">
-														<?= strtoupper(mb_substr($order['Pat_Name'], 0, 1)) ?>
-													</div>
+													<img src="../source/inspinia5/assets/images/users/user-5.jpg" alt="avatar" class="rounded-circle avatar-lg" />
 												</div>
 												<div>
 													<h5 class="mb-1 d-flex align-items-center">
