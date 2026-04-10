@@ -88,7 +88,7 @@ if (!$order) {
 											<!-- Court Venue -->
 											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Court Venue</h5>
 											<div class="row g-3 mb-4">
-												<div class="col-md-4">
+												<div class="col-md-3">
 													<label class="form-label fw-semibold">Name</label>
 													<input type="text" class="form-control" value="WCAB Los Angeles" readonly>
 												</div>
@@ -142,7 +142,55 @@ if (!$order) {
 													<label class="form-label fw-semibold">Claim No.</label>
 													<input type="text" class="form-control" value="SF-2023-001" readonly>
 												</div>
+												
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Adjuster Name</label>
+													<input type="text" class="form-control" value="John Smith" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Adjuster Phone</label>
+													<input type="text" class="form-control" value="916-555-0201" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Adjuster Fax</label>
+													<input type="text" class="form-control" value="916-555-0202" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Adjuster Email</label>
+													<input type="text" class="form-control" value="john.smith@statefund.com" readonly>
+												</div>
+
 												<div class="col-md-12"><hr class="my-1"></div>
+
+												<div class="col-md-4">
+													<label class="form-label fw-semibold">Carrier Name</label>
+													<input type="text" class="form-control" value="Inter Fund Insurance" readonly>
+												</div>
+												<div class="col-md-4">
+													<label class="form-label fw-semibold">Address</label>
+													<input type="text" class="form-control" value="456 Insurance Blvd" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">City</label>
+													<input type="text" class="form-control" value="Sacramento" readonly>
+												</div>
+												<div class="col-md-1">
+													<label class="form-label fw-semibold">State</label>
+													<input type="text" class="form-control" value="CA" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">ZIP</label>
+													<input type="text" class="form-control" value="95814" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">Phone</label>
+													<input type="text" class="form-control" value="916-555-0200" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Claim No.</label>
+													<input type="text" class="form-control" value="SF-2023-001" readonly>
+												</div>
+												
 												<div class="col-md-3">
 													<label class="form-label fw-semibold">Adjuster Name</label>
 													<input type="text" class="form-control" value="John Smith" readonly>
