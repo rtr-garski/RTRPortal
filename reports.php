@@ -195,9 +195,13 @@
 													<input data-table-select-all class="form-check-input form-check-input-light fs-14 mt-0" type="checkbox" value="option" />
 												</th>
 												<th>Order ID</th>
+												<th>Ordeer Date
 												<th>Employer Name</th>
 												<th>Patient Name</th>
-												<th>Patient AKA</th>
+												<th>Location</th>
+												<th>Type of Records</th>
+												<th>Location</th>
+												<th>Status</th>
 												<th class="text-center" style="width: 1%">Actions</th>
 											</tr>
 										</thead>
@@ -211,6 +215,10 @@
 												<td><?= htmlspecialchars($row['Employer_Name']) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name']) ?></td>
 												<td><?= htmlspecialchars($row['Pat_AKA']) ?></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
 												<td>
 													<div class="d-flex justify-content-center gap-1">
 														<a href="#" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-eye fs-lg"></i></a>
