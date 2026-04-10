@@ -218,7 +218,7 @@
 												<td><?= htmlspecialchars($row['Employer_Name']) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name']) ?></td>
 												<td><?= htmlspecialchars($row['Pat_AKA']) ?></td>
-												<td></td>
+												<td><?= htmlspecialchars($row['_kf_Service_Subtype_ID_Str']) ?></td>
 												<td></td>
 												<td></td>
 												<td></td>
