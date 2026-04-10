@@ -55,109 +55,217 @@ if (!$order) {
 										</div>
 										<div class="card-body px-4">
 											<h4 class="fs-sm mb-3">Order Summary</h4>
-											<div class="table-responsive">
-												<table class="table table-bordered table-custom table-nowrap align-middle mb-1">
-													<thead class="bg-light align-middle bg-opacity-25 thead-sm">
-														<tr class="text-uppercase fs-xxs">
-															<th>Product</th>
-															<th>Price</th>
-															<th>QTY</th>
-															<th class="text-end">Total</th>
-														</tr>
-													</thead>
-													<tbody>
-														<!-- Product 1 -->
-														<tr>
-															<td>
-																<div class="d-flex">
-																	<div class="avatar-md me-3">
-																		<img src="../source/inspinia5/assets/images/products/1.png" alt="Wireless Earbuds" class="img-fluid rounded" />
-																	</div>
-																	<div>
-																		<h5 class="mb-1">
-																			<a href="apps-ecommerce-product-details.php" class="link-reset">Wireless Earbuds</a>
-																		</h5>
-																		<p class="text-muted mb-0 fs-xxs">by: My Furniture</p>
-																	</div>
-																</div>
-															</td>
-															<td>$79.99</td>
-															<td>2</td>
-															<td class="text-end">$159.98</td>
-														</tr>
+											<!--data-->
 
-														<!-- Product 2 -->
-														<tr>
-															<td>
-																<div class="d-flex">
-																	<div class="avatar-md me-3">
-																		<img src="../source/inspinia5/assets/images/products/2.png" alt="Smart Watch" class="img-fluid rounded" />
-																	</div>
-																	<div>
-																		<h5 class="mb-1">
-																			<a href="apps-ecommerce-product-details.php" class="link-reset">Smart Watch</a>
-																		</h5>
-																		<p class="text-muted mb-0 fs-xxs">by: Tech World</p>
-																	</div>
-																</div>
-															</td>
-															<td>$199.00</td>
-															<td>1</td>
-															<td class="text-end">$199.00</td>
-														</tr>
-
-														<!-- Product 3 -->
-														<tr>
-															<td>
-																<div class="d-flex">
-																	<div class="avatar-md me-3">
-																		<img src="../source/inspinia5/assets/images/products/3.png" alt="Gaming Mouse" class="img-fluid rounded" />
-																	</div>
-																	<div>
-																		<h5 class="mb-1">
-																			<a href="apps-ecommerce-product-details.php" class="link-reset">Gaming Mouse</a>
-																		</h5>
-																		<p class="text-muted mb-0 fs-xxs">by: Pro Gamerz</p>
-																	</div>
-																</div>
-															</td>
-															<td>$49.50</td>
-															<td>3</td>
-															<td class="text-end">$148.50</td>
-														</tr>
-
-														<!-- Subtotal -->
-														<tr class="border-top">
-															<td colspan="3" class="text-end fw-semibold">Subtotal</td>
-															<td class="text-end">$507.48</td>
-														</tr>
-
-														<!-- Tax -->
-														<tr>
-															<td colspan="3" class="text-end fw-semibold">Tax (10%)</td>
-															<td class="text-end">$50.75</td>
-														</tr>
-
-														<!-- Discount -->
-														<tr>
-															<td colspan="3" class="text-end fw-semibold">Discount (5%)</td>
-															<td class="text-end text-danger fw-semibold">-$25.37</td>
-														</tr>
-
-														<!-- Shipping -->
-														<tr>
-															<td colspan="3" class="text-end fw-semibold">Shipping fee</td>
-															<td class="text-end">$10.00</td>
-														</tr>
-
-														<!-- Grand Total -->
-														<tr class="border-top">
-															<td colspan="3" class="text-end fw-bold text-uppercase">Grand Total</td>
-															<td class="fw-bold text-end table-active">$543.86</td>
-														</tr>
-													</tbody>
-												</table>
+											<!-- Case Information -->
+											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Case Information</h5>
+											<div class="row g-3 mb-4">
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Subtype</label>
+													<input type="text" class="form-control" value="IMR" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Case No.</label>
+													<input type="text" class="form-control" value="ADJ1234567" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">DOI Start</label>
+													<input type="text" class="form-control" value="2023-01-15" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">DOI End</label>
+													<input type="text" class="form-control" value="2023-06-30" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Letter of Rep Date</label>
+													<input type="text" class="form-control" value="2023-02-01" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Employer</label>
+													<input type="text" class="form-control" value="ABC Company Inc." readonly>
+												</div>
 											</div>
+
+											<hr>
+
+											<!-- Court Venue -->
+											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Court Venue</h5>
+											<div class="row g-3 mb-4">
+												<div class="col-md-4">
+													<label class="form-label fw-semibold">Name</label>
+													<input type="text" class="form-control" value="WCAB Los Angeles" readonly>
+												</div>
+												<div class="col-md-4">
+													<label class="form-label fw-semibold">Address</label>
+													<input type="text" class="form-control" value="320 W 4th St" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">City</label>
+													<input type="text" class="form-control" value="Los Angeles" readonly>
+												</div>
+												<div class="col-md-1">
+													<label class="form-label fw-semibold">State</label>
+													<input type="text" class="form-control" value="CA" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">Phone</label>
+													<input type="text" class="form-control" value="213-555-0100" readonly>
+												</div>
+											</div>
+
+											<hr>
+
+											<!-- Patient -->
+											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Patient</h5>
+											<div class="row g-3 mb-4">
+												<div class="col-md-4">
+													<label class="form-label fw-semibold">Name</label>
+													<input type="text" class="form-control" value="John Patient" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">DOB</label>
+													<input type="text" class="form-control" value="1980-05-15" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">SSN</label>
+													<input type="text" class="form-control" value="123-45-6789" readonly>
+												</div>
+												<div class="col-md-4">
+													<label class="form-label fw-semibold">Street</label>
+													<input type="text" class="form-control" value="789 Patient St" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">City</label>
+													<input type="text" class="form-control" value="Los Angeles" readonly>
+												</div>
+												<div class="col-md-1">
+													<label class="form-label fw-semibold">State</label>
+													<input type="text" class="form-control" value="CA" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">ZIP</label>
+													<input type="text" class="form-control" value="90002" readonly>
+												</div>
+											</div>
+
+											<hr>
+
+											<!-- Insurance Carrier -->
+											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Insurance Carrier</h5>
+											<div class="row g-3 mb-4">
+												<div class="col-md-4">
+													<label class="form-label fw-semibold">Carrier Name</label>
+													<input type="text" class="form-control" value="State Fund Insurance" readonly>
+												</div>
+												<div class="col-md-4">
+													<label class="form-label fw-semibold">Address</label>
+													<input type="text" class="form-control" value="123 Insurance Blvd" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">City</label>
+													<input type="text" class="form-control" value="Sacramento" readonly>
+												</div>
+												<div class="col-md-1">
+													<label class="form-label fw-semibold">State</label>
+													<input type="text" class="form-control" value="CA" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">ZIP</label>
+													<input type="text" class="form-control" value="95814" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">Phone</label>
+													<input type="text" class="form-control" value="916-555-0200" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Claim No.</label>
+													<input type="text" class="form-control" value="SF-2023-001" readonly>
+												</div>
+												<div class="col-md-12"><hr class="my-1"></div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Adjuster Name</label>
+													<input type="text" class="form-control" value="John Smith" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Adjuster Phone</label>
+													<input type="text" class="form-control" value="916-555-0201" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Adjuster Fax</label>
+													<input type="text" class="form-control" value="916-555-0202" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Adjuster Email</label>
+													<input type="text" class="form-control" value="john.smith@statefund.com" readonly>
+												</div>
+											</div>
+
+											<hr>
+
+											<!-- Opposing Counsel -->
+											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Opposing Counsel</h5>
+											<div class="row g-3 mb-4">
+												<div class="col-md-4">
+													<label class="form-label fw-semibold">Name</label>
+													<input type="text" class="form-control" value="Jane Doe" readonly>
+												</div>
+												<div class="col-md-4">
+													<label class="form-label fw-semibold">Address</label>
+													<input type="text" class="form-control" value="456 Law Ave" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">City</label>
+													<input type="text" class="form-control" value="Los Angeles" readonly>
+												</div>
+												<div class="col-md-1">
+													<label class="form-label fw-semibold">State</label>
+													<input type="text" class="form-control" value="CA" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">ZIP</label>
+													<input type="text" class="form-control" value="90001" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">Phone</label>
+													<input type="text" class="form-control" value="213-555-0300" readonly>
+												</div>
+											</div>
+
+											<hr>
+
+											<!-- Records Location -->
+											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Records Location</h5>
+											<div class="row g-3">
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">Priority</label>
+													<input type="text" class="form-control" value="Standard" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">Record Type</label>
+													<input type="text" class="form-control" value="Medical" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">Date Needed</label>
+													<input type="text" class="form-control" value="2024-03-01" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Location Name</label>
+													<input type="text" class="form-control" value="UCLA Medical Center" readonly>
+												</div>
+												<div class="col-md-3">
+													<label class="form-label fw-semibold">Address</label>
+													<input type="text" class="form-control" value="100 Medical Plaza Dr" readonly>
+												</div>
+												<div class="col-md-2">
+													<label class="form-label fw-semibold">Phone</label>
+													<input type="text" class="form-control" value="310-555-0400" readonly>
+												</div>
+												<div class="col-md-10">
+													<label class="form-label fw-semibold">Special Instructions</label>
+													<input type="text" class="form-control" value="Please call ahead before arrival" readonly>
+												</div>
+											</div>
+
 										</div>
 										<!-- end card-body -->
 									</div>
@@ -404,236 +512,6 @@ if (!$order) {
 					</div>
 					
 						
-					<!--fieldrow-->
-					<div class="row justify-content-center">
-						<div class="col-xxl-10">
-
-							<!-- Case Info -->
-							<div class="card mb-3">
-								<div class="card-header"><h4 class="card-title mb-0">Case Information</h4></div>
-								<div class="card-body">
-									<div class="row g-3">
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">Subtype</label>
-											<input type="text" class="form-control" value="IMR" readonly>
-										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">Case No.</label>
-											<input type="text" class="form-control" value="ADJ1234567" readonly>
-										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">DOI Start</label>
-											<input type="text" class="form-control" value="2023-01-15" readonly>
-										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">DOI End</label>
-											<input type="text" class="form-control" value="2023-06-30" readonly>
-										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">Letter of Rep Date</label>
-											<input type="text" class="form-control" value="2023-02-01" readonly>
-										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">Employer</label>
-											<input type="text" class="form-control" value="ABC Company Inc." readonly>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Court Venue -->
-							<div class="card mb-3">
-								<div class="card-header"><h4 class="card-title mb-0">Court Venue</h4></div>
-								<div class="card-body">
-									<div class="row g-3">
-										<div class="col-md-4">
-											<label class="form-label fw-semibold">Name</label>
-											<input type="text" class="form-control" value="WCAB Los Angeles" readonly>
-										</div>
-										<div class="col-md-4">
-											<label class="form-label fw-semibold">Address</label>
-											<input type="text" class="form-control" value="320 W 4th St" readonly>
-										</div>
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">City</label>
-											<input type="text" class="form-control" value="Los Angeles" readonly>
-										</div>
-										<div class="col-md-1">
-											<label class="form-label fw-semibold">State</label>
-											<input type="text" class="form-control" value="CA" readonly>
-										</div>
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">Phone</label>
-											<input type="text" class="form-control" value="213-555-0100" readonly>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Patient -->
-							<div class="card mb-3">
-								<div class="card-header"><h4 class="card-title mb-0">Patient</h4></div>
-								<div class="card-body">
-									<div class="row g-3">
-										<div class="col-md-4">
-											<label class="form-label fw-semibold">Name</label>
-											<input type="text" class="form-control" value="John Patient" readonly>
-										</div>
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">DOB</label>
-											<input type="text" class="form-control" value="1980-05-15" readonly>
-										</div>
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">SSN</label>
-											<input type="text" class="form-control" value="123-45-6789" readonly>
-										</div>
-										<div class="col-md-4">
-											<label class="form-label fw-semibold">Street</label>
-											<input type="text" class="form-control" value="789 Patient St" readonly>
-										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">City</label>
-											<input type="text" class="form-control" value="Los Angeles" readonly>
-										</div>
-										<div class="col-md-1">
-											<label class="form-label fw-semibold">State</label>
-											<input type="text" class="form-control" value="CA" readonly>
-										</div>
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">ZIP</label>
-											<input type="text" class="form-control" value="90002" readonly>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Insurance Carriers -->
-							<div class="card mb-3">
-								<div class="card-header"><h4 class="card-title mb-0">Insurance Carrier</h4></div>
-								<div class="card-body">
-									<div class="row g-3">
-										<div class="col-md-4">
-											<label class="form-label fw-semibold">Carrier Name</label>
-											<input type="text" class="form-control" value="State Fund Insurance" readonly>
-										</div>
-										<div class="col-md-4">
-											<label class="form-label fw-semibold">Address</label>
-											<input type="text" class="form-control" value="123 Insurance Blvd" readonly>
-										</div>
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">City</label>
-											<input type="text" class="form-control" value="Sacramento" readonly>
-										</div>
-										<div class="col-md-1">
-											<label class="form-label fw-semibold">State</label>
-											<input type="text" class="form-control" value="CA" readonly>
-										</div>
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">ZIP</label>
-											<input type="text" class="form-control" value="95814" readonly>
-										</div>
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">Phone</label>
-											<input type="text" class="form-control" value="916-555-0200" readonly>
-										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">Claim No.</label>
-											<input type="text" class="form-control" value="SF-2023-001" readonly>
-										</div>
-										<div class="col-md-12"><hr class="my-1"></div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">Adjuster Name</label>
-											<input type="text" class="form-control" value="John Smith" readonly>
-										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">Adjuster Phone</label>
-											<input type="text" class="form-control" value="916-555-0201" readonly>
-										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">Adjuster Fax</label>
-											<input type="text" class="form-control" value="916-555-0202" readonly>
-										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">Adjuster Email</label>
-											<input type="text" class="form-control" value="john.smith@statefund.com" readonly>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Opposing Counsel -->
-							<div class="card mb-3">
-								<div class="card-header"><h4 class="card-title mb-0">Opposing Counsel</h4></div>
-								<div class="card-body">
-									<div class="row g-3">
-										<div class="col-md-4">
-											<label class="form-label fw-semibold">Name</label>
-											<input type="text" class="form-control" value="Jane Doe" readonly>
-										</div>
-										<div class="col-md-4">
-											<label class="form-label fw-semibold">Address</label>
-											<input type="text" class="form-control" value="456 Law Ave" readonly>
-										</div>
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">City</label>
-											<input type="text" class="form-control" value="Los Angeles" readonly>
-										</div>
-										<div class="col-md-1">
-											<label class="form-label fw-semibold">State</label>
-											<input type="text" class="form-control" value="CA" readonly>
-										</div>
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">ZIP</label>
-											<input type="text" class="form-control" value="90001" readonly>
-										</div>
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">Phone</label>
-											<input type="text" class="form-control" value="213-555-0300" readonly>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Records Locations -->
-							<div class="card mb-3">
-								<div class="card-header"><h4 class="card-title mb-0">Records Location</h4></div>
-								<div class="card-body">
-									<div class="row g-3">
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">Priority</label>
-											<input type="text" class="form-control" value="Standard" readonly>
-										</div>
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">Record Type</label>
-											<input type="text" class="form-control" value="Medical" readonly>
-										</div>
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">Date Needed</label>
-											<input type="text" class="form-control" value="2024-03-01" readonly>
-										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">Location Name</label>
-											<input type="text" class="form-control" value="UCLA Medical Center" readonly>
-										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">Address</label>
-											<input type="text" class="form-control" value="100 Medical Plaza Dr" readonly>
-										</div>
-										<div class="col-md-2">
-											<label class="form-label fw-semibold">Phone</label>
-											<input type="text" class="form-control" value="310-555-0400" readonly>
-										</div>
-										<div class="col-md-10">
-											<label class="form-label fw-semibold">Special Instructions</label>
-											<input type="text" class="form-control" value="Please call ahead before arrival" readonly>
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-					</div>
-					<!-- end fieldrow -->
 
 				</div>
 				<!-- container -->
