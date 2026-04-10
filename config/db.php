@@ -3,7 +3,7 @@
 // --- Primary Database ---
 $host = '127.0.0.1';
 $db   = 'lp8agm5o_oms';
-$user = 'lp8agm5o_ows';
+$user = 'lp8agm5o_oms';
 $pass = '9dvTYe@o8bl%';
 $charset = 'utf8mb4';
 
