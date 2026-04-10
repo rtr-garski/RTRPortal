@@ -408,13 +408,13 @@ if (!$order) {
 													</div>
 												</li>
 												<li class="mb-2">
-													<div class="d-flex align-items-center gap-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="SSN">
+													<div class="d-flex align-items-center gap-2">
 														<div class="avatar-xs avatar-img-size fs-24">
-															<span class="avatar-title text-bg-light fs-sm rounded-circle">
+															<span class="avatar-title text-bg-light fs-sm rounded-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="SSN">
 																<i class="ti ti-id"></i>
 															</span>
 														</div>
-														<h5 class="fs-base mb-0 fw-medium"><?= htmlspecialchars($order['PAT_SSN']) ?></h5>
+														<h5 class="fs-base mb-0 fw-medium"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="SSN" ><?= htmlspecialchars($order['PAT_SSN']) ?></h5>
 													</div>
 												</li>
 												<li>
