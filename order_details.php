@@ -389,10 +389,20 @@ if (!$order) {
 													<div class="d-flex align-items-center gap-2">
 														<div class="avatar-xs avatar-img-size fs-24">
 															<span class="avatar-title text-bg-light fs-sm rounded-circle">
-																<i class="ti ti-phone"></i>
+																<i class="ti ti-calendar"></i>
 															</span>
 														</div>
-														<h5 class="fs-base mb-0 fw-medium"><a href="#" class="link-reset"><?= htmlspecialchars($order['Pat_Phone']) ?></a></h5>
+														<h5 class="fs-base mb-0 fw-medium"><?= htmlspecialchars($order['Pat_DOB']) ?></h5>
+													</div>
+												</li>
+												<li class="mb-2">
+													<div class="d-flex align-items-center gap-2">
+														<div class="avatar-xs avatar-img-size fs-24">
+															<span class="avatar-title text-bg-light fs-sm rounded-circle">
+																<i class="ti ti-id"></i>
+															</span>
+														</div>
+														<h5 class="fs-base mb-0 fw-medium"><?= htmlspecialchars($order['Pat_SSN']) ?></h5>
 													</div>
 												</li>
 												<li>
