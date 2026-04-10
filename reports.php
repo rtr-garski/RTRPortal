@@ -210,7 +210,7 @@
 												<td><h5 class="fs-sm mb-0 fw-medium"><a href="order_details.php?order_id=<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?>" class="link-reset">#<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?></a></h5></td>
 												<td><?= htmlspecialchars($row['Employer_Name']) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name']) ?></td>
-												<td><?= htmlspecialchars($row['Pat_Name_AKA']) ?></td>
+												<td><?= htmlspecialchars($row['Pat_AKA']) ?></td>
 												<td>
 													<div class="d-flex justify-content-center gap-1">
 														<a href="#" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-eye fs-lg"></i></a>

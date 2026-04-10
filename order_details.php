@@ -408,7 +408,7 @@ if (!$order) {
 													</div>
 												</li>
 												<li class="mb-2">
-													<div class="d-flex align-items-center gap-2">
+													<div class="d-flex align-items-center gap-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="SSN">
 														<div class="avatar-xs avatar-img-size fs-24">
 															<span class="avatar-title text-bg-light fs-sm rounded-circle">
 																<i class="ti ti-id"></i>
