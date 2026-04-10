@@ -1,7 +1,7 @@
 <?php
 
 // --- Primary Database ---
-$host = '108.179.243.158';
+$host = '127.0.0.1';
 $db   = 'lp8agm5o_oms';
 $user = 'lp8agm5o_oms';
 $pass = '9dvTYe@o8bl%';
