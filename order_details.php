@@ -420,11 +420,11 @@ if (!$order) {
 												<li>
 													<div class="d-flex align-items-center gap-2">
 														<div class="avatar-xs avatar-img-size fs-24">
-															<span class="avatar-title text-bg-light fs-sm rounded-circle">
+															<span class="avatar-title text-bg-light fs-sm rounded-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Address">
 																<i class="ti ti-map-pin"></i>
 															</span>
 														</div>
-														<h5 class="fs-base mb-0 fw-medium"><?= htmlspecialchars($order['Pat_Address_City']) ?>, <?= htmlspecialchars($order['Pat_Address_State']) ?></h5>
+														<h5 class="fs-base mb-0 fw-medium"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Address" ><?= htmlspecialchars($order['Pat_Address_Street']) ?> <?= htmlspecialchars($order['Pat_Address_City']) ?>, <?= htmlspecialchars($order['Pat_Address_State']) ?> <?= htmlspecialchars($order['Pat_Address_Zip']) ?></h5>
 													</div>
 												</li>
 											</ul>
