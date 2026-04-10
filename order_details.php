@@ -353,7 +353,7 @@ if (!$order) {
 											<div class="d-flex align-items-center mb-4">
 												<div class="me-2">
 													<div class="avatar-lg rounded-circle bg-primary d-flex align-items-center justify-content-center text-white fw-bold fs-xl">
-														<?= strtoupper(mb_substr((string)($order['Pat_Name'] ?? '?'), 0, 1)) ?>
+														<?= strtoupper(mb_substr($order['Pat_Name'], 0, 1)) ?>
 													</div>
 												</div>
 												<div>
