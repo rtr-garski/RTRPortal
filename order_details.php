@@ -352,7 +352,8 @@ if (!$order) {
 										<div class="card-body">
 											<div class="d-flex align-items-center mb-4">
 												<div class="me-2">
-													<div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold fs-4" style="width:48px;height:48px;flex-shrink:0"><?= strtoupper(substr((string)$order['Pat_Name'], 0, 1)) ?></div>
+													<!-- <img src="../source/inspinia5/assets/images/users/user-5.jpg" alt="avatar" class="rounded-circle avatar-lg" /> -->
+													<div class="avatar-lg rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold"><?= strtoupper(substr($order['Pat_Name'], 0, 1)) ?></div> 
 												</div>
 												<div>
 													<h5 class="mb-1 d-flex align-items-center">
