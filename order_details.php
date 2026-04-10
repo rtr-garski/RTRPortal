@@ -54,9 +54,6 @@ if (!$order) {
 											</div>
 										</div>
 										<div class="card-body px-4">
-											<h4 class="fs-sm mb-3">Order Summary</h4>
-											<!--data-->
-
 											<!-- Case Information -->
 											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Case Information</h5>
 											<div class="row g-3 mb-4">
@@ -355,14 +352,15 @@ if (!$order) {
 										<div class="card-body">
 											<div class="d-flex align-items-center mb-4">
 												<div class="me-2">
-													<img src="../source/inspinia5/assets/images/users/user-5.jpg" alt="avatar" class="rounded-circle avatar-lg" />
+													<div class="avatar-lg rounded-circle bg-primary d-flex align-items-center justify-content-center text-white fw-bold fs-xl">
+														<?= strtoupper(mb_substr($order['Pat_Name'], 0, 1)) ?>
+													</div>
 												</div>
 												<div>
 													<h5 class="mb-1 d-flex align-items-center">
 														<a href="#!" class="link-reset"><?= htmlspecialchars($order['Pat_Name']) ?></a>
-														<img src="../source/inspinia5/assets/images/flags/gb.svg" alt="UK" class="ms-2 rounded-circle" height="16" />
 													</h5>
-													<p class="text-muted mb-0">Since 2020</p>
+													<p class="text-muted mb-0"><?= htmlspecialchars($order['Pat_AKA']) ?></p>
 												</div>
 												<div class="ms-auto">
 													<div class="dropdown">
