@@ -203,6 +203,7 @@ INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_AP
 												<th>Order Date</th>
 												<th>Patient Name</th>
 												<th>Record Type</th>
+												<th>Location Name</th>
 												<th>Status</th>
 												<th class="text-center" style="width: 1%">Actions</th>
 											</tr>
@@ -219,8 +220,7 @@ INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_AP
 												<td><?= htmlspecialchars($row['Rec_Type']) ?></td>
 												<td><?= htmlspecialchars($row['Loc_Name']) ?></td>
 												<td><?= htmlspecialchars($row['_kf_Service_Subtype_ID_Str']) ?></td>
-												<td></td>
-												<td></td>
+												<td>Status</td>
 												<td>
 													<div class="d-flex justify-content-center gap-1">
 														<a href="#" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-eye fs-lg"></i></a>
