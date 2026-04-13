@@ -84,28 +84,20 @@ $order['insurance'] = $insurance;
 											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Case Information</h5>
 											<div class="row g-3 mb-4">
 												<div class="col-md-3">
-													<label class="form-label fw-semibold">Subtype</label>
-													<input type="text" class="form-control" value="IMR" readonly>
+													<label class="form-label fw-semibold">Service Type</label>
+													<input type="text" class="form-control" value="<?= htmlspecialchars($order['_kf_Service_Type_ID_Str']) ?>" readonly>
 												</div>
 												<div class="col-md-3">
-													<label class="form-label fw-semibold">Case No.</label>
-													<input type="text" class="form-control" value="ADJ1234567" readonly>
+													<label class="form-label fw-semibold">Service Subtype</label>
+													<input type="text" class="form-control" value="<?= htmlspecialchars($order['_kf_Service_Subtype_ID_Str']) ?>" readonly>
 												</div>
 												<div class="col-md-3">
-													<label class="form-label fw-semibold">DOI Start</label>
-													<input type="text" class="form-control" value="2023-01-15" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">DOI End</label>
-													<input type="text" class="form-control" value="2023-06-30" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Letter of Rep Date</label>
-													<input type="text" class="form-control" value="2023-02-01" readonly>
+													<label class="form-label fw-semibold">LOR Date</label>
+													<input type="text" class="form-control" value="<?= htmlspecialchars($order['LOR_Date']) ?>" readonly>
 												</div>
 												<div class="col-md-3">
 													<label class="form-label fw-semibold">Employer</label>
-													<input type="text" class="form-control" value="ABC Company Inc." readonly>
+													<input type="text" class="form-control" value="<?= htmlspecialchars($order['Employer_Name']) ?>" readonly>
 												</div>
 											</div>
 
@@ -114,400 +106,120 @@ $order['insurance'] = $insurance;
 											<!-- Court Venue -->
 											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Court Venue</h5>
 											<div class="row g-3 mb-4">
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Name</label>
-													<input type="text" class="form-control" value="WCAB Los Angeles" readonly>
-												</div>
-												<div class="col-md-4">
-													<label class="form-label fw-semibold">Address</label>
-													<input type="text" class="form-control" value="320 W 4th St" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">City</label>
-													<input type="text" class="form-control" value="Los Angeles" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">State</label>
-													<select class="form-select">
-<option value="">-- State --</option>
-<option value="AL">AL</option>
-<option value="AK">AK</option>
-<option value="AZ">AZ</option>
-<option value="AR">AR</option>
-<option value="CA">CA</option>
-<option value="CO">CO</option>
-<option value="CT">CT</option>
-<option value="DE">DE</option>
-<option value="FL">FL</option>
-<option value="GA">GA</option>
-<option value="HI">HI</option>
-<option value="ID">ID</option>
-<option value="IL">IL</option>
-<option value="IN">IN</option>
-<option value="IA">IA</option>
-<option value="KS">KS</option>
-<option value="KY">KY</option>
-<option value="LA">LA</option>
-<option value="ME">ME</option>
-<option value="MD">MD</option>
-<option value="MA">MA</option>
-<option value="MI">MI</option>
-<option value="MN">MN</option>
-<option value="MS">MS</option>
-<option value="MO">MO</option>
-<option value="MT">MT</option>
-<option value="NE">NE</option>
-<option value="NV">NV</option>
-<option value="NH">NH</option>
-<option value="NJ">NJ</option>
-<option value="NM">NM</option>
-<option value="NY">NY</option>
-<option value="NC">NC</option>
-<option value="ND">ND</option>
-<option value="OH">OH</option>
-<option value="OK">OK</option>
-<option value="OR">OR</option>
-<option value="PA">PA</option>
-<option value="RI">RI</option>
-<option value="SC">SC</option>
-<option value="SD">SD</option>
-<option value="TN">TN</option>
-<option value="TX">TX</option>
-<option value="UT">UT</option>
-<option value="VT">VT</option>
-<option value="VA">VA</option>
-<option value="WA">WA</option>
-<option value="WV">WV</option>
-<option value="WI">WI</option>
-<option value="WY">WY</option>
-</select>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">Phone</label>
-													<input type="text" class="form-control" value="213-555-0100" readonly>
+												<div class="col-md-12">
+													<label class="form-label fw-semibold">Court Reference</label>
+													<input type="text" class="form-control" value="<?= htmlspecialchars($order['_kf_Court_ID_Selected']) ?>" readonly>
 												</div>
 											</div>
 
 											<hr>
-											<!-- Insurance Carrier -->
-											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Insurance Carrier</h5>
+											<!-- Insurance Carriers -->
+											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Insurance Carriers</h5>
 											<div class="row g-3 mb-4">
-												<div class="col-md-4">
-													<label class="form-label fw-semibold">Carrier Name</label>
-													<input type="text" class="form-control" value="State Fund Insurance" readonly>
-												</div>
-												<div class="col-md-4">
-													<label class="form-label fw-semibold">Address</label>
-													<input type="text" class="form-control" value="123 Insurance Blvd" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">City</label>
-													<input type="text" class="form-control" value="Sacramento" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">State</label>
-													<select class="form-select">
-<option value="">-- State --</option>
-<option value="AL">AL</option>
-<option value="AK">AK</option>
-<option value="AZ">AZ</option>
-<option value="AR">AR</option>
-<option value="CA">CA</option>
-<option value="CO">CO</option>
-<option value="CT">CT</option>
-<option value="DE">DE</option>
-<option value="FL">FL</option>
-<option value="GA">GA</option>
-<option value="HI">HI</option>
-<option value="ID">ID</option>
-<option value="IL">IL</option>
-<option value="IN">IN</option>
-<option value="IA">IA</option>
-<option value="KS">KS</option>
-<option value="KY">KY</option>
-<option value="LA">LA</option>
-<option value="ME">ME</option>
-<option value="MD">MD</option>
-<option value="MA">MA</option>
-<option value="MI">MI</option>
-<option value="MN">MN</option>
-<option value="MS">MS</option>
-<option value="MO">MO</option>
-<option value="MT">MT</option>
-<option value="NE">NE</option>
-<option value="NV">NV</option>
-<option value="NH">NH</option>
-<option value="NJ">NJ</option>
-<option value="NM">NM</option>
-<option value="NY">NY</option>
-<option value="NC">NC</option>
-<option value="ND">ND</option>
-<option value="OH">OH</option>
-<option value="OK">OK</option>
-<option value="OR">OR</option>
-<option value="PA">PA</option>
-<option value="RI">RI</option>
-<option value="SC">SC</option>
-<option value="SD">SD</option>
-<option value="TN">TN</option>
-<option value="TX">TX</option>
-<option value="UT">UT</option>
-<option value="VT">VT</option>
-<option value="VA">VA</option>
-<option value="WA">WA</option>
-<option value="WV">WV</option>
-<option value="WI">WI</option>
-<option value="WY">WY</option>
-</select>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">ZIP</label>
-													<input type="text" class="form-control" value="95814" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">Phone</label>
-													<input type="text" class="form-control" value="916-555-0200" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Claim No.</label>
-													<input type="text" class="form-control" value="SF-2023-001" readonly>
-												</div>
-												
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Adjuster Name</label>
-													<input type="text" class="form-control" value="John Smith" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Adjuster Phone</label>
-													<input type="text" class="form-control" value="916-555-0201" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Adjuster Fax</label>
-													<input type="text" class="form-control" value="916-555-0202" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Adjuster Email</label>
-													<input type="text" class="form-control" value="john.smith@statefund.com" readonly>
-												</div>
-
-												<div class="col-md-12"><hr class="my-1"></div>
-
-												<div class="col-md-4">
-													<label class="form-label fw-semibold">Carrier Name</label>
-													<input type="text" class="form-control" value="Inter Fund Insurance" readonly>
-												</div>
-												<div class="col-md-4">
-													<label class="form-label fw-semibold">Address</label>
-													<input type="text" class="form-control" value="456 Insurance Blvd" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">City</label>
-													<input type="text" class="form-control" value="Sacramento" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">State</label>
-													<select class="form-select">
-<option value="">-- State --</option>
-<option value="AL">AL</option>
-<option value="AK">AK</option>
-<option value="AZ">AZ</option>
-<option value="AR">AR</option>
-<option value="CA">CA</option>
-<option value="CO">CO</option>
-<option value="CT">CT</option>
-<option value="DE">DE</option>
-<option value="FL">FL</option>
-<option value="GA">GA</option>
-<option value="HI">HI</option>
-<option value="ID">ID</option>
-<option value="IL">IL</option>
-<option value="IN">IN</option>
-<option value="IA">IA</option>
-<option value="KS">KS</option>
-<option value="KY">KY</option>
-<option value="LA">LA</option>
-<option value="ME">ME</option>
-<option value="MD">MD</option>
-<option value="MA">MA</option>
-<option value="MI">MI</option>
-<option value="MN">MN</option>
-<option value="MS">MS</option>
-<option value="MO">MO</option>
-<option value="MT">MT</option>
-<option value="NE">NE</option>
-<option value="NV">NV</option>
-<option value="NH">NH</option>
-<option value="NJ">NJ</option>
-<option value="NM">NM</option>
-<option value="NY">NY</option>
-<option value="NC">NC</option>
-<option value="ND">ND</option>
-<option value="OH">OH</option>
-<option value="OK">OK</option>
-<option value="OR">OR</option>
-<option value="PA">PA</option>
-<option value="RI">RI</option>
-<option value="SC">SC</option>
-<option value="SD">SD</option>
-<option value="TN">TN</option>
-<option value="TX">TX</option>
-<option value="UT">UT</option>
-<option value="VT">VT</option>
-<option value="VA">VA</option>
-<option value="WA">WA</option>
-<option value="WV">WV</option>
-<option value="WI">WI</option>
-<option value="WY">WY</option>
-</select>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">ZIP</label>
-													<input type="text" class="form-control" value="95814" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">Phone</label>
-													<input type="text" class="form-control" value="916-555-0200" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Claim No.</label>
-													<input type="text" class="form-control" value="SF-2023-001" readonly>
-												</div>
-												
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Adjuster Name</label>
-													<input type="text" class="form-control" value="John Smith" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Adjuster Phone</label>
-													<input type="text" class="form-control" value="916-555-0201" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Adjuster Fax</label>
-													<input type="text" class="form-control" value="916-555-0202" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Adjuster Email</label>
-													<input type="text" class="form-control" value="john.smith@statefund.com" readonly>
-												</div>
+												<?php foreach ($order['insurance'] as $i => $ins): ?>
+													<?php if ($i > 0): ?>
+														<div class="col-md-12"><hr class="my-1"></div>
+													<?php endif; ?>
+													<div class="col-md-4">
+														<label class="form-label fw-semibold">Carrier Name</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Name']) ?>" readonly>
+													</div>
+													<div class="col-md-4">
+														<label class="form-label fw-semibold">Address</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Address_Street']) ?>" readonly>
+													</div>
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">City</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Address_City']) ?>" readonly>
+													</div>
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">State</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Address_State']) ?>" readonly>
+													</div>
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">ZIP</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Address_Zip']) ?>" readonly>
+													</div>
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">Phone</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Address_Phone']) ?>" readonly>
+													</div>
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">Fax</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Address_Phone_Fax']) ?>" readonly>
+													</div>
+													<div class="col-md-3">
+														<label class="form-label fw-semibold">Claim No.</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Adj_Claim_ID']) ?>" readonly>
+													</div>
+													<div class="col-md-3">
+														<label class="form-label fw-semibold">Adjuster Name</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Adj_Name']) ?>" readonly>
+													</div>
+													<div class="col-md-3">
+														<label class="form-label fw-semibold">Adjuster Phone</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Adj_Phone']) ?>" readonly>
+													</div>
+													<div class="col-md-3">
+														<label class="form-label fw-semibold">Adjuster Fax</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Adj_Phone_Fax']) ?>" readonly>
+													</div>
+													<div class="col-md-3">
+														<label class="form-label fw-semibold">Adjuster Email</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Adj_Email']) ?>" readonly>
+													</div>
+												<?php endforeach; ?>
 											</div>
 
 											<hr>
 
-											<!-- Opposing Counsel -->
-											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Opposing Counsel</h5>
-											<div class="row g-3 mb-4">
-												<div class="col-md-4">
-													<label class="form-label fw-semibold">Name</label>
-													<input type="text" class="form-control" value="Jane Doe" readonly>
+											<!-- Records Locations -->
+											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Records Locations</h5>
+											<?php foreach ($order['locations'] as $i => $loc): ?>
+												<?php if ($i > 0): ?><hr class="my-2"><?php endif; ?>
+												<div class="row g-3 mb-2">
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">Record Type</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Rec_Type']) ?>" readonly>
+													</div>
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">Dates Needed</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Rec_Dates_Needed']) ?>" readonly>
+													</div>
+													<div class="col-md-3">
+														<label class="form-label fw-semibold">Location Name</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Loc_Name']) ?>" readonly>
+													</div>
+													<div class="col-md-3">
+														<label class="form-label fw-semibold">Address</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Loc_Address_Street']) ?>" readonly>
+													</div>
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">City</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Loc_Address_City']) ?>" readonly>
+													</div>
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">State</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Loc_Address_State']) ?>" readonly>
+													</div>
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">ZIP</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Loc_Address_Zip']) ?>" readonly>
+													</div>
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">Phone</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Loc_Address_Phone']) ?>" readonly>
+													</div>
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">Fax</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?>" readonly>
+													</div>
+													<div class="col-md-10">
+														<label class="form-label fw-semibold">Special Instructions</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Special_Instructions']) ?>" readonly>
+													</div>
 												</div>
-												<div class="col-md-4">
-													<label class="form-label fw-semibold">Address</label>
-													<input type="text" class="form-control" value="456 Law Ave" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">City</label>
-													<input type="text" class="form-control" value="Los Angeles" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">State</label>
-													<select class="form-select">
-<option value="">-- State --</option>
-<option value="AL">AL</option>
-<option value="AK">AK</option>
-<option value="AZ">AZ</option>
-<option value="AR">AR</option>
-<option value="CA">CA</option>
-<option value="CO">CO</option>
-<option value="CT">CT</option>
-<option value="DE">DE</option>
-<option value="FL">FL</option>
-<option value="GA">GA</option>
-<option value="HI">HI</option>
-<option value="ID">ID</option>
-<option value="IL">IL</option>
-<option value="IN">IN</option>
-<option value="IA">IA</option>
-<option value="KS">KS</option>
-<option value="KY">KY</option>
-<option value="LA">LA</option>
-<option value="ME">ME</option>
-<option value="MD">MD</option>
-<option value="MA">MA</option>
-<option value="MI">MI</option>
-<option value="MN">MN</option>
-<option value="MS">MS</option>
-<option value="MO">MO</option>
-<option value="MT">MT</option>
-<option value="NE">NE</option>
-<option value="NV">NV</option>
-<option value="NH">NH</option>
-<option value="NJ">NJ</option>
-<option value="NM">NM</option>
-<option value="NY">NY</option>
-<option value="NC">NC</option>
-<option value="ND">ND</option>
-<option value="OH">OH</option>
-<option value="OK">OK</option>
-<option value="OR">OR</option>
-<option value="PA">PA</option>
-<option value="RI">RI</option>
-<option value="SC">SC</option>
-<option value="SD">SD</option>
-<option value="TN">TN</option>
-<option value="TX">TX</option>
-<option value="UT">UT</option>
-<option value="VT">VT</option>
-<option value="VA">VA</option>
-<option value="WA">WA</option>
-<option value="WV">WV</option>
-<option value="WI">WI</option>
-<option value="WY">WY</option>
-</select>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">ZIP</label>
-													<input type="text" class="form-control" value="90001" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">Phone</label>
-													<input type="text" class="form-control" value="213-555-0300" readonly>
-												</div>
-											</div>
-
-											<hr>
-
-											<!-- Records Location -->
-											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Records Location</h5>
-											<div class="row g-3">
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">Priority</label>
-													<input type="text" class="form-control" value="Standard" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">Record Type</label>
-													<input type="text" class="form-control" value="Medical" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">Date Needed</label>
-													<input type="text" class="form-control" value="2024-03-01" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Location Name</label>
-													<input type="text" class="form-control" value="UCLA Medical Center" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Address</label>
-													<input type="text" class="form-control" value="100 Medical Plaza Dr" readonly>
-												</div>
-												<div class="col-md-2">
-													<label class="form-label fw-semibold">Phone</label>
-													<input type="text" class="form-control" value="310-555-0400" readonly>
-												</div>
-												<div class="col-md-10">
-													<label class="form-label fw-semibold">Special Instructions</label>
-													<input type="text" class="form-control" value="Please call ahead before arrival" readonly>
-												</div>
-											</div>
+											<?php endforeach; ?>
 
 										</div>
 										<!-- end card-body -->
