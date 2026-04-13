@@ -172,7 +172,7 @@ $order['insurance'] = $insurance;
 														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Rec_Dates_Needed']) ?>" readonly>
 													</div>
 													<div class="col-md-8">
-														<label class="form-label fw-semibold">Location Name</label>
+														<label class="form-label fw-semibold">Location Name2</label>
 														<input type="text" id="validInput" class="form-control mb-1" is-valid value="<?= htmlspecialchars($loc['Loc_Name']) ?>">
 														<p class="mb-0"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
 														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class="ti ti-printer me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
