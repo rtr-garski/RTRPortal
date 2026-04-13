@@ -1,7 +1,8 @@
 <?php require_once 'config/db.php'; ?>
 <?php
-		$stmt = $pdo->query("SELECT * FROM API_Input_Order_Locations AS iol
-INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_API_Input_Order_ID`)");
+// 		$stmt = $pdo->query("SELECT * FROM API_Input_Order_Locations AS iol
+// INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_API_Input_Order_ID`)")
+		$stmt = $pdo->prepare("SELECT * FROM API_Input_Orders");
 		$orders = $stmt->fetchAll();
 		$total = $pdo->query("SELECT COUNT(*) FROM API_Input_Order_Locations")->fetchColumn();
 	?>
@@ -23,7 +24,6 @@ INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_AP
 
 			<div class="content-page">
 				<div class="container-fluid">
-					<?php echo '<pre>' . print_r($orders, true) . '</pre>'; ?>
 					<?php $subtitle = "Reports"; $title = "Orders"; include('partials/page-title.php'); ?>
 
 					<div class="row row-cols-xxl-5 row-cols-md-3 row-cols-1 align-items-center g-1">

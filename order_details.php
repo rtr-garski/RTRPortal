@@ -25,7 +25,7 @@ $stmt2 = $pdo->prepare("
 $stmt2->execute([$order_id]);                                                                                                                                                                        
 $locations = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         
-// loop inside the oredr
+// loop inside the oredr	
 $order['locations'] = $locations;   
                                                                                                                                                                                                       
 //$order['locations'][0]['your_location_field'];
@@ -598,27 +598,6 @@ $order['locations'] = $locations;
 														<a href="#!" class="link-reset"><?= htmlspecialchars($order['Pat_Name']) ?></a>
 													</h5>
 													<p class="text-muted mb-0"><?= htmlspecialchars($order['Pat_AKA']) ?></p>
-												</div>
-												<div class="ms-auto">
-													<div class="dropdown">
-														<a href="#" class="btn btn-icon btn-ghost-light text-muted" data-bs-toggle="dropdown">
-															<i class="ti ti-dots-vertical fs-xl"></i>
-														</a>
-														<ul class="dropdown-menu dropdown-menu-end">
-															<li>
-																<a class="dropdown-item" href="#"><i class="ti ti-share me-2"></i> Share</a>
-															</li>
-															<li>
-																<a class="dropdown-item" href="#"><i class="ti ti-edit me-2"></i> Edit</a>
-															</li>
-															<li>
-																<a class="dropdown-item" href="#"><i class="ti ti-ban me-2"></i> Block</a>
-															</li>
-															<li>
-																<a class="dropdown-item text-danger" href="#"><i class="ti ti-trash me-2"></i> Delete</a>
-															</li>
-														</ul>
-													</div>
 												</div>
 											</div>
 
