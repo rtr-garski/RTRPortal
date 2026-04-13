@@ -22,7 +22,7 @@ $stmt2 = $pdo->prepare("
       INNER JOIN API_Input_Orders AS io ON io.`__kp_API_Input_Order_ID` = iol.`_kf_API_Input_Order_ID`                                                                                                
       WHERE io.`__kp_API_Input_Order_ID` = ?                                                                                                                                                          
   ");                                                                                                                                                                                                 
-$stmt2->execute([$orderId]);                                                                                                                                                                        
+$stmt2->execute([$order_id]);                                                                                                                                                                        
 $locations = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         
 // loop inside the oredr
