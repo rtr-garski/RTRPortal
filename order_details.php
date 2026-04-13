@@ -101,14 +101,23 @@ $order['insurance'] = $insurance;
 												</div>
 											</div>
 
-											<hr>
-											<!-- Insurance Carriers -->
-											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Insurance Carriers</h5>
-											<div class="row g-3 mb-4">
-												<?php foreach ($order['insurance'] as $i => $ins): ?>
-													<?php if ($i > 0): ?>
-														<div class="col-md-12"><hr class="my-1"></div>
-													<?php endif; ?>
+
+										</div>
+										<!-- end card-body -->
+									</div>
+									<!-- end card -->
+
+									<!-- Insurance Carriers -->
+									<div class="card">
+										<div class="card-header">
+											<h4 class="card-title">Insurance Carriers</h4>
+										</div>
+										<div class="card-body px-4">
+											<?php foreach ($order['insurance'] as $i => $ins): ?>
+												<?php if ($i > 0): ?>
+													<hr class="my-3">
+												<?php endif; ?>
+												<div class="row g-3">
 													<div class="col-md-4">
 														<label class="form-label fw-semibold">Carrier Name</label>
 														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Name']) ?>" readonly>
@@ -138,16 +147,22 @@ $order['insurance'] = $insurance;
 														<label class="form-label fw-semibold">Adjuster Email</label>
 														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Adj_Email']) ?>" readonly>
 													</div>
-												<?php endforeach; ?>
-											</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+										<!-- end card-body -->
+									</div>
+									<!-- end card -->
 
-											<hr>
-
-											<!-- Records Locations -->
-											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Records Locations</h5>
+									<!-- Records Locations -->
+									<div class="card">
+										<div class="card-header">
+											<h4 class="card-title">Records Locations</h4>
+										</div>
+										<div class="card-body px-4">
 											<?php foreach ($order['locations'] as $i => $loc): ?>
-												<?php if ($i > 0): ?><hr class="my-2"><?php endif; ?>
-												<div class="row g-3 mb-2">
+												<?php if ($i > 0): ?><hr class="my-3"><?php endif; ?>
+												<div class="row g-3">
 													<div class="col-md-2">
 														<label class="form-label fw-semibold">Record Type</label>
 														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Rec_Type']) ?>" readonly>
@@ -164,11 +179,10 @@ $order['insurance'] = $insurance;
 													</div>
 													<div class="col-md-10">
 														<label class="form-label fw-semibold">Special Instructions</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Special_Instructions']) ?>" readonly>
+														<p class="mb-0"><?= htmlspecialchars($loc['Special_Instructions']) ?></p>
 													</div>
 												</div>
 											<?php endforeach; ?>
-
 										</div>
 										<!-- end card-body -->
 									</div>
