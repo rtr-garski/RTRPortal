@@ -12,9 +12,10 @@ INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_AP
 	</head>
 
 	<body>
-		<?php echo '<pre>' . print_r($orders, true) . '</pre>'; ?>
+		
 		<!-- Begin page -->
 		<div class="wrapper">
+			<?php echo '<pre>' . print_r($orders, true) . '</pre>'; ?>
 			<?php include('partials/topbar.php'); ?> <?php include('partials/sidenav.php'); ?>
 
 			<!-- ============================================================== -->
