@@ -16,7 +16,7 @@ if (!$order) {
     exit;
 }
 
-echo '<pre>' . print_r($order, true) . '</pre>'; die();
+echo '<pre>' . print_r($order, true) . '</pre>';
 ?>
 <!doctype html>
 <html lang="en">
