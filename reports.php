@@ -2,7 +2,6 @@
 <?php
 		$stmt = $pdo->query("SELECT * FROM API_Input_Order_Locations AS iol
 INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_API_Input_Order_ID`)");
-		$stmt->execute([$order_id]);
 		$orders = $stmt->fetchAll();
 		$total = $pdo->query("SELECT COUNT(*) FROM API_Input_Orders")->fetchColumn();
 	?>
@@ -13,7 +12,7 @@ INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_AP
 	</head>
 
 	<body>
-		<?php echo '<pre>' . print_r($order, true) . '</pre>'; ?>
+		<?php echo '<pre>' . print_r($orders, true) . '</pre>'; ?>
 		<!-- Begin page -->
 		<div class="wrapper">
 			<?php include('partials/topbar.php'); ?> <?php include('partials/sidenav.php'); ?>
