@@ -115,8 +115,8 @@ $order['insurance'] = $insurance;
 													</div>
 													<div class="col-md-6">
 														<label class="form-label fw-semibold">Address</label>
-														<p class="mb-0"><?= htmlspecialchars($ins['Ins_Address_Street']) ?>, <?= htmlspecialchars($ins['Ins_Address_City']) ?>, <?= htmlspecialchars($ins['Ins_Address_State']) ?> <?= htmlspecialchars($ins['Ins_Address_Zip']) ?></p>
-														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($ins['Ins_Address_Phone']) ?> &nbsp; <i class="ti ti-device-fax me-1"></i><?= htmlspecialchars($ins['Ins_Address_Phone_Fax']) ?></p>
+														<p class="mb-0"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($ins['Ins_Address_Street']) ?>, <?= htmlspecialchars($ins['Ins_Address_City']) ?>, <?= htmlspecialchars($ins['Ins_Address_State']) ?> <?= htmlspecialchars($ins['Ins_Address_Zip']) ?></p>
+														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($ins['Ins_Address_Phone']) ?> &nbsp; <i class="ti ti-printer me-1"></i><?= htmlspecialchars($ins['Ins_Address_Phone_Fax']) ?></p>
 													</div>
 													<div class="col-md-2">
 														<label class="form-label fw-semibold">Claim No.</label>
@@ -159,8 +159,8 @@ $order['insurance'] = $insurance;
 													<div class="col-md-8">
 														<label class="form-label fw-semibold">Location Name</label>
 														<input type="text" class="form-control mb-1" value="<?= htmlspecialchars($loc['Loc_Name']) ?>" readonly>
-														<p class="mb-0"><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
-														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class="ti ti-device-fax me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
+														<p class="mb-0"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
+														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class="ti ti-printer me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
 													</div>
 													<div class="col-md-10">
 														<label class="form-label fw-semibold">Special Instructions</label>
@@ -307,12 +307,11 @@ $order['insurance'] = $insurance;
 									</div>
 									<!-- end card-->
 
-									<div class="card">
+									<!-- <div class="card">
 										<div class="card-header justify-content-between border-dashed">
 											<h4 class="card-title">Requesting Party</h4>
 											<a href="#!" class="btn btn-default btn-sm btn-icon rounded-circle"><i class="ti ti-pencil fs-lg"></i></a>
-										</div>
-										<!-- end card-header -->
+										</div> 
 
 										<div class="card-body">
 											<div class="d-flex align-items-start my-3">
@@ -339,19 +338,17 @@ $order['insurance'] = $insurance;
 												<p class="fst-italic mb-0">Please leave the package at the front door if no one is home. Call upon arrival.</p>
 											</div>
 										</div>
-										<!-- end card-body -->
-									</div>
+										
+									</div>-->
 									<!-- end card -->
 
-									<div class="card">
+									<!-- <div class="card">
 										<div class="card-header justify-content-between border-dashed">
 											<h4 class="card-title">Billing Details</h4>
 											<a href="#!" class="btn btn-default btn-sm btn-icon rounded-circle"><i class="ti ti-pencil fs-lg"></i></a>
 										</div>
-										<!-- end card-header -->
-
+							
 										<div class="card-body">
-											<!-- Billing Address -->
 											<div class="d-flex align-items-start mb-0">
 												<div class="flex-grow-1">
 													<h5 class="mb-2">John Doe</h5>
@@ -369,7 +366,6 @@ $order['insurance'] = $insurance;
 
 											<hr />
 
-											<!-- Card Details -->
 											<div class="d-flex align-items-center">
 												<div class="avatar-sm me-2">
 													<img src="../source/inspinia5/assets/images/cards/mastercard.svg" alt="Mastercard" class="img-fluid rounded" />
@@ -383,8 +379,7 @@ $order['insurance'] = $insurance;
 												</div>
 											</div>
 										</div>
-										<!-- end card-body -->
-									</div>
+									</div> -->
 									<!-- end card -->
 								</div>
 								<!-- end col-xl-3 -->
