@@ -15,6 +15,8 @@ if (!$order) {
     header('Location: reports.php');
     exit;
 }
+
+echo '<pre>' . print_r($order, true) . '</pre>'; die();
 ?>
 <!doctype html>
 <html lang="en">
