@@ -7,6 +7,7 @@ if (!$order_id) {
     exit;
 }
 
+//featch the order first
 $stmt = $pdo->prepare("SELECT * FROM API_Input_Orders WHERE __kp_API_Input_Order_ID = ?");
 $stmt->execute([$order_id]);
 $order = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -15,6 +16,20 @@ if (!$order) {
     header('Location: reports.php');
     exit;
 }
+
+$stmt2 = $pdo->prepare("                                                                                                                                                                            
+      SELECT iol.* FROM API_Input_Order_Locations AS iol
+      INNER JOIN API_Input_Orders AS io ON io.`__kp_API_Input_Order_ID` = iol.`_kf_API_Input_Order_ID`                                                                                                
+      WHERE io.`__kp_API_Input_Order_ID` = ?                                                                                                                                                          
+  ");                                                                                                                                                                                                 
+$stmt2->execute([$orderId]);                                                                                                                                                                        
+$locations = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+        
+// loop inside the oredr
+$order['locations'] = $locations;   
+                                                                                                                                                                                                      
+//$order['locations'][0]['your_location_field'];
+
 
 
 ?>
