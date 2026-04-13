@@ -121,6 +121,8 @@ $order['insurance'] = $insurance;
 													<div class="col-md-4">
 														<label class="form-label fw-semibold">Carrier Name</label>
 															<input type="text" id="inValidationInput" class="form-control is-valid" value="<?= htmlspecialchars($ins['Ins_Name']) ?>">
+															<div class="valid-feedback">Correct Carrier</div>
+															<div class="invalid-feedback">Please Select Correct Carrier</div>
 															<!-- <input type="text" id="<?= rand(0,1) ? 'validInput' : 'inValidationInput' ?>" class="form-control is-valid" value="<?= htmlspecialchars($ins['Ins_Name']) ?>"> -->
 													</div>
 													<div class="col-md-6">
