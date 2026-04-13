@@ -2,6 +2,7 @@
 <?php
 		$stmt = $pdo->query("SELECT * FROM API_Input_Order_Locations AS iol
 INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_API_Input_Order_ID`)");
+		$stmt->execute([$order_id]);
 		$orders = $stmt->fetchAll();
 		$total = $pdo->query("SELECT COUNT(*) FROM API_Input_Orders")->fetchColumn();
 	?>
