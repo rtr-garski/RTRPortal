@@ -120,7 +120,8 @@ $order['insurance'] = $insurance;
 												<div class="row g-3">
 													<div class="col-md-4">
 														<label class="form-label fw-semibold">Carrier Name</label>
-															<input type="text" id="<?= rand(0,1) ? 'validInput' : 'inValidationInput' ?>" class="form-control is-valid" value="<?= htmlspecialchars($ins['Ins_Name']) ?>">
+															<input type="text" id="inValidationInput" class="form-control is-valid" value="<?= htmlspecialchars($ins['Ins_Name']) ?>">
+															<!-- <input type="text" id="<?= rand(0,1) ? 'validInput' : 'inValidationInput' ?>" class="form-control is-valid" value="<?= htmlspecialchars($ins['Ins_Name']) ?>"> -->
 													</div>
 													<div class="col-md-6">
 														<label class="form-label fw-semibold">Address</label>
