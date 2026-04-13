@@ -176,15 +176,18 @@ $order['insurance'] = $insurance;
 													</div>
 													<div class="col-md-8">
 														<label class="form-label fw-semibold">Location Name</label>
-															<input type="text" id="<?= rand(0,1) ? 'validInput' : 'inValidationInput' ?>" class="form-control mb-1 is-valid" value="<?= htmlspecialchars($loc['Loc_Name']) ?>">
+														<?php $insValid = rand(0,1); ?>
+															<input type="text" id="<?= $insValid ? 'validInput' : 'inValidationInput' ?>" class="form-control <?= $insValid ? 'is-valid' : 'is-invalid' ?>" value="<?= htmlspecialchars($loc['Loc_Name']) ?>">
 														<p class="mb-0"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
 														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class="ti ti-printer me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
 														<div class="valid-feedback">Correct Info</div>
 														<div class="invalid-feedback">Please Select Correct Location</div>
+
+
 													</div>
 													<div class="col-md-10">
 														<label class="form-label fw-semibold">Special Instructions</label>
-														<p class="mb-0"><?= htmlspecialchars($loc['Special_Instructions']) ?></p>
+														<p class="mb-0"><?= htmlspecialchars($loc['Special_Instructions']) ?>Lorem Ipsum is dummy or placeholder text commonly used in graphic design, publishing, and web development to fill spaces where content will eventually appear.</p>
 													</div>
 												</div>
 											<?php endforeach; ?>
