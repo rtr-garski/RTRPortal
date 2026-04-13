@@ -17,11 +17,13 @@ if (!$order) {
     exit;
 }
 
-$stmt2 = $pdo->prepare("                                                                                                                                                                            
-      SELECT iol.* FROM API_Input_Order_Locations AS iol
-      INNER JOIN API_Input_Orders AS io ON io.`__kp_API_Input_Order_ID` = iol.`_kf_API_Input_Order_ID`                                                                                                
-      WHERE io.`__kp_API_Input_Order_ID` = ?                                                                                                                                                          
-  ");                                                                                                                                                                                                 
+// $stmt2 = $pdo->prepare("                                                                                                                                                                            
+//       SELECT iol.* FROM API_Input_Order_Locations AS iol
+//       INNER JOIN API_Input_Orders AS io ON io.`__kp_API_Input_Order_ID` = iol.`_kf_API_Input_Order_ID`                                                                                                
+//       WHERE io.`__kp_API_Input_Order_ID` = ?                                                                                                                                                          
+//   ");    
+	
+$stmt2 = $pdo->prepare("SELECT * FROM API_Input_Order_Locations WHERE _kf_API_Input_Order_ID = ?");
 $stmt2->execute([$order_id]);                                                                                                                                                                        
 $locations = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         
@@ -599,6 +601,7 @@ $order['locations'] = $locations;
 													</h5>
 													<p class="text-muted mb-0"><?= htmlspecialchars($order['Pat_AKA']) ?></p>
 												</div>
+
 											</div>
 
 											<ul class="list-unstyled text-muted mb-0">
