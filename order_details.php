@@ -328,7 +328,7 @@ $order['insurance'] = $insurance;
 										<!-- end card-body-->
 									</div>
 									<!-- end card-->
-									 <div class="card">
+									 <div class="card  card-top-sticky">
 										<div class="card-header">
 											<h4 class="card-title">Order Activity</h4>
 										</div>
