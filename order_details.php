@@ -113,12 +113,12 @@ $order['insurance'] = $insurance;
 														<label class="form-label fw-semibold">Carrier Name</label>
 														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Name']) ?>" readonly>
 													</div>
-													<div class="col-md-8">
+													<div class="col-md-6">
 														<label class="form-label fw-semibold">Address</label>
 														<p class="mb-0"><?= htmlspecialchars($ins['Ins_Address_Street']) ?>, <?= htmlspecialchars($ins['Ins_Address_City']) ?>, <?= htmlspecialchars($ins['Ins_Address_State']) ?> <?= htmlspecialchars($ins['Ins_Address_Zip']) ?></p>
 														<p class="mb-0 text-muted">Ph: <?= htmlspecialchars($ins['Ins_Address_Phone']) ?> &nbsp; Fax: <?= htmlspecialchars($ins['Ins_Address_Phone_Fax']) ?></p>
 													</div>
-													<div class="col-md-3">
+													<div class="col-md-2">
 														<label class="form-label fw-semibold">Claim No.</label>
 														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Adj_Claim_ID']) ?>" readonly>
 													</div>
