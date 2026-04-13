@@ -195,82 +195,12 @@ $order['insurance'] = $insurance;
 										<!-- end card-body -->
 									</div>
 									<!-- end card -->
-
-									<div class="card">
-										<div class="card-header">
-											<h4 class="card-title">Order Activity</h4>
-										</div>
-										<div class="card-body p-4">
-											<div class="timeline">
-												<!-- Event 1 -->
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted"></div>
-													<div class="timeline-dot bg-light"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Order Delivered</h5>
-														<p class="mb-1 text-muted">The package is out for delivery and will reach you shortly.</p>
-														<p class="mb-1 text-muted fs-xxs">Tracking No: <a href="#!" class="link-primary fw-semibold text-decoration-underline">TRK123456789</a></p>
-														<span class="fw-semibold fs-xxs">By Rodelaine Raro</span>
-													</div>
-												</div>
-
-												<!-- Event 2 -->
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted">Today, 9:00 AM</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">QA Status</h5>
-														<p class="mb-1 text-muted">Complete Order</p>
-														<span class="fs-xxs fw-semibold">By QA Agent1</span>
-													</div>
-												</div>
-
-												<!-- Event 3 -->
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted">Yesterday, 3:15 PM</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Order Copied</h5>
-													</div>
-												</div>
-
-												<!-- Event 4 -->
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted">Monday, 6:00 PM</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Order Served</h5>
-													</div>
-												</div>
-
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted">Last Friday, 5:00 PM</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Order Verified</h5>
-														<p class="mb-1 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-														<span class="fw-semibold fs-xxs">By OE Agent1</span>
-													</div>
-												</div>
-
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted">Last Friday, 4:00 PM</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Order Received</h5>
-														<p class="mb-1 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-													</div>
-												</div>
-
-											</div>
-										</div>
-									</div>
 								</div>
 								<!-- end col-xl-9 -->
 
 								<!-- Sidebar -->
 								<div class="col-xl-3">
-									<div class="card card-top-sticky">
+									<div class="card">
 										<div class="card-header justify-content-between border-dashed">
 											<h4 class="card-title">Patient Details</h4>
 											<a href="#!" class="btn btn-default btn-sm btn-icon rounded-circle"><i class="ti ti-pencil fs-lg"></i></a>
@@ -328,7 +258,7 @@ $order['insurance'] = $insurance;
 										<!-- end card-body-->
 									</div>
 									<!-- end card-->
-									 <div class="card  card-top-sticky">
+									 <div class="card">
 										<div class="card-header">
 											<h4 class="card-title">Order Activity</h4>
 										</div>
