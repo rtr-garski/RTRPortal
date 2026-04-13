@@ -66,8 +66,8 @@ $order['insurance'] = $insurance;
 								<div class="col-xl-9">
 									<div class="card">
 										<div class="card-header align-items-start p-4">
-											<div><?php echo $locationid; ?></div>
-											<div><?php echo '<pre>' . print_r($order, true) . '</pre>'; ?></div>
+									
+											<div><?php //echo '<pre>' . print_r($order, true) . '</pre>'; ?></div>
 											<div>
 												<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
 												<p class="text-muted mb-3"><i class="ti ti-calendar"></i> 24 Apr, 2025 <small class="text-muted">10:10 AM</small></p>
