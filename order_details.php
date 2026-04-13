@@ -35,8 +35,6 @@ $order[$locationid] = $locations;
                                                                                                                                                                                                       
 //$order['locations'][0]['your_location_field'];
 
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -64,6 +62,7 @@ $order[$locationid] = $locations;
 								<div class="col-xl-9">
 									<div class="card">
 										<div class="card-header align-items-start p-4">
+											<div><?php echo $locationid; ?></div>
 											<div><?php echo '<pre>' . print_r($order, true) . '</pre>'; ?></div>
 											<div>
 												<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
