@@ -17,22 +17,27 @@ if (!$order) {
     exit;
 }
 
+// 2nd - locations
 // $stmt2 = $pdo->prepare("                                                                                                                                                                            
 //       SELECT iol.* FROM API_Input_Order_Locations AS iol
 //       INNER JOIN API_Input_Orders AS io ON io.`__kp_API_Input_Order_ID` = iol.`_kf_API_Input_Order_ID`                                                                                                
 //       WHERE io.`__kp_API_Input_Order_ID` = ?                                                                                                                                                          
 //   ");    
-	
 $stmt2 = $pdo->prepare("SELECT * FROM API_Input_Order_Locations WHERE _kf_API_Input_Order_ID = ?");
 $stmt2->execute([$order_id]);                                                                                                                                                                        
 $locations = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         
+// 3rd - Insurance Carriers
+$stmt3 = $pdo->prepare("SELECT * FROM API_Input_Insurance_Carriers WHERE _kf_API_Input_Order_ID = ?");
+$stmt3->execute([$order_id]);                                                                                                                                                                        
+$insurance = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+
+
 // loop inside the oredr	
-//$order['locations'] = $locations;   
-$order['locations'] = array_column($locations, null, '__kp_API_Input_Order_Location_ID'); 
-//$order[$locationid] = $locations; 
+$order['locations'] = $locations;   
+$order['insurance'] = $insurance;  
+//$order['locations'] = array_column($locations, null, '__kp_API_Input_Order_Location_ID'); 
                                                                                                                                                                                                       
-//$order['locations'][0]['your_location_field'];
 
 ?>
 <!doctype html>
