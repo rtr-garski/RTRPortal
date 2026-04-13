@@ -116,7 +116,7 @@ $order['insurance'] = $insurance;
 													<div class="col-md-6">
 														<label class="form-label fw-semibold">Address</label>
 														<p class="mb-0"><?= htmlspecialchars($ins['Ins_Address_Street']) ?>, <?= htmlspecialchars($ins['Ins_Address_City']) ?>, <?= htmlspecialchars($ins['Ins_Address_State']) ?> <?= htmlspecialchars($ins['Ins_Address_Zip']) ?></p>
-														<p class="mb-0 text-muted">Ph: <?= htmlspecialchars($ins['Ins_Address_Phone']) ?> &nbsp; Fax: <?= htmlspecialchars($ins['Ins_Address_Phone_Fax']) ?></p>
+														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($ins['Ins_Address_Phone']) ?> &nbsp; <i class="ti ti-device-fax me-1"></i><?= htmlspecialchars($ins['Ins_Address_Phone_Fax']) ?></p>
 													</div>
 													<div class="col-md-2">
 														<label class="form-label fw-semibold">Claim No.</label>
@@ -160,7 +160,7 @@ $order['insurance'] = $insurance;
 														<label class="form-label fw-semibold">Location Name</label>
 														<input type="text" class="form-control mb-1" value="<?= htmlspecialchars($loc['Loc_Name']) ?>" readonly>
 														<p class="mb-0"><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
-														<p class="mb-0 text-muted">Ph: <?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; Fax: <?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
+														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class="ti ti-device-fax me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
 													</div>
 													<div class="col-md-10">
 														<label class="form-label fw-semibold">Special Instructions</label>
