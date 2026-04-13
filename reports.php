@@ -1,6 +1,7 @@
 <?php require_once 'config/db.php'; ?>
 <?php
-		$stmt = $pdo->query("SELECT * FROM API_Input_Orders");
+		$stmt = $pdo->query("SELECT * FROM API_Input_Order_Locations AS iol
+INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_API_Input_Order_ID`)");
 		$orders = $stmt->fetchAll();
 		$total = $pdo->query("SELECT COUNT(*) FROM API_Input_Orders")->fetchColumn();
 	?>
@@ -11,6 +12,7 @@
 	</head>
 
 	<body>
+		<?php echo '<pre>' . print_r($order, true) . '</pre>'; ?>
 		<!-- Begin page -->
 		<div class="wrapper">
 			<?php include('partials/topbar.php'); ?> <?php include('partials/sidenav.php'); ?>
@@ -198,11 +200,8 @@
 												</th>
 												<th>Order ID</th>
 												<th>Order Date</th>
-												<th>Employer Name</th>
 												<th>Patient Name</th>
-												<th>Location</th>
-												<th>Type of Recordss</th>
-												<th>Location</th>
+												<th>Record Type</th>
 												<th>Status</th>
 												<th class="text-center" style="width: 1%">Actions</th>
 											</tr>
