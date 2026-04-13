@@ -214,10 +214,10 @@ INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_AP
 													<input class="form-check-input form-check-input-light fs-14 product-item-check mt-0" type="checkbox" value="option" />
 												</td>
 												<td><h5 class="fs-sm mb-0 fw-medium"><a href="order_details.php?order_id=<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?>" class="link-reset">#<?= htmlspecialchars($row['__kp_API_Input_Order_Location_ID']) ?></a></h5></td>
-												<td></td>
 												<td><?= htmlspecialchars(date('Y-m-d', strtotime($row['API_Input_Timestamp']))) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name']) ?></td>
-												<td><?= htmlspecialchars($row['Pat_AKA']) ?></td>
+												<td><?= htmlspecialchars($row['Rec_Type']) ?></td>
+												<td><?= htmlspecialchars($row['Loc_Name']) ?></td>
 												<td><?= htmlspecialchars($row['_kf_Service_Subtype_ID_Str']) ?></td>
 												<td></td>
 												<td></td>
