@@ -85,8 +85,7 @@ $order['insurance'] = $insurance;
 											<div class="row g-3 mb-4">
 												<div class="col-md-3">
 													<label class="form-label fw-semibold">Service Type</label>
-													<!-- <input type="text" class="form-control" value="<?= htmlspecialchars($order['_kf_Service_Type_ID_Str']) ?>" readonly> -->
-													<input type="text" id="validInput" class="form-control is-valid" />
+													<input type="text" id="validInput" value="<?= htmlspecialchars($order['_kf_Service_Type_ID_Str']) ?>" class="form-control is-valid" />
 												</div>
 												<div class="col-md-3">
 													<label class="form-label fw-semibold">Service Subtype</label>
