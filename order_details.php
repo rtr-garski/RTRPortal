@@ -156,33 +156,11 @@ $order['insurance'] = $insurance;
 														<label class="form-label fw-semibold">Dates Needed</label>
 														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Rec_Dates_Needed']) ?>" readonly>
 													</div>
-													<div class="col-md-3">
+													<div class="col-md-8">
 														<label class="form-label fw-semibold">Location Name</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Loc_Name']) ?>" readonly>
-													</div>
-													<div class="col-md-3">
-														<label class="form-label fw-semibold">Address</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Loc_Address_Street']) ?>" readonly>
-													</div>
-													<div class="col-md-2">
-														<label class="form-label fw-semibold">City</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Loc_Address_City']) ?>" readonly>
-													</div>
-													<div class="col-md-2">
-														<label class="form-label fw-semibold">State</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Loc_Address_State']) ?>" readonly>
-													</div>
-													<div class="col-md-2">
-														<label class="form-label fw-semibold">ZIP</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Loc_Address_Zip']) ?>" readonly>
-													</div>
-													<div class="col-md-2">
-														<label class="form-label fw-semibold">Phone</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Loc_Address_Phone']) ?>" readonly>
-													</div>
-													<div class="col-md-2">
-														<label class="form-label fw-semibold">Fax</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?>" readonly>
+														<input type="text" class="form-control mb-1" value="<?= htmlspecialchars($loc['Loc_Name']) ?>" readonly>
+														<p class="mb-0"><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
+														<p class="mb-0 text-muted">Ph: <?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; Fax: <?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
 													</div>
 													<div class="col-md-10">
 														<label class="form-label fw-semibold">Special Instructions</label>
