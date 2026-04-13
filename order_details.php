@@ -100,7 +100,7 @@ if (!$order) {
 													<label class="form-label fw-semibold">City</label>
 													<input type="text" class="form-control" value="Los Angeles" readonly>
 												</div>
-												<div class="col-md-1">
+												<div class="col-md-2">
 													<label class="form-label fw-semibold">State</label>
 													<select class="form-select">
 <option value="">-- State --</option>
@@ -178,7 +178,7 @@ if (!$order) {
 													<label class="form-label fw-semibold">City</label>
 													<input type="text" class="form-control" value="Sacramento" readonly>
 												</div>
-												<div class="col-md-1">
+												<div class="col-md-2">
 													<label class="form-label fw-semibold">State</label>
 													<select class="form-select">
 <option value="">-- State --</option>
@@ -278,7 +278,7 @@ if (!$order) {
 													<label class="form-label fw-semibold">City</label>
 													<input type="text" class="form-control" value="Sacramento" readonly>
 												</div>
-												<div class="col-md-1">
+												<div class="col-md-2">
 													<label class="form-label fw-semibold">State</label>
 													<select class="form-select">
 <option value="">-- State --</option>
@@ -382,7 +382,7 @@ if (!$order) {
 													<label class="form-label fw-semibold">City</label>
 													<input type="text" class="form-control" value="Los Angeles" readonly>
 												</div>
-												<div class="col-md-1">
+												<div class="col-md-2">
 													<label class="form-label fw-semibold">State</label>
 													<select class="form-select">
 <option value="">-- State --</option>
@@ -643,7 +643,7 @@ if (!$order) {
 
 									<div class="card">
 										<div class="card-header justify-content-between border-dashed">
-											<h4 class="card-title">Employer Details</h4>
+											<h4 class="card-title">Requesting Party</h4>
 											<a href="#!" class="btn btn-default btn-sm btn-icon rounded-circle"><i class="ti ti-pencil fs-lg"></i></a>
 										</div>
 										<!-- end card-header -->
@@ -651,7 +651,7 @@ if (!$order) {
 										<div class="card-body">
 											<div class="d-flex align-items-start my-3">
 												<div class="flex-grow-1">
-													<h5 class="mb-2">John Doe</h5>
+													<h5 class="mb-2">Mercury Drug</h5>
 													<p class="text-muted mb-1">
 														1234 Elm Street,<br />
 														Apt 567,<br />
