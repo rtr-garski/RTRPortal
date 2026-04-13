@@ -29,7 +29,9 @@ $locations = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         
 // loop inside the oredr	
 //$order['locations'] = $locations;   
-$order[$order['__kp_API_Input_Order_Location_ID']] = $locations; 
+$locationid = $order['__kp_API_Input_Order_Location_ID'];
+
+$order[$locationid] = $locations; 
                                                                                                                                                                                                       
 //$order['locations'][0]['your_location_field'];
 
