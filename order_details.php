@@ -102,17 +102,6 @@ $order['insurance'] = $insurance;
 											</div>
 
 											<hr>
-
-											<!-- Court Venue -->
-											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Court Venue</h5>
-											<div class="row g-3 mb-4">
-												<div class="col-md-12">
-													<label class="form-label fw-semibold">Court Reference</label>
-													<input type="text" class="form-control" value="<?= htmlspecialchars($order['_kf_Court_ID_Selected']) ?>" readonly>
-												</div>
-											</div>
-
-											<hr>
 											<!-- Insurance Carriers -->
 											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Insurance Carriers</h5>
 											<div class="row g-3 mb-4">
@@ -124,29 +113,10 @@ $order['insurance'] = $insurance;
 														<label class="form-label fw-semibold">Carrier Name</label>
 														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Name']) ?>" readonly>
 													</div>
-													<div class="col-md-4">
+													<div class="col-md-8">
 														<label class="form-label fw-semibold">Address</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Address_Street']) ?>" readonly>
-													</div>
-													<div class="col-md-2">
-														<label class="form-label fw-semibold">City</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Address_City']) ?>" readonly>
-													</div>
-													<div class="col-md-2">
-														<label class="form-label fw-semibold">State</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Address_State']) ?>" readonly>
-													</div>
-													<div class="col-md-2">
-														<label class="form-label fw-semibold">ZIP</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Address_Zip']) ?>" readonly>
-													</div>
-													<div class="col-md-2">
-														<label class="form-label fw-semibold">Phone</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Address_Phone']) ?>" readonly>
-													</div>
-													<div class="col-md-2">
-														<label class="form-label fw-semibold">Fax</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($ins['Ins_Address_Phone_Fax']) ?>" readonly>
+														<p class="mb-0"><?= htmlspecialchars($ins['Ins_Address_Street']) ?>, <?= htmlspecialchars($ins['Ins_Address_City']) ?>, <?= htmlspecialchars($ins['Ins_Address_State']) ?> <?= htmlspecialchars($ins['Ins_Address_Zip']) ?></p>
+														<p class="mb-0 text-muted">Ph: <?= htmlspecialchars($ins['Ins_Address_Phone']) ?> &nbsp; Fax: <?= htmlspecialchars($ins['Ins_Address_Phone_Fax']) ?></p>
 													</div>
 													<div class="col-md-3">
 														<label class="form-label fw-semibold">Claim No.</label>
