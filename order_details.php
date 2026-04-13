@@ -72,7 +72,7 @@ $order['insurance'] = $insurance;
 												<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
 												<p class="text-muted mb-3"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
 												<!-- <span class="badge badge-soft-success fs-xxs badge-label"><i class="ti ti-circle-filled fs-sm align-middle"></i> Paid</span> -->
-												<span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-truck fs-sm align-middle"></i> Status</span>
+												<span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span>
 											</div>
 											<div class="ms-auto">
 												<!-- <a href="javascript: void(0);" class="btn btn-light"><i class="ti ti-pencil me-1"></i> Modify</a> -->
