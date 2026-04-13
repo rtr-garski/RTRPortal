@@ -15,7 +15,6 @@ INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_AP
 		
 		<!-- Begin page -->
 		<div class="wrapper">
-			<?php echo '<pre>' . print_r($orders, true) . '</pre>'; ?>
 			<?php include('partials/topbar.php'); ?> <?php include('partials/sidenav.php'); ?>
 
 			<!-- ============================================================== -->
@@ -24,6 +23,7 @@ INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_AP
 
 			<div class="content-page">
 				<div class="container-fluid">
+					<?php echo '<pre>' . print_r($orders, true) . '</pre>'; ?>
 					<?php $subtitle = "Reports"; $title = "Orders"; include('partials/page-title.php'); ?>
 
 					<div class="row row-cols-xxl-5 row-cols-md-3 row-cols-1 align-items-center g-1">
