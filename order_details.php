@@ -168,7 +168,26 @@ $order['insurance'] = $insurance;
 												<div class="row g-3">
 													<div class="col-md-2">
 														<label class="form-label fw-semibold">Record Type</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Rec_Type']) ?>" readonly>
+														<select class="form-select">
+															<option value="">-- Select --</option>
+															<?php
+															$recTypeOptions = [
+																'Medical',
+																'Billing',
+																'X-Ray/MRI Images/Films',
+																'Claim File',
+																'Employment & Payroll',
+																'Payroll',
+																'Employment',
+																'WCIC Information for Defendant/Employee',
+																'Non-Privileged',
+																'Pharmacy Prescription',
+															];
+															foreach ($recTypeOptions as $opt):
+															?>
+															<option value="<?= htmlspecialchars($opt) ?>" <?= $loc['Rec_Type'] === $opt ? 'selected' : '' ?>><?= htmlspecialchars($opt) ?></option>
+															<?php endforeach; ?>
+														</select>
 													</div>
 													<div class="col-md-2">
 														<label class="form-label fw-semibold">Dates Needed</label>
