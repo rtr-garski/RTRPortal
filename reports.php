@@ -217,16 +217,16 @@
 										<tbody>
 											<?php foreach ($orders as $row): ?>
 											<tr>
-												<td class="ps-3">
+												<td align="center" class="ps-3">
 													<input class="form-check-input form-check-input-light fs-14 product-item-check mt-0" type="checkbox" value="option" />
 												</td>
-												<td><h5 class="fs-sm mb-0 fw-medium"><a href="order_details.php?order_id=<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?>" class="link-reset">#<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?></a></h5></td>
-												<td><?= htmlspecialchars(date('Y-m-d', strtotime($row['API_Input_Timestamp']))) ?></td>
-												<td><?= htmlspecialchars($row['Pat_Name']) ?></td>
-												<td><?= htmlspecialchars($row['Rec_Type']) ?></td>
-												<td><?= (int)$row['location_count'] ?></td>
-												<td><?= htmlspecialchars($row['_kf_Service_Type_ID_Str']) ?></td>
-												<td>Status</td>
+												<td align="center"><h5 class="fs-sm mb-0 fw-medium"><a href="order_details.php?order_id=<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?>" class="link-reset">#<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?></a></h5></td>
+												<td align="center"><?= htmlspecialchars(date('Y-m-d', strtotime($row['API_Input_Timestamp']))) ?></td>
+												<td align="center"><?= htmlspecialchars($row['Pat_Name']) ?></td>
+												<td align="center"><?= htmlspecialchars($row['Rec_Type']) ?></td>
+												<td align="center"><?= (int)$row['location_count'] ?></td>
+												<td align="center"><?= htmlspecialchars($row['_kf_Service_Type_ID_Str']) ?></td>
+												<td align="center">Status</td>
 												<td>
 													<div class="d-flex justify-content-center gap-1">
 														<a href="#" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-eye fs-lg"></i></a>
