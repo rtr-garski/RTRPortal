@@ -476,27 +476,36 @@ $order['insurance'] = $insurance;
 							<select class="form-select" id="changeInfoSelect">
 								<option value="">-- Select --</option>
 								<optgroup label="Insurance Carriers">
-									<option>Allstate Insurance</option>
-									<option>State Farm</option>
-									<option>Farmers Insurance</option>
-									<option>Liberty Mutual</option>
-									<option>Travelers Insurance</option>
-									<option>Nationwide</option>
-									<option>USAA</option>
-									<option>Progressive</option>
-									<option>Geico</option>
-									<option>Hartford Financial Services</option>
+									<option data-address="2775 Sanders Rd, Northbrook, IL 60062" data-phone="(800) 255-7828" data-fax="(800) 416-8803">Allstate Insurance</option>
+									<option data-address="1 State Farm Plaza, Bloomington, IL 61710" data-phone="(800) 732-5246" data-fax="(800) 732-5247">State Farm</option>
+									<option data-address="6301 Owensmouth Ave, Woodland Hills, CA 91367" data-phone="(800) 435-7764" data-fax="(818) 584-6001">Farmers Insurance</option>
+									<option data-address="175 Berkeley St, Boston, MA 02116" data-phone="(800) 290-7933" data-fax="(617) 357-9500">Liberty Mutual</option>
+									<option data-address="485 Lexington Ave, New York, NY 10017" data-phone="(800) 328-2189" data-fax="(860) 277-7362">Travelers Insurance</option>
+									<option data-address="1 Nationwide Plaza, Columbus, OH 43215" data-phone="(800) 882-2822" data-fax="(614) 249-7705">Nationwide</option>
+									<option data-address="9800 Fredericksburg Rd, San Antonio, TX 78288" data-phone="(800) 531-8722" data-fax="(800) 531-8951">USAA</option>
+									<option data-address="6300 Wilson Mills Rd, Mayfield Village, OH 44143" data-phone="(800) 776-4737" data-fax="(440) 395-4000">Progressive</option>
+									<option data-address="5620 Virginia Beach Blvd, Norfolk, VA 23502" data-phone="(800) 207-7847" data-fax="(757) 819-6200">Geico</option>
+									<option data-address="1 Hartford Plaza, Hartford, CT 06155" data-phone="(860) 547-5000" data-fax="(860) 547-6001">Hartford Financial Services</option>
 								</optgroup>
 								<optgroup label="Workers Comp Carriers">
-									<option>Zurich North America</option>
-									<option>Chubb</option>
-									<option>AIG (American International Group)</option>
-									<option>Berkshire Hathaway</option>
-									<option>ICW Group</option>
-									<option>EMPLOYERS Holdings</option>
-									<option>AmTrust Financial</option>
+									<option data-address="1400 American Ln, Schaumburg, IL 60196" data-phone="(800) 382-2150" data-fax="(847) 605-6011">Zurich North America</option>
+									<option data-address="202 Hall's Mill Rd, Whitehouse Station, NJ 08889" data-phone="(800) 252-4670" data-fax="(908) 903-3001">Chubb</option>
+									<option data-address="175 Water St, New York, NY 10038" data-phone="(212) 770-7000" data-fax="(212) 509-9705">AIG (American International Group)</option>
+									<option data-address="3555 Farnam St, Omaha, NE 68131" data-phone="(402) 346-1400" data-fax="(402) 346-3375">Berkshire Hathaway</option>
+									<option data-address="11455 El Camino Real, San Diego, CA 92130" data-phone="(858) 350-2400" data-fax="(858) 350-2700">ICW Group</option>
+									<option data-address="10375 Professional Cir, Reno, NV 89521" data-phone="(888) 682-6671" data-fax="(775) 327-2801">EMPLOYERS Holdings</option>
+									<option data-address="800 Superior Ave E, Cleveland, OH 44114" data-phone="(216) 689-7000" data-fax="(216) 689-4236">AmTrust Financial</option>
 								</optgroup>
 							</select>
+							<div id="selectedCarrierInfo" class="mt-2 p-2 bg-light border rounded" style="display:none">
+								<div class="text-muted fs-xs">
+									<i class="ti ti-map-pin me-1"></i><span id="selectedCarrierAddress"></span>
+								</div>
+								<div class="text-muted fs-xs mt-1">
+									<i class="ti ti-phone me-1"></i><span id="selectedCarrierPhone"></span>
+									&nbsp;&nbsp;<i class="ti ti-printer me-1"></i><span id="selectedCarrierFax"></span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -521,6 +530,7 @@ $order['insurance'] = $insurance;
 					activeInput = input;
 					document.getElementById('changeInfoSubmitted').textContent = input.value || '(empty)';
 					document.getElementById('changeInfoSelect').value = '';
+					document.getElementById('selectedCarrierInfo').style.display = 'none';
 
 					var address = input.dataset.address || '';
 					var phone   = input.dataset.phone   || '';
@@ -546,6 +556,19 @@ $order['insurance'] = $insurance;
 
 					modal.show();
 				});
+			});
+
+			document.getElementById('changeInfoSelect').addEventListener('change', function () {
+				var opt = this.options[this.selectedIndex];
+				var info = document.getElementById('selectedCarrierInfo');
+				if (opt && opt.dataset.address) {
+					document.getElementById('selectedCarrierAddress').textContent = opt.dataset.address;
+					document.getElementById('selectedCarrierPhone').textContent   = opt.dataset.phone || '—';
+					document.getElementById('selectedCarrierFax').textContent     = opt.dataset.fax   || '—';
+					info.style.display = '';
+				} else {
+					info.style.display = 'none';
+				}
 			});
 
 			document.getElementById('changeInfoSave').addEventListener('click', function () {
