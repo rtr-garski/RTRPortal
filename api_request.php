@@ -4,13 +4,13 @@ header('Content-Type: application/json');
 
 require_once __DIR__ . '/config/db.php';
 
-// --- Valid API Tokens ---
+// test valid tokens
 $valid_tokens = [
     'B8k7DqkC4z7LxeGkqGTHNqc7g',
     '4aTmu38uUteWUZ2fJsLLxNNQR',
 ];
 
-// --- Auth Check ---
+// get header and validate token, for test token as Bearer
 $headers = getallheaders();
 $auth_header = $headers['Authorization'] ?? $headers['authorization'] ?? '';
 
@@ -37,6 +37,12 @@ if ($action === 'search_company') {
     if ($query === '') {
         http_response_code(400);
         echo json_encode(['success' => false, 'error' => 'Missing search parameter: q']);
+        exit;
+    }
+
+    if (strlen($query) < 3) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'error' => 'Search query must be at least 3 characters.']);
         exit;
     }
 
