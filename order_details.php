@@ -125,8 +125,8 @@ $order['insurance'] = $insurance;
 																data-address="<?= htmlspecialchars($ins['Ins_Address_Street'] . ', ' . $ins['Ins_Address_City'] . ', ' . $ins['Ins_Address_State'] . ' ' . $ins['Ins_Address_Zip']) ?>"
 																data-phone="<?= htmlspecialchars($ins['Ins_Address_Phone']) ?>"
 																data-fax="<?= htmlspecialchars($ins['Ins_Address_Phone_Fax']) ?>">
-															<div class="valid-feedback">Correct Carrier</div>
-															<div class="invalid-feedback">Please Select Correct Carrier</div>
+															<div class="valid-feedback">Carrier verified.</div>
+															<div class="invalid-feedback">Please select the correct carrier.</div>
 													</div>
 													<div class="col-md-6">
 														<label class="form-label fw-semibold">Address</label>
@@ -205,8 +205,8 @@ $order['insurance'] = $insurance;
 																data-fax="<?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?>">
 														<p class="mb-0"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
 														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class="ti ti-printer me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
-														<div class="valid-feedback">Correct Info</div>
-														<div class="invalid-feedback">Please Select Correct Location</div>
+														<div class="valid-feedback">Location verified.</div>
+														<div class="invalid-feedback">Please select the correct location.</div>
 
 
 													</div>
