@@ -2,7 +2,12 @@
 <?php
 // 		$stmt = $pdo->query("SELECT * FROM API_Input_Order_Locations AS iol
 // INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_API_Input_Order_ID`)")
-		$stmt = $pdo->query("SELECT * FROM API_Input_Orders");
+		$stmt = $pdo->query("
+			SELECT io.*,
+				(SELECT COUNT(*) FROM API_Input_Order_Locations iol
+				 WHERE iol._kf_API_Input_Order_ID = io.__kp_API_Input_Order_ID) AS location_count
+			FROM API_Input_Orders io
+		");
 		$orders = $stmt->fetchAll();
 		$total = $pdo->query("SELECT COUNT(*) FROM API_Input_Orders")->fetchColumn();
 	?>
@@ -203,7 +208,7 @@
 												<th>Order Date</th>
 												<th>Patient Name</th>
 												<th>Record Type</th>
-												<th>Location Name</th>
+												<th>Location(s)</th>
 												<th>Service</th>
 												<th>Status</th>
 												<th class="text-center" style="width: 1%">Actions</th>
@@ -219,7 +224,7 @@
 												<td><?= htmlspecialchars(date('Y-m-d', strtotime($row['API_Input_Timestamp']))) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name']) ?></td>
 												<td><?= htmlspecialchars($row['Rec_Type']) ?></td>
-												<td><?= htmlspecialchars($row['Loc_Name']) ?></td>
+												<td><?= (int)$row['location_count'] ?></td>
 												<td><?= htmlspecialchars($row['_kf_Service_Type_ID_Str']) ?></td>
 												<td>Status</td>
 												<td>
