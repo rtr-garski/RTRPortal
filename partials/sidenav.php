@@ -144,8 +144,8 @@
                                 </a>
                             </li>
                             <li class="side-nav-item">
-                                <a href="#" class="side-nav-link">
-                                    <span class="menu-text">Custom Report</span>
+                                <a href="client_reports.php" class="side-nav-link">
+                                    <span class="menu-text">Client Reports</span>
                                 </a>
                             </li>
                            
