@@ -121,7 +121,10 @@ $order['insurance'] = $insurance;
 													<div class="col-md-4">
 														<label class="form-label fw-semibold">Carrier Name</label>
 															<?php $insValid = rand(0,1); ?>
-															<input type="text" id="<?= $insValid ? 'validInput' : 'inValidationInput' ?>" class="form-control <?= $insValid ? 'is-valid' : 'is-invalid' ?>" value="<?= htmlspecialchars($ins['Ins_Name']) ?>">
+															<input type="text" id="<?= $insValid ? 'validInput' : 'inValidationInput' ?>" class="form-control <?= $insValid ? 'is-valid' : 'is-invalid' ?>" value="<?= htmlspecialchars($ins['Ins_Name']) ?>"
+																data-address="<?= htmlspecialchars($ins['Ins_Address_Street'] . ', ' . $ins['Ins_Address_City'] . ', ' . $ins['Ins_Address_State'] . ' ' . $ins['Ins_Address_Zip']) ?>"
+																data-phone="<?= htmlspecialchars($ins['Ins_Address_Phone']) ?>"
+																data-fax="<?= htmlspecialchars($ins['Ins_Address_Phone_Fax']) ?>">
 															<div class="valid-feedback">Correct Carrier</div>
 															<div class="invalid-feedback">Please Select Correct Carrier</div>
 													</div>
@@ -196,7 +199,10 @@ $order['insurance'] = $insurance;
 													<div class="col-md-8">
 														<label class="form-label fw-semibold">Location Name</label>
 														<?php $insValid = rand(0,1); ?>
-															<input type="text" id="<?= $insValid ? 'validInput' : 'inValidationInput' ?>" class="form-control <?= $insValid ? 'is-valid' : 'is-invalid' ?>" value="<?= htmlspecialchars($loc['Loc_Name']) ?>">
+															<input type="text" id="<?= $insValid ? 'validInput' : 'inValidationInput' ?>" class="form-control <?= $insValid ? 'is-valid' : 'is-invalid' ?>" value="<?= htmlspecialchars($loc['Loc_Name']) ?>"
+																data-address="<?= htmlspecialchars($loc['Loc_Address_Street'] . ', ' . $loc['Loc_Address_City'] . ', ' . $loc['Loc_Address_State'] . ' ' . $loc['Loc_Address_Zip']) ?>"
+																data-phone="<?= htmlspecialchars($loc['Loc_Address_Phone']) ?>"
+																data-fax="<?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?>">
 														<p class="mb-0"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
 														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class="ti ti-printer me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
 														<div class="valid-feedback">Correct Info</div>
@@ -455,7 +461,14 @@ $order['insurance'] = $insurance;
 						<div class="mb-3">
 							<label class="form-label text-muted fs-xs fw-semibold text-uppercase">Submitted Value</label>
 							<div class="p-2 bg-danger-subtle border border-danger-subtle rounded">
-								<span id="changeInfoSubmitted" class="fw-semibold text-danger"></span>
+								<div class="fw-semibold text-danger mb-1" id="changeInfoSubmitted"></div>
+								<div class="text-muted fs-xs" id="changeInfoAddress" style="display:none">
+									<i class="ti ti-map-pin me-1"></i><span id="changeInfoAddressText"></span>
+								</div>
+								<div class="text-muted fs-xs mt-1" id="changeInfoContact" style="display:none">
+									<i class="ti ti-phone me-1"></i><span id="changeInfoPhone"></span>
+									&nbsp;&nbsp;<i class="ti ti-printer me-1"></i><span id="changeInfoFax"></span>
+								</div>
 							</div>
 						</div>
 						<div class="mb-3">
@@ -508,6 +521,29 @@ $order['insurance'] = $insurance;
 					activeInput = input;
 					document.getElementById('changeInfoSubmitted').textContent = input.value || '(empty)';
 					document.getElementById('changeInfoSelect').value = '';
+
+					var address = input.dataset.address || '';
+					var phone   = input.dataset.phone   || '';
+					var fax     = input.dataset.fax     || '';
+
+					var addrRow    = document.getElementById('changeInfoAddress');
+					var contactRow = document.getElementById('changeInfoContact');
+
+					if (address) {
+						document.getElementById('changeInfoAddressText').textContent = address;
+						addrRow.style.display = '';
+					} else {
+						addrRow.style.display = 'none';
+					}
+
+					if (phone || fax) {
+						document.getElementById('changeInfoPhone').textContent = phone || '—';
+						document.getElementById('changeInfoFax').textContent   = fax   || '—';
+						contactRow.style.display = '';
+					} else {
+						contactRow.style.display = 'none';
+					}
+
 					modal.show();
 				});
 			});
