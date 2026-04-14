@@ -20,10 +20,10 @@ try {
 }
 
 // --- Second Dbase ---
-/*$host2   = 'localhost';
-$db2     = 'YOUR_SECOND_DB_NAME';
-$user2   = 'YOUR_SECOND_DB_USER';
-$pass2   = 'YOUR_SECOND_DB_PASS';
+$host2   = '127.0.0.1';
+$db2     = 't287pBSqKsFdc82';
+$user2   = 'xaBJKWjwGs421vz';
+$pass2   = 'pNVUZiVNpX5aHCe8Lb441qtA';
 
 $dsn2 = "mysql:host=$host2;dbname=$db2;charset=$charset";
 
@@ -31,6 +31,6 @@ try {
     $pdo2 = new PDO($dsn2, $user2, $pass2, $options);
 } catch (PDOException $e) {
     die("Secondary database connection failed: " . $e->getMessage());
-}*/
+}
 
 ?>
