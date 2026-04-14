@@ -443,6 +443,86 @@ $order['insurance'] = $insurance;
 		</div>
 		<!-- END wrapper -->
 
+		<!-- Change Info Modal -->
+		<div class="modal fade" id="changeInfoModal" tabindex="-1" aria-labelledby="changeInfoModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="changeInfoModalLabel">Change Info</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="mb-3">
+							<label class="form-label text-muted fs-xs fw-semibold text-uppercase">Submitted Value</label>
+							<div class="p-2 bg-danger-subtle border border-danger-subtle rounded">
+								<span id="changeInfoSubmitted" class="fw-semibold text-danger"></span>
+							</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label fw-semibold" for="changeInfoSelect">Select Correct Insurance / Carrier</label>
+							<select class="form-select" id="changeInfoSelect">
+								<option value="">-- Select --</option>
+								<optgroup label="Insurance Carriers">
+									<option>Allstate Insurance</option>
+									<option>State Farm</option>
+									<option>Farmers Insurance</option>
+									<option>Liberty Mutual</option>
+									<option>Travelers Insurance</option>
+									<option>Nationwide</option>
+									<option>USAA</option>
+									<option>Progressive</option>
+									<option>Geico</option>
+									<option>Hartford Financial Services</option>
+								</optgroup>
+								<optgroup label="Workers Comp Carriers">
+									<option>Zurich North America</option>
+									<option>Chubb</option>
+									<option>AIG (American International Group)</option>
+									<option>Berkshire Hathaway</option>
+									<option>ICW Group</option>
+									<option>EMPLOYERS Holdings</option>
+									<option>AmTrust Financial</option>
+								</optgroup>
+							</select>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-primary" id="changeInfoSave">Apply Change</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Change Info Modal -->
+
 		<?php include('partials/customizer.php'); ?> <?php include('partials/footer-scripts.php'); ?>
+
+		<script>
+		(function () {
+			var modal = new bootstrap.Modal(document.getElementById('changeInfoModal'));
+			var activeInput = null;
+
+			document.querySelectorAll('input.is-invalid').forEach(function (input) {
+				input.style.cursor = 'pointer';
+				input.addEventListener('click', function () {
+					activeInput = input;
+					document.getElementById('changeInfoSubmitted').textContent = input.value || '(empty)';
+					document.getElementById('changeInfoSelect').value = '';
+					modal.show();
+				});
+			});
+
+			document.getElementById('changeInfoSave').addEventListener('click', function () {
+				var selected = document.getElementById('changeInfoSelect').value;
+				if (activeInput && selected) {
+					activeInput.value = selected;
+					activeInput.classList.remove('is-invalid');
+					activeInput.classList.add('is-valid');
+					activeInput.style.cursor = '';
+				}
+				modal.hide();
+			});
+		})();
+		</script>
 	</body>
 </html>
