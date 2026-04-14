@@ -260,7 +260,7 @@ $order['insurance'] = $insurance;
 									<!-- end card-->
 									 <div class="card">
 										<div class="card-header">
-											<h4 class="card-title">Order Activity</h4>
+											<h4 class="card-title">Activity</h4>
 										</div>
 										<div class="card-body p-4">
 											<div class="timeline">
@@ -278,7 +278,7 @@ $order['insurance'] = $insurance;
 
 												<!-- Event 2 -->
 												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted">Today, 9:00 AM</div>
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="9:00 AM">Apr 14 '26</div>
 													<div class="timeline-dot bg-success"></div>
 													<div class="timeline-content ps-3 pb-5">
 														<h5 class="mb-1">QA Status</h5>
@@ -289,7 +289,7 @@ $order['insurance'] = $insurance;
 
 												<!-- Event 3 -->
 												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted">Yesterday, 3:15 PM</div>
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="3:15 PM">Apr 13 '26</div>
 													<div class="timeline-dot bg-success"></div>
 													<div class="timeline-content ps-3 pb-5">
 														<h5 class="mb-1">Order Copied</h5>
@@ -298,7 +298,7 @@ $order['insurance'] = $insurance;
 
 												<!-- Event 4 -->
 												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted">Monday, 6:00 PM</div>
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="6:00 PM">Apr 7 '26</div>
 													<div class="timeline-dot bg-success"></div>
 													<div class="timeline-content ps-3 pb-5">
 														<h5 class="mb-1">Order Served</h5>
@@ -306,7 +306,7 @@ $order['insurance'] = $insurance;
 												</div>
 
 												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted">Last Friday, 5:00 PM</div>
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="5:00 PM">Apr 4 '26</div>
 													<div class="timeline-dot bg-success"></div>
 													<div class="timeline-content ps-3 pb-5">
 														<h5 class="mb-1">Order Verified</h5>
@@ -316,7 +316,7 @@ $order['insurance'] = $insurance;
 												</div>
 
 												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted">Last Friday, 4:00 PM</div>
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="4:00 PM">Apr 4 '26</div>
 													<div class="timeline-dot bg-success"></div>
 													<div class="timeline-content ps-3 pb-5">
 														<h5 class="mb-1">Order Received</h5>
