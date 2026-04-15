@@ -19,7 +19,7 @@
 			$cStmt = $pdo2->prepare("SELECT client_sysid, client_name FROM sys_client WHERE client_sysid IN ($placeholders)");
 			$cStmt->execute(array_values($clientIds));
 			foreach ($cStmt->fetchAll() as $c) {
-				$clientMap[$c['client_sysid']] = $c['client_name'];
+				$clientMap[$c['client_sysid']] = trim($c['client_name']);
 			}
 		}
 
