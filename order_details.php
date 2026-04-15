@@ -114,8 +114,6 @@ $order['insurance'] = $insurance;
 											<h4 class="card-title">Insurance Carriers</h4>
 											<div class="card-action">
 													<a href="#!" class="card-action-item" data-action="card-toggle"><i class="ti ti-chevron-up"></i></a>
-													<a href="#!" class="card-action-item" data-action="card-refresh"><i class="ti ti-refresh"></i></a>
-													<a href="#!" class="card-action-item" data-action="card-close"><i class="ti ti-x"></i></a>
 											</div>
 
 										</div>
@@ -169,8 +167,12 @@ $order['insurance'] = $insurance;
 
 									<!-- Records Locations -->
 									<div class="card">
-										<div class="card-header">
+										<div class="card-header justify-content-between align-items-center">
 											<h4 class="card-title">Records Locations</h4>
+											<div class="card-action">
+													<a href="#!" class="card-action-item" data-action="card-toggle"><i class="ti ti-chevron-up"></i></a>
+											</div>
+
 										</div>
 										<div class="card-body px-4">
 											<?php foreach ($order['locations'] as $i => $loc): ?>
