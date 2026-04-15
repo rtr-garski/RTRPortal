@@ -9,7 +9,24 @@
 			FROM API_Input_Orders io
 		");
 		$orders = $stmt->fetchAll();
-		$total = $pdo->query("SELECT COUNT(*) FROM API_Input_Orders")->fetchColumn();
+		$total = count($orders);
+
+		$statuses = [
+			['label' => 'New Request',  'class' => 'badge-soft-secondary'],
+			['label' => 'In Review',    'class' => 'badge-soft-info'],
+			['label' => 'In Progress',  'class' => 'badge-soft-success'],
+			['label' => 'Canceled',     'class' => 'badge-soft-danger'],
+			['label' => 'Completed',    'class' => 'badge-soft-primary'],
+		];
+
+		$counts = ['New Request' => 0, 'In Review' => 0, 'In Progress' => 0, 'Canceled' => 0, 'Completed' => 0];
+
+		foreach ($orders as &$row) {
+			$s = $statuses[array_rand($statuses)];
+			$row['_status'] = $s;
+			$counts[$s['label']]++;
+		}
+		unset($row);
 	?>
 <!doctype html>
 <html lang="en">
@@ -37,16 +54,13 @@
 								<div class="card-body">
 									<div class="d-flex align-items-center gap-2 mb-3">
 										<div class="avatar-md flex-shrink-0">
-											<span class="avatar-title text-bg-success rounded-circle fs-22">
-												<i class="ti ti-check"></i>
+											<span class="avatar-title text-bg-secondary rounded-circle fs-22">
+												<i class="ti ti-file-plus"></i>
 											</span>
 										</div>
-										<h3 class="mb-0"><?= $total; ?></h3>
+										<h3 class="mb-0"><?= $counts['New Request'] ?></h3>
 									</div>
-									<p class="mb-0">
-										New Request
-										<span class="float-end badge badge-soft-success">+3.34%</span>
-									</p>
+									<p class="mb-0">New Request</p>
 								</div>
 							</div>
 						</div>
@@ -56,16 +70,29 @@
 								<div class="card-body">
 									<div class="d-flex align-items-center gap-2 mb-3">
 										<div class="avatar-md flex-shrink-0">
-											<span class="avatar-title text-bg-warning rounded-circle fs-22">
+											<span class="avatar-title text-bg-info rounded-circle fs-22">
+												<i class="ti ti-eye"></i>
+											</span>
+										</div>
+										<h3 class="mb-0"><?= $counts['In Review'] ?></h3>
+									</div>
+									<p class="mb-0">In Review</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="card mb-1">
+								<div class="card-body">
+									<div class="d-flex align-items-center gap-2 mb-3">
+										<div class="avatar-md flex-shrink-0">
+											<span class="avatar-title text-bg-success rounded-circle fs-22">
 												<i class="ti ti-alarm-snooze"></i>
 											</span>
 										</div>
-										<h3 class="mb-0">0</h3>
+										<h3 class="mb-0"><?= $counts['In Progress'] ?></h3>
 									</div>
-									<p class="mb-0">
-										Pending Orders
-										<!-- <span class="float-end badge badge-soft-warning">-1.12%</span> -->
-									</p>
+									<p class="mb-0">In Progress</p>
 								</div>
 							</div>
 						</div>
@@ -79,31 +106,9 @@
 												<i class="ti ti-x"></i>
 											</span>
 										</div>
-										<h3 class="mb-0">0</h3>
+										<h3 class="mb-0"><?= $counts['Canceled'] ?></h3>
 									</div>
-									<p class="mb-0">
-										Canceled Orders
-										<!-- <span class="float-end badge badge-soft-danger">-0.75%</span> -->
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col">
-							<div class="card mb-1">
-								<div class="card-body">
-									<div class="d-flex align-items-center gap-2 mb-3">
-										<div class="avatar-md flex-shrink-0">
-											<span class="avatar-title text-bg-info rounded-circle fs-22">
-												<i class="ti ti-shopping-cart"></i>
-											</span>
-										</div>
-										<h3 class="mb-0">0</h3>
-									</div>
-									<p class="mb-0">
-										Completed Orders
-										<!-- <span class="float-end badge badge-soft-info">+4.22%</span>
-									</p> -->
+									<p class="mb-0">Canceled</p>
 								</div>
 							</div>
 						</div>
@@ -114,15 +119,12 @@
 									<div class="d-flex align-items-center gap-2 mb-3">
 										<div class="avatar-md flex-shrink-0">
 											<span class="avatar-title text-bg-primary rounded-circle fs-22">
-												<i class="ti ti-refresh"></i>
+												<i class="ti ti-check"></i>
 											</span>
 										</div>
-										<h3 class="mb-0">0</h3>
+										<h3 class="mb-0"><?= $counts['Completed'] ?></h3>
 									</div>
-									<p class="mb-0">
-										Returned Orders
-										<!-- <span class="float-end badge badge-soft-primary">+0.56%</span> -->
-									</p>
+									<p class="mb-0">Completed</p>
 								</div>
 							</div>
 						</div>
@@ -226,17 +228,7 @@
 												<td><?= htmlspecialchars($row['Rec_Type']) ?></td>
 												<td><?= (int)$row['location_count'] ?></td>
 												<td><?= htmlspecialchars($row['_kf_Service_Type_ID_Str']) ?></td>
-												<?php
-													$statuses = [
-														['label' => 'In Review',   'class' => 'badge-soft-info'],
-														['label' => 'Overdue',     'class' => 'badge-soft-danger'],
-														['label' => 'Completed',   'class' => 'badge-soft-primary'],
-														['label' => 'In Progress', 'class' => 'badge-soft-success'],
-														['label' => 'Scheduled',   'class' => 'badge-soft-secondary'],
-													];
-													$s = $statuses[array_rand($statuses)];
-												?>
-												<td><span class="badge <?= $s['class'] ?> fs-xxs badge-label"><?= $s['label'] ?></span></td>
+												<td><span class="badge <?= $row['_status']['class'] ?> fs-xxs badge-label"><?= $row['_status']['label'] ?></span></td>
 												<td>
 													<div class="d-flex justify-content-center gap-1">
 														<a href="#" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-eye fs-lg"></i></a>
