@@ -59,7 +59,8 @@ $order['insurance'] = $insurance;
 				<div class="container-fluid">
 					<?php   $subtitle = "Order"; $title = "Order Details"; include('partials/page-title.php'); ?>
 
-					<div class="row justify-content-center">
+					<!-- <div class="row justify-content-center"> -->
+					<div class="row">
 						<div class="col-xxl-10">
 							<div class="row">
 								<!-- Project Main Details -->
