@@ -231,12 +231,21 @@
 												<td><?= htmlspecialchars($row['_kf_Service_Type_ID_Str']) ?></td>
 												<td><span class="badge <?= $row['_status']['class'] ?> fs-xxs badge-label"><?= $row['_status']['label'] ?></span></td>
 												<td>
-													<div class="d-flex justify-content-center gap-1">
-														<a href="#" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-eye fs-lg"></i></a>
-														<a href="#" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-edit fs-lg"></i></a>
-														<a href="#" data-table-delete-row class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-trash fs-lg"></i></a>
-													</div>
-												</td>
+                                                    <div class="d-flex justify-content-center gap-1">
+                                                        <a href="#!" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-check fs-lg"></i></a>
+                                                        <a href="#!" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-x fs-lg"></i></a>
+                                                        <a href="#" data-table-delete-row class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-trash fs-lg"></i></a>
+                                                        <button class="btn btn-light btn-icon btn-sm rounded-circle dropdown-toggle drop-arrow-none" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical fs-lg"></i></button>
+                                                        <ul class="dropdown-menu dropdown-menu-end">
+                                                            <li><a class="dropdown-item" href="#">View order</a></li>
+                                                            <li><a class="dropdown-item" href="#">Contact customer</a></li>
+                                                            <li>
+                                                                <hr class="dropdown-divider" />
+                                                            </li>
+                                                            <li><a class="dropdown-item" href="#">Add note</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
 											</tr>
 											<?php endforeach; ?>
 										</tbody>

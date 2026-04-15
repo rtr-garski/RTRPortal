@@ -57,7 +57,20 @@ $order['insurance'] = $insurance;
 
 			<div class="content-page">
 				<div class="container-fluid">
-					<?php   $subtitle = "Order"; $title = "Order Details"; include('partials/page-title.php'); ?>
+					<?php   $subtitle = "Order"; $title = "Order Details"; ?>
+					<div class="page-title-head d-flex align-items-center">
+						<div class="flex-grow-1">
+							<h4 class="page-main-title m-0"><?php echo ($title); ?></h4>
+						</div>
+
+						<div class="text-end">
+							<ol class="breadcrumb m-0 py-0">
+								<li class="breadcrumb-item"><a href="javascript: void(0);">RTR</a></li>
+								<li class="breadcrumb-item"><a href="client_reports.php"><?php echo ($subtitle); ?></a></li>
+								<li class="breadcrumb-item active"><?php echo ($title); ?></li>
+							</ol>
+						</div>
+					</div>
 
 					<!-- <div class="row justify-content-center"> -->
 					<div class="row">

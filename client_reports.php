@@ -216,14 +216,12 @@
 												<td><?= htmlspecialchars(date('Y-m-d', strtotime($row['API_Input_Timestamp']))) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name']) ?></td>
 												<td><?= htmlspecialchars($row['_client_name']) ?></td>
-												<td><?= (int)$row['location_count'] ?></td>
+												<td><?= (int)$row['location_count'] ?> Location(s)</td>
 												<td><?= htmlspecialchars($row['_kf_Service_Type_ID_Str']) ?></td>
 												<td><span class="badge <?= $row['_status']['class'] ?> fs-xxs badge-label"><?= $row['_status']['label'] ?></span></td>
 												<td>
 													<div class="d-flex justify-content-center gap-1">
 														<a href="#" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-eye fs-lg"></i></a>
-														<a href="#" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-edit fs-lg"></i></a>
-														<a href="#" data-table-delete-row class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-trash fs-lg"></i></a>
 													</div>
 												</td>
 											</tr>
