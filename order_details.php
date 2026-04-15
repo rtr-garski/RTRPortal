@@ -266,11 +266,10 @@ $order['insurance'] = $insurance;
 															<?php endforeach; ?>
 														</select>
 													</div>
-													<div class="col-md-2">
-														<label class="form-label fw-semibold">Dates Needed</label>
-														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Rec_Dates_Needed']) ?>" readonly>
-													</div>
-													<div class="col-md-8">
+												</div>
+												<div class="row g-3">
+
+													<div class="col-md-4">
 														<label class="form-label fw-semibold">Location Name</label>
 														<?php $insValid = rand(0,1); ?>
 															<input type="text" id="<?= $insValid ? 'validInput' : 'inValidationInput' ?>" class="form-control <?= $insValid ? 'is-valid' : 'is-invalid' ?>" value="<?= htmlspecialchars($loc['Loc_Name']) ?>"
@@ -282,11 +281,14 @@ $order['insurance'] = $insurance;
 														<div class="valid-feedback">Location verified.</div>
 														<div class="invalid-feedback">Please select the correct location.</div>
 													</div>
-
 													<div class="col-md-4">
-														<label class="form-label fw-semibold">Location Suggestion</label>
-														<p class="mb-0 text-muted"><i class="ti ti-briefcase me-1"></i><?= htmlspecialchars($loc['Loc_Name']) ?></p>
-														<p class="mb-0"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
+													
+													</div>
+
+													<div class="col-md-4"><!-- submitted by client-->
+														<label class="form-label fw-semibold">Location Submitted</label>
+														<p class="mb-0"><i class="ti ti-briefcase me-1"></i><?= htmlspecialchars($loc['Loc_Name']) ?></p>
+														<p class="mb-0 text-muted"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
 														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class="ti ti-printer me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
 														<div class="valid-feedback">Location verified.</div>
 														<div class="invalid-feedback">Please select the correct location.</div>
