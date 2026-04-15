@@ -140,7 +140,7 @@
                         <ul class="sub-menu">
                             <li class="side-nav-item">
                                 <a href="reports.php" class="side-nav-link">
-                                    <span class="menu-text">API Submission</span>
+                                    <span class="menu-text">Order Entry Portal</span>
                                 </a>
                             </li>
                             <li class="side-nav-item">

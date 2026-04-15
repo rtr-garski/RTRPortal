@@ -208,7 +208,10 @@
 									</div>
 
 									<div class="d-flex gap-1">
-										<a href="#" class="btn btn-primary ms-1"> <i class="ti ti-plus fs-sm me-2"></i> Add Order </a>
+										<select data-table-set-rows-per-page class="form-select form-control my-1 my-md-0">
+												<option value="Client 1">Client 1</option>
+												
+											</select>
 									</div>
 								</div>
 								
