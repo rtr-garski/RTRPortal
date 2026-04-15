@@ -266,6 +266,10 @@ $order['insurance'] = $insurance;
 															<?php endforeach; ?>
 														</select>
 													</div>
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">Dates Needed</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Rec_Dates_Needed']) ?>" readonly>
+													</div>
 												</div>
 												<div class="row g-3">
 
@@ -280,9 +284,6 @@ $order['insurance'] = $insurance;
 														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class="ti ti-printer me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
 														<div class="valid-feedback">Location verified.</div>
 														<div class="invalid-feedback">Please select the correct location.</div>
-													</div>
-													<div class="col-md-4">
-													
 													</div>
 
 													<div class="col-md-4"><!-- submitted by client-->
