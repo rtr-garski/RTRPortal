@@ -44,7 +44,7 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<?php $title = "API Reports"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
+		<?php $title = "Client Portal"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
 	</head>
 
 	<body>
@@ -59,7 +59,7 @@
 
 			<div class="content-page">
 				<div class="container-fluid">
-					<?php $subtitle = "Reports"; $title = "Orders"; include('partials/page-title.php'); ?>
+					<?php $subtitle = "Reports"; $title = "Client Portal"; include('partials/page-title.php'); ?>
 
 					<div class="row row-cols-xxl-5 row-cols-md-3 row-cols-1 align-items-center g-1">
 						<div class="col">
