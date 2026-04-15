@@ -197,12 +197,12 @@
 													<input data-table-select-all class="form-check-input form-check-input-light fs-14 mt-0" type="checkbox" value="option" />
 												</th>
 												<th>Order ID</th>
-												<th>Order Date</th>
+												<th data-table-sort data-column="date">Order Date</th>
 												<th>Patient Name</th>
-												<th>Requester</th>
-												<th>Location(s)</th>
+												<th data-table-sort data-column="client">Requester</th>
+												<th data-table-sort="locationcount">Location(s)</th>
 												<th>Service</th>
-												<th>Status</th>
+												<th data-table-sort data-column="status">Status</th>
 												<th class="text-center" style="width: 1%">Actions</th>
 											</tr>
 										</thead>
