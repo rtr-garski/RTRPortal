@@ -229,6 +229,80 @@ $order['insurance'] = $insurance;
 										<!-- end card-body -->
 									</div>
 									<!-- end card -->
+
+									<!-- Records Locations 2 -->
+									<div class="card">
+										<div class="card-header justify-content-between align-items-center">
+											<h4 class="card-title">Records Locations 2 (With Order Entry Validation)</h4>
+											<div class="card-action">
+													<a href="#!" class="card-action-item" data-action="card-toggle"><i class="ti ti-chevron-up"></i></a>
+											</div>
+
+										</div>
+										<div class="card-body px-4">
+											<?php foreach ($order['locations'] as $i => $loc): ?>
+												<?php if ($i > 0): ?><hr class="my-3"><?php endif; ?>
+												<div class="row g-3">
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">Record Type</label>
+														<select class="form-select">
+															<option value="">-- Select --</option>
+															<?php
+															$recTypeOptions = [
+																'Medical',
+																'Billing',
+																'X-Ray/MRI Images/Films',
+																'Claim File',
+																'Employment & Payroll',
+																'Payroll',
+																'Employment',
+																'WCIC Information for Defendant/Employee',
+																'Non-Privileged',
+																'Pharmacy Prescription',
+															];
+															foreach ($recTypeOptions as $opt):
+															?>
+															<option value="<?= htmlspecialchars($opt) ?>" <?= $loc['Rec_Type'] === $opt ? 'selected' : '' ?>><?= htmlspecialchars($opt) ?></option>
+															<?php endforeach; ?>
+														</select>
+													</div>
+													<div class="col-md-2">
+														<label class="form-label fw-semibold">Dates Needed</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Rec_Dates_Needed']) ?>" readonly>
+													</div>
+													<div class="col-md-8">
+														<label class="form-label fw-semibold">Location Name</label>
+														<?php $insValid = rand(0,1); ?>
+															<input type="text" id="<?= $insValid ? 'validInput' : 'inValidationInput' ?>" class="form-control <?= $insValid ? 'is-valid' : 'is-invalid' ?>" value="<?= htmlspecialchars($loc['Loc_Name']) ?>"
+																data-address="<?= htmlspecialchars($loc['Loc_Address_Street'] . ', ' . $loc['Loc_Address_City'] . ', ' . $loc['Loc_Address_State'] . ' ' . $loc['Loc_Address_Zip']) ?>"
+																data-phone="<?= htmlspecialchars($loc['Loc_Address_Phone']) ?>"
+																data-fax="<?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?>">
+														<p class="mb-0"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
+														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class="ti ti-printer me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
+														<div class="valid-feedback">Location verified.</div>
+														<div class="invalid-feedback">Please select the correct location.</div>
+													</div>
+
+													<div class="col-md-4">
+														<label class="form-label fw-semibold">Location Name</label>
+														<p class="mb-0 text-muted"><i class="ti ti-briefcase me-1"></i><?= htmlspecialchars($loc['Loc_Name']) ?></p>
+														<p class="mb-0"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
+														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class="ti ti-printer me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
+														<div class="valid-feedback">Location verified.</div>
+														<div class="invalid-feedback">Please select the correct location.</div>
+
+
+													</div>
+													<div class="col-md-12">
+														<label class="form-label fw-semibold">Special Instructions</label>
+														<p class="mb-0"><?= htmlspecialchars($loc['Special_Instructions']) ?>Lorem Ipsum is dummy or placeholder text commonly used in graphic design, publishing, and web development to fill spaces where content will eventually appear.</p>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+										<!-- end card-body -->
+									</div>
+									<!-- end card -->
 								</div>
 								<!-- end col-xl-9 -->
 
