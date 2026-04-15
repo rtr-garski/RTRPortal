@@ -284,7 +284,7 @@ $order['insurance'] = $insurance;
 													</div>
 
 													<div class="col-md-4">
-														<label class="form-label fw-semibold">Location Name</label>
+														<label class="form-label fw-semibold">Location Suggestion</label>
 														<p class="mb-0 text-muted"><i class="ti ti-briefcase me-1"></i><?= htmlspecialchars($loc['Loc_Name']) ?></p>
 														<p class="mb-0"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
 														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class="ti ti-printer me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
