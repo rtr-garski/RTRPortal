@@ -160,10 +160,24 @@
 									<div class="d-flex align-items-center gap-2">
 										<span class="me-2 fw-semibold">Filter By:</span>
 
-										<!-- Delivery Status Filter -->
+										<!-- Client Filter -->
+										<?php
+											$clientOptions = [];
+											foreach ($orders as $o) {
+												if (!empty($o['_kf_Client_ID']) && !empty($o['_client_name']) && $o['_client_name'] !== '—') {
+													$clientOptions[$o['_kf_Client_ID']] = $o['_client_name'];
+												}
+											}
+											asort($clientOptions);
+										?>
 										<div class="app-search">
-											<select data-table-filter="order-status" class="form-select form-control my-1 my-md-0">
-												<option value="All">Companies</option>
+											<select data-table-filter="client" class="form-select form-control my-1 my-md-0">
+												<option value="All">All Clients</option>
+												<?php foreach ($clientOptions as $clientId => $clientName): ?>
+												<option value="<?= htmlspecialchars($clientId) ?>">
+													<?= htmlspecialchars($clientName) ?>
+												</option>
+												<?php endforeach; ?>
 											</select>
 											<i class="ti ti-truck app-search-icon text-muted"></i>
 										</div>
