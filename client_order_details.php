@@ -61,7 +61,7 @@ $order['insurance'] = $insurance;
 
 					<!-- <div class="row justify-content-center"> -->
 					<div class="row">
-						<div class="col-xxl-10">
+						<div class="col-12">
 							<div class="row">
 								<!-- Project Main Details -->
 								<div class="col-xl-9">
