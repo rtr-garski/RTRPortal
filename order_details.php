@@ -270,8 +270,8 @@ $order['insurance'] = $insurance;
 														<label class="form-label fw-semibold">Dates Needed</label>
 														<input type="text" class="form-control" value="<?= htmlspecialchars($loc['Rec_Dates_Needed']) ?>" readonly>
 													</div>
-												</div>
-												<div class="row g-3">
+												
+					
 
 													<div class="col-md-4">
 														<label class="form-label fw-semibold">Location Name</label>
