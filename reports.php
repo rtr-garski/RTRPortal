@@ -11,6 +11,18 @@
 		$orders = $stmt->fetchAll();
 		$total = count($orders);
 
+		// --- Lookup client_name from pdo2.sys_client ---
+		$clientIds = array_unique(array_filter(array_column($orders, '_kf_Client_ID')));
+		$clientMap = [];
+		if (!empty($clientIds)) {
+			$placeholders = implode(',', array_fill(0, count($clientIds), '?'));
+			$cStmt = $pdo2->prepare("SELECT client_sysid, client_name FROM sys_client WHERE client_sysid IN ($placeholders)");
+			$cStmt->execute(array_values($clientIds));
+			foreach ($cStmt->fetchAll() as $c) {
+				$clientMap[$c['client_sysid']] = $c['client_name'];
+			}
+		}
+
 		$statuses = [
 			['label' => 'New Request',  'class' => 'badge-soft-secondary'],
 			['label' => 'In Review',    'class' => 'badge-soft-info'],
@@ -25,6 +37,7 @@
 			$s = $statuses[array_rand($statuses)];
 			$row['_status'] = $s;
 			$counts[$s['label']]++;
+			$row['_client_name'] = $clientMap[$row['_kf_Client_ID']] ?? '—';
 		}
 		unset($row);
 	?>
@@ -209,7 +222,7 @@
 												<th>Order ID</th>
 												<th>Order Date</th>
 												<th>Patient Name</th>
-												<th>Record Type</th>
+												<th>Requester</th>
 												<th>Location(s)</th>
 												<th>Service</th>
 												<th>Status</th>
@@ -225,7 +238,7 @@
 												<td><h5 class="fs-sm mb-0 fw-medium"><a href="order_details.php?order_id=<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?>" class="link-reset">#<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?></a></h5></td>
 												<td><?= htmlspecialchars(date('Y-m-d', strtotime($row['API_Input_Timestamp']))) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name']) ?></td>
-												<td><?= htmlspecialchars($row['Rec_Type']) ?></td>
+												<td><?= htmlspecialchars($row['_client_name']) ?></td>
 												<td><?= (int)$row['location_count'] ?></td>
 												<td><?= htmlspecialchars($row['_kf_Service_Type_ID_Str']) ?></td>
 												<td><span class="badge <?= $row['_status']['class'] ?> fs-xxs badge-label"><?= $row['_status']['label'] ?></span></td>
