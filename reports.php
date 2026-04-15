@@ -160,18 +160,6 @@
 									<div class="d-flex align-items-center gap-2">
 										<span class="me-2 fw-semibold">Filter By:</span>
 
-										<!-- Payment Status Filter -->
-										<!-- <div class="app-search">
-											<select data-table-filter="payment-status" class="form-select form-control my-1 my-md-0">
-												<option value="All">Payment Status</option>
-												<option value="Paid">Paid</option>
-												<option value="Pending">Pending</option>
-												<option value="Failed">Failed</option>
-												<option value="Refunded">Refunded</option>
-											</select>
-											<i class="ti ti-credit-card app-search-icon text-muted"></i>
-										</div> -->
-
 										<!-- Delivery Status Filter -->
 										<div class="app-search">
 											<select data-table-filter="order-status" class="form-select form-control my-1 my-md-0">
@@ -208,10 +196,7 @@
 									</div>
 
 									<div class="d-flex gap-1">
-										<select data-table-set-rows-per-page class="form-select form-control my-1 my-md-0">
-												<option value="Client 1">Client 1</option>
-												
-											</select>
+										<a href="#" class="btn btn-primary ms-1"> <i class="ti ti-plus fs-sm me-2"></i> Add Order </a>
 									</div>
 								</div>
 								

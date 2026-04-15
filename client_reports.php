@@ -2,9 +2,34 @@
 <?php
 // 		$stmt = $pdo->query("SELECT * FROM API_Input_Order_Locations AS iol
 // INNER JOIN API_Input_Orders AS io ON (io.`__kp_API_Input_Order_ID` = iol.`_kf_API_Input_Order_ID`)")
-		$stmt = $pdo->query("SELECT * FROM API_Input_Orders");
+		$stmt = $pdo->query("
+			SELECT io.*,
+				(SELECT COUNT(*) FROM API_Input_Order_Locations iol
+				 WHERE iol._kf_API_Input_Order_ID = io.__kp_API_Input_Order_ID) AS location_count
+			FROM API_Input_Orders io
+		");
 		$orders = $stmt->fetchAll();
-		$total = $pdo->query("SELECT COUNT(*) FROM API_Input_Orders")->fetchColumn();
+		$total = count($orders);
+
+		$statuses = [
+			['label' => 'New Request',  'class' => 'badge-soft-secondary'],
+			['label' => 'In Review',    'class' => 'badge-soft-info'],
+			['label' => 'In Progress',  'class' => 'badge-soft-success'],
+			['label' => 'Canceled',     'class' => 'badge-soft-danger'],
+			['label' => 'Completed',    'class' => 'badge-soft-primary'],
+		];
+
+		$counts = ['New Request' => 0, 'In Review' => 0, 'In Progress' => 0, 'Canceled' => 0, 'Completed' => 0];
+
+		foreach ($orders as &$row) {
+			$s = $statuses[array_rand($statuses)];
+			$row['_status'] = $s;
+			$counts[$s['label']]++;
+		}
+		unset($row);
+
+		// --- Load companies from pdo2 ---
+		$companies = $pdo2->query("SELECT id, company_name FROM test_companies ORDER BY company_name ASC")->fetchAll();
 	?>
 <!doctype html>
 <html lang="en">
@@ -24,7 +49,89 @@
 
 			<div class="content-page">
 				<div class="container-fluid">
-					<?php $subtitle = "Client Portal"; $title = "Client Portal"; include('partials/page-title.php'); ?>
+					<?php $subtitle = "Client Portal"; $title = "Orders"; include('partials/page-title.php'); ?>
+
+					<div class="row row-cols-xxl-5 row-cols-md-3 row-cols-1 align-items-center g-1">
+						<div class="col">
+							<div class="card mb-1">
+								<div class="card-body">
+									<div class="d-flex align-items-center gap-2 mb-3">
+										<div class="avatar-md flex-shrink-0">
+											<span class="avatar-title text-bg-secondary rounded-circle fs-22">
+												<i class="ti ti-file-plus"></i>
+											</span>
+										</div>
+										<h3 class="mb-0"><?= $counts['New Request'] ?></h3>
+									</div>
+									<p class="mb-0">New Request</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="card mb-1">
+								<div class="card-body">
+									<div class="d-flex align-items-center gap-2 mb-3">
+										<div class="avatar-md flex-shrink-0">
+											<span class="avatar-title text-bg-info rounded-circle fs-22">
+												<i class="ti ti-eye"></i>
+											</span>
+										</div>
+										<h3 class="mb-0"><?= $counts['In Review'] ?></h3>
+									</div>
+									<p class="mb-0">In Review</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="card mb-1">
+								<div class="card-body">
+									<div class="d-flex align-items-center gap-2 mb-3">
+										<div class="avatar-md flex-shrink-0">
+											<span class="avatar-title text-bg-success rounded-circle fs-22">
+												<i class="ti ti-alarm-snooze"></i>
+											</span>
+										</div>
+										<h3 class="mb-0"><?= $counts['In Progress'] ?></h3>
+									</div>
+									<p class="mb-0">In Progress</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="card mb-1">
+								<div class="card-body">
+									<div class="d-flex align-items-center gap-2 mb-3">
+										<div class="avatar-md flex-shrink-0">
+											<span class="avatar-title text-bg-danger rounded-circle fs-22">
+												<i class="ti ti-x"></i>
+											</span>
+										</div>
+										<h3 class="mb-0"><?= $counts['Canceled'] ?></h3>
+									</div>
+									<p class="mb-0">Canceled</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="card mb-1">
+								<div class="card-body">
+									<div class="d-flex align-items-center gap-2 mb-3">
+										<div class="avatar-md flex-shrink-0">
+											<span class="avatar-title text-bg-primary rounded-circle fs-22">
+												<i class="ti ti-check"></i>
+											</span>
+										</div>
+										<h3 class="mb-0"><?= $counts['Completed'] ?></h3>
+									</div>
+									<p class="mb-0">Completed</p>
+								</div>
+							</div>
+						</div>
+					</div>
 					<!-- end row -->
 
 					<div class="row">
@@ -42,15 +149,24 @@
 
 									<div class="d-flex align-items-center gap-2">
 										<span class="me-2 fw-semibold">Filter By:</span>
-										<!-- Records Per Page -->
-										<div>
-											<select data-table-set-rows-per-page class="form-select form-control my-1 my-md-0">
-												<option value="5">5</option>
-												<option value="10">10</option>
-												<option value="15">15</option>
-												<option value="20">20</option>
+
+								
+										<!-- Company Filter -->
+										<div class="app-search">
+											<select data-table-filter="company" class="form-select form-control my-1 my-md-0">
+												<option value="All">All Companies</option>
+												<?php foreach ($companies as $company): ?>
+												<option value="<?= htmlspecialchars($company['company_name']) ?>">
+													<?= htmlspecialchars($company['company_name']) ?>
+												</option>
+												<?php endforeach; ?>
 											</select>
+											<i class="ti ti-building app-search-icon text-muted"></i>
 										</div>
+									</div>
+
+									<div class="d-flex gap-1">
+										<a href="#" class="btn btn-primary ms-1"> <i class="ti ti-plus fs-sm me-2"></i> Add Order </a>
 									</div>
 								</div>
 								
@@ -64,8 +180,8 @@
 												<th>Order ID</th>
 												<th>Order Date</th>
 												<th>Patient Name</th>
-												<th>Record Type</th>
-												<th>Location Name</th>
+												<th>Requester</th>
+												<th>Location(s)</th>
 												<th>Service</th>
 												<th>Status</th>
 												<th class="text-center" style="width: 1%">Actions</th>
@@ -81,9 +197,9 @@
 												<td><?= htmlspecialchars(date('Y-m-d', strtotime($row['API_Input_Timestamp']))) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name']) ?></td>
 												<td><?= htmlspecialchars($row['Rec_Type']) ?></td>
-												<td><?= htmlspecialchars($row['Loc_Name']) ?></td>
+												<td><?= (int)$row['location_count'] ?></td>
 												<td><?= htmlspecialchars($row['_kf_Service_Type_ID_Str']) ?></td>
-												<td>Order Received</td>
+												<td><span class="badge <?= $row['_status']['class'] ?> fs-xxs badge-label"><?= $row['_status']['label'] ?></span></td>
 												<td>
 													<div class="d-flex justify-content-center gap-1">
 														<a href="#" class="btn btn-light btn-icon btn-sm rounded-circle"><i class="ti ti-eye fs-lg"></i></a>
