@@ -174,7 +174,7 @@
 											<select data-table-filter="client" class="form-select form-control my-1 my-md-0">
 												<option value="All">All Clients</option>
 												<?php foreach ($clientOptions as $clientId => $clientName): ?>
-												<option value="<?= htmlspecialchars($clientId) ?>">
+												<option value="<?= htmlspecialchars($clientName) ?>">
 													<?= htmlspecialchars($clientName) ?>
 												</option>
 												<?php endforeach; ?>
@@ -196,7 +196,7 @@
 												<th class="ps-3" style="width: 1%">
 													<input data-table-select-all class="form-check-input form-check-input-light fs-14 mt-0" type="checkbox" value="option" />
 												</th>
-												<th>Order ID</th>
+												<th data-table-sort="orderid">Order ID</th>
 												<th data-table-sort data-column="date">Order Date</th>
 												<th>Patient Name</th>
 												<th data-table-sort data-column="client">Requester</th>
