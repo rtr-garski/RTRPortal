@@ -11,6 +11,18 @@
 		$orders = $stmt->fetchAll();
 		$total = count($orders);
 
+		// --- Lookup client_name from pdo2.sys_client ---
+		$clientIds = array_unique(array_filter(array_column($orders, '_kf_Client_ID')));
+		$clientMap = [];
+		if (!empty($clientIds)) {
+			$placeholders = implode(',', array_fill(0, count($clientIds), '?'));
+			$cStmt = $pdo2->prepare("SELECT client_sysid, client_name FROM sys_client WHERE client_sysid IN ($placeholders)");
+			$cStmt->execute(array_values($clientIds));
+			foreach ($cStmt->fetchAll() as $c) {
+				$clientMap[$c['client_sysid']] = $c['client_name'];
+			}
+		}
+
 		$statuses = [
 			['label' => 'New Request',  'class' => 'badge-soft-secondary'],
 			['label' => 'In Review',    'class' => 'badge-soft-info'],
@@ -25,16 +37,14 @@
 			$s = $statuses[array_rand($statuses)];
 			$row['_status'] = $s;
 			$counts[$s['label']]++;
+			$row['_client_name'] = $clientMap[$row['_kf_Client_ID']] ?? '—';
 		}
 		unset($row);
-
-		// --- Load companies from pdo2 ---
-		$companies = $pdo2->query("SELECT id, company_name FROM test_companies ORDER BY company_name ASC")->fetchAll();
 	?>
 <!doctype html>
 <html lang="en">
 	<head>
-		<?php $title = "Client Portal"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
+		<?php $title = "API Reports"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
 	</head>
 
 	<body>
@@ -49,7 +59,7 @@
 
 			<div class="content-page">
 				<div class="container-fluid">
-					<?php $subtitle = "Client Portal"; $title = "Orders"; include('partials/page-title.php'); ?>
+					<?php $subtitle = "Reports"; $title = "Orders"; include('partials/page-title.php'); ?>
 
 					<div class="row row-cols-xxl-5 row-cols-md-3 row-cols-1 align-items-center g-1">
 						<div class="col">
@@ -150,19 +160,14 @@
 									<div class="d-flex align-items-center gap-2">
 										<span class="me-2 fw-semibold">Filter By:</span>
 
-								
-										<!-- Company Filter -->
+										<!-- Delivery Status Filter -->
 										<div class="app-search">
-											<select data-table-filter="company" class="form-select form-control my-1 my-md-0">
-												<option value="All">All Companies</option>
-												<?php foreach ($companies as $company): ?>
-												<option value="<?= htmlspecialchars($company['company_name']) ?>">
-													<?= htmlspecialchars($company['company_name']) ?>
-												</option>
-												<?php endforeach; ?>
+											<select data-table-filter="order-status" class="form-select form-control my-1 my-md-0">
+												<option value="All">Companies</option>
 											</select>
-											<i class="ti ti-building app-search-icon text-muted"></i>
+											<i class="ti ti-truck app-search-icon text-muted"></i>
 										</div>
+
 									</div>
 
 									<div class="d-flex gap-1">
@@ -196,7 +201,7 @@
 												<td><h5 class="fs-sm mb-0 fw-medium"><a href="order_details.php?order_id=<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?>" class="link-reset">#<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?></a></h5></td>
 												<td><?= htmlspecialchars(date('Y-m-d', strtotime($row['API_Input_Timestamp']))) ?></td>
 												<td><?= htmlspecialchars($row['Pat_Name']) ?></td>
-												<td><?= htmlspecialchars($row['Rec_Type']) ?></td>
+												<td><?= htmlspecialchars($row['_client_name']) ?></td>
 												<td><?= (int)$row['location_count'] ?></td>
 												<td><?= htmlspecialchars($row['_kf_Service_Type_ID_Str']) ?></td>
 												<td><span class="badge <?= $row['_status']['class'] ?> fs-xxs badge-label"><?= $row['_status']['label'] ?></span></td>
