@@ -459,7 +459,7 @@ if ($statusCode) {
                                                 <td class="pe-3 text-muted"><code>standard</code> (default) or <code>rush</code></td>
                                             </tr>
                                             <tr>
-                                                <td class="ps-3 top-align"><code>&nbsp;&nbsp;.record_type</code></td>
+                                                <td class="ps-3 align-top"><code>&nbsp;&nbsp;.record_type</code></td>
                                                 <td>string</td>
                                                 <td><span class="badge-req">required</span></td>
                                                 <td class="pe-3">
