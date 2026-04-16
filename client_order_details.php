@@ -160,36 +160,19 @@ $order['insurance'] = $insurance;
 											<!-- Insurance Carrier List -->
 
 											<hr />
-											<div class="list-group-item mt-2" id="toggleRecordLocation" style="cursor:pointer;">
+											<div class="list-group-item mt-2">
 												<span class="align-middle"><strong>Records Location</strong></span>
-												<i class="ti ti-chevron-down float-end align-middle" id="recordLocationChevron"></i>
 											</div>
 
 											<!-- Records Location List -->
 											<?php foreach ($locations as $loc): ?>
-											<a href="#!" class="list-group-item list-group-item-action">
+											<a href="#!" class="list-group-item list-group-item-action loc-trigger" data-loc-id="<?= $loc['__kp_API_Input_Order_Location_ID'] ?>">
 												<i class="ti ti-tag me-1 text-primary fs-lg align-middle"></i>
 												<span class="align-middle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-html="true" title="<?= htmlspecialchars($loc['Rec_Type']) ?>" data-bs-content="<p class=&quot;mb-1&quot;><i class=&quot;ti ti-map-pin me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p><p class=&quot;mb-0 text-muted&quot;><i class=&quot;ti ti-phone me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class=&quot;ti ti-printer me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>"><?= htmlspecialchars($loc['Loc_Name']) ?></span>
 											</a>
 											<?php endforeach; ?>
 											<!-- Records Location List -->
 											
-										</div>
-
-										<hr />
-
-										<!-- Card Details -->
-										<div class="d-flex align-items-center">
-											<div class="avatar-sm me-2">
-												<img src="../source/inspinia5/assets/images/cards/mastercard.svg" alt="Mastercard" class="img-fluid rounded" />
-											</div>
-											<div>
-												<h5 class="fs-xs mb-1">Mastercard Ending in 4242</h5>
-												<p class="text-muted mb-0 fs-xs">Expiry: 08/26</p>
-											</div>
-											<div class="ms-auto">
-												<span class="badge bg-success-subtle text-success">Paid</span>
-											</div>
 										</div>
 									</div>
 								</div>
@@ -201,79 +184,15 @@ $order['insurance'] = $insurance;
 						<div class="recordlocationhist col-xl-6 col-lg-12 order-lg-2 order-xl-1 d-none">
 							<div class="card">
 								<div class="card-body">
-									<!-- User Info -->
-									<div class="d-flex align-items-center mb-3">
-										<img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-2.jpg" alt="Profile photo of Anika Roy" />
-										<div class="w-100">
-											<h5 class="m-0">
-												<a href="#!" class="link-reset">Anika Roy</a>
-											</h5>
-											<p class="text-muted mb-0">
-												<small>Posted 2 hours ago</small>
-											</p>
-										</div>
-										<!-- Dropdown Menu -->
-										<div class="dropdown ms-auto">
-											<a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
-												<i class="ti ti-dots-vertical fs-lg"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-end">
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-edit me-2"></i>
-													Edit Post
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-trash me-2"></i>
-													Delete Post
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-share me-2"></i>
-													Share
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-pin me-2"></i>
-													Pin to Top
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-flag me-2"></i>
-													Report Post
-												</a>
-											</div>
-										</div>
+									<?php foreach ($locations as $loc): ?>
+									<div class="loc-detail d-none" data-loc-id="<?= $loc['__kp_API_Input_Order_Location_ID'] ?>">
+										<h5 class="mb-1"><?= htmlspecialchars($loc['Loc_Name']) ?></h5>
+										<p class="text-muted mb-2"><small><?= htmlspecialchars($loc['Rec_Type']) ?></small></p>
+										<hr class="mt-1 mb-2">
+										<p class="mb-1"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
+										<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class="ti ti-printer me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
 									</div>
-
-									<!-- Event Details -->
-									<h5 class="mb-2">
-										🌿 Save the Date:
-										<strong>Nature Photography Workshop 2025</strong>
-									</h5>
-									<p class="text-muted mb-2">Join fellow creatives and outdoor enthusiasts for an inspiring weekend of nature photography tips, live field sessions, and community networking.</p>
-									<ul class="list-unstyled mb-3">
-										<li class="pb-2">
-											<strong>Date:</strong>
-											Saturday, 14th September 2025
-										</li>
-										<li class="pb-2">
-											<strong>Time:</strong>
-											10:00 AM – 4:00 PM
-										</li>
-										<li>
-											<strong>Location:</strong>
-											Green Valley National Park (Meeting point to be shared)
-										</li>
-									</ul>
-
-									<!-- Call to Action -->
-									<div class="d-flex gap-2">
-										<button class="btn btn-sm btn-outline-primary">
-											<i class="ti ti-bell me-1"></i>
-											Interested
-										</button>
-										<button class="btn btn-sm btn-primary">
-											<i class="ti ti-user-plus me-1"></i>
-											Join Now
-										</button>
-									</div>
+									<?php endforeach; ?>
 								</div>
 							</div>
 						</div>
@@ -400,13 +319,30 @@ $order['insurance'] = $insurance;
 		<?php include('partials/customizer.php'); ?> <?php include('partials/footer-scripts.php'); ?>
 
 		<script>
-		// Toggle Records Location columns
-		document.getElementById('toggleRecordLocation').addEventListener('click', function () {
-			var panels = document.querySelectorAll('.recordlocationhist');
-			var chevron = document.getElementById('recordLocationChevron');
-			panels.forEach(function (el) { el.classList.toggle('d-none'); });
-			chevron.classList.toggle('ti-chevron-down');
-			chevron.classList.toggle('ti-chevron-up');
+		// Show recordlocationhist panels and display matching location content on click
+		document.querySelectorAll('.loc-trigger').forEach(function (trigger) {
+			trigger.addEventListener('click', function (e) {
+				e.preventDefault();
+				var locId = this.dataset.locId;
+
+				// Show the panels
+				document.querySelectorAll('.recordlocationhist').forEach(function (el) {
+					el.classList.remove('d-none');
+				});
+
+				// Hide all loc-detail divs, then show the matching one
+				document.querySelectorAll('.loc-detail').forEach(function (el) {
+					el.classList.add('d-none');
+				});
+				var target = document.querySelector('.loc-detail[data-loc-id="' + locId + '"]');
+				if (target) target.classList.remove('d-none');
+
+				// Highlight active item
+				document.querySelectorAll('.loc-trigger').forEach(function (el) {
+					el.classList.remove('active');
+				});
+				this.classList.add('active');
+			});
 		});
 
 		(function () {
