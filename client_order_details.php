@@ -1245,26 +1245,14 @@ $order['insurance'] = $insurance;
 												<span class="align-middle"><strong>Records Location</strong></span>
 											</div>
 
+											<!-- Records Location List -->
+											<?php foreach ($locations as $loc): ?>
 											<a href="#!" class="list-group-item list-group-item-action">
 												<i class="ti ti-tag me-1 text-primary fs-lg align-middle"></i>
-												<span class="align-middle">Technology</span>
+												<span class="align-middle"><?= htmlspecialchars($loc['Loc_Name']) ?></span>
 											</a>
-
-											<a href="#!" class="list-group-item list-group-item-action">
-												<i class="ti ti-tag me-1 text-success fs-lg align-middle"></i>
-												<span class="align-middle">Travel</span>
-											</a>
-
-											<a href="#!" class="list-group-item list-group-item-action">
-												<i class="ti ti-tag me-1 text-danger fs-lg align-middle"></i>
-												<span class="align-middle">Lifestyle</span>
-											</a>
-
-											<a href="#!" class="list-group-item list-group-item-action">
-												<i class="ti ti-tag me-1 fs-lg align-middle text-info"></i>
-												<span class="align-middle">Photography</span>
-											</a>
-
+											<?php endforeach; ?>
+											<!-- Records Location List -->
 											
 										</div>
 
