@@ -78,43 +78,41 @@ $order['insurance'] = $insurance;
 							<div class="row">
 								<!-- Project Main Details -->
 								<div class="col-xl-9">
-									<div class="card">
-										<div class="card-header align-items-start p-4">
-									
-											<div><?php //echo '<pre>' . print_r($order, true) . '</pre>'; ?></div>
-											<div>
-												<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
-												<p class="text-muted mb-3"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
-												<!-- <span class="badge badge-soft-success fs-xxs badge-label"><i class="ti ti-circle-filled fs-sm align-middle"></i> Paid</span> -->
-												<span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span>
-											</div>
-										</div>
-										<div class="card-body px-4">
-											<!-- Case Information -->
-											<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Case Information</h5>
-											<div class="row g-3 mb-4">
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Service Type</label>
-														<input type="text" id="<?= rand(0,1) ? 'validInput' : 'inValidationInput' ?>" class="form-control is-valid" value="<?= htmlspecialchars($order['_kf_Service_Type_ID_Str']) ?>" />
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Service Subtype</label>
-													<input type="text" class="form-control" value="<?= htmlspecialchars($order['_kf_Service_Subtype_ID_Str']) ?>" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">LOR Date</label>
-													<input type="text" class="form-control" value="<?= htmlspecialchars($order['LOR_Date']) ?>" readonly>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label fw-semibold">Employer</label>
-													<input type="text" class="form-control" value="<?= htmlspecialchars($order['Employer_Name']) ?>" readonly>
+										<div class="card">
+											<div class="card-header align-items-start p-4">
+										
+												<div><?php //echo '<pre>' . print_r($order, true) . '</pre>'; ?></div>
+												<div>
+													<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
+													<p class="text-muted mb-3"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
+													<!-- <span class="badge badge-soft-success fs-xxs badge-label"><i class="ti ti-circle-filled fs-sm align-middle"></i> Paid</span> -->
+													<span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span>
 												</div>
 											</div>
-
-
+											<div class="card-body px-4">
+												<!-- Case Information -->
+												<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Case Information</h5>
+												<div class="row g-3 mb-4">
+													<div class="col-md-3">
+														<label class="form-label fw-semibold">Service Type</label>
+															<input type="text" id="<?= rand(0,1) ? 'validInput' : 'inValidationInput' ?>" class="form-control is-valid" value="<?= htmlspecialchars($order['_kf_Service_Type_ID_Str']) ?>" />
+													</div>
+													<div class="col-md-3">
+														<label class="form-label fw-semibold">Service Subtype</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($order['_kf_Service_Subtype_ID_Str']) ?>" readonly>
+													</div>
+													<div class="col-md-3">
+														<label class="form-label fw-semibold">LOR Date</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($order['LOR_Date']) ?>" readonly>
+													</div>
+													<div class="col-md-3">
+														<label class="form-label fw-semibold">Employer</label>
+														<input type="text" class="form-control" value="<?= htmlspecialchars($order['Employer_Name']) ?>" readonly>
+													</div>
+												</div>
+											</div>
+											<!-- end card-body -->
 										</div>
-										<!-- end card-body -->
-									</div>
 									<!-- end card -->
 								</div>
 								<!-- end col-xl-9 -->
@@ -1183,19 +1181,50 @@ $order['insurance'] = $insurance;
 									<h3 class="mb-0 fs-xl flex-grow-1">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
                                     <!-- <div class="mb-0 fs-xl flex-grow-1"><h3>Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3></div> -->
 
-									<!-- <div>
-										<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
-										<p class="text-muted mb-3"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
-									</div>
-									 -->
-                                    <div class="d-flex gap-1">
-                                        
+								    <div class="d-flex gap-1">        
                                         <a href="#" class="btn btn-info ms-1">
                                             Order Received
                                         </a>
                                     </div>
                                 </div>
                             </form>
+							<hr>
+
+							<div class="card">
+								<div class="card-header align-items-start p-4">
+							
+									<div><?php //echo '<pre>' . print_r($order, true) . '</pre>'; ?></div>
+									<div>
+										<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
+										<p class="text-muted mb-3"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
+										<!-- <span class="badge badge-soft-success fs-xxs badge-label"><i class="ti ti-circle-filled fs-sm align-middle"></i> Paid</span> -->
+										<span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span>
+									</div>
+								</div>
+								<div class="card-body px-4">
+									<!-- Case Information -->
+									<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Case Information</h5>
+									<div class="row g-3 mb-4">
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">Service Type</label>
+												<input type="text" id="<?= rand(0,1) ? 'validInput' : 'inValidationInput' ?>" class="form-control is-valid" value="<?= htmlspecialchars($order['_kf_Service_Type_ID_Str']) ?>" />
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">Service Subtype</label>
+											<input type="text" class="form-control" value="<?= htmlspecialchars($order['_kf_Service_Subtype_ID_Str']) ?>" readonly>
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">LOR Date</label>
+											<input type="text" class="form-control" value="<?= htmlspecialchars($order['LOR_Date']) ?>" readonly>
+										</div>
+										<div class="col-md-3">
+											<label class="form-label fw-semibold">Employer</label>
+											<input type="text" class="form-control" value="<?= htmlspecialchars($order['Employer_Name']) ?>" readonly>
+										</div>
+									</div>
+								</div>
+								<!-- end card-body -->
+							</div>
                         </div>
                     </div>
 					<div class="row">
