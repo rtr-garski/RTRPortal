@@ -86,7 +86,7 @@ $order['insurance'] = $insurance;
 													<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
 													<p class="text-muted mb-3"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
 													<!-- <span class="badge badge-soft-success fs-xxs badge-label"><i class="ti ti-circle-filled fs-sm align-middle"></i> Paid</span> -->
-													<span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span>
+													<span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Verified</span>
 												</div>
 											</div>
 											<div class="card-body px-4">
@@ -1249,7 +1249,7 @@ $order['insurance'] = $insurance;
 											<?php foreach ($locations as $loc): ?>
 											<a href="#!" class="list-group-item list-group-item-action">
 												<i class="ti ti-tag me-1 text-primary fs-lg align-middle"></i>
-												<span class="align-middle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" title="<?= htmlspecialchars($loc['Rec_Type']) ?>" data-bs-content="<p class=&quot;mb-1&quot;><i class=&quot;ti ti-map-pin me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p><p class=&quot;mb-0 text-muted&quot;><i class=&quot;ti ti-phone me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class=&quot;ti ti-printer me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>"><?= htmlspecialchars($loc['Loc_Name']) ?></span>
+												<span class="align-middle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-html="true" title="<?= htmlspecialchars($loc['Rec_Type']) ?>" data-bs-content="<p class=&quot;mb-1&quot;><i class=&quot;ti ti-map-pin me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p><p class=&quot;mb-0 text-muted&quot;><i class=&quot;ti ti-phone me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class=&quot;ti ti-printer me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>"><?= htmlspecialchars($loc['Loc_Name']) ?></span>
 											</a>
 											<?php endforeach; ?>
 											<!-- Records Location List -->
@@ -1278,117 +1278,6 @@ $order['insurance'] = $insurance;
 						</div>
 						<!-- end col-->
 						<div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
-							<div class="card">
-								<div class="card-body pb-2">
-									<div class="d-flex align-items-center mb-2">
-										<img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-4.jpg" alt="Generic placeholder image" />
-										<div class="w-100">
-											<h5 class="m-0">
-												<a href="#!" class="link-reset">Liam Anderson</a>
-											</h5>
-											<p class="text-muted mb-0">
-												<small>about 30 minutes ago</small>
-											</p>
-										</div>
-										<div class="dropdown ms-auto">
-											<a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
-												<i class="ti ti-dots-vertical fs-lg"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-end">
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-edit me-2"></i>
-													Edit Post
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-trash me-2"></i>
-													Delete Post
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-share me-2"></i>
-													Share
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-pin me-2"></i>
-													Pin to Top
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-flag me-2"></i>
-													Report Post
-												</a>
-											</div>
-										</div>
-									</div>
-
-									<div class="fs-16 text-center mt-3 mb-4 fst-italic">
-										<i class="ti ti-quote fs-20"></i>
-										Spent the weekend exploring the local trails! Captured some amazing nature shots and can’t wait to post them soon. 🌿📸
-									</div>
-
-									<div class="bg-light-subtle mx-n3 p-3 border-top border-bottom border-dashed">
-										<div class="d-flex align-items-start">
-											<img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-5.jpg" alt="Generic placeholder image" />
-											<div class="w-100">
-												<h5 class="mt-0 mb-1">
-													<a href="#!" class="link-reset">Ethan Reynolds</a>
-													<small class="text-muted fw-normal float-end">20 minutes ago</small>
-												</h5>
-												Loved your recent project! Really curious to see how you implemented the animations.
-												<br />
-												<a href="javascript:void(0);" class="text-muted font-13 d-inline-block mt-2">
-													<i class="ti ti-corner-up-left"></i>
-													Reply
-												</a>
-
-												<div class="d-flex align-items-start mt-3">
-													<a class="pe-2" href="#">
-														<img src="../source/inspinia5/assets/images/users/user-6.jpg" class="avatar-sm rounded-circle" alt="Generic placeholder image" />
-													</a>
-													<div class="w-100">
-														<h5 class="mt-0 mb-1">
-															<a href="#!" class="link-reset">Mia Thompson</a>
-															<small class="text-muted fw-normal float-end">12 minutes ago</small>
-														</h5>
-														I created something similar in Angular last month — would love to swap tips!
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="d-flex align-items-start mt-3">
-											<a class="pe-2" href="#">
-												<img src="../source/inspinia5/assets/images/users/user-3.jpg" class="rounded-circle" alt="Generic placeholder image" height="31" />
-											</a>
-											<div class="w-100">
-												<input type="text" id="simpleinput" class="form-control form-control-sm" placeholder="Add a comment..." />
-											</div>
-										</div>
-									</div>
-
-									<div class="mt-2">
-										<a href="javascript: void(0);" class="btn btn-sm fs-sm btn-link text-muted">
-											<i class="ti ti-corner-up-left me-1"></i>
-											Reply
-										</a>
-										<span class="btn btn-sm fs-sm btn-link text-muted" data-toggler="off">
-											<span data-toggler-on class="d-none align-middle">
-												<i class="ti ti-heart-filled text-danger"></i>
-												Liked!
-											</span>
-											<span data-toggler-off class="align-middle">
-												<i class="ti ti-heart text-muted"></i>
-												Likes (45)
-											</span>
-										</span>
-										<a href="javascript: void(0);" class="btn btn-sm fs-sm btn-link text-muted">
-											<i class="ti ti-share me-1"></i>
-											Share
-										</a>
-									</div>
-								</div>
-								<!-- end card-body-->
-							</div>
-							<!-- end card-->
-
 							<div class="card">
 								<div class="card-body">
 									<!-- User Info -->
@@ -1466,159 +1355,10 @@ $order['insurance'] = $insurance;
 									</div>
 								</div>
 							</div>
-
-							<div class="card">
-								<div class="card-body pb-2">
-									<div class="d-flex align-items-center mb-2">
-										<img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-1.jpg" alt="Profile photo of Anika Roy" />
-										<div class="w-100">
-											<h5 class="m-0">
-												<a href="#!" class="link-reset">Damian D.</a>
-											</h5>
-											<p class="text-muted mb-0">
-												<small>Posted 2 hours ago</small>
-											</p>
-										</div>
-										<div class="dropdown ms-auto">
-											<a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
-												<i class="ti ti-dots-vertical fs-lg"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-end">
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-edit me-2"></i>
-													Edit Post
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-trash me-2"></i>
-													Delete Post
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-share me-2"></i>
-													Share
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-pin me-2"></i>
-													Pin to Top
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-flag me-2"></i>
-													Report Post
-												</a>
-											</div>
-										</div>
-									</div>
-
-									<p>Sharing a couple of timelapses from my recent Iceland trip. Let me know which one you like most!</p>
-
-									<div class="row g-2">
-										<div class="col-md-6">
-											<div class="ratio ratio-16x9 rounded overflow-hidden">
-												<iframe src="https://player.vimeo.com/video/1084537" allowfullscreen></iframe>
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="ratio ratio-16x9 rounded overflow-hidden">
-												<iframe src="https://player.vimeo.com/video/76979871" allowfullscreen></iframe>
-											</div>
-										</div>
-									</div>
-
-									<div class="mt-2">
-										<a href="javascript: void(0);" class="btn btn-sm fs-sm btn-link text-muted">
-											<i class="ti ti-corner-up-left me-1"></i>
-											Reply
-										</a>
-										<span class="btn btn-sm fs-sm btn-link text-muted" data-toggler="on">
-											<span data-toggler-on class="align-middle">
-												<i class="ti ti-heart-filled text-danger"></i>
-												Liked!
-											</span>
-											<span data-toggler-off class="d-none align-middle">
-												<i class="ti ti-heart text-muted"></i>
-												Like
-											</span>
-										</span>
-										<a href="javascript: void(0);" class="btn btn-sm fs-sm btn-link text-muted">
-											<i class="ti ti-share me-1"></i>
-											Share
-										</a>
-									</div>
-								</div>
-								<!-- end card-body-->
-							</div>
-							<!-- end card-->
-
-							<div class="card">
-								<div class="card-body">
-									<!-- User Info -->
-									<div class="d-flex align-items-center mb-2">
-										<img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-6.jpg" alt="Profile photo of David Kim" />
-										<div class="w-100">
-											<h5 class="m-0">
-												<a href="#!" class="link-reset">David Kim</a>
-											</h5>
-											<p class="text-muted mb-0">
-												<small>Posted 10 hours ago</small>
-											</p>
-										</div>
-										<!-- Dropdown Menu -->
-										<div class="dropdown ms-auto">
-											<a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
-												<i class="ti ti-dots-vertical fs-lg"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-end">
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-edit me-2"></i>
-													Edit Post
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-trash me-2"></i>
-													Delete Post
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-share me-2"></i>
-													Share
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-pin me-2"></i>
-													Pin to Top
-												</a>
-												<a href="#" class="dropdown-item">
-													<i class="ti ti-flag me-2"></i>
-													Report Post
-												</a>
-											</div>
-										</div>
-									</div>
-
-									<!-- Poll Content -->
-									<h5 class="mb-3">🔥 Quick Poll: What’s your go-to front-end framework in 2025?</h5>
-									<p class="text-muted">We’re gathering developer preferences for our next project. Cast your vote below! 💻</p>
-
-									<!-- Poll Form -->
-									<form>
-										<div class="form-check mb-1">
-											<input class="form-check-input" type="radio" name="framework_poll" id="optionReact" />
-											<label class="form-check-label" for="optionReact">React (Meta)</label>
-										</div>
-										<div class="form-check mb-1">
-											<input class="form-check-input" type="radio" name="framework_poll" id="optionVue" />
-											<label class="form-check-label" for="optionVue">Vue.js (Evan You)</label>
-										</div>
-										<div class="form-check mb-1">
-											<input class="form-check-input" type="radio" name="framework_poll" id="optionAngular" />
-											<label class="form-check-label" for="optionAngular">Angular (Google)</label>
-										</div>
-										<div class="form-check mb-3">
-											<input class="form-check-input" type="radio" name="framework_poll" id="optionSvelte" />
-											<label class="form-check-label" for="optionSvelte">Svelte (Emerging Favorite)</label>
-										</div>
-										<button type="submit" class="btn btn-sm btn-primary">Submit Vote</button>
-									</form>
-								</div>
-							</div>
 						</div>
 						<!-- end col-->
+
+						<!-- 3rd column -->
 						<div class="col-xl-3 col-lg-6 order-lg-1 order-xl-2">
 							<div class="card">
 									<div class="card-header">
@@ -1626,47 +1366,6 @@ $order['insurance'] = $insurance;
 									</div>
 									<div class="card-body p-4">
 										<div class="timeline">
-											<!-- Event 1 -->
-											<div class="timeline-item d-flex align-items-stretch">
-												<div class="timeline-time pe-3 text-muted"></div>
-												<div class="timeline-dot bg-light"></div>
-												<div class="timeline-content ps-3 pb-5">
-													<h5 class="mb-1">Order Delivered</h5>
-													<p class="mb-1 text-muted">The package is out for delivery and will reach you shortly.</p>
-													<p class="mb-1 text-muted fs-xxs">Tracking No: <a href="#!" class="link-primary fw-semibold text-decoration-underline">TRK123456789</a></p>
-													<span class="fw-semibold fs-xxs">By Rodelaine Raro</span>
-												</div>
-											</div>
-
-											<!-- Event 2 -->
-											<div class="timeline-item d-flex align-items-stretch">
-												<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="9:00 AM">Apr 14 '26</div>
-												<div class="timeline-dot bg-success"></div>
-												<div class="timeline-content ps-3 pb-5">
-													<h5 class="mb-1">QA Status</h5>
-													<p class="mb-1 text-muted">Complete Order</p>
-													<span class="fs-xxs fw-semibold">By QA Agent1</span>
-												</div>
-											</div>
-
-											<!-- Event 3 -->
-											<div class="timeline-item d-flex align-items-stretch">
-												<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="3:15 PM">Apr 13 '26</div>
-												<div class="timeline-dot bg-success"></div>
-												<div class="timeline-content ps-3 pb-5">
-													<h5 class="mb-1">Order Copied</h5>
-												</div>
-											</div>
-
-											<!-- Event 4 -->
-											<div class="timeline-item d-flex align-items-stretch">
-												<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="6:00 PM">Apr 7 '26</div>
-												<div class="timeline-dot bg-success"></div>
-												<div class="timeline-content ps-3 pb-5">
-													<h5 class="mb-1">Order Served</h5>
-												</div>
-											</div>
-
 											<div class="timeline-item d-flex align-items-stretch">
 												<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="5:00 PM">Apr 4 '26</div>
 												<div class="timeline-dot bg-success"></div>
