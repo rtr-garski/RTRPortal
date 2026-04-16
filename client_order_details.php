@@ -1180,7 +1180,8 @@ $order['insurance'] = $insurance;
                                         </button>
                                     </div>
 	
-                                    <div class="mb-0 fs-xl flex-grow-1"><h3>Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3><br/><small class="text-muted">Ordered on <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?></small></div>
+									<h3 class="mb-0 fs-xl flex-grow-1"><h3>Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
+                                    <!-- <div class="mb-0 fs-xl flex-grow-1"><h3>Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3></div> -->
 
 									<!-- <div>
 										<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
