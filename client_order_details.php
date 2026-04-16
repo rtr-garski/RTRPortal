@@ -1169,27 +1169,6 @@ $order['insurance'] = $insurance;
 					<!-- 3 column -->
 					<div class="row mb-2 sticky-top" >
                         <div class="col-lg-12">
-							
-                            <form class="bg-light-subtle rounded border p-3">
-                                <div class="d-flex flex-wrap justify align-items-center gap-3">
-                                    <div class="d-lg-none d-flex gap-2">
-                                        <button class="btn btn-default btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#productFillterOffcanvas" aria-controls="productFillterOffcanvas">
-                                            <i class="ti ti-menu-4 fs-lg"></i>
-                                        </button>
-                                    </div>
-	
-									<h3 class="mb-0 fs-xl flex-grow-1">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
-                                    <!-- <div class="mb-0 fs-xl flex-grow-1"><h3>Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3></div> -->
-
-								    <div class="d-flex gap-1">        
-                                        <a href="#" class="btn btn-info ms-1">
-                                            Order Received
-                                        </a>
-                                    </div>
-                                </div>
-                            </form>
-							<hr>
-
 							<div class="card">
 								<div class="card-header align-items-start p-4">
 							
@@ -1204,22 +1183,44 @@ $order['insurance'] = $insurance;
 								<div class="card-body px-4">
 									<!-- Case Information -->
 									<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Case Information</h5>
-									<div class="row g-3 mb-4">
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">Service Type</label>
-												<input type="text" id="<?= rand(0,1) ? 'validInput' : 'inValidationInput' ?>" class="form-control is-valid" value="<?= htmlspecialchars($order['_kf_Service_Type_ID_Str']) ?>" />
+									<div class="d-flex align-items-center justify-content-between">
+										<div>
+											<span class="badge bg-success-subtle text-success px-2 py-1 fs-base rounded-pill">In Stock</span>
 										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">Service Subtype</label>
-											<input type="text" class="form-control" value="<?= htmlspecialchars($order['_kf_Service_Subtype_ID_Str']) ?>" readonly>
+										<div class="flex-grow-1 d-inline-flex align-items-center justify-content-end fs-lg">
+											<i class="ti ti-star-filled text-warning"></i>
+											<i class="ti ti-star-filled text-warning"></i>
+											<i class="ti ti-star-filled text-warning"></i>
+											<i class="ti ti-star-filled text-warning"></i>
+											<i class="ti ti-star-filled text-warning"></i>
+											<span class="ms-1 fs-base">
+												<a href="apps-ecommerce-reviews.html" class="link-reset fw-medium">(859 Reviews)</a>
+											</span>
 										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">LOR Date</label>
-											<input type="text" class="form-control" value="<?= htmlspecialchars($order['LOR_Date']) ?>" readonly>
+									</div>
+									<div class="mt-3 mb-5">
+										<h4 class="fs-xl">Monterey Velvet Blue Luxury Relaxation Single Seater Sofa</h4>
+									</div>
+
+									<div class="row mb-4">
+										<div class="col-md-4 col-xl-3">
+											<h6 class="mb-1 text-muted text-uppercase">SKU:</h6>
+											<p class="fw-medium mb-0">SOFA-10058</p>
 										</div>
-										<div class="col-md-3">
-											<label class="form-label fw-semibold">Employer</label>
-											<input type="text" class="form-control" value="<?= htmlspecialchars($order['Employer_Name']) ?>" readonly>
+										<div class="col-md-4 col-xl-3">
+											<h6 class="mb-1 text-muted text-uppercase">Category:</h6>
+											<p class="fw-medium mb-0">Furniture</p>
+										</div>
+										<div class="col-md-4 col-xl-3">
+											<h6 class="mb-1 text-muted text-uppercase">Stock:</h6>
+											<p class="fw-medium mb-0">128</p>
+										</div>
+										<div class="col-md-4 col-xl-3">
+											<h6 class="mb-1 text-muted text-uppercase">Published:</h6>
+											<p class="fw-medium mb-0">
+												28 Apr, 2025
+												<small class="text-muted">10:15 AM</small>
+											</p>
 										</div>
 									</div>
 								</div>
