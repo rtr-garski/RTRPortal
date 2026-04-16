@@ -1611,93 +1611,74 @@ $order['insurance'] = $insurance;
                             <!-- end col-->
                             <div class="col-xl-3 col-lg-6 order-lg-1 order-xl-2">
                                 <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <h5 class="mb-0">Activity</h5>
-                                            <a href="#" class="link-reset fs-sm">See all</a>
-                                        </div>
+										<div class="card-header">
+											<h4 class="card-title">Activity</h4>
+										</div>
+										<div class="card-body p-4">
+											<div class="timeline">
+												<!-- Event 1 -->
+												<div class="timeline-item d-flex align-items-stretch">
+													<div class="timeline-time pe-3 text-muted"></div>
+													<div class="timeline-dot bg-light"></div>
+													<div class="timeline-content ps-3 pb-5">
+														<h5 class="mb-1">Order Delivered</h5>
+														<p class="mb-1 text-muted">The package is out for delivery and will reach you shortly.</p>
+														<p class="mb-1 text-muted fs-xxs">Tracking No: <a href="#!" class="link-primary fw-semibold text-decoration-underline">TRK123456789</a></p>
+														<span class="fw-semibold fs-xxs">By Rodelaine Raro</span>
+													</div>
+												</div>
 
-                                        <div class="mb-3">
-                                            <small class="text-muted text-uppercase">Stories About You</small>
-                                            <div class="d-flex align-items-center mt-2">
-                                                <img src="../source/inspinia5/assets/images/users/user-7.jpg" class="rounded-circle me-2" width="32" height="32" alt="mention" />
-                                                <div>
-                                                    <strong>Mentions</strong>
-                                                    <br />
-                                                    <span class="text-muted fs-xs">3 stories mention you</span>
-                                                </div>
-                                            </div>
-                                        </div>
+												<!-- Event 2 -->
+												<div class="timeline-item d-flex align-items-stretch">
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="9:00 AM">Apr 14 '26</div>
+													<div class="timeline-dot bg-success"></div>
+													<div class="timeline-content ps-3 pb-5">
+														<h5 class="mb-1">QA Status</h5>
+														<p class="mb-1 text-muted">Complete Order</p>
+														<span class="fs-xxs fw-semibold">By QA Agent1</span>
+													</div>
+												</div>
 
-                                        <span class="text-muted fs-xs fw-bold text-uppercase">New</span>
-                                        <ul class="list-unstyled mt-2 mb-0">
-                                            <li class="d-flex align-items-center py-1">
-                                                <img src="../source/inspinia5/assets/images/users/user-8.jpg" class="rounded-circle me-2" width="36" height="36" alt="jenny.w" />
-                                                <div class="flex-grow-1">
-                                                    <strong>jenny.w</strong>
-                                                    started following you
-                                                    <br />
-                                                    <span class="text-muted fs-xs">2m ago</span>
-                                                </div>
-                                                <div class="text-primary">
-                                                    <i class="ti ti-user-plus fs-lg"></i>
-                                                </div>
-                                            </li>
+												<!-- Event 3 -->
+												<div class="timeline-item d-flex align-items-stretch">
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="3:15 PM">Apr 13 '26</div>
+													<div class="timeline-dot bg-success"></div>
+													<div class="timeline-content ps-3 pb-5">
+														<h5 class="mb-1">Order Copied</h5>
+													</div>
+												</div>
 
-                                            <li class="d-flex align-items-center py-1">
-                                                <img src="../source/inspinia5/assets/images/users/user-9.jpg" class="rounded-circle me-2" width="36" height="36" alt="daniel92" />
-                                                <div class="flex-grow-1">
-                                                    <strong>daniel92</strong>
-                                                    commented on your post
-                                                    <br />
-                                                    <span class="text-muted fs-xs">3m ago</span>
-                                                </div>
-                                                <div>
-                                                    <img src="../source/inspinia5/assets/images/gallery/1.jpg" class="rounded" width="32" height="32" alt="commented" />
-                                                </div>
-                                            </li>
+												<!-- Event 4 -->
+												<div class="timeline-item d-flex align-items-stretch">
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="6:00 PM">Apr 7 '26</div>
+													<div class="timeline-dot bg-success"></div>
+													<div class="timeline-content ps-3 pb-5">
+														<h5 class="mb-1">Order Served</h5>
+													</div>
+												</div>
 
-                                            <li class="d-flex align-items-center py-1">
-                                                <img src="../source/inspinia5/assets/images/users/user-10.jpg" class="rounded-circle me-2" width="36" height="36" alt="amelie.design" />
-                                                <div class="flex-grow-1">
-                                                    <strong>amelie.design</strong>
-                                                    liked your story
-                                                    <br />
-                                                    <span class="text-muted fs-xs">4m ago</span>
-                                                </div>
-                                                <div>
-                                                    <img src="../source/inspinia5/assets/images/gallery/2.jpg" class="rounded" width="32" height="32" alt="liked" />
-                                                </div>
-                                            </li>
+												<div class="timeline-item d-flex align-items-stretch">
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="5:00 PM">Apr 4 '26</div>
+													<div class="timeline-dot bg-success"></div>
+													<div class="timeline-content ps-3 pb-5">
+														<h5 class="mb-1">Order Verified</h5>
+														<p class="mb-1 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+														<span class="fw-semibold fs-xxs">By OE Agent1</span>
+													</div>
+												</div>
 
-                                            <li class="d-flex align-items-center py-1">
-                                                <img src="../source/inspinia5/assets/images/users/user-5.jpg" class="rounded-circle me-2" width="36" height="36" alt="johnny_dev" />
-                                                <div class="flex-grow-1">
-                                                    <strong>johnny_dev</strong>
-                                                    started following you
-                                                    <br />
-                                                    <span class="text-muted fs-xs">6m ago</span>
-                                                </div>
-                                                <div class="text-primary">
-                                                    <i class="ti ti-user-plus fs-lg"></i>
-                                                </div>
-                                            </li>
+												<div class="timeline-item d-flex align-items-stretch">
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="4:00 PM">Apr 4 '26</div>
+													<div class="timeline-dot bg-success"></div>
+													<div class="timeline-content ps-3 pb-5">
+														<h5 class="mb-1">Order Received</h5>
+														<p class="mb-1 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+													</div>
+												</div>
 
-                                            <li class="d-flex align-items-center py-1">
-                                                <img src="../source/inspinia5/assets/images/users/user-6.jpg" class="rounded-circle me-2" width="36" height="36" alt="art.gal" />
-                                                <div class="flex-grow-1">
-                                                    <strong>art.gal</strong>
-                                                    liked your post
-                                                    <br />
-                                                    <span class="text-muted fs-xs">8m ago</span>
-                                                </div>
-                                                <div>
-                                                    <img src="../source/inspinia5/assets/images/gallery/3.jpg" class="rounded" width="32" height="32" alt="liked" />
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+											</div>
+										</div>
+									</div>
 
                                 <div class="card">
                                     <div class="card-header justify-content-between align-items-center border-dashed">
@@ -1760,103 +1741,6 @@ $order['insurance'] = $insurance;
                                 </div>
                                 <!-- end card-->
 
-                                <div class="card">
-                                    <!-- Card Header -->
-                                    <div class="card-header justify-content-between align-items-center border-dashed">
-                                        <h4 class="card-title mb-0">Requests</h4>
-                                        <div class="dropdown">
-                                            <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
-                                                <i class="ti ti-dots-vertical fs-lg"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <a href="#" class="dropdown-item">
-                                                    <i class="ti ti-check me-2"></i>
-                                                    Mark All as Read
-                                                </a>
-                                                <a href="#" class="dropdown-item">
-                                                    <i class="ti ti-trash me-2"></i>
-                                                    Clear All
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Card Body -->
-                                    <div class="card-body">
-                                        <!-- Request 1: Collaboration -->
-                                        <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <div class="d-flex align-items-start">
-                                                <img src="../source/inspinia5/assets/images/users/user-3.jpg" alt="Emily Zhang" class="avatar-xs rounded-circle me-2" />
-                                                <div>
-                                                    <p class="mb-1">
-                                                        <strong>Emily Zhang</strong>
-                                                        requested to collaborate on your design project.
-                                                        <span class="badge bg-primary ms-1">New</span>
-                                                    </p>
-                                                    <small class="text-muted">2 minutes ago</small>
-                                                </div>
-                                            </div>
-                                            <button class="btn btn-sm py-0 px-1 btn-default">Accept</button>
-                                        </div>
-
-                                        <!-- Request 2: Feature Suggestion -->
-                                        <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <div class="d-flex align-items-start gap-2">
-                                                <div class="avatar-xs flex-shrink-0">
-                                                    <span class="avatar-title text-bg-info rounded-circle">
-                                                        <i class="ti ti-rocket"></i>
-                                                    </span>
-                                                </div>
-                                                <div>
-                                                    <p class="mb-1">
-                                                        <strong>New Feature:</strong>
-                                                        Suggestion for dark mode support.
-                                                        <span class="badge bg-warning ms-1">Pending</span>
-                                                    </p>
-                                                    <small class="text-muted">10 minutes ago</small>
-                                                </div>
-                                            </div>
-                                            <button class="btn btn-sm py-0 px-1 btn-default">Review</button>
-                                        </div>
-
-                                        <!-- Request 3: Feedback -->
-                                        <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <div class="d-flex align-items-start">
-                                                <img src="../source/inspinia5/assets/images/users/user-6.jpg" alt="John Doe" class="avatar-xs rounded-circle me-2" />
-                                                <div>
-                                                    <p class="mb-1">
-                                                        <strong>Client Feedback:</strong>
-                                                        John Doe left a review on your dashboard.
-                                                        <span class="badge bg-secondary ms-1">Feedback</span>
-                                                    </p>
-                                                    <small class="text-muted">30 minutes ago</small>
-                                                </div>
-                                            </div>
-                                            <button class="btn btn-sm py-0 px-1 btn-default">Respond</button>
-                                        </div>
-
-                                        <!-- Request 4: Bug Report -->
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="d-flex align-items-start gap-2">
-                                                <div class="avatar-xs flex-shrink-0">
-                                                    <span class="avatar-title text-bg-primary rounded-circle">
-                                                        <i class="ti ti-bug"></i>
-                                                    </span>
-                                                </div>
-                                                <div>
-                                                    <p class="mb-1">
-                                                        <strong>Bug Report:</strong>
-                                                        Login form issue on Safari mobile.
-                                                        <span class="badge bg-danger ms-1">Urgent</span>
-                                                    </p>
-                                                    <small class="text-muted">1 hour ago</small>
-                                                </div>
-                                            </div>
-                                            <button class="btn btn-sm py-0 px-1 btn-default">View</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end card-->
                             </div>
                             <!-- end col-->
                         </div>

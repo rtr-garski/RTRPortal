@@ -369,7 +369,7 @@ $order['insurance'] = $insurance;
 										<!-- end card-body-->
 									</div>
 									<!-- end card-->
-									 <div class="card">
+									<div class="card">
 										<div class="card-header">
 											<h4 class="card-title">Activity</h4>
 										</div>
