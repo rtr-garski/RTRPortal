@@ -166,7 +166,12 @@ $order['insurance'] = $insurance;
 
 											<!-- Records Location List -->
 											<?php foreach ($locations as $loc): ?>
-											<a href="#!" class="list-group-item list-group-item-action loc-trigger" data-loc-id="<?= $loc['__kp_API_Input_Order_Location_ID'] ?>" data-loc-name="<?= htmlspecialchars($loc['Loc_Name']) ?>">
+											<a href="#!" class="list-group-item list-group-item-action loc-trigger"
+												data-loc-id="<?= $loc['__kp_API_Input_Order_Location_ID'] ?>"
+												data-loc-name="<?= htmlspecialchars($loc['Loc_Name']) ?>"
+												data-loc-address="<?= htmlspecialchars($loc['Loc_Address_Street'] . ', ' . $loc['Loc_Address_City'] . ', ' . $loc['Loc_Address_State'] . ' ' . $loc['Loc_Address_Zip']) ?>"
+												data-loc-phone="<?= htmlspecialchars($loc['Loc_Address_Phone']) ?>"
+												data-loc-fax="<?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?>">
 												<i class="ti ti-tag me-1 text-primary fs-lg align-middle"></i>
 												<span class="align-middle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-html="true" title="<?= htmlspecialchars($loc['Rec_Type']) ?>" data-bs-content="<p class=&quot;mb-1&quot;><i class=&quot;ti ti-map-pin me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p><p class=&quot;mb-0 text-muted&quot;><i class=&quot;ti ti-phone me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class=&quot;ti ti-printer me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>"><?= htmlspecialchars($loc['Loc_Name']) ?></span>
 											</a>
@@ -198,12 +203,9 @@ $order['insurance'] = $insurance;
 								</div>
 								<div class="card-body px-4">
 									<div class="mb-4">
-										<h5 class="fs-base mb-2">Project Description:</h5>
-										<p class="text-muted">This dashboard provides AI-powered insights and analytics for Starbucks business data. It includes sales performance, customer behavior, and predictive trends to assist in data-driven decision-making.</p>
-										<p class="text-muted">
-											Customizable reports and role-based dashboards ensure relevant insights for marketing teams, financial analysts, and executive decision-makers. The system is built with scalability and responsiveness in mind, supporting both
-											desktop and mobile views for seamless access.
-										</p>
+										<h5 class="fs-base mb-2">Location Information:</h5>
+										<p class="mb-0"><i class="ti ti-map-pin me-1"></i><span id="locDetailAddress"></span></p>
+														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><span id="locDetailPhone"></span> &nbsp; <i class="ti ti-printer me-1"></i><span id="locDetailFax"></span></p>
 									</div>
 									<div class="row mb-4">
 										<div class="col-md-4 col-xl-3">
@@ -218,18 +220,19 @@ $order['insurance'] = $insurance;
 											<h6 class="mb-1 text-muted text-uppercase">Created By:</h6>
 											<p class="fw-medium mb-0">John Smith</p>
 										</div>
-										<div class="col-md-4 col-xl-3">
-											<h6 class="mb-1 text-muted text-uppercase">Client Name:</h6>
-											<p class="fw-medium mb-0">Starbucks Corporation</p>
-										</div>
+									</div>
+
+									<div class="mb-4">
+										<h5 class="fs-base mb-2">Special Instruction:</h5>
+										<p class="text-muted"><?= htmlspecialchars($loc['Special_Instructions']) ?>Lorem Ipsum is dummy or placeholder text commonly used in graphic design, publishing, and web development to fill spaces where content will eventually appear.</p>
 									</div>
 
 									<!-- Tabs -->
 									<ul class="nav nav-tabs nav-bordered mb-3" role="tablist">
 										<li class="nav-item">
-											<a class="nav-link active" data-bs-toggle="tab" href="#comments" role="tab">
+											<a class="nav-link active" data-bs-toggle="tab" href="#notes" role="tab">
 												<i class="ti ti-message-circle fs-lg me-md-1 align-middle"></i>
-												<span class="d-none d-md-inline-block align-middle">Comments</span>
+												<span class="d-none d-md-inline-block align-middle">Notes</span>
 											</a>
 										</li>
 										<li class="nav-item">
@@ -263,7 +266,7 @@ $order['insurance'] = $insurance;
 
 											<div class="d-flex mb-2 border border-dashed rounded p-3">
 												<div class="flex-shrink-0">
-													<img src="assets/images/users/user-8.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
+													<img src="../source/inspinia5/assets/images/users/user-8.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
 												</div>
 												<div class="flex-grow-1 ms-2">
 													<h5 class="mb-1">
@@ -278,7 +281,7 @@ $order['insurance'] = $insurance;
 
 													<div class="d-flex mt-4">
 														<div class="flex-shrink-0">
-															<img src="assets/images/users/user-10.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
+															<img src="../source/inspinia5/assets/images/users/user-10.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
 														</div>
 														<div class="flex-grow-1 ms-2">
 															<h5 class="mb-1">
@@ -295,7 +298,7 @@ $order['insurance'] = $insurance;
 
 													<div class="d-flex mt-4">
 														<div class="flex-shrink-0">
-															<img src="assets/images/users/user-3.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
+															<img src="../source/inspinia5/assets/images/users/user-3.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
 														</div>
 														<div class="flex-grow-1 ms-2">
 															<h5 class="mb-1">
@@ -314,7 +317,7 @@ $order['insurance'] = $insurance;
 
 											<div class="d-flex mb-2 border border-dashed rounded p-3">
 												<div class="flex-shrink-0">
-													<img src="assets/images/users/user-6.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
+													<img src="../source/inspinia5/assets/images/users/user-6.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
 												</div>
 												<div class="flex-grow-1 ms-2">
 													<h5 class="mb-1">
@@ -331,7 +334,7 @@ $order['insurance'] = $insurance;
 
 											<div class="d-flex mb-3 border border-dashed rounded p-3">
 												<div class="flex-shrink-0">
-													<img src="assets/images/users/user-10.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
+													<img src="../source/inspinia5/assets/images/users/user-10.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
 												</div>
 												<div class="flex-grow-1 ms-2">
 													<h5 class="mb-1">
@@ -351,7 +354,7 @@ $order['insurance'] = $insurance;
 
 													<div class="d-flex mt-4">
 														<div class="flex-shrink-0">
-															<img src="assets/images/users/user-6.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
+															<img src="../source/inspinia5/assets/images/users/user-6.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
 														</div>
 														<div class="flex-grow-1 ms-2">
 															<h5 class="mb-1">
@@ -414,7 +417,7 @@ $order['insurance'] = $insurance;
 															<div class="d-flex align-items-center gap-3 justify-content-md-end">
 																<div class="d-flex align-items-center gap-1">
 																	<div class="avatar avatar-xs">
-																		<img src="assets/images/users/user-2.jpg" alt="avatar-2" class="img-fluid rounded-circle" />
+																		<img src="../source/inspinia5/assets/images/users/user-2.jpg" alt="avatar-2" class="img-fluid rounded-circle" />
 																	</div>
 																	<div>
 																		<h5 class="text-nowrap mb-0 lh-base">
@@ -460,7 +463,7 @@ $order['insurance'] = $insurance;
 															<div class="d-flex align-items-center gap-3 justify-content-md-end">
 																<div class="d-flex align-items-center gap-1">
 																	<div class="avatar avatar-xs">
-																		<img src="assets/images/users/user-4.jpg" alt="avatar-4" class="img-fluid rounded-circle" />
+																		<img src="../source/inspinia5/assets/images/users/user-4.jpg" alt="avatar-4" class="img-fluid rounded-circle" />
 																	</div>
 																	<div>
 																		<h5 class="text-nowrap mb-0 lh-base">
@@ -506,7 +509,7 @@ $order['insurance'] = $insurance;
 															<div class="d-flex align-items-center gap-3 justify-content-md-end">
 																<div class="d-flex align-items-center gap-1">
 																	<div class="avatar avatar-xs">
-																		<img src="assets/images/users/user-5.jpg" alt="avatar-5" class="img-fluid rounded-circle" />
+																		<img src="../source/inspinia5/assets/images/users/user-5.jpg" alt="avatar-5" class="img-fluid rounded-circle" />
 																	</div>
 																	<div>
 																		<h5 class="text-nowrap mb-0 lh-base">
@@ -552,7 +555,7 @@ $order['insurance'] = $insurance;
 															<div class="d-flex align-items-center gap-3 justify-content-md-end">
 																<div class="d-flex align-items-center gap-1">
 																	<div class="avatar avatar-xs">
-																		<img src="assets/images/users/user-6.jpg" alt="avatar-6" class="img-fluid rounded-circle" />
+																		<img src="../source/inspinia5/assets/images/users/user-6.jpg" alt="avatar-6" class="img-fluid rounded-circle" />
 																	</div>
 																	<div>
 																		<h5 class="text-nowrap mb-0 lh-base">
@@ -598,7 +601,7 @@ $order['insurance'] = $insurance;
 															<div class="d-flex align-items-center gap-3 justify-content-md-end">
 																<div class="d-flex align-items-center gap-1">
 																	<div class="avatar avatar-xs">
-																		<img src="assets/images/users/user-7.jpg" alt="avatar-7" class="img-fluid rounded-circle" />
+																		<img src="../source/inspinia5/assets/images/users/user-7.jpg" alt="avatar-7" class="img-fluid rounded-circle" />
 																	</div>
 																	<div>
 																		<h5 class="text-nowrap mb-0 lh-base">
@@ -644,7 +647,7 @@ $order['insurance'] = $insurance;
 															<div class="d-flex align-items-center gap-3 justify-content-md-end">
 																<div class="d-flex align-items-center gap-1">
 																	<div class="avatar avatar-xs">
-																		<img src="assets/images/users/user-8.jpg" alt="avatar-8" class="img-fluid rounded-circle" />
+																		<img src="../source/inspinia5/assets/images/users/user-8.jpg" alt="avatar-8" class="img-fluid rounded-circle" />
 																	</div>
 																	<div>
 																		<h5 class="text-nowrap mb-0 lh-base">
@@ -690,7 +693,7 @@ $order['insurance'] = $insurance;
 															<div class="d-flex align-items-center gap-3 justify-content-md-end">
 																<div class="d-flex align-items-center gap-1">
 																	<div class="avatar avatar-xs">
-																		<img src="assets/images/users/user-9.jpg" alt="avatar-9" class="img-fluid rounded-circle" />
+																		<img src="../source/inspinia5/assets/images/users/user-9.jpg" alt="avatar-9" class="img-fluid rounded-circle" />
 																	</div>
 																	<div>
 																		<h5 class="text-nowrap mb-0 lh-base">
@@ -894,8 +897,11 @@ $order['insurance'] = $insurance;
 					el.classList.remove('d-none');
 				});
 
-				// Update location name in panel header
-				document.getElementById('locDetailName').textContent = this.dataset.locName;
+				// Update location info in panel
+				document.getElementById('locDetailName').textContent    = this.dataset.locName;
+				document.getElementById('locDetailAddress').textContent = this.dataset.locAddress;
+				document.getElementById('locDetailPhone').textContent   = this.dataset.locPhone;
+				document.getElementById('locDetailFax').textContent     = this.dataset.locFax;
 
 				// Highlight active item
 				document.querySelectorAll('.loc-trigger').forEach(function (el) {
