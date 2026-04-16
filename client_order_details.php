@@ -1213,75 +1213,7 @@ $order['insurance'] = $insurance;
 						<div class="col-xl-3 col-lg-6 order-lg-1 order-xl-1">
 							<div class="card card-top-sticky">
 								<div class="card-body">
-									<div class="list-group list-group-flush list-custom mt-3">
-										<a href="#!" class="list-group-item list-group-item-action active">
-											<i class="ti ti-smart-home me-1 opacity-75 fs-lg align-middle"></i>
-											<span class="align-middle">News Feed</span>
-										</a>
-
-										<a href="#!" class="list-group-item list-group-item-action">
-											<i class="ti ti-message-circle me-1 opacity-75 fs-lg align-middle"></i>
-											<span class="align-middle">Messages</span>
-											<span class="badge align-middle bg-danger-subtle fs-xxs text-danger float-end">5</span>
-										</a>
-
-										<a href="#!" class="list-group-item list-group-item-action">
-											<i class="ti ti-users me-1 opacity-75 fs-lg align-middle"></i>
-											<span class="align-middle">Friends</span>
-										</a>
-
-										<a href="#!" class="list-group-item list-group-item-action">
-											<i class="ti ti-bell me-1 opacity-75 fs-lg align-middle"></i>
-											<span class="align-middle">Notifications</span>
-											<span class="badge align-middle bg-warning-subtle text-warning fs-xxs float-end">12</span>
-										</a>
-
-										<a href="#!" class="list-group-item list-group-item-action">
-											<i class="ti ti-category me-1 opacity-75 fs-lg align-middle"></i>
-											<span class="align-middle">Groups</span>
-										</a>
-
-										<a href="#!" class="list-group-item list-group-item-action">
-											<i class="ti ti-book me-1 opacity-75 fs-lg align-middle"></i>
-											<span class="align-middle">Pages</span>
-										</a>
-
-										<a href="#!" class="list-group-item list-group-item-action">
-											<i class="ti ti-calendar-event me-1 opacity-75 fs-lg align-middle"></i>
-											<span class="align-middle">Events</span>
-										</a>
-
-										<a href="#!" class="list-group-item list-group-item-action">
-											<i class="ti ti-settings me-1 opacity-75 fs-lg align-middle"></i>
-											<span class="align-middle">Settings</span>
-										</a>
-
-										<div class="list-group-item mt-2">
-											<span class="align-middle">Categories</span>
-										</div>
-
-										<a href="#!" class="list-group-item list-group-item-action">
-											<i class="ti ti-tag me-1 text-primary fs-lg align-middle"></i>
-											<span class="align-middle">Technology</span>
-										</a>
-
-										<a href="#!" class="list-group-item list-group-item-action">
-											<i class="ti ti-tag me-1 text-success fs-lg align-middle"></i>
-											<span class="align-middle">Travel</span>
-										</a>
-
-										<a href="#!" class="list-group-item list-group-item-action">
-											<i class="ti ti-tag me-1 text-danger fs-lg align-middle"></i>
-											<span class="align-middle">Lifestyle</span>
-										</a>
-
-										<a href="#!" class="list-group-item list-group-item-action">
-											<i class="ti ti-tag me-1 fs-lg align-middle text-info"></i>
-											<span class="align-middle">Photography</span>
-										</a>
-
-										<hr />
-										
+									<div class="list-group list-group-flush list-custom mt-3">								
 										<div class="col-12 mb-4">
 											<h6 class="mb-1 text-muted text-uppercase">Created Date:</h6>
 											<p class="fw-medium mb-0">March 15, 2025</p>
@@ -1324,6 +1256,33 @@ $order['insurance'] = $insurance;
 												<h6 class="mb-1 text-muted text-uppercase">Client Name:</h6>
 												<p class="fw-medium mb-0">Starbucks Corporation</p>
 											</div>
+
+											<hr />
+											<div class="list-group-item mt-2">
+												<span class="align-middle">Records Location</span>
+											</div>
+
+											<a href="#!" class="list-group-item list-group-item-action">
+												<i class="ti ti-tag me-1 text-primary fs-lg align-middle"></i>
+												<span class="align-middle">Technology</span>
+											</a>
+
+											<a href="#!" class="list-group-item list-group-item-action">
+												<i class="ti ti-tag me-1 text-success fs-lg align-middle"></i>
+												<span class="align-middle">Travel</span>
+											</a>
+
+											<a href="#!" class="list-group-item list-group-item-action">
+												<i class="ti ti-tag me-1 text-danger fs-lg align-middle"></i>
+												<span class="align-middle">Lifestyle</span>
+											</a>
+
+											<a href="#!" class="list-group-item list-group-item-action">
+												<i class="ti ti-tag me-1 fs-lg align-middle text-info"></i>
+												<span class="align-middle">Photography</span>
+											</a>
+
+											
 										</div>
 
 										<hr />
