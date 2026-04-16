@@ -1250,11 +1250,11 @@ $order['insurance'] = $insurance;
 												Customizable reports and role-based dashboards ensure relevant insights for marketing teams, financial analysts, and executive decision-makers. The system is built with scalability and responsiveness in mind, supporting both
 												desktop and mobile views for seamless access.
 											</p> -->
-											<div class="col-12 mb-2">
+											<div class="col-12 mb-4">
 												<h6 class="mb-1 text-muted text-uppercase">Created Date:</h6>
 												<p class="fw-medium mb-0">March 15, 2025</p>
 											</div>
-											<div class="col-12 mb-2">
+											<div class="col-12 mb-4">
 												<h6 class="mb-1 text-muted text-uppercase">Deadline:</h6>
 												<p class="fw-medium mb-0">June 30, 2025</p>
 											</div>
@@ -1711,66 +1711,6 @@ $order['insurance'] = $insurance;
 										</div>
 									</div>
 								</div>
-
-							<div class="card">
-								<div class="card-header justify-content-between align-items-center border-dashed">
-									<h4 class="card-title mb-0">Trending</h4>
-									<div class="dropdown">
-										<a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
-											<i class="ti ti-dots-vertical fs-lg"></i>
-										</a>
-										<div class="dropdown-menu dropdown-menu-end">
-											<a href="#" class="dropdown-item">
-												<i class="ti ti-refresh me-2"></i>
-												Refresh Feed
-											</a>
-											<a href="#" class="dropdown-item">
-												<i class="ti ti-settings me-2"></i>
-												Manage Topics
-											</a>
-											<a href="#" class="dropdown-item">
-												<i class="ti ti-alert-circle me-2"></i>
-												Report Issue
-											</a>
-										</div>
-									</div>
-								</div>
-
-								<div class="card-body">
-									<!-- Trending Items -->
-									<div class="d-flex mb-3">
-										<i class="ti ti-trending-up text-primary me-2 mt-1"></i>
-										<a href="#!" class="link-reset text-decoration-none">
-											<strong>Golden Globes:</strong>
-											The 27 Best moments from the Golden Globe Awards
-										</a>
-									</div>
-
-									<div class="d-flex mb-3">
-										<i class="ti ti-trending-up text-primary me-2 mt-1"></i>
-										<a href="#!" class="link-reset text-decoration-none">
-											<strong>World Cricket:</strong>
-											India has won ICC T20 World Cup Yesterday
-										</a>
-									</div>
-
-									<div class="d-flex mb-3">
-										<i class="ti ti-trending-up text-primary me-2 mt-1"></i>
-										<a href="#!" class="link-reset text-decoration-none">
-											<strong>Antarctica:</strong>
-											Melting of Totten Glacier could cause high risk to areas near by sea
-										</a>
-									</div>
-
-									<div class="d-flex">
-										<i class="ti ti-trending-up text-primary me-2 mt-1"></i>
-										<a href="#!" class="link-reset text-decoration-none">
-											<strong>Global Tournament:</strong>
-											America has won Football match Yesterday
-										</a>
-									</div>
-								</div>
-							</div>
 							<!-- end card-->
 
 						</div>
