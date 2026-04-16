@@ -551,7 +551,7 @@ $order['insurance'] = $insurance;
 
 					document.getElementById('locSpinner').classList.add('d-none');
 					document.getElementById('locDetailContent').classList.remove('d-none');
-				}, 300);
+				}, 100);
 			});
 		});
 
