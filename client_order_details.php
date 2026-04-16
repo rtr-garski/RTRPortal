@@ -1179,10 +1179,13 @@ $order['insurance'] = $insurance;
                                             <i class="ti ti-menu-4 fs-lg"></i>
                                         </button>
                                     </div>
-                                    	<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
-										<p class="text-muted mb-3"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
-									
+                                    <!-- <h3 class="mb-0 fs-xl flex-grow-1">952 Products</h3> -->
 
+									<div class="mb-0 fs-xl flex-grow-1>
+										<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
+										<p class="text-muted mb-3"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
+									</div>
+									
                                     <div class="d-flex gap-1">
                                         <a href="apps-ecommerce-products-grid.html" class="btn btn-soft-primary btn-icon active">
                                             <i class="ti ti-category fs-lg"></i>
