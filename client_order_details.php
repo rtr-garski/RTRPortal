@@ -83,14 +83,14 @@ $order['insurance'] = $insurance;
 									</div>
 									<div class="d-flex gap-1">
 										<a href="#" class="btn btn-soft-primary btn-icon active">
-                                            <i class="ti ti-category fs-lg"></i>
+                                            <i class="ti ti-category fs-lg me-1"> Workers's Camp</i>
                                         </a>
                                         <a href="#" class="btn btn-soft-primary btn-icon">
-                                            <i class="ti ti-list-check fs-lg"></i>
+                                            <i class="ti ti-list-check fs-lg me-1"> 2nd Status</i>
                                         </a>
 										<!-- <span class="badge badge-soft-success fs-xxs badge-label"><i class="ti ti-circle-filled fs-sm align-middle"></i> Paid</span> -->
 										<!-- <span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span> -->
-										<button type="button" class="btn btn-secondary"><i class="ti ti-inbox fs-xl me-1"></i> Order Received</button>
+										<button type="button" class="btn btn-secondary"><i class="ti ti-inbox fs-lg me-1"></i> Order Received</button>
 									</div>
 								</div>
 								
