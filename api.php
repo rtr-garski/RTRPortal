@@ -445,7 +445,7 @@ if ($statusCode) {
                                                 <td class="pe-3 text-muted">Patient address fields</td>
                                             </tr>
 
-                                            <tr class="table-light"><td colspan="4" class="ps-3 fw-semibold text-muted" style="font-size:.72rem">RECORDS LOCATIONS</td></tr>
+                                            <tr><th colspan="4" class="ps-3 fw-semibold text-muted" style="font-size:.72rem">RECORDS LOCATIONS</th></tr>
                                             <tr>
                                                 <td class="ps-3"><code>records_locations</code></td>
                                                 <td>array</td>
@@ -459,7 +459,7 @@ if ($statusCode) {
                                                 <td class="pe-3 text-muted"><code>standard</code> (default) or <code>rush</code></td>
                                             </tr>
                                             <tr>
-                                                <td class="ps-3"><code>&nbsp;&nbsp;.record_type</code></td>
+                                                <td class="ps-3 top-align"><code>&nbsp;&nbsp;.record_type</code></td>
                                                 <td>string</td>
                                                 <td><span class="badge-req">required</span></td>
                                                 <td class="pe-3">
