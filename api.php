@@ -383,7 +383,7 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>doi_end</code></td>
                                                 <td>string</td>
-                                                <td><span class="badge-opt">optional</span></td>
+                                                <td><span class="badge badge-soft-info">optional</span></td>
                                                 <td class="pe-3 text-muted">Date of Injury end — <code>YYYY-MM-DD</code></td>
                                             </tr>
                                             <tr>
@@ -403,13 +403,13 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>insurance_carriers</code></td>
                                                 <td>array</td>
-                                                <td><span class="badge-opt">optional</span> <span class="badge-multi">multiple</span></td>
+                                                <td><span class="badge badge-soft-info">optional</span> <span class="badge-multi">multiple</span></td>
                                                 <td class="pe-3 text-muted">Each: <code>name*</code>, <code>address</code>, <code>city</code>, <code>state</code>, <code>zip</code>, <code>phone</code>, <code>adjuster_name</code>, <code>adjuster_phone</code>, <code>adjuster_fax</code>, <code>adjuster_email</code>, <code>claim_no</code></td>
                                             </tr>
                                             <tr>
                                                 <td class="ps-3"><code>opposing_counsel</code></td>
                                                 <td>array</td>
-                                                <td><span class="badge-opt">optional</span> <span class="badge-multi">multiple</span></td>
+                                                <td><span class="badge badge-soft-info">optional</span> <span class="badge-multi">multiple</span></td>
                                                 <td class="pe-3 text-muted">Each: <code>name*</code>, <code>address</code>, <code>city</code>, <code>state</code>, <code>zip</code>, <code>phone</code></td>
                                             </tr>
                                             <tr>
@@ -435,13 +435,13 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>patient.ssn</code></td>
                                                 <td>string</td>
-                                                <td><span class="badge-opt">optional</span></td>
+                                                <td><span class="badge badge-soft-info">optional</span></td>
                                                 <td class="pe-3 text-muted">Social security number</td>
                                             </tr>
                                             <tr>
                                                 <td class="ps-3"><code>patient.street / city / state / zip</code></td>
                                                 <td>string</td>
-                                                <td><span class="badge-opt">optional</span></td>
+                                                <td><span class="badge badge-soft-info">optional</span></td>
                                                 <td class="pe-3 text-muted">Patient address fields</td>
                                             </tr>
 
@@ -455,7 +455,7 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>&nbsp;&nbsp;.priority</code></td>
                                                 <td>string</td>
-                                                <td><span class="badge-opt">optional</span></td>
+                                                <td><span class="badge badge-soft-info">optional</span></td>
                                                 <td class="pe-3 text-muted"><code>standard</code> (default) or <code>rush</code></td>
                                             </tr>
                                             <tr>
@@ -493,7 +493,7 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>&nbsp;&nbsp;.special_instruction</code></td>
                                                 <td>string</td>
-                                                <td><span class="badge-opt">optional</span></td>
+                                                <td><span class="badge badge-soft-info">optional</span></td>
                                                 <td class="pe-3 text-muted">Free-text instructions</td>
                                             </tr>
 
@@ -501,7 +501,7 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>attachments</code></td>
                                                 <td>array</td>
-                                                <td><span class="badge-opt">optional</span> <span class="badge-multi">multiple</span></td>
+                                                <td><span class="badge badge-soft-info">optional</span> <span class="badge-multi">multiple</span></td>
                                                 <td class="pe-3 text-muted">Each: <code>filename*</code>, <code>mime_type*</code>, <code>data*</code> (base64). Max 10 MB each. Allowed: PDF, JPEG, PNG, TIFF, DOC, DOCX</td>
                                             </tr>
                                         </tbody>
