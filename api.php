@@ -403,13 +403,13 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>insurance_carriers</code></td>
                                                 <td>array</td>
-                                                <td><span class="badge badge-soft-info">optional</span> <span class="badge-multi">multiple</span></td>
+                                                <td><span class="badge badge-soft-info">optional</span> <span class="badge badge-soft-primary">multiple</span></td>
                                                 <td class="pe-3 text-muted">Each: <code>name*</code>, <code>address</code>, <code>city</code>, <code>state</code>, <code>zip</code>, <code>phone</code>, <code>adjuster_name</code>, <code>adjuster_phone</code>, <code>adjuster_fax</code>, <code>adjuster_email</code>, <code>claim_no</code></td>
                                             </tr>
                                             <tr>
                                                 <td class="ps-3"><code>opposing_counsel</code></td>
                                                 <td>array</td>
-                                                <td><span class="badge badge-soft-info">optional</span> <span class="badge-multi">multiple</span></td>
+                                                <td><span class="badge badge-soft-info">optional</span> <span class="badge badge-soft-primary">multiple</span></td>
                                                 <td class="pe-3 text-muted">Each: <code>name*</code>, <code>address</code>, <code>city</code>, <code>state</code>, <code>zip</code>, <code>phone</code></td>
                                             </tr>
                                             <tr>
@@ -449,7 +449,7 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>records_locations</code></td>
                                                 <td>array</td>
-                                                <td><span class="badge badge-soft-danger">required</span> <span class="badge-multi">multiple</span></td>
+                                                <td><span class="badge badge-soft-danger">required</span> <span class="badge badge-soft-primary">multiple</span></td>
                                                 <td class="pe-3 text-muted">At least one entry required</td>
                                             </tr>
                                             <tr>
@@ -501,7 +501,7 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>attachments</code></td>
                                                 <td>array</td>
-                                                <td><span class="badge badge-soft-info">optional</span> <span class="badge-multi">multiple</span></td>
+                                                <td><span class="badge badge-soft-info">optional</span> <span class="badge badge-soft-primary">multiple</span></td>
                                                 <td class="pe-3 text-muted">Each: <code>filename*</code>, <code>mime_type*</code>, <code>data*</code> (base64). Max 10 MB each. Allowed: PDF, JPEG, PNG, TIFF, DOC, DOCX</td>
                                             </tr>
                                         </tbody>
