@@ -1249,11 +1249,11 @@ $order['insurance'] = $insurance;
 											<?php foreach ($locations as $loc): ?>
 											<a href="#!" class="list-group-item list-group-item-action">
 												<i class="ti ti-tag me-1 text-primary fs-lg align-middle"></i>
-												<span class="align-middle"  data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Discover features you didnt know existed. Hover to explore more!" title="Exciting Features!"><?= htmlspecialchars($loc['Loc_Name']) ?></span>
+												<span class="align-middle" data-bs-toggle="popover" data-bs-trigger="hover" title="<?= htmlspecialchars($loc['Rec_Type']) ?>" data-bs-content="Address: <?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?>"><?= htmlspecialchars($loc['Loc_Name']) ?></span>
 											</a>
 											<?php endforeach; ?>
 											<!-- Records Location List -->
-											<button type="button" tabindex="0" class="btn btn-dark">Please Hover Me</button>
+											
 										</div>
 
 										<hr />
