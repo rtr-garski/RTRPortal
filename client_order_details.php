@@ -1169,7 +1169,33 @@ $order['insurance'] = $insurance;
 					</div>
 					
 					<!-- 3 column -->
-					
+					<div class="row mb-2">
+                        <div class="col-lg-12">
+                            <form class="bg-light-subtle rounded border p-3">
+                                <div class="d-flex flex-wrap justify align-items-center gap-3">
+                                    <div class="d-lg-none d-flex gap-2">
+                                        <button class="btn btn-default btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#productFillterOffcanvas" aria-controls="productFillterOffcanvas">
+                                            <i class="ti ti-menu-4 fs-lg"></i>
+                                        </button>
+                                    </div>
+                                    <h3 class="mb-0 fs-xl flex-grow-1">952 Products</h3>
+
+                                    <div class="d-flex gap-1">
+                                        <a href="apps-ecommerce-products-grid.html" class="btn btn-soft-primary btn-icon active">
+                                            <i class="ti ti-category fs-lg"></i>
+                                        </a>
+                                        <a href="apps-ecommerce-products.html" class="btn btn-soft-primary btn-icon">
+                                            <i class="ti ti-list-check fs-lg"></i>
+                                        </a>
+                                        <a href="apps-ecommerce-product-add.html" class="btn btn-danger ms-1">
+                                            <i class="ti ti-plus fs-sm me-2"></i>
+                                            Add Product
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
 					<div class="row">
 						<div class="col-xl-3 col-lg-6 order-lg-1 order-xl-1">
 							<div class="card card-top-sticky">
