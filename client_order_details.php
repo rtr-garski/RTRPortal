@@ -1242,7 +1242,16 @@ $order['insurance'] = $insurance;
 										</a>
 
 										<hr />
-								
+										
+										<div class="col-12 mb-4">
+											<h6 class="mb-1 text-muted text-uppercase">Created Date:</h6>
+											<p class="fw-medium mb-0">March 15, 2025</p>
+										</div>
+										<div class="col-12 mb-4">
+											<h6 class="mb-1 text-muted text-uppercase">Deadline:</h6>
+											<p class="fw-medium mb-0">June 30, 2025</p>
+										</div>
+
 										<div class="mb-4">
 											<!-- <h5 class="fs-base mb-2">Project Description:</h5>
 											<p class="text-muted">This dashboard provides AI-powered insights and analytics for Starbucks business data. It includes sales performance, customer behavior, and predictive trends to assist in data-driven decision-making.</p>
