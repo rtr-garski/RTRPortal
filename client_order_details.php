@@ -160,8 +160,9 @@ $order['insurance'] = $insurance;
 											<!-- Insurance Carrier List -->
 
 											<hr />
-											<div class="list-group-item mt-2">
+											<div class="list-group-item mt-2" id="toggleRecordLocation" style="cursor:pointer;">
 												<span class="align-middle"><strong>Records Location</strong></span>
+												<i class="ti ti-chevron-down float-end align-middle" id="recordLocationChevron"></i>
 											</div>
 
 											<!-- Records Location List -->
@@ -196,7 +197,8 @@ $order['insurance'] = $insurance;
 							<!-- end card -->
 						</div>
 						<!-- end col-->
-						<div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
+
+						<div class="recordlocationhist col-xl-6 col-lg-12 order-lg-2 order-xl-1 d-none">
 							<div class="card">
 								<div class="card-body">
 									<!-- User Info -->
@@ -278,7 +280,7 @@ $order['insurance'] = $insurance;
 						<!-- end col-->
 
 						<!-- 3rd column -->
-						<div class="col-xl-3 col-lg-6 order-lg-1 order-xl-2">
+						<div class="recordlocationhist col-xl-3 col-lg-6 order-lg-1 order-xl-2 d-none">
 							<div class="card">
 									<div class="card-header">
 										<h4 class="card-title">Activity</h4>
@@ -398,6 +400,15 @@ $order['insurance'] = $insurance;
 		<?php include('partials/customizer.php'); ?> <?php include('partials/footer-scripts.php'); ?>
 
 		<script>
+		// Toggle Records Location columns
+		document.getElementById('toggleRecordLocation').addEventListener('click', function () {
+			var panels = document.querySelectorAll('.recordlocationhist');
+			var chevron = document.getElementById('recordLocationChevron');
+			panels.forEach(function (el) { el.classList.toggle('d-none'); });
+			chevron.classList.toggle('ti-chevron-down');
+			chevron.classList.toggle('ti-chevron-up');
+		});
+
 		(function () {
 			var modal = new bootstrap.Modal(document.getElementById('changeInfoModal'));
 			var activeInput = null;
