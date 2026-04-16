@@ -1180,13 +1180,9 @@ $order['insurance'] = $insurance;
 										<span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span>
 									</div>
 								</div>
-								<div class="card-body px-2">
+								<div class="card-body px-4">
 									<!-- Case Information -->
 									<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Case Information</h5>
-									<div class="mt-3 mb-5">
-										<h4 class="fs-xl">Monterey Velvet Blue Luxury Relaxation Single Seater Sofa</h4>
-									</div>
-
 									<div class="row mb-4">
 										<div class="col-md-4 col-xl-3">
 											<h6 class="mb-1 text-muted text-uppercase">SKU:</h6>
