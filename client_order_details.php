@@ -76,12 +76,12 @@ $order['insurance'] = $insurance;
 					<div class="row mb-2 sticky-top" >
                         <div class="col-lg-12">
 							<div class="card">
-								<div class="card-header align-items-start p-4">
-							
-									<div><?php //echo '<pre>' . print_r($order, true) . '</pre>'; ?></div>
+								<div class="card-header d-flex justify-content-between align-items-start p-4">
 									<div>
 										<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
-										<p class="text-muted mb-3"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
+										<p class="text-muted mb-0"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
+									</div>
+									<div>
 										<!-- <span class="badge badge-soft-success fs-xxs badge-label"><i class="ti ti-circle-filled fs-sm align-middle"></i> Paid</span> -->
 										<span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span>
 									</div>
