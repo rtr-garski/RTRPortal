@@ -352,7 +352,7 @@ if ($statusCode) {
                                 <div class="card-header">Request Schema</div>
                                 <div class="card-body p-0 schema-wrap">
                                     <table class="table table-sm table-hover mb-0 schema-table">
-                                        <thead class="table-light">
+                                        <thead class="table-dark">
                                             <tr>
                                                 <th class="ps-3" style="width:32%">Field</th>
                                                 <th style="width:12%">Type</th>
