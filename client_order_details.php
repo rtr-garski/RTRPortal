@@ -1179,8 +1179,8 @@ $order['insurance'] = $insurance;
                                             <i class="ti ti-menu-4 fs-lg"></i>
                                         </button>
                                     </div>
-
-                                    <h3 class="mb-0 fs-xl flex-grow-1">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
+	
+                                    <div><h3 class="mb-0 fs-xl flex-grow-1">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3></div>
 
 									<!-- <div>
 										<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
@@ -1190,7 +1190,6 @@ $order['insurance'] = $insurance;
                                     <div class="d-flex gap-1">
                                         
                                         <a href="#" class="btn btn-info ms-1">
-                                            <i class="ti ti-plus fs-sm me-2"></i>
                                             Order Received
                                         </a>
                                     </div>
