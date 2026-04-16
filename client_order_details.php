@@ -1246,7 +1246,7 @@ $order['insurance'] = $insurance;
                                 <!-- end card-->
 
 								<!-- other -->
-								<div class="card">
+								<div class="card card-top-sticky">
 									<div class="card-header justify-content-between border-dashed">
 										<h4 class="card-title">Billing Details</h4>
 										<a href="#!" class="btn btn-default btn-sm btn-icon rounded-circle"><i class="ti ti-pencil fs-lg"></i></a>

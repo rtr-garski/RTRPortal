@@ -414,7 +414,7 @@
     <div class="offcanvas-footer border-top p-3 text-center">
         <div class="row justify-content-end">
             <div class="col-6">
-                <a href="https://wrapmarket.com/item/inspinia-multipurpose-admin-dashboard-template-WB0R5L90S?via=webapp" class="btn btn-success fw-semibold py-2 w-100" target="_blank"><i class="ti ti-basket me-2 fs-md"></i> Buy Now</a>
+                
             </div>
             <div class="col-6">
                 <button type="button" class="btn btn-danger fw-semibold py-2 w-100" id="reset-layout"><i class="ti ti-refresh me-2 fs-md"></i> Reset</button>

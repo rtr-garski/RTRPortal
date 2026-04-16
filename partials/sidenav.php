@@ -108,27 +108,7 @@
                     </div>
                 </li>
                 
-                <li class="side-nav-title mt-2" data-lang="apps">Apps</li>
-                
-                <li class="side-nav-item">
-                    <a href="javascript:void(0);"  class="side-nav-link">
-                        <span class="menu-icon"><i class="ti ti-folder-open"></i></span>
-                        <span class="menu-text" data-lang="apps-file-manager">File Manager</span>
-                    </a>
-                </li>
-                <li class="side-nav-item">
-                    <a href="javascript:void(0);"  class="side-nav-link">
-                        <span class="menu-icon"><i class="ti ti-message"></i></span>
-                        <span class="menu-text" data-lang="apps-chat">Chat</span>
-                    </a>
-                </li>
-                <li class="side-nav-item">
-                    <a  href="javascript:void(0);"  class="side-nav-link">
-                        <span class="menu-icon"><i class="ti ti-calendar"></i></span>
-                        <span class="menu-text" data-lang="apps-calendar">Calendar</span>
-                    </a>
-                </li>
-
+                <li class="side-nav-title mt-2" data-lang="apps">RecordHost Portal</li>
 
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables" class="side-nav-link">
@@ -145,7 +125,7 @@
                             </li>
                             <li class="side-nav-item">
                                 <a href="client_reports.php" class="side-nav-link">
-                                    <span class="menu-text">Client Reports</span>
+                                    <span class="menu-text">Client Portal</span>
                                 </a>
                             </li>
                            
