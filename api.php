@@ -365,19 +365,19 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>subtype</code></td>
                                                 <td>string</td>
-                                                <td><span class="badge-soft-danger">required</span></td>
+                                                <td><span class="badge badge-soft-danger">required</span></td>
                                                 <td class="pe-3 text-muted"><code>IMR</code>, <code>SIBTF</code>, <code>Special Notice of Lawsuit</code>, <code>Trial Depo Subpoena for WCAB</code></td>
                                             </tr>
                                             <tr>
                                                 <td class="ps-3"><code>case_no</code></td>
                                                 <td>string</td>
-                                                <td><span class="badge-soft-danger">required</span></td>
+                                                <td><span class="badge badge-soft-danger">required</span></td>
                                                 <td class="pe-3 text-muted">WCAB Case No / ADJ number</td>
                                             </tr>
                                             <tr>
                                                 <td class="ps-3"><code>doi_start</code></td>
                                                 <td>string</td>
-                                                <td><span class="badge-soft-danger">required</span></td>
+                                                <td><span class="badge badge-soft-danger">required</span></td>
                                                 <td class="pe-3 text-muted">Date of Injury start — <code>YYYY-MM-DD</code></td>
                                             </tr>
                                             <tr>
@@ -389,13 +389,13 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>court_venue</code></td>
                                                 <td>object</td>
-                                                <td><span class="badge-soft-danger">required</span></td>
+                                                <td><span class="badge badge-soft-danger">required</span></td>
                                                 <td class="pe-3 text-muted"><code>name</code>, <code>address</code>, <code>city</code>, <code>state</code>, <code>phone</code> — all required</td>
                                             </tr>
                                             <tr>
                                                 <td class="ps-3"><code>letter_of_rep_date</code></td>
                                                 <td>string</td>
-                                                <td><span class="badge-soft-danger">required</span></td>
+                                                <td><span class="badge badge-soft-danger">required</span></td>
                                                 <td class="pe-3 text-muted">Letter of Representation date — <code>YYYY-MM-DD</code></td>
                                             </tr>
 
@@ -415,7 +415,7 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>employer_name</code></td>
                                                 <td>string</td>
-                                                <td><span class="badge-soft-danger">required</span></td>
+                                                <td><span class="badge badge-soft-danger">required</span></td>
                                                 <td class="pe-3 text-muted">Name of employer</td>
                                             </tr>
 
@@ -423,13 +423,13 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>patient.name</code></td>
                                                 <td>string</td>
-                                                <td><span class="badge-soft-danger">required</span></td>
+                                                <td><span class="badge badge-soft-danger">required</span></td>
                                                 <td class="pe-3 text-muted">Patient full name</td>
                                             </tr>
                                             <tr>
                                                 <td class="ps-3"><code>patient.dob</code></td>
                                                 <td>string</td>
-                                                <td><span class="badge-soft-danger">required</span></td>
+                                                <td><span class="badge badge-soft-danger">required</span></td>
                                                 <td class="pe-3 text-muted">Date of birth — <code>YYYY-MM-DD</code></td>
                                             </tr>
                                             <tr>
@@ -449,7 +449,7 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>records_locations</code></td>
                                                 <td>array</td>
-                                                <td><span class="badge-soft-danger">required</span> <span class="badge-multi">multiple</span></td>
+                                                <td><span class="badge badge-soft-danger">required</span> <span class="badge-multi">multiple</span></td>
                                                 <td class="pe-3 text-muted">At least one entry required</td>
                                             </tr>
                                             <tr>
@@ -461,7 +461,7 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3 align-top"><code>&nbsp;&nbsp;.record_type</code></td>
                                                 <td class="align-top">string</td>
-                                                <td class="align-top"><span class="badge-soft-danger">required</span></td>
+                                                <td class="align-top"><span class="badge badge-soft-danger">required</span></td>
                                                 <td class="pe-3 align-top">
                                                     <div class="text-muted mb-1" style="font-size:.74rem">Flexible aliases — normalized server-side:</div>
                                                     <div class="d-flex flex-wrap gap-1" style="font-size:.75rem">
@@ -481,13 +481,13 @@ if ($statusCode) {
                                             <tr>
                                                 <td class="ps-3"><code>&nbsp;&nbsp;.date_needed</code></td>
                                                 <td>string</td>
-                                                <td><span class="badge-soft-danger">required</span></td>
+                                                <td><span class="badge badge-soft-danger">required</span></td>
                                                 <td class="pe-3 text-muted"><code>YYYY-MM-DD</code></td>
                                             </tr>
                                             <tr>
                                                 <td class="ps-3"><code>&nbsp;&nbsp;.location</code></td>
                                                 <td>object</td>
-                                                <td><span class="badge-soft-danger">required</span></td>
+                                                <td><span class="badge badge-soft-danger">required</span></td>
                                                 <td class="pe-3 text-muted"><code>name*</code>, <code>address*</code>, <code>phone*</code></td>
                                             </tr>
                                             <tr>
