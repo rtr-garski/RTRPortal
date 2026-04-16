@@ -1250,11 +1250,11 @@ $order['insurance'] = $insurance;
 												Customizable reports and role-based dashboards ensure relevant insights for marketing teams, financial analysts, and executive decision-makers. The system is built with scalability and responsiveness in mind, supporting both
 												desktop and mobile views for seamless access.
 											</p> -->
-											<div class="col-12">
+											<div class="col-12 mb-2">
 												<h6 class="mb-1 text-muted text-uppercase">Created Date:</h6>
 												<p class="fw-medium mb-0">March 15, 2025</p>
 											</div>
-											<div class="col-12">
+											<div class="col-12 mb-2">
 												<h6 class="mb-1 text-muted text-uppercase">Deadline:</h6>
 												<p class="fw-medium mb-0">June 30, 2025</p>
 											</div>
