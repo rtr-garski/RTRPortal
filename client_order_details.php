@@ -1171,18 +1171,18 @@ $order['insurance'] = $insurance;
 					<!-- 3 column -->
 					<div class="row mb-2 sticky-top" >
                         <div class="col-lg-12">
-							<div>
-								<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
-								<p class="text-muted mb-3"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
-							</div>
-                            <!-- <form class="bg-light-subtle rounded border p-3">
+							
+                            <form class="bg-light-subtle rounded border p-3">
                                 <div class="d-flex flex-wrap justify align-items-center gap-3">
                                     <div class="d-lg-none d-flex gap-2">
                                         <button class="btn btn-default btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#productFillterOffcanvas" aria-controls="productFillterOffcanvas">
                                             <i class="ti ti-menu-4 fs-lg"></i>
                                         </button>
                                     </div>
-                                    <h3 class="mb-0 fs-xl flex-grow-1">952 Products</h3>
+                                    <div>
+										<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
+										<p class="text-muted mb-3"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
+									</div>
 
                                     <div class="d-flex gap-1">
                                         <a href="apps-ecommerce-products-grid.html" class="btn btn-soft-primary btn-icon active">
@@ -1197,7 +1197,7 @@ $order['insurance'] = $insurance;
                                         </a>
                                     </div>
                                 </div>
-                            </form> -->
+                            </form>
                         </div>
                     </div>
 					<div class="row">
