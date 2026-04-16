@@ -88,10 +88,6 @@ $order['insurance'] = $insurance;
 												<!-- <span class="badge badge-soft-success fs-xxs badge-label"><i class="ti ti-circle-filled fs-sm align-middle"></i> Paid</span> -->
 												<span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span>
 											</div>
-											<div class="ms-auto">
-												<!-- <a href="javascript: void(0);" class="btn btn-light"><i class="ti ti-pencil me-1"></i> Modify</a> -->
-												<a href="javascript: void(0);" class="btn btn-success"><i class="ti ti-send me-1"></i> Release to FileMaker</a>
-											</div>
 										</div>
 										<div class="card-body px-4">
 											<!-- Case Information -->
@@ -1168,16 +1164,8 @@ $order['insurance'] = $insurance;
 									</ul>
 								</div>
 							</div>
-
-							<!-- Promo -->
-							<div class="card">
-								<div class="card-body">
-									<p class="text-muted mb-0">🎉 Congratulations! You’ve earned <span class="fw-bold text-success">239 bonus points</span>!</p>
-								</div>
-							</div>
 						</div>
-					</div>
-				</div>
+					
 					</div>
 					
 						
