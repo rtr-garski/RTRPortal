@@ -1169,54 +1169,11 @@ $order['insurance'] = $insurance;
 					</div>
 					
 					<!-- 3 column -->
-					<!-- <div class="container-xxl"> -->
+					<div class="container-xxl">
                         <div class="row">
                             <div class="col-xl-3 col-lg-6 order-lg-1 order-xl-1">
                                 <div class="card card-top-sticky">
                                     <div class="card-body">
-                                        <div class="d-flex align-items-center mb-3">
-                                            <div class="me-2 position-relative">
-                                                <img src="assets/images/users/user-3.jpg" alt="avatar" class="rounded" width="42" height="42" />
-                                            </div>
-                                            <div>
-                                                <h5 class="mb-0 d-flex align-items-center">
-                                                    <a href="#!" class="link-reset">Damian D.</a>
-                                                    <img src="assets/images/flags/us.svg" alt="US" class="ms-2 rounded-circle" height="16" />
-                                                </h5>
-                                                <p class="text-muted mb-0">Content Creator</p>
-                                            </div>
-                                            <div class="ms-auto">
-                                                <div class="dropdown">
-                                                    <a href="#" class="btn btn-icon btn-ghost-light text-muted" data-bs-toggle="dropdown">
-                                                        <i class="ti ti-dots-vertical fs-24"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li>
-                                                            <a class="dropdown-item" href="#">View Profile</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item" href="#">Send Message</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item" href="#">Copy Profile Link</a>
-                                                        </li>
-                                                        <li>
-                                                            <hr class="dropdown-divider" />
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item" href="#">Edit Profile</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item text-danger" href="#">Block User</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item text-danger" href="#">Report User</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <div class="list-group list-group-flush list-custom mt-3">
                                             <a href="#!" class="list-group-item list-group-item-action active">
                                                 <i class="ti ti-smart-home me-1 opacity-75 fs-lg align-middle"></i>
@@ -2033,27 +1990,6 @@ $order['insurance'] = $insurance;
                                             <button class="btn btn-sm py-0 px-1 btn-default">View</button>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-header justify-content-between align-items-center border-dashed">
-                                        <h4 class="card-title mb-0">Featured Video For You</h4>
-                                        <div class="dropdown">
-                                            <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
-                                                <i class="ti ti-dots-vertical fs-lg"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <a href="#" class="dropdown-item">Watch Later</a>
-                                                <a href="#" class="dropdown-item">Report Video</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="ratio ratio-16x9 rounded overflow-hidden">
-                                            <iframe src="https://player.vimeo.com/video/357274789" allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                    <!-- end card-body-->
                                 </div>
                                 <!-- end card-->
                             </div>
