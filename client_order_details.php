@@ -184,11 +184,6 @@ $order['insurance'] = $insurance;
 						<div class="col-xl-9 order-xl-2 recordlocationhist d-none">
 							<div class="card card-h-100 rounded-0 rounded-start">
 								<div class="card-header align-items-start p-4">
-									<div class="avatar-xxl me-3">
-										<span class="avatar-title text-bg-light rounded">
-											<img src="assets/images/logos/starbucks.svg" height="48" alt="Brand-img" />
-										</span>
-									</div>
 									<div>
 										<h3 class="mb-1 d-flex fs-xl align-items-center" id="locDetailName"></h3>
 										<p class="text-muted mb-2 fs-xxs">Updated 5 minutes ago</p>
@@ -730,70 +725,67 @@ $order['insurance'] = $insurance;
 										</div>
 
 										<div class="tab-pane fade" id="activity" role="tabpanel">
-											<div class="d-flex gap-1 border-bottom border-dashed pb-3">
-												<div class="me-2 flex-shrink-0">
-													<img src="assets/images/users/user-1.jpg" class="avatar-md rounded-circle" alt="" />
+											<div class="timeline">
+												<!-- Event 1 -->
+												<div class="timeline-item d-flex align-items-stretch">
+													<div class="timeline-time pe-3 text-muted"></div>
+													<div class="timeline-dot bg-light"></div>
+													<div class="timeline-content ps-3 pb-5">
+														<h5 class="mb-1">Order Delivered</h5>
+														<p class="mb-1 text-muted">The package is out for delivery and will reach you shortly.</p>
+														<p class="mb-1 text-muted fs-xxs">Tracking No: <a href="#!" class="link-primary fw-semibold text-decoration-underline">TRK123456789</a></p>
+														<span class="fw-semibold fs-xxs">By Rodelaine Raro</span>
+													</div>
 												</div>
-												<div class="flex-grow-1 text-muted">
-													<span class="fw-medium text-body">Daniel Martinez</span>
-													uploaded a revised contract file.
-													<p class="fs-xs mb-0 text-body-secondary">Today 10:15 am - 24 Apr, 2025</p>
-												</div>
-												<p class="fs-xs text-body-secondary">5m ago</p>
-											</div>
 
-											<div class="d-flex gap-1 border-bottom border-dashed py-3">
-												<div class="me-2 flex-shrink-0">
-													<img src="assets/images/users/user-2.jpg" class="avatar-md rounded-circle" alt="" />
+												<!-- Event 2 -->
+												<div class="timeline-item d-flex align-items-stretch">
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="9:00 AM">Apr 14 '26</div>
+													<div class="timeline-dot bg-success"></div>
+													<div class="timeline-content ps-3 pb-5">
+														<h5 class="mb-1">QA Status</h5>
+														<p class="mb-1 text-muted">Complete Order</p>
+														<span class="fs-xxs fw-semibold">By QA Agent1</span>
+													</div>
 												</div>
-												<div class="flex-grow-1 text-muted">
-													<span class="fw-medium text-body">Nina Patel</span>
-													commented on your design update.
-													<p class="fs-xs mb-0 text-body-secondary">Today 8:00 am - 24 Apr, 2025</p>
-												</div>
-												<p class="fs-xs text-body-secondary">2h ago</p>
-											</div>
 
-											<div class="d-flex gap-1 border-bottom border-dashed py-3">
-												<div class="me-2 flex-shrink-0">
-													<img src="assets/images/users/user-3.jpg" class="avatar-md rounded-circle" alt="" />
+												<!-- Event 3 -->
+												<div class="timeline-item d-flex align-items-stretch">
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="3:15 PM">Apr 13 '26</div>
+													<div class="timeline-dot bg-success"></div>
+													<div class="timeline-content ps-3 pb-5">
+														<h5 class="mb-1">Order Copied</h5>
+													</div>
 												</div>
-												<div class="flex-grow-1 text-muted">
-													<span class="fw-medium text-body">Jason Lee</span>
-													completed the feedback review.
-													<p class="fs-xs mb-0 text-body-secondary">Yesterday 6:10 pm - 23 Apr, 2025</p>
-												</div>
-												<p class="fs-xs text-body-secondary">16h ago</p>
-											</div>
 
-											<div class="d-flex gap-1 border-bottom border-dashed py-3">
-												<div class="me-2 flex-shrink-0">
-													<img src="assets/images/users/user-4.jpg" class="avatar-md rounded-circle" alt="" />
+												<!-- Event 4 -->
+												<div class="timeline-item d-flex align-items-stretch">
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="6:00 PM">Apr 7 '26</div>
+													<div class="timeline-dot bg-success"></div>
+													<div class="timeline-content ps-3 pb-5">
+														<h5 class="mb-1">Order Served</h5>
+													</div>
 												</div>
-												<div class="flex-grow-1 text-muted">
-													<span class="fw-medium text-body">Emma Davis</span>
-													shared a link in the marketing group chat.
-													<p class="fs-xs mb-2 text-body-secondary">Yesterday 3:25 pm - 23 Apr, 2025</p>
-													<a href="#!" class="btn btn-default border px-1 py-0">
-														<i class="ti ti-link me-1"></i>
-														View
-													</a>
-												</div>
-												<p class="fs-xs text-body-secondary">19h ago</p>
-											</div>
 
-											<div class="d-flex gap-1 border-bottom border-dashed py-3">
-												<div class="me-2 flex-shrink-0">
-													<img src="assets/images/users/user-5.jpg" class="avatar-md rounded-circle" alt="" />
+												<div class="timeline-item d-flex align-items-stretch">
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="5:00 PM">Apr 4 '26</div>
+													<div class="timeline-dot bg-success"></div>
+													<div class="timeline-content ps-3 pb-5">
+														<h5 class="mb-1">Order Verified</h5>
+														<p class="mb-1 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+														<span class="fw-semibold fs-xxs">By OE Agent1</span>
+													</div>
 												</div>
-												<div class="flex-grow-1 text-muted position-relative">
-													<span class="fw-medium text-body">Leo Zhang</span>
-													sent you a private message.
-													<p class="fs-xs text-body-secondary">2 days ago 11:45 am - 22 Apr, 2025</p>
 
-													<div class="py-2 px-3 bg-light bg-opacity-50">"Lets sync up on the product roadmap tomorrow afternoon, does 2 PM work for you?"</div>
+												<div class="timeline-item d-flex align-items-stretch">
+													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="4:00 PM">Apr 4 '26</div>
+													<div class="timeline-dot bg-success"></div>
+													<div class="timeline-content ps-3 pb-5">
+														<h5 class="mb-1">Order Received</h5>
+														<p class="mb-1 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+													</div>
 												</div>
-												<p class="fs-xs flex-shrink-0 text-body-secondary">30h ago</p>
+
 											</div>
 										</div>
 									</div>
