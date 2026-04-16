@@ -1180,24 +1180,9 @@ $order['insurance'] = $insurance;
 										<span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span>
 									</div>
 								</div>
-								<div class="card-body px-4">
+								<div class="card-body px-2">
 									<!-- Case Information -->
 									<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Case Information</h5>
-									<div class="d-flex align-items-center justify-content-between">
-										<div>
-											<span class="badge bg-success-subtle text-success px-2 py-1 fs-base rounded-pill">In Stock</span>
-										</div>
-										<div class="flex-grow-1 d-inline-flex align-items-center justify-content-end fs-lg">
-											<i class="ti ti-star-filled text-warning"></i>
-											<i class="ti ti-star-filled text-warning"></i>
-											<i class="ti ti-star-filled text-warning"></i>
-											<i class="ti ti-star-filled text-warning"></i>
-											<i class="ti ti-star-filled text-warning"></i>
-											<span class="ms-1 fs-base">
-												<a href="apps-ecommerce-reviews.html" class="link-reset fw-medium">(859 Reviews)</a>
-											</span>
-										</div>
-									</div>
 									<div class="mt-3 mb-5">
 										<h4 class="fs-xl">Monterey Velvet Blue Luxury Relaxation Single Seater Sofa</h4>
 									</div>
