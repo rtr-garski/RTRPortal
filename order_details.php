@@ -76,7 +76,7 @@ $order['insurance'] = $insurance;
 											</div>
 											<div class="ms-auto">
 												<!-- <a href="javascript: void(0);" class="btn btn-light"><i class="ti ti-pencil me-1"></i> Modify</a> -->
-												<a href="javascript: void(0);" class="btn btn-success"><i class="ti ti-send me-1"></i> Release to FileMaker</a>
+												<a href="javascript: void(0);" class="btn btn-success"><i class="ti ti-send me-1"></i> Release to System</a>
 											</div>
 										</div>
 										<div class="card-body px-4">
