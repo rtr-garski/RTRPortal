@@ -166,7 +166,7 @@ $order['insurance'] = $insurance;
 
 											<!-- Records Location List -->
 											<?php foreach ($locations as $loc): ?>
-											<a href="#!" class="list-group-item list-group-item-action loc-trigger" data-loc-id="<?= $loc['__kp_API_Input_Order_Location_ID'] ?>">
+											<a href="#!" class="list-group-item list-group-item-action loc-trigger" data-loc-id="<?= $loc['__kp_API_Input_Order_Location_ID'] ?>" data-loc-name="<?= htmlspecialchars($loc['Loc_Name']) ?>">
 												<i class="ti ti-tag me-1 text-primary fs-lg align-middle"></i>
 												<span class="align-middle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-html="true" title="<?= htmlspecialchars($loc['Rec_Type']) ?>" data-bs-content="<p class=&quot;mb-1&quot;><i class=&quot;ti ti-map-pin me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p><p class=&quot;mb-0 text-muted&quot;><i class=&quot;ti ti-phone me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class=&quot;ti ti-printer me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>"><?= htmlspecialchars($loc['Loc_Name']) ?></span>
 											</a>
@@ -190,7 +190,7 @@ $order['insurance'] = $insurance;
 										</span>
 									</div>
 									<div>
-										<h3 class="mb-1 d-flex fs-xl align-items-center">Starbucks - AI Analytics Dashboard</h3>
+										<h3 class="mb-1 d-flex fs-xl align-items-center" id="locDetailName"></h3>
 										<p class="text-muted mb-2 fs-xxs">Updated 5 minutes ago</p>
 										<span class="badge badge-soft-success fs-xxs badge-label">In Progress</span>
 									</div>
@@ -901,6 +901,9 @@ $order['insurance'] = $insurance;
 				document.querySelectorAll('.recordlocationhist').forEach(function (el) {
 					el.classList.remove('d-none');
 				});
+
+				// Update location name in panel header
+				document.getElementById('locDetailName').textContent = this.dataset.locName;
 
 				// Highlight active item
 				document.querySelectorAll('.loc-trigger').forEach(function (el) {
