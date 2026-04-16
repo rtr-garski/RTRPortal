@@ -352,7 +352,7 @@ if ($statusCode) {
                                 <div class="card-header">Request Schema</div>
                                 <div class="card-body p-0 schema-wrap">
                                     <table class="table table-sm table-hover mb-0 schema-table">
-                                        <thead class="table-light">
+                                        <thead>
                                             <tr>
                                                 <th class="ps-3" style="width:32%">Field</th>
                                                 <th style="width:12%">Type</th>
@@ -361,7 +361,7 @@ if ($statusCode) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr><td colspan="4" class="ps-3 fw-semibold text-muted" style="font-size:.72rem">CASE INFORMATION</td></tr>
+                                            <tr class="table-light"><td colspan="4" class="ps-3 fw-semibold text-muted" style="font-size:.72rem">CASE INFORMATION</td></tr>
                                             <tr>
                                                 <td class="ps-3"><code>subtype</code></td>
                                                 <td>string</td>
@@ -399,7 +399,7 @@ if ($statusCode) {
                                                 <td class="pe-3 text-muted">Letter of Representation date — <code>YYYY-MM-DD</code></td>
                                             </tr>
 
-                                            <tr><td colspan="4" class="ps-3 fw-semibold text-muted" style="font-size:.72rem">PARTIES</td></tr>
+                                            <tr class="table-light"><td colspan="4" class="ps-3 fw-semibold text-muted" style="font-size:.72rem">PARTIES</td></tr>
                                             <tr>
                                                 <td class="ps-3"><code>insurance_carriers</code></td>
                                                 <td>array</td>
@@ -419,7 +419,7 @@ if ($statusCode) {
                                                 <td class="pe-3 text-muted">Name of employer</td>
                                             </tr>
 
-                                            <tr><td colspan="4" class="ps-3 fw-semibold text-muted" style="font-size:.72rem">PATIENT</td></tr>
+                                            <tr class="table-light"><td colspan="4" class="ps-3 fw-semibold text-muted" style="font-size:.72rem">PATIENT</td></tr>
                                             <tr>
                                                 <td class="ps-3"><code>patient.name</code></td>
                                                 <td>string</td>
@@ -497,7 +497,7 @@ if ($statusCode) {
                                                 <td class="pe-3 text-muted">Free-text instructions</td>
                                             </tr>
 
-                                            <tr><td colspan="4" class="ps-3 fw-semibold text-muted" style="font-size:.72rem">ATTACHMENTS</td></tr>
+                                            <tr class="table-light"><td colspan="4" class="ps-3 fw-semibold text-muted" style="font-size:.72rem">ATTACHMENTS</td></tr>
                                             <tr>
                                                 <td class="ps-3"><code>attachments</code></td>
                                                 <td>array</td>
