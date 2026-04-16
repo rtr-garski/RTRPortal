@@ -153,7 +153,7 @@ $order['insurance'] = $insurance;
 											<!-- Insurance Carrier List -->
 											<?php foreach ($insurance as $ins): ?>
 											<a href="#!" class="list-group-item list-group-item-action">
-												<i class="ti ti-tag me-1 text-primary fs-lg align-middle"></i>
+												<i class="ti ti-shield me-1 fs-lg align-middle"></i>
 												<span class="align-middle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-html="true" title="<?= htmlspecialchars($ins['Ins_Name']) ?>" data-bs-content="<p class=&quot;mb-1&quot;><i class=&quot;ti ti-map-pin me-1&quot;></i><?= htmlspecialchars($ins['Ins_Address_Street']) ?>, <?= htmlspecialchars($ins['Ins_Address_City']) ?>, <?= htmlspecialchars($ins['Ins_Address_State']) ?> <?= htmlspecialchars($ins['Ins_Address_Zip']) ?></p><p class=&quot;mb-0 text-muted&quot;><i class=&quot;ti ti-phone me-1&quot;></i><?= htmlspecialchars($ins['Ins_Address_Phone']) ?> &nbsp; <i class=&quot;ti ti-printer me-1&quot;></i><?= htmlspecialchars($ins['Ins_Address_Phone_Fax']) ?></p>"><?= htmlspecialchars($ins['Ins_Name']) ?></span>
 											</a>
 											<?php endforeach; ?>
