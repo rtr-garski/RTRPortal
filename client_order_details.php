@@ -1238,24 +1238,7 @@ $order['insurance'] = $insurance;
 												<h6 class="mb-1 text-muted text-uppercase">Deadline:</h6>
 												<p class="fw-medium mb-0">June 30, 2025</p>
 											</div>
-										</div>
-										<div class="row mb-4">
-											<div class="col-md-4 col-xl-3">
-												<h6 class="mb-1 text-muted text-uppercase">Created Date:</h6>
-												<p class="fw-medium mb-0">March 15, 2025</p>
-											</div>
-											<div class="col-md-4 col-xl-3">
-												<h6 class="mb-1 text-muted text-uppercase">Deadline:</h6>
-												<p class="fw-medium mb-0">June 30, 2025</p>
-											</div>
-											<div class="col-md-4 col-xl-3">
-												<h6 class="mb-1 text-muted text-uppercase">Created By:</h6>
-												<p class="fw-medium mb-0">John Smith</p>
-											</div>
-											<div class="col-md-4 col-xl-3">
-												<h6 class="mb-1 text-muted text-uppercase">Client Name:</h6>
-												<p class="fw-medium mb-0">Starbucks Corporation</p>
-											</div>
+										
 
 											<hr />
 											<div class="list-group-item mt-2">
