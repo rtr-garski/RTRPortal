@@ -243,7 +243,7 @@ $order['insurance'] = $insurance;
 										</li>
 									</ul>
 									<div class="tab-content">
-										<div class="tab-pane fade active show" id="comments" role="tabpanel">
+										<div class="tab-pane fade active show" id="notes" role="tabpanel">
 											<form action="#" class="mb-3">
 												<div class="mb-3">
 													<textarea class="form-control" id="form-control-textarea" rows="4" placeholder="Enter your messages..."></textarea>
