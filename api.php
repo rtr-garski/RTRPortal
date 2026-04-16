@@ -220,7 +220,7 @@ if ($statusCode) {
 
             .schema-wrap { overflow-x: auto; }
             .schema-table { font-size: .78rem; min-width: 560px; }
-            .schema-table th { background: #f8f9fa; font-size: .74rem; text-transform: uppercase; letter-spacing: .4px; color: #888; }
+            /* .schema-table th { background: #f8f9fa; font-size: .74rem; text-transform: uppercase; letter-spacing: .4px; color: #888; } */
             .schema-table td { vertical-align: middle; }
             .badge-req   { background: #e8f0fe; color: #3b4bcf;  font-size: .68rem; font-weight: 600; padding: .2rem .45rem; border-radius: .25rem; }
             .badge-opt   { background: #f0f0f0; color: #888;     font-size: .68rem; font-weight: 600; padding: .2rem .45rem; border-radius: .25rem; }
@@ -460,9 +460,9 @@ if ($statusCode) {
                                             </tr>
                                             <tr>
                                                 <td class="ps-3 align-top"><code>&nbsp;&nbsp;.record_type</code></td>
-                                                <td>string</td>
-                                                <td><span class="badge-req">required</span></td>
-                                                <td class="pe-3">
+                                                <td class="align-top">string</td>
+                                                <td class="align-top"><span class="badge-req">required</span></td>
+                                                <td class="pe-3 align-top">
                                                     <div class="text-muted mb-1" style="font-size:.74rem">Flexible aliases — normalized server-side:</div>
                                                     <div class="d-flex flex-wrap gap-1" style="font-size:.75rem">
                                                         <code>medical</code>
