@@ -1169,584 +1169,583 @@ $order['insurance'] = $insurance;
 					</div>
 					
 					<!-- 3 column -->
-					<!-- <div class="container-xxl"> -->
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-6 order-lg-1 order-xl-1">
-                                <div class="card card-top-sticky">
-                                    <div class="card-body">
-                                        <div class="list-group list-group-flush list-custom mt-3">
-                                            <a href="#!" class="list-group-item list-group-item-action active">
-                                                <i class="ti ti-smart-home me-1 opacity-75 fs-lg align-middle"></i>
-                                                <span class="align-middle">News Feed</span>
-                                            </a>
+					
+					<div class="row">
+						<div class="col-xl-3 col-lg-6 order-lg-1 order-xl-1">
+							<div class="card card-top-sticky">
+								<div class="card-body">
+									<div class="list-group list-group-flush list-custom mt-3">
+										<a href="#!" class="list-group-item list-group-item-action active">
+											<i class="ti ti-smart-home me-1 opacity-75 fs-lg align-middle"></i>
+											<span class="align-middle">News Feed</span>
+										</a>
 
-                                            <a href="#!" class="list-group-item list-group-item-action">
-                                                <i class="ti ti-message-circle me-1 opacity-75 fs-lg align-middle"></i>
-                                                <span class="align-middle">Messages</span>
-                                                <span class="badge align-middle bg-danger-subtle fs-xxs text-danger float-end">5</span>
-                                            </a>
+										<a href="#!" class="list-group-item list-group-item-action">
+											<i class="ti ti-message-circle me-1 opacity-75 fs-lg align-middle"></i>
+											<span class="align-middle">Messages</span>
+											<span class="badge align-middle bg-danger-subtle fs-xxs text-danger float-end">5</span>
+										</a>
 
-                                            <a href="#!" class="list-group-item list-group-item-action">
-                                                <i class="ti ti-users me-1 opacity-75 fs-lg align-middle"></i>
-                                                <span class="align-middle">Friends</span>
-                                            </a>
+										<a href="#!" class="list-group-item list-group-item-action">
+											<i class="ti ti-users me-1 opacity-75 fs-lg align-middle"></i>
+											<span class="align-middle">Friends</span>
+										</a>
 
-                                            <a href="#!" class="list-group-item list-group-item-action">
-                                                <i class="ti ti-bell me-1 opacity-75 fs-lg align-middle"></i>
-                                                <span class="align-middle">Notifications</span>
-                                                <span class="badge align-middle bg-warning-subtle text-warning fs-xxs float-end">12</span>
-                                            </a>
+										<a href="#!" class="list-group-item list-group-item-action">
+											<i class="ti ti-bell me-1 opacity-75 fs-lg align-middle"></i>
+											<span class="align-middle">Notifications</span>
+											<span class="badge align-middle bg-warning-subtle text-warning fs-xxs float-end">12</span>
+										</a>
 
-                                            <a href="#!" class="list-group-item list-group-item-action">
-                                                <i class="ti ti-category me-1 opacity-75 fs-lg align-middle"></i>
-                                                <span class="align-middle">Groups</span>
-                                            </a>
+										<a href="#!" class="list-group-item list-group-item-action">
+											<i class="ti ti-category me-1 opacity-75 fs-lg align-middle"></i>
+											<span class="align-middle">Groups</span>
+										</a>
 
-                                            <a href="#!" class="list-group-item list-group-item-action">
-                                                <i class="ti ti-book me-1 opacity-75 fs-lg align-middle"></i>
-                                                <span class="align-middle">Pages</span>
-                                            </a>
+										<a href="#!" class="list-group-item list-group-item-action">
+											<i class="ti ti-book me-1 opacity-75 fs-lg align-middle"></i>
+											<span class="align-middle">Pages</span>
+										</a>
 
-                                            <a href="#!" class="list-group-item list-group-item-action">
-                                                <i class="ti ti-calendar-event me-1 opacity-75 fs-lg align-middle"></i>
-                                                <span class="align-middle">Events</span>
-                                            </a>
+										<a href="#!" class="list-group-item list-group-item-action">
+											<i class="ti ti-calendar-event me-1 opacity-75 fs-lg align-middle"></i>
+											<span class="align-middle">Events</span>
+										</a>
 
-                                            <a href="#!" class="list-group-item list-group-item-action">
-                                                <i class="ti ti-settings me-1 opacity-75 fs-lg align-middle"></i>
-                                                <span class="align-middle">Settings</span>
-                                            </a>
+										<a href="#!" class="list-group-item list-group-item-action">
+											<i class="ti ti-settings me-1 opacity-75 fs-lg align-middle"></i>
+											<span class="align-middle">Settings</span>
+										</a>
 
-                                            <div class="list-group-item mt-2">
-                                                <span class="align-middle">Categories</span>
-                                            </div>
-
-                                            <a href="#!" class="list-group-item list-group-item-action">
-                                                <i class="ti ti-tag me-1 text-primary fs-lg align-middle"></i>
-                                                <span class="align-middle">Technology</span>
-                                            </a>
-
-                                            <a href="#!" class="list-group-item list-group-item-action">
-                                                <i class="ti ti-tag me-1 text-success fs-lg align-middle"></i>
-                                                <span class="align-middle">Travel</span>
-                                            </a>
-
-                                            <a href="#!" class="list-group-item list-group-item-action">
-                                                <i class="ti ti-tag me-1 text-danger fs-lg align-middle"></i>
-                                                <span class="align-middle">Lifestyle</span>
-                                            </a>
-
-                                            <a href="#!" class="list-group-item list-group-item-action">
-                                                <i class="ti ti-tag me-1 fs-lg align-middle text-info"></i>
-                                                <span class="align-middle">Photography</span>
-                                            </a>
-
-											<hr />
-
-											<!-- Card Details -->
-											<div class="d-flex align-items-center">
-												<div class="avatar-sm me-2">
-													<img src="../source/inspinia5/assets/images/cards/mastercard.svg" alt="Mastercard" class="img-fluid rounded" />
-												</div>
-												<div>
-													<h5 class="fs-xs mb-1">Mastercard Ending in 4242</h5>
-													<p class="text-muted mb-0 fs-xs">Expiry: 08/26</p>
-												</div>
-												<div class="ms-auto">
-													<span class="badge bg-success-subtle text-success">Paid</span>
-												</div>
-											</div>
-                                        </div>
-                                    </div>
-                                </div>
-								<!-- end card -->
-                            </div>
-                            <!-- end col-->
-                            <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
-								<div class="card">
-                                    <div class="card-body pb-2">
-                                        <div class="d-flex align-items-center mb-2">
-                                            <img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-4.jpg" alt="Generic placeholder image" />
-                                            <div class="w-100">
-                                                <h5 class="m-0">
-                                                    <a href="#!" class="link-reset">Liam Anderson</a>
-                                                </h5>
-                                                <p class="text-muted mb-0">
-                                                    <small>about 30 minutes ago</small>
-                                                </p>
-                                            </div>
-                                            <div class="dropdown ms-auto">
-                                                <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
-                                                    <i class="ti ti-dots-vertical fs-lg"></i>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-edit me-2"></i>
-                                                        Edit Post
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-trash me-2"></i>
-                                                        Delete Post
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-share me-2"></i>
-                                                        Share
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-pin me-2"></i>
-                                                        Pin to Top
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-flag me-2"></i>
-                                                        Report Post
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="fs-16 text-center mt-3 mb-4 fst-italic">
-                                            <i class="ti ti-quote fs-20"></i>
-                                            Spent the weekend exploring the local trails! Captured some amazing nature shots and can’t wait to post them soon. 🌿📸
-                                        </div>
-
-                                        <div class="bg-light-subtle mx-n3 p-3 border-top border-bottom border-dashed">
-                                            <div class="d-flex align-items-start">
-                                                <img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-5.jpg" alt="Generic placeholder image" />
-                                                <div class="w-100">
-                                                    <h5 class="mt-0 mb-1">
-                                                        <a href="#!" class="link-reset">Ethan Reynolds</a>
-                                                        <small class="text-muted fw-normal float-end">20 minutes ago</small>
-                                                    </h5>
-                                                    Loved your recent project! Really curious to see how you implemented the animations.
-                                                    <br />
-                                                    <a href="javascript:void(0);" class="text-muted font-13 d-inline-block mt-2">
-                                                        <i class="ti ti-corner-up-left"></i>
-                                                        Reply
-                                                    </a>
-
-                                                    <div class="d-flex align-items-start mt-3">
-                                                        <a class="pe-2" href="#">
-                                                            <img src="../source/inspinia5/assets/images/users/user-6.jpg" class="avatar-sm rounded-circle" alt="Generic placeholder image" />
-                                                        </a>
-                                                        <div class="w-100">
-                                                            <h5 class="mt-0 mb-1">
-                                                                <a href="#!" class="link-reset">Mia Thompson</a>
-                                                                <small class="text-muted fw-normal float-end">12 minutes ago</small>
-                                                            </h5>
-                                                            I created something similar in Angular last month — would love to swap tips!
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="d-flex align-items-start mt-3">
-                                                <a class="pe-2" href="#">
-                                                    <img src="../source/inspinia5/assets/images/users/user-3.jpg" class="rounded-circle" alt="Generic placeholder image" height="31" />
-                                                </a>
-                                                <div class="w-100">
-                                                    <input type="text" id="simpleinput" class="form-control form-control-sm" placeholder="Add a comment..." />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="mt-2">
-                                            <a href="javascript: void(0);" class="btn btn-sm fs-sm btn-link text-muted">
-                                                <i class="ti ti-corner-up-left me-1"></i>
-                                                Reply
-                                            </a>
-                                            <span class="btn btn-sm fs-sm btn-link text-muted" data-toggler="off">
-                                                <span data-toggler-on class="d-none align-middle">
-                                                    <i class="ti ti-heart-filled text-danger"></i>
-                                                    Liked!
-                                                </span>
-                                                <span data-toggler-off class="align-middle">
-                                                    <i class="ti ti-heart text-muted"></i>
-                                                    Likes (45)
-                                                </span>
-                                            </span>
-                                            <a href="javascript: void(0);" class="btn btn-sm fs-sm btn-link text-muted">
-                                                <i class="ti ti-share me-1"></i>
-                                                Share
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- end card-body-->
-                                </div>
-                                <!-- end card-->
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <!-- User Info -->
-                                        <div class="d-flex align-items-center mb-3">
-                                            <img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-2.jpg" alt="Profile photo of Anika Roy" />
-                                            <div class="w-100">
-                                                <h5 class="m-0">
-                                                    <a href="#!" class="link-reset">Anika Roy</a>
-                                                </h5>
-                                                <p class="text-muted mb-0">
-                                                    <small>Posted 2 hours ago</small>
-                                                </p>
-                                            </div>
-                                            <!-- Dropdown Menu -->
-                                            <div class="dropdown ms-auto">
-                                                <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
-                                                    <i class="ti ti-dots-vertical fs-lg"></i>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-edit me-2"></i>
-                                                        Edit Post
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-trash me-2"></i>
-                                                        Delete Post
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-share me-2"></i>
-                                                        Share
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-pin me-2"></i>
-                                                        Pin to Top
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-flag me-2"></i>
-                                                        Report Post
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Event Details -->
-                                        <h5 class="mb-2">
-                                            🌿 Save the Date:
-                                            <strong>Nature Photography Workshop 2025</strong>
-                                        </h5>
-                                        <p class="text-muted mb-2">Join fellow creatives and outdoor enthusiasts for an inspiring weekend of nature photography tips, live field sessions, and community networking.</p>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="pb-2">
-                                                <strong>Date:</strong>
-                                                Saturday, 14th September 2025
-                                            </li>
-                                            <li class="pb-2">
-                                                <strong>Time:</strong>
-                                                10:00 AM – 4:00 PM
-                                            </li>
-                                            <li>
-                                                <strong>Location:</strong>
-                                                Green Valley National Park (Meeting point to be shared)
-                                            </li>
-                                        </ul>
-
-                                        <!-- Call to Action -->
-                                        <div class="d-flex gap-2">
-                                            <button class="btn btn-sm btn-outline-primary">
-                                                <i class="ti ti-bell me-1"></i>
-                                                Interested
-                                            </button>
-                                            <button class="btn btn-sm btn-primary">
-                                                <i class="ti ti-user-plus me-1"></i>
-                                                Join Now
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body pb-2">
-                                        <div class="d-flex align-items-center mb-2">
-                                            <img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-1.jpg" alt="Profile photo of Anika Roy" />
-                                            <div class="w-100">
-                                                <h5 class="m-0">
-                                                    <a href="#!" class="link-reset">Damian D.</a>
-                                                </h5>
-                                                <p class="text-muted mb-0">
-                                                    <small>Posted 2 hours ago</small>
-                                                </p>
-                                            </div>
-                                            <div class="dropdown ms-auto">
-                                                <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
-                                                    <i class="ti ti-dots-vertical fs-lg"></i>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-edit me-2"></i>
-                                                        Edit Post
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-trash me-2"></i>
-                                                        Delete Post
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-share me-2"></i>
-                                                        Share
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-pin me-2"></i>
-                                                        Pin to Top
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-flag me-2"></i>
-                                                        Report Post
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <p>Sharing a couple of timelapses from my recent Iceland trip. Let me know which one you like most!</p>
-
-                                        <div class="row g-2">
-                                            <div class="col-md-6">
-                                                <div class="ratio ratio-16x9 rounded overflow-hidden">
-                                                    <iframe src="https://player.vimeo.com/video/1084537" allowfullscreen></iframe>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="ratio ratio-16x9 rounded overflow-hidden">
-                                                    <iframe src="https://player.vimeo.com/video/76979871" allowfullscreen></iframe>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="mt-2">
-                                            <a href="javascript: void(0);" class="btn btn-sm fs-sm btn-link text-muted">
-                                                <i class="ti ti-corner-up-left me-1"></i>
-                                                Reply
-                                            </a>
-                                            <span class="btn btn-sm fs-sm btn-link text-muted" data-toggler="on">
-                                                <span data-toggler-on class="align-middle">
-                                                    <i class="ti ti-heart-filled text-danger"></i>
-                                                    Liked!
-                                                </span>
-                                                <span data-toggler-off class="d-none align-middle">
-                                                    <i class="ti ti-heart text-muted"></i>
-                                                    Like
-                                                </span>
-                                            </span>
-                                            <a href="javascript: void(0);" class="btn btn-sm fs-sm btn-link text-muted">
-                                                <i class="ti ti-share me-1"></i>
-                                                Share
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- end card-body-->
-                                </div>
-                                <!-- end card-->
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <!-- User Info -->
-                                        <div class="d-flex align-items-center mb-2">
-                                            <img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-6.jpg" alt="Profile photo of David Kim" />
-                                            <div class="w-100">
-                                                <h5 class="m-0">
-                                                    <a href="#!" class="link-reset">David Kim</a>
-                                                </h5>
-                                                <p class="text-muted mb-0">
-                                                    <small>Posted 10 hours ago</small>
-                                                </p>
-                                            </div>
-                                            <!-- Dropdown Menu -->
-                                            <div class="dropdown ms-auto">
-                                                <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
-                                                    <i class="ti ti-dots-vertical fs-lg"></i>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-edit me-2"></i>
-                                                        Edit Post
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-trash me-2"></i>
-                                                        Delete Post
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-share me-2"></i>
-                                                        Share
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-pin me-2"></i>
-                                                        Pin to Top
-                                                    </a>
-                                                    <a href="#" class="dropdown-item">
-                                                        <i class="ti ti-flag me-2"></i>
-                                                        Report Post
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Poll Content -->
-                                        <h5 class="mb-3">🔥 Quick Poll: What’s your go-to front-end framework in 2025?</h5>
-                                        <p class="text-muted">We’re gathering developer preferences for our next project. Cast your vote below! 💻</p>
-
-                                        <!-- Poll Form -->
-                                        <form>
-                                            <div class="form-check mb-1">
-                                                <input class="form-check-input" type="radio" name="framework_poll" id="optionReact" />
-                                                <label class="form-check-label" for="optionReact">React (Meta)</label>
-                                            </div>
-                                            <div class="form-check mb-1">
-                                                <input class="form-check-input" type="radio" name="framework_poll" id="optionVue" />
-                                                <label class="form-check-label" for="optionVue">Vue.js (Evan You)</label>
-                                            </div>
-                                            <div class="form-check mb-1">
-                                                <input class="form-check-input" type="radio" name="framework_poll" id="optionAngular" />
-                                                <label class="form-check-label" for="optionAngular">Angular (Google)</label>
-                                            </div>
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" type="radio" name="framework_poll" id="optionSvelte" />
-                                                <label class="form-check-label" for="optionSvelte">Svelte (Emerging Favorite)</label>
-                                            </div>
-                                            <button type="submit" class="btn btn-sm btn-primary">Submit Vote</button>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-center justify-content-center gap-2 p-3 mb-3">
-                                    <strong>Loading...</strong>
-                                    <div class="spinner-border spinner-border-sm text-danger" role="status" aria-hidden="true"></div>
-                                </div>
-                            </div>
-                            <!-- end col-->
-                            <div class="col-xl-3 col-lg-6 order-lg-1 order-xl-2">
-                                <div class="card">
-										<div class="card-header">
-											<h4 class="card-title">Activity</h4>
+										<div class="list-group-item mt-2">
+											<span class="align-middle">Categories</span>
 										</div>
-										<div class="card-body p-4">
-											<div class="timeline">
-												<!-- Event 1 -->
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted"></div>
-													<div class="timeline-dot bg-light"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Order Delivered</h5>
-														<p class="mb-1 text-muted">The package is out for delivery and will reach you shortly.</p>
-														<p class="mb-1 text-muted fs-xxs">Tracking No: <a href="#!" class="link-primary fw-semibold text-decoration-underline">TRK123456789</a></p>
-														<span class="fw-semibold fs-xxs">By Rodelaine Raro</span>
-													</div>
-												</div>
 
-												<!-- Event 2 -->
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="9:00 AM">Apr 14 '26</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">QA Status</h5>
-														<p class="mb-1 text-muted">Complete Order</p>
-														<span class="fs-xxs fw-semibold">By QA Agent1</span>
-													</div>
-												</div>
+										<a href="#!" class="list-group-item list-group-item-action">
+											<i class="ti ti-tag me-1 text-primary fs-lg align-middle"></i>
+											<span class="align-middle">Technology</span>
+										</a>
 
-												<!-- Event 3 -->
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="3:15 PM">Apr 13 '26</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Order Copied</h5>
-													</div>
-												</div>
+										<a href="#!" class="list-group-item list-group-item-action">
+											<i class="ti ti-tag me-1 text-success fs-lg align-middle"></i>
+											<span class="align-middle">Travel</span>
+										</a>
 
-												<!-- Event 4 -->
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="6:00 PM">Apr 7 '26</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Order Served</h5>
-													</div>
-												</div>
+										<a href="#!" class="list-group-item list-group-item-action">
+											<i class="ti ti-tag me-1 text-danger fs-lg align-middle"></i>
+											<span class="align-middle">Lifestyle</span>
+										</a>
 
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="5:00 PM">Apr 4 '26</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Order Verified</h5>
-														<p class="mb-1 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-														<span class="fw-semibold fs-xxs">By OE Agent1</span>
-													</div>
-												</div>
+										<a href="#!" class="list-group-item list-group-item-action">
+											<i class="ti ti-tag me-1 fs-lg align-middle text-info"></i>
+											<span class="align-middle">Photography</span>
+										</a>
 
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="4:00 PM">Apr 4 '26</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Order Received</h5>
-														<p class="mb-1 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-													</div>
-												</div>
+										<hr />
 
+										<!-- Card Details -->
+										<div class="d-flex align-items-center">
+											<div class="avatar-sm me-2">
+												<img src="../source/inspinia5/assets/images/cards/mastercard.svg" alt="Mastercard" class="img-fluid rounded" />
+											</div>
+											<div>
+												<h5 class="fs-xs mb-1">Mastercard Ending in 4242</h5>
+												<p class="text-muted mb-0 fs-xs">Expiry: 08/26</p>
+											</div>
+											<div class="ms-auto">
+												<span class="badge bg-success-subtle text-success">Paid</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-->
+						<div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
+							<div class="card">
+								<div class="card-body pb-2">
+									<div class="d-flex align-items-center mb-2">
+										<img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-4.jpg" alt="Generic placeholder image" />
+										<div class="w-100">
+											<h5 class="m-0">
+												<a href="#!" class="link-reset">Liam Anderson</a>
+											</h5>
+											<p class="text-muted mb-0">
+												<small>about 30 minutes ago</small>
+											</p>
+										</div>
+										<div class="dropdown ms-auto">
+											<a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+												<i class="ti ti-dots-vertical fs-lg"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-edit me-2"></i>
+													Edit Post
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-trash me-2"></i>
+													Delete Post
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-share me-2"></i>
+													Share
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-pin me-2"></i>
+													Pin to Top
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-flag me-2"></i>
+													Report Post
+												</a>
 											</div>
 										</div>
 									</div>
 
-                                <div class="card">
-                                    <div class="card-header justify-content-between align-items-center border-dashed">
-                                        <h4 class="card-title mb-0">Trending</h4>
-                                        <div class="dropdown">
-                                            <a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
-                                                <i class="ti ti-dots-vertical fs-lg"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <a href="#" class="dropdown-item">
-                                                    <i class="ti ti-refresh me-2"></i>
-                                                    Refresh Feed
-                                                </a>
-                                                <a href="#" class="dropdown-item">
-                                                    <i class="ti ti-settings me-2"></i>
-                                                    Manage Topics
-                                                </a>
-                                                <a href="#" class="dropdown-item">
-                                                    <i class="ti ti-alert-circle me-2"></i>
-                                                    Report Issue
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+									<div class="fs-16 text-center mt-3 mb-4 fst-italic">
+										<i class="ti ti-quote fs-20"></i>
+										Spent the weekend exploring the local trails! Captured some amazing nature shots and can’t wait to post them soon. 🌿📸
+									</div>
 
-                                    <div class="card-body">
-                                        <!-- Trending Items -->
-                                        <div class="d-flex mb-3">
-                                            <i class="ti ti-trending-up text-primary me-2 mt-1"></i>
-                                            <a href="#!" class="link-reset text-decoration-none">
-                                                <strong>Golden Globes:</strong>
-                                                The 27 Best moments from the Golden Globe Awards
-                                            </a>
-                                        </div>
+									<div class="bg-light-subtle mx-n3 p-3 border-top border-bottom border-dashed">
+										<div class="d-flex align-items-start">
+											<img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-5.jpg" alt="Generic placeholder image" />
+											<div class="w-100">
+												<h5 class="mt-0 mb-1">
+													<a href="#!" class="link-reset">Ethan Reynolds</a>
+													<small class="text-muted fw-normal float-end">20 minutes ago</small>
+												</h5>
+												Loved your recent project! Really curious to see how you implemented the animations.
+												<br />
+												<a href="javascript:void(0);" class="text-muted font-13 d-inline-block mt-2">
+													<i class="ti ti-corner-up-left"></i>
+													Reply
+												</a>
 
-                                        <div class="d-flex mb-3">
-                                            <i class="ti ti-trending-up text-primary me-2 mt-1"></i>
-                                            <a href="#!" class="link-reset text-decoration-none">
-                                                <strong>World Cricket:</strong>
-                                                India has won ICC T20 World Cup Yesterday
-                                            </a>
-                                        </div>
+												<div class="d-flex align-items-start mt-3">
+													<a class="pe-2" href="#">
+														<img src="../source/inspinia5/assets/images/users/user-6.jpg" class="avatar-sm rounded-circle" alt="Generic placeholder image" />
+													</a>
+													<div class="w-100">
+														<h5 class="mt-0 mb-1">
+															<a href="#!" class="link-reset">Mia Thompson</a>
+															<small class="text-muted fw-normal float-end">12 minutes ago</small>
+														</h5>
+														I created something similar in Angular last month — would love to swap tips!
+													</div>
+												</div>
+											</div>
+										</div>
 
-                                        <div class="d-flex mb-3">
-                                            <i class="ti ti-trending-up text-primary me-2 mt-1"></i>
-                                            <a href="#!" class="link-reset text-decoration-none">
-                                                <strong>Antarctica:</strong>
-                                                Melting of Totten Glacier could cause high risk to areas near by sea
-                                            </a>
-                                        </div>
+										<div class="d-flex align-items-start mt-3">
+											<a class="pe-2" href="#">
+												<img src="../source/inspinia5/assets/images/users/user-3.jpg" class="rounded-circle" alt="Generic placeholder image" height="31" />
+											</a>
+											<div class="w-100">
+												<input type="text" id="simpleinput" class="form-control form-control-sm" placeholder="Add a comment..." />
+											</div>
+										</div>
+									</div>
 
-                                        <div class="d-flex">
-                                            <i class="ti ti-trending-up text-primary me-2 mt-1"></i>
-                                            <a href="#!" class="link-reset text-decoration-none">
-                                                <strong>Global Tournament:</strong>
-                                                America has won Football match Yesterday
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end card-->
+									<div class="mt-2">
+										<a href="javascript: void(0);" class="btn btn-sm fs-sm btn-link text-muted">
+											<i class="ti ti-corner-up-left me-1"></i>
+											Reply
+										</a>
+										<span class="btn btn-sm fs-sm btn-link text-muted" data-toggler="off">
+											<span data-toggler-on class="d-none align-middle">
+												<i class="ti ti-heart-filled text-danger"></i>
+												Liked!
+											</span>
+											<span data-toggler-off class="align-middle">
+												<i class="ti ti-heart text-muted"></i>
+												Likes (45)
+											</span>
+										</span>
+										<a href="javascript: void(0);" class="btn btn-sm fs-sm btn-link text-muted">
+											<i class="ti ti-share me-1"></i>
+											Share
+										</a>
+									</div>
+								</div>
+								<!-- end card-body-->
+							</div>
+							<!-- end card-->
 
-                            </div>
-                            <!-- end col-->
-                        </div>
-                        <!-- end-->
-                    </div>
-                    	
+							<div class="card">
+								<div class="card-body">
+									<!-- User Info -->
+									<div class="d-flex align-items-center mb-3">
+										<img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-2.jpg" alt="Profile photo of Anika Roy" />
+										<div class="w-100">
+											<h5 class="m-0">
+												<a href="#!" class="link-reset">Anika Roy</a>
+											</h5>
+											<p class="text-muted mb-0">
+												<small>Posted 2 hours ago</small>
+											</p>
+										</div>
+										<!-- Dropdown Menu -->
+										<div class="dropdown ms-auto">
+											<a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+												<i class="ti ti-dots-vertical fs-lg"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-edit me-2"></i>
+													Edit Post
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-trash me-2"></i>
+													Delete Post
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-share me-2"></i>
+													Share
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-pin me-2"></i>
+													Pin to Top
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-flag me-2"></i>
+													Report Post
+												</a>
+											</div>
+										</div>
+									</div>
+
+									<!-- Event Details -->
+									<h5 class="mb-2">
+										🌿 Save the Date:
+										<strong>Nature Photography Workshop 2025</strong>
+									</h5>
+									<p class="text-muted mb-2">Join fellow creatives and outdoor enthusiasts for an inspiring weekend of nature photography tips, live field sessions, and community networking.</p>
+									<ul class="list-unstyled mb-3">
+										<li class="pb-2">
+											<strong>Date:</strong>
+											Saturday, 14th September 2025
+										</li>
+										<li class="pb-2">
+											<strong>Time:</strong>
+											10:00 AM – 4:00 PM
+										</li>
+										<li>
+											<strong>Location:</strong>
+											Green Valley National Park (Meeting point to be shared)
+										</li>
+									</ul>
+
+									<!-- Call to Action -->
+									<div class="d-flex gap-2">
+										<button class="btn btn-sm btn-outline-primary">
+											<i class="ti ti-bell me-1"></i>
+											Interested
+										</button>
+										<button class="btn btn-sm btn-primary">
+											<i class="ti ti-user-plus me-1"></i>
+											Join Now
+										</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-body pb-2">
+									<div class="d-flex align-items-center mb-2">
+										<img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-1.jpg" alt="Profile photo of Anika Roy" />
+										<div class="w-100">
+											<h5 class="m-0">
+												<a href="#!" class="link-reset">Damian D.</a>
+											</h5>
+											<p class="text-muted mb-0">
+												<small>Posted 2 hours ago</small>
+											</p>
+										</div>
+										<div class="dropdown ms-auto">
+											<a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+												<i class="ti ti-dots-vertical fs-lg"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-edit me-2"></i>
+													Edit Post
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-trash me-2"></i>
+													Delete Post
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-share me-2"></i>
+													Share
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-pin me-2"></i>
+													Pin to Top
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-flag me-2"></i>
+													Report Post
+												</a>
+											</div>
+										</div>
+									</div>
+
+									<p>Sharing a couple of timelapses from my recent Iceland trip. Let me know which one you like most!</p>
+
+									<div class="row g-2">
+										<div class="col-md-6">
+											<div class="ratio ratio-16x9 rounded overflow-hidden">
+												<iframe src="https://player.vimeo.com/video/1084537" allowfullscreen></iframe>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="ratio ratio-16x9 rounded overflow-hidden">
+												<iframe src="https://player.vimeo.com/video/76979871" allowfullscreen></iframe>
+											</div>
+										</div>
+									</div>
+
+									<div class="mt-2">
+										<a href="javascript: void(0);" class="btn btn-sm fs-sm btn-link text-muted">
+											<i class="ti ti-corner-up-left me-1"></i>
+											Reply
+										</a>
+										<span class="btn btn-sm fs-sm btn-link text-muted" data-toggler="on">
+											<span data-toggler-on class="align-middle">
+												<i class="ti ti-heart-filled text-danger"></i>
+												Liked!
+											</span>
+											<span data-toggler-off class="d-none align-middle">
+												<i class="ti ti-heart text-muted"></i>
+												Like
+											</span>
+										</span>
+										<a href="javascript: void(0);" class="btn btn-sm fs-sm btn-link text-muted">
+											<i class="ti ti-share me-1"></i>
+											Share
+										</a>
+									</div>
+								</div>
+								<!-- end card-body-->
+							</div>
+							<!-- end card-->
+
+							<div class="card">
+								<div class="card-body">
+									<!-- User Info -->
+									<div class="d-flex align-items-center mb-2">
+										<img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-6.jpg" alt="Profile photo of David Kim" />
+										<div class="w-100">
+											<h5 class="m-0">
+												<a href="#!" class="link-reset">David Kim</a>
+											</h5>
+											<p class="text-muted mb-0">
+												<small>Posted 10 hours ago</small>
+											</p>
+										</div>
+										<!-- Dropdown Menu -->
+										<div class="dropdown ms-auto">
+											<a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+												<i class="ti ti-dots-vertical fs-lg"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-edit me-2"></i>
+													Edit Post
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-trash me-2"></i>
+													Delete Post
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-share me-2"></i>
+													Share
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-pin me-2"></i>
+													Pin to Top
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ti ti-flag me-2"></i>
+													Report Post
+												</a>
+											</div>
+										</div>
+									</div>
+
+									<!-- Poll Content -->
+									<h5 class="mb-3">🔥 Quick Poll: What’s your go-to front-end framework in 2025?</h5>
+									<p class="text-muted">We’re gathering developer preferences for our next project. Cast your vote below! 💻</p>
+
+									<!-- Poll Form -->
+									<form>
+										<div class="form-check mb-1">
+											<input class="form-check-input" type="radio" name="framework_poll" id="optionReact" />
+											<label class="form-check-label" for="optionReact">React (Meta)</label>
+										</div>
+										<div class="form-check mb-1">
+											<input class="form-check-input" type="radio" name="framework_poll" id="optionVue" />
+											<label class="form-check-label" for="optionVue">Vue.js (Evan You)</label>
+										</div>
+										<div class="form-check mb-1">
+											<input class="form-check-input" type="radio" name="framework_poll" id="optionAngular" />
+											<label class="form-check-label" for="optionAngular">Angular (Google)</label>
+										</div>
+										<div class="form-check mb-3">
+											<input class="form-check-input" type="radio" name="framework_poll" id="optionSvelte" />
+											<label class="form-check-label" for="optionSvelte">Svelte (Emerging Favorite)</label>
+										</div>
+										<button type="submit" class="btn btn-sm btn-primary">Submit Vote</button>
+									</form>
+								</div>
+							</div>
+
+							<div class="d-flex align-items-center justify-content-center gap-2 p-3 mb-3">
+								<strong>Loading...</strong>
+								<div class="spinner-border spinner-border-sm text-danger" role="status" aria-hidden="true"></div>
+							</div>
+						</div>
+						<!-- end col-->
+						<div class="col-xl-3 col-lg-6 order-lg-1 order-xl-2">
+							<div class="card">
+									<div class="card-header">
+										<h4 class="card-title">Activity</h4>
+									</div>
+									<div class="card-body p-4">
+										<div class="timeline">
+											<!-- Event 1 -->
+											<div class="timeline-item d-flex align-items-stretch">
+												<div class="timeline-time pe-3 text-muted"></div>
+												<div class="timeline-dot bg-light"></div>
+												<div class="timeline-content ps-3 pb-5">
+													<h5 class="mb-1">Order Delivered</h5>
+													<p class="mb-1 text-muted">The package is out for delivery and will reach you shortly.</p>
+													<p class="mb-1 text-muted fs-xxs">Tracking No: <a href="#!" class="link-primary fw-semibold text-decoration-underline">TRK123456789</a></p>
+													<span class="fw-semibold fs-xxs">By Rodelaine Raro</span>
+												</div>
+											</div>
+
+											<!-- Event 2 -->
+											<div class="timeline-item d-flex align-items-stretch">
+												<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="9:00 AM">Apr 14 '26</div>
+												<div class="timeline-dot bg-success"></div>
+												<div class="timeline-content ps-3 pb-5">
+													<h5 class="mb-1">QA Status</h5>
+													<p class="mb-1 text-muted">Complete Order</p>
+													<span class="fs-xxs fw-semibold">By QA Agent1</span>
+												</div>
+											</div>
+
+											<!-- Event 3 -->
+											<div class="timeline-item d-flex align-items-stretch">
+												<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="3:15 PM">Apr 13 '26</div>
+												<div class="timeline-dot bg-success"></div>
+												<div class="timeline-content ps-3 pb-5">
+													<h5 class="mb-1">Order Copied</h5>
+												</div>
+											</div>
+
+											<!-- Event 4 -->
+											<div class="timeline-item d-flex align-items-stretch">
+												<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="6:00 PM">Apr 7 '26</div>
+												<div class="timeline-dot bg-success"></div>
+												<div class="timeline-content ps-3 pb-5">
+													<h5 class="mb-1">Order Served</h5>
+												</div>
+											</div>
+
+											<div class="timeline-item d-flex align-items-stretch">
+												<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="5:00 PM">Apr 4 '26</div>
+												<div class="timeline-dot bg-success"></div>
+												<div class="timeline-content ps-3 pb-5">
+													<h5 class="mb-1">Order Verified</h5>
+													<p class="mb-1 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+													<span class="fw-semibold fs-xxs">By OE Agent1</span>
+												</div>
+											</div>
+
+											<div class="timeline-item d-flex align-items-stretch">
+												<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="4:00 PM">Apr 4 '26</div>
+												<div class="timeline-dot bg-success"></div>
+												<div class="timeline-content ps-3 pb-5">
+													<h5 class="mb-1">Order Received</h5>
+													<p class="mb-1 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+							<div class="card">
+								<div class="card-header justify-content-between align-items-center border-dashed">
+									<h4 class="card-title mb-0">Trending</h4>
+									<div class="dropdown">
+										<a href="#" class="dropdown-toggle text-muted drop-arrow-none card-drop p-0" data-bs-toggle="dropdown">
+											<i class="ti ti-dots-vertical fs-lg"></i>
+										</a>
+										<div class="dropdown-menu dropdown-menu-end">
+											<a href="#" class="dropdown-item">
+												<i class="ti ti-refresh me-2"></i>
+												Refresh Feed
+											</a>
+											<a href="#" class="dropdown-item">
+												<i class="ti ti-settings me-2"></i>
+												Manage Topics
+											</a>
+											<a href="#" class="dropdown-item">
+												<i class="ti ti-alert-circle me-2"></i>
+												Report Issue
+											</a>
+										</div>
+									</div>
+								</div>
+
+								<div class="card-body">
+									<!-- Trending Items -->
+									<div class="d-flex mb-3">
+										<i class="ti ti-trending-up text-primary me-2 mt-1"></i>
+										<a href="#!" class="link-reset text-decoration-none">
+											<strong>Golden Globes:</strong>
+											The 27 Best moments from the Golden Globe Awards
+										</a>
+									</div>
+
+									<div class="d-flex mb-3">
+										<i class="ti ti-trending-up text-primary me-2 mt-1"></i>
+										<a href="#!" class="link-reset text-decoration-none">
+											<strong>World Cricket:</strong>
+											India has won ICC T20 World Cup Yesterday
+										</a>
+									</div>
+
+									<div class="d-flex mb-3">
+										<i class="ti ti-trending-up text-primary me-2 mt-1"></i>
+										<a href="#!" class="link-reset text-decoration-none">
+											<strong>Antarctica:</strong>
+											Melting of Totten Glacier could cause high risk to areas near by sea
+										</a>
+									</div>
+
+									<div class="d-flex">
+										<i class="ti ti-trending-up text-primary me-2 mt-1"></i>
+										<a href="#!" class="link-reset text-decoration-none">
+											<strong>Global Tournament:</strong>
+											America has won Football match Yesterday
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- end card-->
+
+						</div>
+						<!-- end col-->
+					</div>
+					<!-- end-->
+                    
 
 				</div>
 				<!-- container -->
