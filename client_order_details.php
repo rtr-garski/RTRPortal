@@ -181,7 +181,7 @@ $order['insurance'] = $insurance;
 						</div>
 						<!-- end col-->
 
-						<div class="col-xl-9 recordlocationhist d-none" >
+						<div class="col-xl-9 order-xl-2 recordlocationhist d-none">
 							<div class="card card-h-100 rounded-0 rounded-start">
 								<div class="card-header align-items-start p-4">
 									<div class="avatar-xxl me-3">
