@@ -181,22 +181,6 @@ $order['insurance'] = $insurance;
 						</div>
 						<!-- end col-->
 
-						<div class="recordlocationhist col-xl-5 col-lg-12 order-lg-2 order-xl-1 d-none">
-							<div class="card">
-								<div class="card-body">
-									<?php foreach ($locations as $loc): ?>
-									<div class="loc-detail d-none" data-loc-id="<?= $loc['__kp_API_Input_Order_Location_ID'] ?>">
-										<h5 class="mb-1"><?= htmlspecialchars($loc['Loc_Name']) ?></h5>
-										<p class="text-muted mb-2"><small><?= htmlspecialchars($loc['Rec_Type']) ?></small></p>
-										<hr class="mt-1 mb-2">
-										<p class="mb-1"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p>
-										<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class="ti ti-printer me-1"></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>
-									</div>
-									<?php endforeach; ?>
-								</div>
-							</div>
-						</div>
-
 						<div class="col-xl-9 recordlocationhist d-none" >
 							<div class="card card-h-100 rounded-0 rounded-start">
 								<div class="card-header align-items-start p-4">
@@ -908,13 +892,22 @@ $order['insurance'] = $insurance;
 		<?php include('partials/customizer.php'); ?> <?php include('partials/footer-scripts.php'); ?>
 
 		<script>
-		// Toggle Records Location columns
-		document.getElementById('toggleRecordLocation').addEventListener('click', function () {
-			var panels = document.querySelectorAll('.recordlocationhist');
-			var chevron = document.getElementById('recordLocationChevron');
-			panels.forEach(function (el) { el.classList.toggle('d-none'); });
-			chevron.classList.toggle('ti-chevron-down');
-			chevron.classList.toggle('ti-chevron-up');
+		// Show recordlocationhist panel on location name click
+		document.querySelectorAll('.loc-trigger').forEach(function (trigger) {
+			trigger.addEventListener('click', function (e) {
+				e.preventDefault();
+
+				// Show the panel
+				document.querySelectorAll('.recordlocationhist').forEach(function (el) {
+					el.classList.remove('d-none');
+				});
+
+				// Highlight active item
+				document.querySelectorAll('.loc-trigger').forEach(function (el) {
+					el.classList.remove('active');
+				});
+				this.classList.add('active');
+			});
 		});
 
 		(function () {
