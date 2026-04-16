@@ -96,22 +96,7 @@ $order['insurance'] = $insurance;
 							<div class="card card-top-sticky">
 								<div class="card-body">
 									<div class="list-group list-group-flush list-custom mt-3">								
-										<div class="col-12 mb-4">
-											<h6 class="mb-1 text-muted text-uppercase">Created Date:</h6>
-											<p class="fw-medium mb-0">March 15, 2025</p>
-										</div>
-										<div class="col-12 mb-4">
-											<h6 class="mb-1 text-muted text-uppercase">Deadline:</h6>
-											<p class="fw-medium mb-0">June 30, 2025</p>
-										</div>
-
 										<div class="mb-4">
-											<!-- <h5 class="fs-base mb-2">Project Description:</h5>
-											<p class="text-muted">This dashboard provides AI-powered insights and analytics for Starbucks business data. It includes sales performance, customer behavior, and predictive trends to assist in data-driven decision-making.</p>
-											<p class="text-muted">
-												Customizable reports and role-based dashboards ensure relevant insights for marketing teams, financial analysts, and executive decision-makers. The system is built with scalability and responsiveness in mind, supporting both
-												desktop and mobile views for seamless access.
-											</p> -->
 											<div class="col-12 mb-4">
 												<h6 class="mb-1 text-muted text-uppercase">Created Date:</h6>
 												<p class="fw-medium mb-0">March 15, 2025</p>
@@ -120,7 +105,22 @@ $order['insurance'] = $insurance;
 												<h6 class="mb-1 text-muted text-uppercase">Deadline:</h6>
 												<p class="fw-medium mb-0">June 30, 2025</p>
 											</div>
-										
+
+											<hr />
+											<div class="list-group-item mt-2">
+												<span class="align-middle"><strong>Opposing Counsel</strong></span>
+											</div>
+
+											<!-- Opposing Counsel List -->
+											<a href="#!" class="list-group-item list-group-item-action">
+												<i class="ti ti-scale me-1 fs-lg align-middle"></i>
+												<span class="align-middle">Opposing Counsel 1</span>
+											</a>
+											<a href="#!" class="list-group-item list-group-item-action">
+												<i class="ti ti-scale me-1 fs-lg align-middle"></i>
+												<span class="align-middle">Opposing Counsel 2</span>
+											</a>
+											
 											<hr />
 											<div class="list-group-item mt-2">
 												<span class="align-middle"><strong>Insurance Carrier</strong></span>
@@ -284,21 +284,6 @@ $order['insurance'] = $insurance;
 												</li>
 												<li class="page-item active">
 													<a href="#" class="page-link">1</a>
-												</li>
-												<li class="page-item">
-													<a href="#" class="page-link">2</a>
-												</li>
-												<li class="page-item">
-													<a href="#" class="page-link">3</a>
-												</li>
-												<li class="page-item">
-													<a href="#" class="page-link">...</a>
-												</li>
-												<li class="page-item">
-													<a href="#" class="page-link">5</a>
-												</li>
-												<li class="page-item">
-													<a href="#" class="page-link">6</a>
 												</li>
 												<li class="page-item next">
 													<a href="#" class="page-link">
