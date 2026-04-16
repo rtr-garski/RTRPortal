@@ -944,7 +944,7 @@ $order['insurance'] = $insurance;
 															<p class="mb-0 ps-3 pt-1 text-muted">You will be redirected to PayPal website to complete your purchase securely.</p>
 														</div>
 														<div class="col-sm-4 text-sm-end mt-3 mt-sm-0">
-															<img src="assets/images/cards/paypal.svg" height="32" alt="paypal-img" />
+															<img src="../source/inspinia5/assets/images/cards/paypal.svg" height="32" alt="paypal-img" />
 														</div>
 													</div>
 												</div>
@@ -961,10 +961,10 @@ $order['insurance'] = $insurance;
 															<p class="mb-0 ps-3 pt-1 text-muted">Safe money transfer using your bank account. We support Mastercard, Visa, Discover and Stripe.</p>
 														</div>
 														<div class="col-sm-4 text-sm-end mt-3 mt-sm-0">
-															<img src="assets/images/cards/mastercard.svg" height="32" alt="master-card-img" />
-															<img src="assets/images/cards/discover-card.svg" height="32" alt="discover-card-img" />
-															<img src="assets/images/cards/visa.svg" height="32" alt="visa-card-img" />
-															<img src="assets/images/cards/stripe.svg" height="32" alt="stripe-card-img" />
+															<img src="../source/inspinia5/assets/images/cards/mastercard.svg" height="32" alt="master-card-img" />
+															<img src="../source/inspinia5/assets/images/cards/discover-card.svg" height="32" alt="discover-card-img" />
+															<img src="../source/inspinia5/assets/images/cards/visa.svg" height="32" alt="visa-card-img" />
+															<img src="../source/inspinia5/assets/images/cards/stripe.svg" height="32" alt="stripe-card-img" />
 														</div>
 													</div>
 													<!-- end row -->
@@ -1014,7 +1014,7 @@ $order['insurance'] = $insurance;
 															<p class="mb-0 ps-3 pt-1 text-muted">You will be redirected to Payoneer website to complete your purchase securely.</p>
 														</div>
 														<div class="col-sm-4 text-sm-end mt-3 mt-sm-0">
-															<img src="assets/images/cards/payoneer.svg" height="32" alt="payoneer" />
+															<img src="../source/inspinia5/assets/images/cards/payoneer.svg" height="32" alt="payoneer" />
 														</div>
 													</div>
 												</div>
@@ -1031,7 +1031,7 @@ $order['insurance'] = $insurance;
 															<p class="mb-0 ps-3 pt-1 text-muted">Pay with cash when your order is delivered.</p>
 														</div>
 														<div class="col-sm-4 text-sm-end mt-3 mt-sm-0">
-															<img src="assets/images/cards/cod.png" height="24" alt="COD-img" />
+															<img src="../source/inspinia5/assets/images/cards/cod.png" height="24" alt="COD-img" />
 														</div>
 													</div>
 												</div>
@@ -1106,7 +1106,7 @@ $order['insurance'] = $insurance;
 								</div>
 								<div class="card-body">
 									<div class="d-flex align-items-center gap-3 mb-3">
-										<img src="assets/images/products/2.png" class="me-1 rounded" width="42" alt="MacBook Air" />
+										<img src="../source/inspinia5/assets/images/products/2.png" class="me-1 rounded" width="42" alt="MacBook Air" />
 										<div>
 											<p class="mb-1 fw-semibold">
 												<a href="apps-ecommerce-product-details.html" class="link-reset">Apple MacBook Air M3 13”</a>
@@ -1117,7 +1117,7 @@ $order['insurance'] = $insurance;
 									</div>
 
 									<div class="d-flex align-items-center gap-3 mb-3">
-										<img src="assets/images/products/5.png" class="me-1 rounded" width="42" alt="Sony Headphones" />
+										<img src="../source/inspinia5/assets/images/products/5.png" class="me-1 rounded" width="42" alt="Sony Headphones" />
 										<div>
 											<p class="mb-1 fw-semibold">
 												<a href="apps-ecommerce-product-details.html" class="link-reset">Sony WH-1000XM5 Wireless Headphones</a>
@@ -1128,7 +1128,7 @@ $order['insurance'] = $insurance;
 									</div>
 
 									<div class="d-flex align-items-center gap-3">
-										<img src="assets/images/products/7.png" class="me-1 rounded" width="42" alt="Apple Watch" />
+										<img src="../source/inspinia5/assets/images/products/7.png" class="me-1 rounded" width="42" alt="Apple Watch" />
 										<div>
 											<p class="mb-1 fw-semibold">
 												<a href="apps-ecommerce-product-details.html" class="link-reset">Apple Watch Series 9 GPS</a>
@@ -1246,7 +1246,7 @@ $order['insurance'] = $insurance;
 											<!-- Card Details -->
 											<div class="d-flex align-items-center">
 												<div class="avatar-sm me-2">
-													<img src="assets/images/cards/mastercard.svg" alt="Mastercard" class="img-fluid rounded" />
+													<img src="../source/inspinia5/assets/images/cards/mastercard.svg" alt="Mastercard" class="img-fluid rounded" />
 												</div>
 												<div>
 													<h5 class="fs-xs mb-1">Mastercard Ending in 4242</h5>
@@ -1339,7 +1339,7 @@ $order['insurance'] = $insurance;
                                 <div class="card">
                                     <div class="card-body pb-2">
                                         <div class="d-flex align-items-center mb-2">
-                                            <img class="me-2 avatar-md rounded-circle" src="assets/images/users/user-10.jpg" alt="Generic placeholder image" />
+                                            <img class="me-2 avatar-md rounded-circle" src="../source/inspinia5/assets/images/users/user-10.jpg" alt="Generic placeholder image" />
                                             <div class="w-100">
                                                 <h5 class="m-0">
                                                     <a href="#!" class="link-reset">Sophia Martinez</a>
@@ -1381,13 +1381,13 @@ $order['insurance'] = $insurance;
                                         <div class="row g-1">
                                             <!-- Left tall image -->
                                             <div class="col-md-6">
-                                                <img src="assets/images/gallery/10.jpg" class="img-fluid w-100 h-100 rounded" style="aspect-ratio: 3/4; object-fit: cover" alt="Tall Image" />
+                                                <img src="../source/inspinia5/assets/images/gallery/10.jpg" class="img-fluid w-100 h-100 rounded" style="aspect-ratio: 3/4; object-fit: cover" alt="Tall Image" />
                                             </div>
 
                                             <!-- Right column with two stacked images -->
                                             <div class="col-md-6 d-flex flex-column gap-1">
-                                                <img src="assets/images/gallery/2.jpg" class="img-fluid w-100 rounded" style="aspect-ratio: 4/3; object-fit: cover" alt="Top Right" />
-                                                <img src="assets/images/gallery/3.jpg" class="img-fluid w-100 rounded" style="aspect-ratio: 4/3; object-fit: cover" alt="Bottom Right" />
+                                                <img src="../source/inspinia5/assets/images/gallery/2.jpg" class="img-fluid w-100 rounded" style="aspect-ratio: 4/3; object-fit: cover" alt="Top Right" />
+                                                <img src="../source/inspinia5/assets/images/gallery/3.jpg" class="img-fluid w-100 rounded" style="aspect-ratio: 4/3; object-fit: cover" alt="Bottom Right" />
                                             </div>
                                         </div>
 
@@ -1417,7 +1417,7 @@ $order['insurance'] = $insurance;
                                 <div class="card">
                                     <div class="card-body pb-2">
                                         <div class="d-flex align-items-center mb-2">
-                                            <img class="me-2 avatar-sm rounded-circle" src="assets/images/users/user-4.jpg" alt="Generic placeholder image" />
+                                            <img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-4.jpg" alt="Generic placeholder image" />
                                             <div class="w-100">
                                                 <h5 class="m-0">
                                                     <a href="#!" class="link-reset">Liam Anderson</a>
@@ -1462,7 +1462,7 @@ $order['insurance'] = $insurance;
 
                                         <div class="bg-light-subtle mx-n3 p-3 border-top border-bottom border-dashed">
                                             <div class="d-flex align-items-start">
-                                                <img class="me-2 avatar-sm rounded-circle" src="assets/images/users/user-5.jpg" alt="Generic placeholder image" />
+                                                <img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-5.jpg" alt="Generic placeholder image" />
                                                 <div class="w-100">
                                                     <h5 class="mt-0 mb-1">
                                                         <a href="#!" class="link-reset">Ethan Reynolds</a>
@@ -1477,7 +1477,7 @@ $order['insurance'] = $insurance;
 
                                                     <div class="d-flex align-items-start mt-3">
                                                         <a class="pe-2" href="#">
-                                                            <img src="assets/images/users/user-6.jpg" class="avatar-sm rounded-circle" alt="Generic placeholder image" />
+                                                            <img src="../source/inspinia5/assets/images/users/user-6.jpg" class="avatar-sm rounded-circle" alt="Generic placeholder image" />
                                                         </a>
                                                         <div class="w-100">
                                                             <h5 class="mt-0 mb-1">
@@ -1492,7 +1492,7 @@ $order['insurance'] = $insurance;
 
                                             <div class="d-flex align-items-start mt-3">
                                                 <a class="pe-2" href="#">
-                                                    <img src="assets/images/users/user-3.jpg" class="rounded-circle" alt="Generic placeholder image" height="31" />
+                                                    <img src="../source/inspinia5/assets/images/users/user-3.jpg" class="rounded-circle" alt="Generic placeholder image" height="31" />
                                                 </a>
                                                 <div class="w-100">
                                                     <input type="text" id="simpleinput" class="form-control form-control-sm" placeholder="Add a comment..." />
@@ -1529,7 +1529,7 @@ $order['insurance'] = $insurance;
                                     <div class="card-body">
                                         <!-- User Info -->
                                         <div class="d-flex align-items-center mb-3">
-                                            <img class="me-2 avatar-sm rounded-circle" src="assets/images/users/user-2.jpg" alt="Profile photo of Anika Roy" />
+                                            <img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-2.jpg" alt="Profile photo of Anika Roy" />
                                             <div class="w-100">
                                                 <h5 class="m-0">
                                                     <a href="#!" class="link-reset">Anika Roy</a>
@@ -1606,7 +1606,7 @@ $order['insurance'] = $insurance;
                                 <div class="card">
                                     <div class="card-body pb-2">
                                         <div class="d-flex align-items-center mb-2">
-                                            <img class="me-2 avatar-sm rounded-circle" src="assets/images/users/user-1.jpg" alt="Profile photo of Anika Roy" />
+                                            <img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-1.jpg" alt="Profile photo of Anika Roy" />
                                             <div class="w-100">
                                                 <h5 class="m-0">
                                                     <a href="#!" class="link-reset">Damian D.</a>
@@ -1688,7 +1688,7 @@ $order['insurance'] = $insurance;
                                     <div class="card-body">
                                         <!-- User Info -->
                                         <div class="d-flex align-items-center mb-2">
-                                            <img class="me-2 avatar-sm rounded-circle" src="assets/images/users/user-6.jpg" alt="Profile photo of David Kim" />
+                                            <img class="me-2 avatar-sm rounded-circle" src="../source/inspinia5/assets/images/users/user-6.jpg" alt="Profile photo of David Kim" />
                                             <div class="w-100">
                                                 <h5 class="m-0">
                                                     <a href="#!" class="link-reset">David Kim</a>
@@ -1771,7 +1771,7 @@ $order['insurance'] = $insurance;
                                         <div class="mb-3">
                                             <small class="text-muted text-uppercase">Stories About You</small>
                                             <div class="d-flex align-items-center mt-2">
-                                                <img src="assets/images/users/user-7.jpg" class="rounded-circle me-2" width="32" height="32" alt="mention" />
+                                                <img src="../source/inspinia5/assets/images/users/user-7.jpg" class="rounded-circle me-2" width="32" height="32" alt="mention" />
                                                 <div>
                                                     <strong>Mentions</strong>
                                                     <br />
@@ -1783,7 +1783,7 @@ $order['insurance'] = $insurance;
                                         <span class="text-muted fs-xs fw-bold text-uppercase">New</span>
                                         <ul class="list-unstyled mt-2 mb-0">
                                             <li class="d-flex align-items-center py-1">
-                                                <img src="assets/images/users/user-8.jpg" class="rounded-circle me-2" width="36" height="36" alt="jenny.w" />
+                                                <img src="../source/inspinia5/assets/images/users/user-8.jpg" class="rounded-circle me-2" width="36" height="36" alt="jenny.w" />
                                                 <div class="flex-grow-1">
                                                     <strong>jenny.w</strong>
                                                     started following you
@@ -1796,7 +1796,7 @@ $order['insurance'] = $insurance;
                                             </li>
 
                                             <li class="d-flex align-items-center py-1">
-                                                <img src="assets/images/users/user-9.jpg" class="rounded-circle me-2" width="36" height="36" alt="daniel92" />
+                                                <img src="../source/inspinia5/assets/images/users/user-9.jpg" class="rounded-circle me-2" width="36" height="36" alt="daniel92" />
                                                 <div class="flex-grow-1">
                                                     <strong>daniel92</strong>
                                                     commented on your post
@@ -1804,12 +1804,12 @@ $order['insurance'] = $insurance;
                                                     <span class="text-muted fs-xs">3m ago</span>
                                                 </div>
                                                 <div>
-                                                    <img src="assets/images/gallery/1.jpg" class="rounded" width="32" height="32" alt="commented" />
+                                                    <img src="../source/inspinia5/assets/images/gallery/1.jpg" class="rounded" width="32" height="32" alt="commented" />
                                                 </div>
                                             </li>
 
                                             <li class="d-flex align-items-center py-1">
-                                                <img src="assets/images/users/user-10.jpg" class="rounded-circle me-2" width="36" height="36" alt="amelie.design" />
+                                                <img src="../source/inspinia5/assets/images/users/user-10.jpg" class="rounded-circle me-2" width="36" height="36" alt="amelie.design" />
                                                 <div class="flex-grow-1">
                                                     <strong>amelie.design</strong>
                                                     liked your story
@@ -1817,12 +1817,12 @@ $order['insurance'] = $insurance;
                                                     <span class="text-muted fs-xs">4m ago</span>
                                                 </div>
                                                 <div>
-                                                    <img src="assets/images/gallery/2.jpg" class="rounded" width="32" height="32" alt="liked" />
+                                                    <img src="../source/inspinia5/assets/images/gallery/2.jpg" class="rounded" width="32" height="32" alt="liked" />
                                                 </div>
                                             </li>
 
                                             <li class="d-flex align-items-center py-1">
-                                                <img src="assets/images/users/user-5.jpg" class="rounded-circle me-2" width="36" height="36" alt="johnny_dev" />
+                                                <img src="../source/inspinia5/assets/images/users/user-5.jpg" class="rounded-circle me-2" width="36" height="36" alt="johnny_dev" />
                                                 <div class="flex-grow-1">
                                                     <strong>johnny_dev</strong>
                                                     started following you
@@ -1835,7 +1835,7 @@ $order['insurance'] = $insurance;
                                             </li>
 
                                             <li class="d-flex align-items-center py-1">
-                                                <img src="assets/images/users/user-6.jpg" class="rounded-circle me-2" width="36" height="36" alt="art.gal" />
+                                                <img src="../source/inspinia5/assets/images/users/user-6.jpg" class="rounded-circle me-2" width="36" height="36" alt="art.gal" />
                                                 <div class="flex-grow-1">
                                                     <strong>art.gal</strong>
                                                     liked your post
@@ -1843,7 +1843,7 @@ $order['insurance'] = $insurance;
                                                     <span class="text-muted fs-xs">8m ago</span>
                                                 </div>
                                                 <div>
-                                                    <img src="assets/images/gallery/3.jpg" class="rounded" width="32" height="32" alt="liked" />
+                                                    <img src="../source/inspinia5/assets/images/gallery/3.jpg" class="rounded" width="32" height="32" alt="liked" />
                                                 </div>
                                             </li>
                                         </ul>
@@ -1937,7 +1937,7 @@ $order['insurance'] = $insurance;
                                         <!-- Request 1: Collaboration -->
                                         <div class="d-flex justify-content-between align-items-center mb-3">
                                             <div class="d-flex align-items-start">
-                                                <img src="assets/images/users/user-3.jpg" alt="Emily Zhang" class="avatar-xs rounded-circle me-2" />
+                                                <img src="../source/inspinia5/assets/images/users/user-3.jpg" alt="Emily Zhang" class="avatar-xs rounded-circle me-2" />
                                                 <div>
                                                     <p class="mb-1">
                                                         <strong>Emily Zhang</strong>
@@ -1973,7 +1973,7 @@ $order['insurance'] = $insurance;
                                         <!-- Request 3: Feedback -->
                                         <div class="d-flex justify-content-between align-items-center mb-3">
                                             <div class="d-flex align-items-start">
-                                                <img src="assets/images/users/user-6.jpg" alt="John Doe" class="avatar-xs rounded-circle me-2" />
+                                                <img src="../source/inspinia5/assets/images/users/user-6.jpg" alt="John Doe" class="avatar-xs rounded-circle me-2" />
                                                 <div>
                                                     <p class="mb-1">
                                                         <strong>Client Feedback:</strong>
