@@ -1179,7 +1179,8 @@ $order['insurance'] = $insurance;
                                             <i class="ti ti-menu-4 fs-lg"></i>
                                         </button>
                                     </div>
-                                    <h3 class="mb-0 fs-xl flex-grow-1">952 Products</h3>
+
+                                    <h3 class="mb-0 fs-xl flex-grow-1">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
 
 									<!-- <div>
 										<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
@@ -1187,15 +1188,10 @@ $order['insurance'] = $insurance;
 									</div>
 									 -->
                                     <div class="d-flex gap-1">
-                                        <a href="apps-ecommerce-products-grid.html" class="btn btn-soft-primary btn-icon active">
-                                            <i class="ti ti-category fs-lg"></i>
-                                        </a>
-                                        <a href="apps-ecommerce-products.html" class="btn btn-soft-primary btn-icon">
-                                            <i class="ti ti-list-check fs-lg"></i>
-                                        </a>
-                                        <a href="apps-ecommerce-product-add.html" class="btn btn-danger ms-1">
+                                        
+                                        <a href="#" class="btn btn-info ms-1">
                                             <i class="ti ti-plus fs-sm me-2"></i>
-                                            Add Product
+                                            Order Received
                                         </a>
                                     </div>
                                 </div>
