@@ -1169,7 +1169,7 @@ $order['insurance'] = $insurance;
 					</div>
 					
 					<!-- 3 column -->
-					<div class="row mb-2">
+					<div class="row mb-2 sticky-top" >
                         <div class="col-lg-12">
                             <form class="bg-light-subtle rounded border p-3">
                                 <div class="d-flex flex-wrap justify align-items-center gap-3">
