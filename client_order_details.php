@@ -201,11 +201,6 @@ $order['insurance'] = $insurance;
 									</div>
 								</div>
 								<div class="card-body px-4">
-									<div class="mb-4">
-										<h5 class="fs-base mb-2">Location Information:</h5>
-										<p class="mb-0"><i class="ti ti-map-pin me-1"></i><span id="locDetailAddress"></span></p>
-														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><span id="locDetailPhone"></span> &nbsp; <i class="ti ti-printer me-1"></i><span id="locDetailFax"></span></p>
-									</div>
 									<div class="row mb-4">
 										<div class="col-md-4 col-xl-3">
 											<h6 class="mb-1 text-muted text-uppercase">Created Date:</h6>
