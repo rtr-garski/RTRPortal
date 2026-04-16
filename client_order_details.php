@@ -1249,7 +1249,7 @@ $order['insurance'] = $insurance;
 											<?php foreach ($locations as $loc): ?>
 											<a href="#!" class="list-group-item list-group-item-action">
 												<i class="ti ti-tag me-1 text-primary fs-lg align-middle"></i>
-												<span class="align-middle" data-bs-toggle="popover" data-bs-trigger="hover" title="<?= htmlspecialchars($loc['Rec_Type']) ?>" data-bs-content="Address: <?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?>"><?= htmlspecialchars($loc['Loc_Name']) ?></span>
+												<span class="align-middle" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" title="<?= htmlspecialchars($loc['Rec_Type']) ?>" data-bs-content="<p class=&quot;mb-1&quot;><i class=&quot;ti ti-map-pin me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Street']) ?>, <?= htmlspecialchars($loc['Loc_Address_City']) ?>, <?= htmlspecialchars($loc['Loc_Address_State']) ?> <?= htmlspecialchars($loc['Loc_Address_Zip']) ?></p><p class=&quot;mb-0 text-muted&quot;><i class=&quot;ti ti-phone me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Phone']) ?> &nbsp; <i class=&quot;ti ti-printer me-1&quot;></i><?= htmlspecialchars($loc['Loc_Address_Phone_Fax']) ?></p>"><?= htmlspecialchars($loc['Loc_Name']) ?></span>
 											</a>
 											<?php endforeach; ?>
 											<!-- Records Location List -->
