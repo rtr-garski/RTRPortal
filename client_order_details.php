@@ -1242,7 +1242,7 @@ $order['insurance'] = $insurance;
 
 											<hr />
 											<div class="list-group-item mt-2">
-												<span class="align-middle">Records Location</span>
+												<span class="align-middle"><strong>Records Location</strong></span>
 											</div>
 
 											<a href="#!" class="list-group-item list-group-item-action">
