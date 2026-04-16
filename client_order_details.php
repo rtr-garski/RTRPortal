@@ -98,8 +98,8 @@ $order['insurance'] = $insurance;
 									<div class="list-group list-group-flush list-custom mt-3">								
 										<div class="mb-4">
 											<div class="col-12 mb-4">
-												<h6 class="mb-1 text-muted text-uppercase">Created Date:</h6>
-												<p class="fw-medium mb-0">March 15, 2025</p>
+												<h6 class="mb-1 text-muted text-uppercase">Patient Name:</h6>
+												<p class="fw-medium mb-0"><?= strtoupper(substr($order['Pat_Name'], 0, 1)) ?></p>
 											</div>
 											<div class="col-12 mb-4">
 												<h6 class="mb-1 text-muted text-uppercase">Deadline:</h6>
