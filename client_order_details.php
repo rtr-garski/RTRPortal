@@ -86,31 +86,7 @@ $order['insurance'] = $insurance;
 										<span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span>
 									</div>
 								</div>
-								<div class="card-body px-4">
-									<!-- Case Information -->
-									<h5 class="fs-sm fw-semibold mt-4 mb-2 text-muted text-uppercase">Case Information</h5>
-									<div class="row mb-4">
-										<div class="col-md-4 col-xl-3">
-											<h6 class="mb-1 text-muted text-uppercase">SKU:</h6>
-											<p class="fw-medium mb-0">SOFA-10058</p>
-										</div>
-										<div class="col-md-4 col-xl-3">
-											<h6 class="mb-1 text-muted text-uppercase">Category:</h6>
-											<p class="fw-medium mb-0">Furniture</p>
-										</div>
-										<div class="col-md-4 col-xl-3">
-											<h6 class="mb-1 text-muted text-uppercase">Stock:</h6>
-											<p class="fw-medium mb-0">128</p>
-										</div>
-										<div class="col-md-4 col-xl-3">
-											<h6 class="mb-1 text-muted text-uppercase">Published:</h6>
-											<p class="fw-medium mb-0">
-												28 Apr, 2025
-												<small class="text-muted">10:15 AM</small>
-											</p>
-										</div>
-									</div>
-								</div>
+								
 								<!-- end card-body -->
 							</div>
                         </div>
@@ -230,9 +206,9 @@ $order['insurance'] = $insurance;
 											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" data-bs-toggle="tab" href="#Mytasks" role="tab">
-												<i class="ti ti-list-check fs-lg me-md-1 align-middle"></i>
-												<span class="d-none d-md-inline-block align-middle">Task List</span>
+											<a class="nav-link" data-bs-toggle="tab" href="#files" role="tab">
+												<i class="ti ti-paperclip fs-lg me-md-1 align-middle"></i>
+												<span class="d-none d-md-inline-block align-middle">Files</span>
 											</a>
 										</li>
 										<li class="nav-item">
@@ -397,50 +373,116 @@ $order['insurance'] = $insurance;
 											</ul>
 										</div>
 
-										<div class="tab-pane fade" id="Mytasks" role="tabpanel">
+										<div class="tab-pane fade" id="files" role="tabpanel">
 											<div class="card mb-1">
 												<div class="card-body p-2">
-													<div class="row g-3 align-items-center justify-content-between">
-														<div class="col-md-6">
-															<div class="d-flex align-items-center gap-2">
-																<input type="checkbox" class="form-check-input rounded-circle mt-0 fs-xl" id="task2" />
-																<a href="#!" role="button" class="link-reset fw-medium">Finalize monthly performance report</a>
-															</div>
-														</div>
-														<div class="col-md-6">
-															<div class="d-flex align-items-center gap-3 justify-content-md-end">
-																<div class="d-flex align-items-center gap-1">
-																	<div class="avatar avatar-xs">
-																		<img src="../source/inspinia5/assets/images/users/user-2.jpg" alt="avatar-2" class="img-fluid rounded-circle" />
-																	</div>
-																	<div>
-																		<h5 class="text-nowrap mb-0 lh-base">
-																			<a href="#!" class="link-reset">Liam James</a>
-																		</h5>
-																	</div>
-																</div>
-
-																<div class="flex-shrink-0">
-																	<span class="badge text-bg-success badge-label">Completed</span>
-																</div>
-
-																<ul class="list-inline fs-base text-end flex-shrink-0 mb-0">
-																	<li class="list-inline-item">
-																		<i class="ti ti-calendar text-muted fs-lg me-1 align-middle"></i>
-																		<span class="fw-semibold">Yesterday</span>
-																	</li>
-																	<li class="list-inline-item ms-1">
-																		<i class="ti ti-list-details text-muted fs-lg me-1 align-middle"></i>
-																		<span class="fw-medium">7/7</span>
-																	</li>
-																	<li class="list-inline-item ms-1">
-																		<i class="ti ti-message text-muted fs-lg me-1 align-middle"></i>
-																		<span class="fw-medium">12</span>
-																	</li>
-																</ul>
-															</div>
-														</div>
-													</div>
+													<div class="table-responsive-sm">
+														<table class="table table-custom table-select mb-0">
+															<thead class="bg-light bg-opacity-25 thead-sm border-top border-light">
+																<tr class="text-uppercase align-middle fs-xxs">
+																	<th class="ps-3" style="width: 1%">
+																		<input data-table-select-all class="form-check-input form-check-input-light fs-14 mt-0" type="checkbox" id="select-all-files" value="option" />
+																	</th>
+																	<th data-table-sort="name">Name</th>
+																	<th data-table-sort data-column="type">Type</th>
+																	<th data-table-sort>Modified</th>
+																	<th data-table-sort="owner" class="w-auto">Owner</th>
+																	<th class="w-auto">Shared with</th>
+																	<th class="text-end pe-3">Action</th>
+																</tr>
+															</thead>
+															<!-- end table -->
+															<tbody>
+																<tr>
+																	<td class="ps-3">
+																		<input class="form-check-input form-check-input-light fs-14 file-item-check" type="checkbox" value="option" />
+																	</td>
+																	<td>
+																		<div class="d-flex align-items-center gap-2">
+																			<div class="flex-shrink-0 avatar-md d-flex justify-content-center align-items-center bg-light bg-opacity-50 text-muted rounded-2">
+																				<i class="ti ti-file-type-pdf fs-xl avatar-title"></i>
+																			</div>
+																			<div class="flex-grow-1">
+																				<h5 class="mb-1 fs-base">
+																					<a data-sort="name" href="#!" class="link-reset">Client Proposal PDF</a>
+																				</h5>
+																				<p class="text-muted mb-0 fs-xs">45MB</p>
+																			</div>
+																		</div>
+																	</td>
+																	<td>PDF</td>
+																	<td>May 5, 2025</td>
+																	<td>
+																		<div class="d-flex align-items-center gap-2">
+																			<div class="flex-shrink-0 bg-light bg-opacity-50 text-muted d-inline-flex align-items-center justify-content-center rounded-2">
+																				<img src="assets/images/users/user-8.jpg" alt="" class="avatar-xs rounded-circle" />
+																			</div>
+																			<h5 class="mb-0 fs-base">
+																				<a data-sort="owner" href="#!" class="link-reset">mark@clientservices.com</a>
+																			</h5>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="avatar-group avatar-group-xs">
+																			<div class="avatar">
+																				<img src="assets/images/users/user-2.jpg" alt="" class="rounded-circle avatar-xs" />
+																			</div>
+																			<div class="avatar">
+																				<img src="assets/images/users/user-4.jpg" alt="" class="rounded-circle avatar-xs" />
+																			</div>
+																			<div class="avatar">
+																				<img src="assets/images/users/user-7.jpg" alt="" class="rounded-circle avatar-xs" />
+																			</div>
+																		</div>
+																	</td>
+																	<td class="text-end pe-3">
+																		<div class="d-flex align-items-center justify-content-end gap-2">
+																			<span data-toggler="off">
+																				<a href="#" data-toggler-on class="d-none">
+																					<i class="ti ti-star-filled text-warning fs-lg"></i>
+																				</a>
+																				<a href="#" data-toggler-off>
+																					<i class="ti ti-star-filled text-muted fs-lg"></i>
+																				</a>
+																			</span>
+																			<div class="dropdown flex-shrink-0 text-muted">
+																				<a href="#" class="dropdown-toggle drop-arrow-none fs-xxl link-reset p-0" data-bs-toggle="dropdown" aria-expanded="false">
+																					<i class="ti ti-dots-vertical"></i>
+																				</a>
+																				<div class="dropdown-menu dropdown-menu-end">
+																					<a href="javascript:void(0);" class="dropdown-item">
+																						<i class="ti ti-share me-1"></i>
+																						Share
+																					</a>
+																					<a href="javascript:void(0);" class="dropdown-item">
+																						<i class="ti ti-link me-1"></i>
+																						Get Sharable Link
+																					</a>
+																					<a href="assets/files/proposal.pdf" download class="dropdown-item">
+																						<i class="ti ti-download me-1"></i>
+																						Download
+																					</a>
+																					<a href="javascript:void(0);" class="dropdown-item">
+																						<i class="ti ti-pin me-1"></i>
+																						Pin
+																					</a>
+																					<a href="javascript:void(0);" class="dropdown-item">
+																						<i class="ti ti-edit me-1"></i>
+																						Edit
+																					</a>
+																					<a href="#" data-table-delete-row class="dropdown-item">
+																						<i class="ti ti-trash me-1"></i>
+																						Delete
+																					</a>
+																				</div>
+																			</div>
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+															<!-- end tbody -->
+														</table>
+														<!-- end table -->
 												</div>
 											</div>
 
