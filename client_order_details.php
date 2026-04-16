@@ -176,6 +176,14 @@ $order['insurance'] = $insurance;
 														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><span id="locDetailPhone"></span> &nbsp; <i class="ti ti-printer me-1"></i><span id="locDetailFax"></span></p>
 									</div>
 								</div>
+								<!-- Loading Spinner -->
+								<div id="locSpinner" class="d-none text-center py-5">
+									<div class="spinner-border text-primary" role="status">
+										<span class="visually-hidden">Loading...</span>
+									</div>
+								</div>
+
+								<div id="locDetailContent" class="d-none">
 								<div class="card-body px-4">
 									<div class="row mb-4">
 										<div class="col-md-4 col-xl-3">
@@ -420,9 +428,10 @@ $order['insurance'] = $insurance;
 								</div>
 								<!-- end card-body -->
 							</div>
+							</div><!-- end locDetailContent -->
 							<!-- end card -->
 						</div>
-					
+
 						<!-- end row -->
 						<!-- end col-->
 					</div>
@@ -516,23 +525,33 @@ $order['insurance'] = $insurance;
 		document.querySelectorAll('.loc-trigger').forEach(function (trigger) {
 			trigger.addEventListener('click', function (e) {
 				e.preventDefault();
+				var self = this;
 
 				// Show the panel
 				document.querySelectorAll('.recordlocationhist').forEach(function (el) {
 					el.classList.remove('d-none');
 				});
 
-				// Update location info in panel
-				document.getElementById('locDetailName').textContent    = this.dataset.locName;
-				document.getElementById('locDetailAddress').textContent = this.dataset.locAddress;
-				document.getElementById('locDetailPhone').textContent   = this.dataset.locPhone;
-				document.getElementById('locDetailFax').textContent     = this.dataset.locFax;
+				// Show spinner, hide content
+				document.getElementById('locSpinner').classList.remove('d-none');
+				document.getElementById('locDetailContent').classList.add('d-none');
 
 				// Highlight active item
 				document.querySelectorAll('.loc-trigger').forEach(function (el) {
 					el.classList.remove('active');
 				});
-				this.classList.add('active');
+				self.classList.add('active');
+
+				// After delay, hide spinner and populate content
+				setTimeout(function () {
+					document.getElementById('locDetailName').textContent    = self.dataset.locName;
+					document.getElementById('locDetailAddress').textContent = self.dataset.locAddress;
+					document.getElementById('locDetailPhone').textContent   = self.dataset.locPhone;
+					document.getElementById('locDetailFax').textContent     = self.dataset.locFax;
+
+					document.getElementById('locSpinner').classList.add('d-none');
+					document.getElementById('locDetailContent').classList.remove('d-none');
+				}, 600);
 			});
 		});
 
