@@ -1180,7 +1180,7 @@ $order['insurance'] = $insurance;
                                         </button>
                                     </div>
 	
-									<h3 class="mb-0 fs-xl flex-grow-1"><h3>Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
+									<h3 class="mb-0 fs-xl flex-grow-1">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
                                     <!-- <div class="mb-0 fs-xl flex-grow-1"><h3>Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3></div> -->
 
 									<!-- <div>
