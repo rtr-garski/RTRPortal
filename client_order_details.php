@@ -232,56 +232,22 @@ $order['insurance'] = $insurance;
 												</div>
 											</form>
 
-											<h4 class="mb-3 fs-md">Comments (15)</h4>
+											<h4 class="mb-3 fs-md">Comments (2)</h4>
 
 											<div class="d-flex mb-2 border border-dashed rounded p-3">
 												<div class="flex-shrink-0">
-													<img src="../source/inspinia5/assets/images/users/user-8.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
+													<span class="avatar-sm rounded-circle shadow-sm bg-secondary d-flex align-items-center justify-content-center text-white fw-semibold">C</span>
 												</div>
 												<div class="flex-grow-1 ms-2">
 													<h5 class="mb-1">
-														Liam Carter
-														<small class="text-muted">15 Apr 2025 · 09:20AM</small>
+														Client 1
+														<small class="text-muted">14 Apr 2025 · 04:15PM</small>
 													</h5>
-													<p class="mb-2">Customers are reporting that the checkout page freezes after submitting their payment information.</p>
+													<p class="mb-2">You may try reaching the insurance provider at the following phone number: 888-888-8888.</p>
 													<a href="javascript:void(0);" class="badge bg-light text-muted d-inline-flex align-items-center gap-1">
 														<i class="ti ti-corner-up-left fs-lg"></i>
 														Reply
 													</a>
-
-													<div class="d-flex mt-4">
-														<div class="flex-shrink-0">
-															<img src="../source/inspinia5/assets/images/users/user-10.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
-														</div>
-														<div class="flex-grow-1 ms-2">
-															<h5 class="mb-1">
-																Nina Bryant
-																<small class="text-muted">15 Apr 2025 · 11:47AM</small>
-															</h5>
-															<p class="mb-2">That might be caused by the third-party payment gateway. I recommend testing in incognito mode and checking for any JS errors in the console.</p>
-															<a href="javascript:void(0);" class="badge bg-light text-muted d-inline-flex align-items-center gap-1">
-																<i class="ti ti-corner-up-left fs-lg"></i>
-																Reply
-															</a>
-														</div>
-													</div>
-
-													<div class="d-flex mt-4">
-														<div class="flex-shrink-0">
-															<img src="../source/inspinia5/assets/images/users/user-3.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
-														</div>
-														<div class="flex-grow-1 ms-2">
-															<h5 class="mb-1">
-																Sophie Allen
-																<small class="text-muted">16 Apr 2025 · 10:15AM</small>
-															</h5>
-															<p class="mb-2">We’ve noticed this issue before when the CDN cache hasn't been cleared properly. Try purging the cache and reloading the page.</p>
-															<a href="javascript:void(0);" class="badge bg-light text-muted d-inline-flex align-items-center gap-1">
-																<i class="ti ti-corner-up-left fs-lg"></i>
-																Reply
-															</a>
-														</div>
-													</div>
 												</div>
 											</div>
 
@@ -292,52 +258,13 @@ $order['insurance'] = $insurance;
 												<div class="flex-grow-1 ms-2">
 													<h5 class="mb-1">
 														Daniel West
-														<small class="text-muted">14 Apr 2025 · 04:15PM</small>
+														<small class="text-muted">12 Apr 2025 · 02:11PM</small>
 													</h5>
-													<p class="mb-2">You can also clear the browser cache or try a different browser. We had a similar issue with Chrome extensions interfering before.</p>
+													<p class="mb-2">Insurance information is incomplete due to a missing contact phone number.</p>
 													<a href="javascript:void(0);" class="badge bg-light text-muted d-inline-flex align-items-center gap-1">
 														<i class="ti ti-corner-up-left fs-lg"></i>
 														Reply
 													</a>
-												</div>
-											</div>
-
-											<div class="d-flex mb-3 border border-dashed rounded p-3">
-												<div class="flex-shrink-0">
-													<img src="../source/inspinia5/assets/images/users/user-10.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
-												</div>
-												<div class="flex-grow-1 ms-2">
-													<h5 class="mb-1">
-														Nina Bryant
-														<small class="text-muted">16 Apr 2025 · 08:04AM</small>
-													</h5>
-													<p>
-														The
-														<a href="javascript:void(0)" class="text-decoration-underline">System Status Page</a>
-														has been updated. We're actively monitoring and will release a patch within 24 hours.
-													</p>
-
-													<a href="javascript:void(0);" class="badge bg-light text-muted d-inline-flex align-items-center gap-1">
-														<i class="ti ti-corner-up-left fs-lg"></i>
-														Reply
-													</a>
-
-													<div class="d-flex mt-4">
-														<div class="flex-shrink-0">
-															<img src="../source/inspinia5/assets/images/users/user-6.jpg" alt="" class="avatar-sm rounded-circle shadow-sm" />
-														</div>
-														<div class="flex-grow-1 ms-2">
-															<h5 class="mb-1">
-																Daniel West
-																<small class="text-muted">16 Apr 2025 · 08:30AM</small>
-															</h5>
-															<p>Thanks for the update! We'll notify the customers and let them know the issue is being resolved.</p>
-															<a href="javascript:void(0);" class="badge bg-light text-muted d-inline-flex align-items-center gap-1">
-																<i class="ti ti-corner-up-left fs-lg"></i>
-																Reply
-															</a>
-														</div>
-													</div>
 												</div>
 											</div>
 
@@ -386,8 +313,7 @@ $order['insurance'] = $insurance;
 																	<th data-table-sort="name">Name</th>
 																	<th data-table-sort data-column="type">Type</th>
 																	<th data-table-sort>Modified</th>
-																	<th data-table-sort="owner" class="w-auto">Owner</th>
-																	<th class="w-auto">Shared with</th>
+														
 																	<th class="text-end pe-3">Action</th>
 																</tr>
 															</thead>
@@ -412,29 +338,7 @@ $order['insurance'] = $insurance;
 																	</td>
 																	<td>PDF</td>
 																	<td>May 5, 2025</td>
-																	<td>
-																		<div class="d-flex align-items-center gap-2">
-																			<div class="flex-shrink-0 bg-light bg-opacity-50 text-muted d-inline-flex align-items-center justify-content-center rounded-2">
-																				<img src="assets/images/users/user-8.jpg" alt="" class="avatar-xs rounded-circle" />
-																			</div>
-																			<h5 class="mb-0 fs-base">
-																				<a data-sort="owner" href="#!" class="link-reset">mark@clientservices.com</a>
-																			</h5>
-																		</div>
-																	</td>
-																	<td>
-																		<div class="avatar-group avatar-group-xs">
-																			<div class="avatar">
-																				<img src="assets/images/users/user-2.jpg" alt="" class="rounded-circle avatar-xs" />
-																			</div>
-																			<div class="avatar">
-																				<img src="assets/images/users/user-4.jpg" alt="" class="rounded-circle avatar-xs" />
-																			</div>
-																			<div class="avatar">
-																				<img src="assets/images/users/user-7.jpg" alt="" class="rounded-circle avatar-xs" />
-																			</div>
-																		</div>
-																	</td>
+																	
 																	<td class="text-end pe-3">
 																		<div class="d-flex align-items-center justify-content-end gap-2">
 																			<span data-toggler="off">
@@ -490,47 +394,7 @@ $order['insurance'] = $insurance;
 
 										<div class="tab-pane fade" id="activity" role="tabpanel">
 											<div class="timeline">
-												<!-- Event 1 -->
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted"></div>
-													<div class="timeline-dot bg-light"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Order Delivered</h5>
-														<p class="mb-1 text-muted">The package is out for delivery and will reach you shortly.</p>
-														<p class="mb-1 text-muted fs-xxs">Tracking No: <a href="#!" class="link-primary fw-semibold text-decoration-underline">TRK123456789</a></p>
-														<span class="fw-semibold fs-xxs">By Rodelaine Raro</span>
-													</div>
-												</div>
-
-												<!-- Event 2 -->
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="9:00 AM">Apr 14 '26</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">QA Status</h5>
-														<p class="mb-1 text-muted">Complete Order</p>
-														<span class="fs-xxs fw-semibold">By QA Agent1</span>
-													</div>
-												</div>
-
-												<!-- Event 3 -->
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="3:15 PM">Apr 13 '26</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Order Copied</h5>
-													</div>
-												</div>
-
-												<!-- Event 4 -->
-												<div class="timeline-item d-flex align-items-stretch">
-													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="6:00 PM">Apr 7 '26</div>
-													<div class="timeline-dot bg-success"></div>
-													<div class="timeline-content ps-3 pb-5">
-														<h5 class="mb-1">Order Served</h5>
-													</div>
-												</div>
-
+											
 												<div class="timeline-item d-flex align-items-stretch">
 													<div class="timeline-time pe-3 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="5:00 PM">Apr 4 '26</div>
 													<div class="timeline-dot bg-success"></div>
