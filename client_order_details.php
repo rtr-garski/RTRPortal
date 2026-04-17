@@ -93,6 +93,14 @@ $order['insurance'] = $insurance;
 					<div class="row">
 						<div class="col-xl-3 col-lg-6 order-lg-1 order-xl-1">
 							<div class="card card-top-sticky">
+								<div class="card-header justify-content-between align-items-center">
+									<h5 class="card-title">Transactions Worldwide</h5>
+									<div class="card-action">
+										<a href="#!" class="card-action-item" data-action="card-toggle"><i class="ti ti-chevron-up"></i></a>
+										<a href="#!" class="card-action-item" data-action="card-refresh"><i class="ti ti-refresh"></i></a>
+										<a href="#!" class="card-action-item" data-action="card-close"><i class="ti ti-x"></i></a>
+									</div>
+								</div>
 								<div class="card-body">
 									<div class="list-group list-group-flush list-custom mt-3">								
 										<div class="mb-3">
