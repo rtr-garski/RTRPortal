@@ -98,7 +98,6 @@ $order['insurance'] = $insurance;
 									<div class="card-action">
 										<a href="#!" class="card-action-item" data-action="card-toggle"><i class="ti ti-chevron-up"></i></a>
 										<a href="#!" class="card-action-item" data-action="card-refresh"><i class="ti ti-refresh"></i></a>
-										<a href="#!" class="card-action-item" data-action="card-close"><i class="ti ti-x"></i></a>
 									</div>
 								</div>
 								<div class="card-body">
