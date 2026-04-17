@@ -75,22 +75,18 @@ $order['insurance'] = $insurance;
 					<!-- 3 column -->
 					<div class="row mb-2 sticky-top" >
                         <div class="col-lg-12">
-							<div class="card">
-								<div class="card-header d-flex justify-content-between align-items-start p-4">
+							<div class="card mb-0">
+								<div class="card-header d-flex justify-content-between align-items-center border-bottom-0 py-2 px-3">
 									<div>
-										<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
-										<p class="text-muted mb-0"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
+										<h3 class="mb-0 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
+										<p class="text-muted mb-0 small"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
 									</div>
-									<div >
-										<button type="button" class="btn btn-outline-secondary"><i class="ti ti-category fs-lg me-1"></i> Worker's Camp</button>
-										<button type="button" class="btn btn-soft-secondary"><i class="ti ti-list-check fs-lg me-1"></i> SIBTF</button>
-										<!-- <span class="badge badge-soft-success fs-xxs badge-label"><i class="ti ti-circle-filled fs-sm align-middle"></i> Paid</span> -->
-										<!-- <span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span> -->
-										<button type="button" class="btn btn-secondary"><i class="ti ti-inbox fs-lg me-1"></i> Order Received</button>
+									<div>
+										<button type="button" class="btn btn-sm btn-outline-secondary"><i class="ti ti-category fs-lg me-1"></i> Worker's Camp</button>
+										<button type="button" class="btn btn-sm btn-soft-secondary"><i class="ti ti-list-check fs-lg me-1"></i> SIBTF</button>
+										<button type="button" class="btn btn-sm btn-secondary"><i class="ti ti-inbox fs-lg me-1"></i> Order Received</button>
 									</div>
 								</div>
-								
-								<!-- end card-body -->
 							</div>
                         </div>
                     </div>
