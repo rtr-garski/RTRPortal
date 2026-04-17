@@ -81,7 +81,7 @@ $order['insurance'] = $insurance;
 										<h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
 										<p class="text-muted mb-0"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
 									</div>
-									<div class="d-flex gap-1">
+									<div >
 										<button type="button" class="btn btn-outline-secondary"><i class="ti ti-category fs-lg me-1"></i> Worker's Camp</button>
 										<button type="button" class="btn btn-soft-secondary"><i class="ti ti-list-check fs-lg me-1"></i> SIBTF</button>
 										<!-- <span class="badge badge-soft-success fs-xxs badge-label"><i class="ti ti-circle-filled fs-sm align-middle"></i> Paid</span> -->
