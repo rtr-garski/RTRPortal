@@ -94,6 +94,10 @@ $order['insurance'] = $insurance;
 						<div class="col-xl-3 col-lg-6 order-lg-1 order-xl-1">
 							<div class="card card-top-sticky">
 								<div class="card-header d-flex justify-content-between align-items-center">
+									<div class="card-action">
+										<a href="#!" class="card-action-item" data-action="card-toggle"><i class="ti ti-chevron-up"></i></a>
+										<a href="#!" class="card-action-item" data-action="card-refresh"><i class="ti ti-refresh"></i></a>
+									</div>
 									<div class="d-flex align-items-center gap-2">
 										<span class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold" style="width:32px;height:32px;flex-shrink:0">
 											<?= htmlspecialchars(strtoupper(substr($order['Pat_Name'], 0, 1))) ?>
@@ -103,10 +107,7 @@ $order['insurance'] = $insurance;
 											<p class="mb-0 text-muted small"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($order['Pat_Address_Street']) ?>, <?= htmlspecialchars($order['Pat_Address_City']) ?>, <?= htmlspecialchars($order['Pat_Address_State']) ?> <?= htmlspecialchars($order['Pat_Address_Zip']) ?></p>
 										</div>
 									</div>
-									<div class="card-action">
-										<a href="#!" class="card-action-item" data-action="card-toggle"><i class="ti ti-chevron-up"></i></a>
-										<a href="#!" class="card-action-item" data-action="card-refresh"><i class="ti ti-refresh"></i></a>
-									</div>
+									
 								</div>
 								<div class="card-body">
 									<div class="list-group list-group-flush list-custom mt-3">								
