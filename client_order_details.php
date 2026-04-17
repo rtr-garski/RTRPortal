@@ -94,7 +94,13 @@ $order['insurance'] = $insurance;
 						<div class="col-xl-3 col-lg-6 order-lg-1 order-xl-1">
 							<div class="card card-top-sticky">
 								<div class="card-header justify-content-between align-items-center">
-									<h5 class="card-title">Transactions Worldwide</h5>
+									<h5 class="card-title d-flex align-items-center gap-2">
+											<span class="avatar-xs rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold" style="width:32px;height:32px;flex-shrink:0">
+												<?= htmlspecialchars(strtoupper(substr($order['Pat_Name'], 0, 1))) ?>
+											</span>
+											<?= htmlspecialchars($order['Pat_Name']) ?>
+										</h5>
+									<p class="mb-0 text-muted"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($order['Pat_Address_Street']) ?>, <?= htmlspecialchars($order['Pat_Address_City']) ?>, <?= htmlspecialchars($order['Pat_Address_State']) ?> <?= htmlspecialchars($order['Pat_Address_Zip']) ?></p>
 									<div class="card-action">
 										<a href="#!" class="card-action-item" data-action="card-toggle"><i class="ti ti-chevron-up"></i></a>
 										<a href="#!" class="card-action-item" data-action="card-refresh"><i class="ti ti-refresh"></i></a>
@@ -105,7 +111,6 @@ $order['insurance'] = $insurance;
 										<div class="mb-3">
 											<div class="col-12 mb-3">
 												<h6 class="mb-1 text-muted text-uppercase">Patient Name:</h6>
-												<p class="fw-medium mb-0"><?= htmlspecialchars($order['Pat_Name']) ?></p>
 												<p class="mb-0 text-muted"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($order['Pat_Address_Street']) ?>, <?= htmlspecialchars($order['Pat_Address_City']) ?>, <?= htmlspecialchars($order['Pat_Address_State']) ?> <?= htmlspecialchars($order['Pat_Address_Zip']) ?></p>
 										
 											</div>
