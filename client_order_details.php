@@ -103,11 +103,20 @@ $order['insurance'] = $insurance;
 											<div class="col-12 mb-4">
 												<h6 class="mb-1 text-muted text-uppercase">Patient Name:</h6>
 												<p class="fw-medium mb-0"><?= htmlspecialchars($order['Pat_Name']) ?></p>
+												<p class="mb-0"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($loc['Pat_Address_Street']) ?>, <?= htmlspecialchars($loc['Pat_Address_City']) ?>, <?= htmlspecialchars($loc['Pat_Address_State']) ?> <?= htmlspecialchars($loc['Pat_Address_Zip']) ?></p>
+										
 											</div>
-											<div class="col-12 mb-4">
-												<h6 class="mb-1 text-muted text-uppercase">Deadline:</h6>
-												<p class="fw-medium mb-0">June 30, 2025</p>
+											<div class="row">
+												<div class="col-6 mb-3">
+													<h6 class="mb-1 text-muted text-uppercase">DOB:</h6>
+													<p class="fw-medium mb-0">June 30, 1982</p>
+												</div>
+												<div class="col-6 mb-3">
+													<h6 class="mb-1 text-muted text-uppercase">SSN:</h6>
+													<p class="fw-medium mb-0">1234</p>
+												</div>
 											</div>
+											
 
 											<hr />
 
