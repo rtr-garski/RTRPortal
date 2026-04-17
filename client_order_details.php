@@ -82,12 +82,8 @@ $order['insurance'] = $insurance;
 										<p class="text-muted mb-0"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
 									</div>
 									<div class="d-flex gap-1">
-										<a href="#" class="btn btn-soft-primary btn-icon active">
-                                            <i class="ti ti-category fs-lg me-1"></i> Workers's Camp
-                                        </a>
-                                        <a href="#" class="btn btn-soft-primary btn-icon">
-                                            <i class="ti ti-list-check fs-lg me-1"></i> 2nd Status
-                                        </a>
+										<button type="button" class="btn btn-secondary"><i class="ti ti-category fs-lg me-1"></i> Worker's Camp</button>
+										<button type="button" class="btn btn-secondary"><i class="ti ti-list-check fs-lg me-1"></i> SIBTF</button>
 										<!-- <span class="badge badge-soft-success fs-xxs badge-label"><i class="ti ti-circle-filled fs-sm align-middle"></i> Paid</span> -->
 										<!-- <span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span> -->
 										<button type="button" class="btn btn-secondary"><i class="ti ti-inbox fs-lg me-1"></i> Order Received</button>
@@ -114,6 +110,34 @@ $order['insurance'] = $insurance;
 											</div>
 
 											<hr />
+
+											<div class="col-6 mb-3">
+												<h6 class="mb-1 text-muted text-uppercase">Case No/Adj:</h6>
+												<p class="fw-medium mb-0">ADJ231500</p>
+											</div>
+											<div class="col-3 mb-3">
+												<h6 class="mb-1 text-muted text-uppercase">DOI:</h6>
+												<p class="fw-medium mb-0">June 10, 2025</p>
+											</div>
+											<div class="col-3 mb-3">
+												<h6 class="mb-1 text-muted text-uppercase">End:</h6>
+												<p class="fw-medium mb-0">June 30, 2025</p>
+											</div>
+
+											<hr />
+
+											<div class="col-12 mb-4">
+												<h6 class="mb-1 text-muted text-uppercase">Court / Venue:</h6>
+												<p class="fw-medium mb-0">Workers Compensation Appeals Board - BAK</p>
+											</div>
+
+											<div class="col-12 mb-4">
+												<h6 class="mb-1 text-muted text-uppercase">Letter of Rep Date</h6>
+												<p class="fw-medium mb-0">April 4, 2025</p>
+											</div>
+
+											<hr />
+
 											<div class="list-group-item mt-2">
 												<span class="align-middle"><strong>Opposing Counsel</strong></span>
 											</div>
