@@ -234,7 +234,7 @@ $order['insurance'] = $insurance;
 									<div class="row mb-4">
 										<div class="col-md-4 col-xl-3">
 											<h6 class="mb-1 text-muted text-uppercase">Record Type:</h6>
-											<p class="fw-medium mb-0"><?= htmlspecialchars($loc['Rec_Type']) ?></p>
+											<p class="fw-medium mb-0"><span class="badge badge badge-outline-purple"><?= htmlspecialchars($loc['Rec_Type']) ?></span></p>
 										</div>
 										<div class="col-md-4 col-xl-3">
 											<h6 class="mb-1 text-muted text-uppercase">Deadline:</h6>
