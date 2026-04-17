@@ -211,7 +211,7 @@ $order['insurance'] = $insurance;
 							<div class="card card-h-100 rounded-0 rounded-start">
 								<div class="card-header align-items-start p-4">
 									<div>
-										<h3 class="mb-1 d-flex fs-xl align-items-center" id="locDetailName"></h3>
+										<h3 class="mb-1 d-flex fs-xl align-items-center" id="locDetailName"></h3> <span class="badge badge-outline-purple rounded-pill"><?= htmlspecialchars($loc['Rec_Type']) ?></span>
 										<p class="text-muted mb-2 fs-xxs">Updated 5 minutes ago</p>
 										<span class="badge badge-soft-success fs-xxs badge-label">In Progress</span>
 									</div>
