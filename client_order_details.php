@@ -32,10 +32,16 @@ $stmt3 = $pdo->prepare("SELECT * FROM API_Input_Insurance_Carriers WHERE _kf_API
 $stmt3->execute([$order_id]);                                                                                                                                                                        
 $insurance = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
+//4th - case number
+$stmt4 = $pdo->prepare("SELECT * FROM API_Input_Case_Numbers WHERE _kf_API_Input_Order_ID = ?");
+$stmt4->execute([$order_id]);                                                                                                                                                                        
+$casenumbers = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 
 // loop inside the oredr	
 $order['locations'] = $locations;   
 $order['insurance'] = $insurance;  
+$order['casenumbers'] = $casenumbers; 
+
 //$order['locations'] = array_column($locations, null, '__kp_API_Input_Order_Location_ID'); 
                                                                                                                                                                                                       
 
@@ -121,23 +127,25 @@ $order['insurance'] = $insurance;
 											
 
 											<hr />
-
+											<!--casenumber-->
+											<?php foreach ($casenumbers as $casenums): ?>
 											<div class="row mb-2">
 												<div class="col-4">
 													<h6 class="mb-1 text-muted text-uppercase">Case No/Adj:</h6>
-													<p class="fw-medium mb-0">ADJ231500</p>
+													<p class="fw-medium mb-0"><?= htmlspecialchars($casenums['Case_No']) ?></p>
 												</div>
 											
 												<div class="col-4">
 													<h6 class="mb-1 text-muted text-uppercase">DOI:</h6>
-													<p class="fw-medium mb-0">June 10, 2025</p>
+													<p class="fw-medium mb-0"><?= htmlspecialchars($casenums['DOI_Beg']) ?></p>
 												</div>
 												<div class="col-4">
 													<h6 class="mb-1 text-muted text-uppercase">End:</h6>
-													<p class="fw-medium mb-0">June 30, 2025</p>
+													<p class="fw-medium mb-0"><?= htmlspecialchars($casenums['DOI_End']) ?></p>
 												</div>
-											</div>	
-
+											</div>
+											<?php endforeach; ?>
+											<!--casenumber-->
 											<hr />
 
 											<div class="col-12 mb-2">
