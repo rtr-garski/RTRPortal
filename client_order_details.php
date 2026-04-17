@@ -216,7 +216,8 @@ $order['insurance'] = $insurance;
 										<span class="badge badge-soft-success fs-xxs badge-label">In Progress</span>
 									</div>
 									<div class="ms-auto">
-										<h5 class="fs-base mb-2">Location Information:</h5>
+										<!-- <h5 class="fs-base mb-2 text-muted text-uppercase">Location Information:</h5> -->
+										<h6 class="mb-1 text-muted text-uppercase">Location Address</h6>
 										<p class="mb-0"><i class="ti ti-map-pin me-1"></i><span id="locDetailAddress"></span></p>
 														<p class="mb-0 text-muted"><i class="ti ti-phone me-1"></i><span id="locDetailPhone"></span> &nbsp; <i class="ti ti-printer me-1"></i><span id="locDetailFax"></span></p>
 									</div>
