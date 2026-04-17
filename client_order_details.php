@@ -111,18 +111,21 @@ $order['insurance'] = $insurance;
 
 											<hr />
 
-											<div class="col-6 mb-3">
-												<h6 class="mb-1 text-muted text-uppercase">Case No/Adj:</h6>
-												<p class="fw-medium mb-0">ADJ231500</p>
-											</div>
-											<div class="col-3 mb-3">
-												<h6 class="mb-1 text-muted text-uppercase">DOI:</h6>
-												<p class="fw-medium mb-0">June 10, 2025</p>
-											</div>
-											<div class="col-3 mb-3">
-												<h6 class="mb-1 text-muted text-uppercase">End:</h6>
-												<p class="fw-medium mb-0">June 30, 2025</p>
-											</div>
+											<div id="row">
+												<div class="col-6 mb-3">
+													<h6 class="mb-1 text-muted text-uppercase">Case No/Adj:</h6>
+													<p class="fw-medium mb-0">ADJ231500</p>
+												</div>
+											
+												<div class="col-3 mb-3">
+													<h6 class="mb-1 text-muted text-uppercase">DOI:</h6>
+													<p class="fw-medium mb-0">June 10, 2025</p>
+												</div>
+												<div class="col-3 mb-3">
+													<h6 class="mb-1 text-muted text-uppercase">End:</h6>
+													<p class="fw-medium mb-0">June 30, 2025</p>
+												</div>
+											</div>	
 
 											<hr />
 
