@@ -211,7 +211,7 @@ $order['insurance'] = $insurance;
 							<div class="card card-h-100 rounded-0 rounded-start">
 								<div class="card-header align-items-start p-4">
 									<div>
-										<h3 class="mb-1 d-flex fs-xl align-items-center" id="locDetailName"> <span class="badge badge-outline-purple rounded-pill"><?= htmlspecialchars($loc['Rec_Type']) ?></span></h3>
+										<h3 class="mb-1 d-flex fs-xl align-items-center" id="locDetailName"></span></h3>
 										<p class="text-muted mb-2 fs-xxs">Updated 5 minutes ago</p>
 										<span class="badge badge-soft-success fs-xxs badge-label">In Progress</span>
 									</div>
@@ -231,10 +231,10 @@ $order['insurance'] = $insurance;
 
 								<div id="locDetailContent" class="d-none">
 								<div class="card-body px-4">
-									<!-- <div class="row mb-4">
+									<div class="row mb-4">
 										<div class="col-md-4 col-xl-3">
-											<h6 class="mb-1 text-muted text-uppercase">Created Date:</h6>
-											<p class="fw-medium mb-0">March 15, 2025</p>
+											<h6 class="mb-1 text-muted text-uppercase">Record Type:</h6>
+											<p class="fw-medium mb-0"><?= htmlspecialchars($loc['Rec_Type']) ?></p>
 										</div>
 										<div class="col-md-4 col-xl-3">
 											<h6 class="mb-1 text-muted text-uppercase">Deadline:</h6>
@@ -244,7 +244,7 @@ $order['insurance'] = $insurance;
 											<h6 class="mb-1 text-muted text-uppercase">Created By:</h6>
 											<p class="fw-medium mb-0">John Smith</p>
 										</div>
-									</div> -->
+									</div>
 
 									<div class="mb-4">
 										<h5 class="fs-base mb-2">Special Instruction:</h5>
