@@ -107,7 +107,7 @@ $order['insurance'] = $insurance;
 								</div>
 								<div class="card-body">
 									<div class="list-group list-group-flush list-custom mt-3">								
-										<div class="mb-3">
+										<div class="mb-2">
 											<div class="row mb-2">
 												<div class="col-6 mb-2">
 													<h6 class="mb-1 text-muted text-uppercase">DOB:</h6>
@@ -123,16 +123,16 @@ $order['insurance'] = $insurance;
 											<hr />
 
 											<div class="row mb-2">
-												<div class="col-6">
+												<div class="col-4">
 													<h6 class="mb-1 text-muted text-uppercase">Case No/Adj:</h6>
 													<p class="fw-medium mb-0">ADJ231500</p>
 												</div>
 											
-												<div class="col-3">
+												<div class="col-4">
 													<h6 class="mb-1 text-muted text-uppercase">DOI:</h6>
 													<p class="fw-medium mb-0">June 10, 2025</p>
 												</div>
-												<div class="col-3">
+												<div class="col-4">
 													<h6 class="mb-1 text-muted text-uppercase">End:</h6>
 													<p class="fw-medium mb-0">June 30, 2025</p>
 												</div>
