@@ -106,12 +106,12 @@ $order['insurance'] = $insurance;
 												<p class="mb-0"><i class="ti ti-map-pin me-1"></i><?= htmlspecialchars($loc['Pat_Address_Street']) ?>, <?= htmlspecialchars($loc['Pat_Address_City']) ?>, <?= htmlspecialchars($loc['Pat_Address_State']) ?> <?= htmlspecialchars($loc['Pat_Address_Zip']) ?></p>
 										
 											</div>
-											<div class="row">
-												<div class="col-6 mb-3">
+											<div class="row mb-2">
+												<div class="col-6 mb-2">
 													<h6 class="mb-1 text-muted text-uppercase">DOB:</h6>
 													<p class="fw-medium mb-0">June 30, 1982</p>
 												</div>
-												<div class="col-6 mb-3">
+												<div class="col-6 mb-2">
 													<h6 class="mb-1 text-muted text-uppercase">SSN:</h6>
 													<p class="fw-medium mb-0">1234</p>
 												</div>
@@ -138,12 +138,12 @@ $order['insurance'] = $insurance;
 
 											<hr />
 
-											<div class="col-12 mb-4">
+											<div class="col-12 mb-2">
 												<h6 class="mb-1 text-muted text-uppercase">Court / Venue:</h6>
 												<p class="fw-medium mb-0">Workers Compensation Appeals Board - BAK</p>
 											</div>
 
-											<div class="col-12 mb-4">
+											<div class="col-12 mb-2">
 												<h6 class="mb-1 text-muted text-uppercase">Letter of Rep Date</h6>
 												<p class="fw-medium mb-0">April 4, 2025</p>
 											</div>
