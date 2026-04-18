@@ -74,12 +74,12 @@ if (isset($_GET['flash'])) {
 
 // ─── Fetch Data ───────────────────────────────────────────────────────────────
 
-// try {
-//     $endpoints = $pdo->query("SELECT * FROM webhook_endpoints ORDER BY created_at DESC")->fetchAll();
-// } catch (Throwable $e) {
-//     $endpoints = [];
-//     $flash = ['type' => 'danger', 'msg' => 'Could not load endpoints. Run the DB setup first.'];
-// }
+try {
+    $endpoints = $pdo->query("SELECT * FROM webhook_endpoints ORDER BY created_at DESC")->fetchAll();
+} catch (Throwable $e) {
+    $endpoints = [];
+    //$flash = ['type' => 'danger', 'msg' => 'Could not load endpoints. Run the DB setup first.'];
+}
 
 try {
     $logs = $pdo->query("SELECT * FROM webhook_log ORDER BY sent_at DESC LIMIT 50")->fetchAll();
