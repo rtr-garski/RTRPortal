@@ -370,9 +370,14 @@ $title = 'Webhook Management';
 
                     <div class="mb-3">
                         <label class="form-label fw-semibold" for="ep-event">Event <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="ep-event" name="event"
-                               placeholder="e.g. order.created" required>
-                        <div class="form-text">The event name that will trigger this webhook.</div>
+                        <select class="form-select" id="ep-event" name="event" required>
+                            <option value="">— Select an event —</option>
+                            <option value="order.created">order.created</option>
+                            <option value="order.updated">order.updated</option>
+                            <option value="order.completed">order.completed</option>
+                            <option value="order.cancelled">order.cancelled</option>
+                        </select>
+                        <div class="form-text">The event that will trigger this webhook.</div>
                     </div>
 
                     <div class="mb-3">
@@ -395,11 +400,6 @@ $title = 'Webhook Management';
                             </button>
                         </div>
                         <div class="form-text">Used to sign payloads via <code>X-Webhook-Signature</code> (HMAC-SHA256).</div>
-                    </div>
-
-                    <div class="alert alert-info py-2 mb-0 fs-xs">
-                        <i class="ti ti-info-circle me-1"></i>
-                        Common events: <code>order.created</code>, <code>order.updated</code>, <code>order.completed</code>, <code>order.cancelled</code>
                     </div>
 
                 </div>
