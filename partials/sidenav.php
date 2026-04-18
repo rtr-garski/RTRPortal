@@ -134,6 +134,13 @@
                 </li>
 
                 <li class="side-nav-item">
+                    <a href="webhook_management.php" class="side-nav-link">
+                        <span class="menu-icon"><i class="ti ti-webhook"></i></span>
+                        <span class="menu-text">Webhooks</span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
                     <a href="#" class="side-nav-link disabled">
                         <span class="menu-icon"><i class="ti ti-ban"></i></span>
                         <span class="menu-text" data-lang="disabled-menu">Disabled Menu</span>
