@@ -2,21 +2,7 @@
 
 require_once 'config/db.php';
 
-/*
- * Required DB table (run once):
- *
- *   CREATE TABLE api_tokens (
- *     id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
- *     label      VARCHAR(100)  NOT NULL DEFAULT '',
- *     token      VARCHAR(64)   NOT NULL UNIQUE,
- *     active     TINYINT(1)    NOT NULL DEFAULT 1,
- *     last_used  DATETIME      NULL,
- *     created_at DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP
- *   );
- */
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
+//function to generate string
 function generateToken(): string {
     return bin2hex(random_bytes(32)); // 64 hex chars
 }
@@ -25,10 +11,10 @@ function maskToken(string $token): string {
     return substr($token, 0, 8) . '••••••••••••••••••••••••' . substr($token, -4);
 }
 
-// ─── Action Handler ───────────────────────────────────────────────────────────
+// hander
 
 $flash    = null;
-$newToken = null; // shown once on creation
+$newToken = null; // shown only once on creation
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
@@ -72,21 +58,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // flash set on validation error — fall through to render
 }
 
-// One-time new token reveal from redirect
+// onetime new token reveal from redirect
 if (isset($_GET['new_token'])) {
     $newToken  = $_GET['new_token'];
     $newLabel  = $_GET['label'] ?? 'New Token';
     $flash     = ['type' => 'success', 'msg' => "Token <strong>" . htmlspecialchars($newLabel) . "</strong> created. Copy it now — it won't be shown again."];
 }
 
-// Restore flash from redirect
+// restore flash from redirect
 if (!$flash && isset($_GET['flash'])) {
     [$ftype, $fmsg] = explode('|', urldecode($_GET['flash']), 2);
     $flash = ['type' => $ftype, 'msg' => $fmsg];
 }
 
-// ─── Fetch Data ───────────────────────────────────────────────────────────────
-
+//now to fetch tokeen from db
 try {
     $tokens = $pdo->query("SELECT * FROM api_tokens ORDER BY created_at DESC")->fetchAll();
 } catch (Throwable $e) {
@@ -114,7 +99,7 @@ $title = 'API Token Management';
     <div class="content-page">
         <div class="container-fluid">
 
-            <!-- ─── Page Header ─────────────────────────────────────────────── -->
+            <!-- breadcrums -->
             <?php $subtitle = 'Settings'; ?>
             <div class="page-title-head d-flex align-items-center">
                 <div class="flex-grow-1">
@@ -129,7 +114,7 @@ $title = 'API Token Management';
                 </div>
             </div>
 
-            <!-- ─── One-time Token Reveal ────────────────────────────────────── -->
+            <!-- onetimetokenreveal -->
             <?php if ($newToken): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <div class="mb-2">
@@ -153,7 +138,7 @@ $title = 'API Token Management';
             </div>
             <?php endif; ?>
 
-            <!-- ─── Stat Cards ───────────────────────────────────────────────── -->
+            <!-- stats -->
             <div class="row mb-3">
                 <div class="col-md-4">
                     <div class="card mb-0">
@@ -196,7 +181,7 @@ $title = 'API Token Management';
                 </div>
             </div>
 
-            <!-- ─── Tokens Table ─────────────────────────────────────────────── -->
+            <!-- token table─ -->
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h5 class="card-title mb-0"><i class="ti ti-key me-1"></i> API Tokens</h5>
@@ -278,7 +263,7 @@ $title = 'API Token Management';
                 </div>
             </div>
 
-            <!-- ─── Usage Guide ──────────────────────────────────────────────── -->
+            <!-- instruction guide -->
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title mb-0"><i class="ti ti-book me-1"></i> How to Use Your Token</h5>
@@ -321,7 +306,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));</code></pre>
 </div>
 <!-- END wrapper -->
 
-<!-- ─── Generate Token Modal ──────────────────────────────────────────────── -->
+<!-- modal token -->
 <div class="modal fade" id="createTokenModal" tabindex="-1" aria-labelledby="createTokenModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -366,7 +351,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));</code></pre>
 <?php include('partials/footer-scripts.php'); ?>
 
 <script>
-// Copy new token to clipboard
+// copy new token to clipboard
 var copyBtn = document.getElementById('copyNewToken');
 if (copyBtn) {
     copyBtn.addEventListener('click', function () {
