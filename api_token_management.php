@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $flash = ['type' => 'danger', 'msg' => 'A label is required to identify your token.'];
         } else {
             $token = generateToken();
-            $stmt  = $pdo->prepare("
+            $stmt  = $pdo2->prepare("
                 INSERT INTO api_tokens (label, token, active, created_at)
                 VALUES (:label, :token, 1, NOW())
             ");
@@ -39,14 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($action === 'toggle') {
         $id = (int) ($_POST['id'] ?? 0);
         if ($id > 0) {
-            $pdo->prepare("UPDATE api_tokens SET active = IF(active=1,0,1) WHERE id = ?")->execute([$id]);
+            $pdo2->prepare("UPDATE api_tokens SET active = IF(active=1,0,1) WHERE id = ?")->execute([$id]);
             $flash = ['type' => 'success', 'msg' => 'Token status updated.'];
         }
 
     } elseif ($action === 'delete') {
         $id = (int) ($_POST['id'] ?? 0);
         if ($id > 0) {
-            $pdo->prepare("DELETE FROM api_tokens WHERE id = ?")->execute([$id]);
+            $pdo2->prepare("DELETE FROM api_tokens WHERE id = ?")->execute([$id]);
             $flash = ['type' => 'success', 'msg' => 'Token revoked and deleted.'];
         }
     }
@@ -73,7 +73,7 @@ if (!$flash && isset($_GET['flash'])) {
 
 //now to fetch tokeen from db
 try {
-    $tokens = $pdo->query("SELECT * FROM api_tokens ORDER BY created_at DESC")->fetchAll();
+    $tokens = $pdo2->query("SELECT * FROM api_tokens ORDER BY created_at DESC")->fetchAll();
 } catch (Throwable $e) {
     $tokens = [];
     $flash  = ['type' => 'warning', 'msg' => 'Could not load tokens — run the DB setup first.'];
