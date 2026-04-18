@@ -140,18 +140,6 @@
                     </a>
                 </li>
 
-                <li class="side-nav-item">
-                    <a href="#" class="side-nav-link disabled">
-                        <span class="menu-icon"><i class="ti ti-ban"></i></span>
-                        <span class="menu-text" data-lang="disabled-menu">Disabled Menu</span>
-                    </a>
-                </li>
-                <li class="side-nav-item">
-                    <a href="#" class="side-nav-link special-menu">
-                        <span class="menu-icon"><i class="ti ti-star"></i></span>
-                        <span class="menu-text" data-lang="special-menu">Special Menu</span>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>

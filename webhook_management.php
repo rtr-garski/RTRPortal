@@ -74,12 +74,12 @@ if (isset($_GET['flash'])) {
 
 // ─── Fetch Data ───────────────────────────────────────────────────────────────
 
-try {
-    $endpoints = $pdo->query("SELECT * FROM webhook_endpoints ORDER BY created_at DESC")->fetchAll();
-} catch (Throwable $e) {
-    $endpoints = [];
-    $flash = ['type' => 'danger', 'msg' => 'Could not load endpoints. Run the DB setup first.'];
-}
+// try {
+//     $endpoints = $pdo->query("SELECT * FROM webhook_endpoints ORDER BY created_at DESC")->fetchAll();
+// } catch (Throwable $e) {
+//     $endpoints = [];
+//     $flash = ['type' => 'danger', 'msg' => 'Could not load endpoints. Run the DB setup first.'];
+// }
 
 try {
     $logs = $pdo->query("SELECT * FROM webhook_log ORDER BY sent_at DESC LIMIT 50")->fetchAll();
@@ -104,7 +104,7 @@ $title = 'Webhook Management';
     <div class="content-page">
         <div class="container-fluid">
 
-            <!-- ─── Page Header ─────────────────────────────────────────────── -->
+            <!--  header-->
             <?php $subtitle = 'Settings'; ?>
             <div class="page-title-head d-flex align-items-center">
                 <div class="flex-grow-1">
@@ -119,7 +119,7 @@ $title = 'Webhook Management';
                 </div>
             </div>
 
-            <!-- ─── Flash Message ───────────────────────────────────────────── -->
+            <!-- alert message -->
             <?php if ($flash): ?>
             <div class="alert alert-<?= htmlspecialchars($flash['type']) ?> alert-dismissible fade show" role="alert">
                 <?= htmlspecialchars($flash['msg']) ?>
@@ -127,7 +127,7 @@ $title = 'Webhook Management';
             </div>
             <?php endif; ?>
 
-            <!-- ─── Stat Badges ─────────────────────────────────────────────── -->
+            <!-- stat badges-->
             <div class="row mb-3">
                 <?php
                 $total  = count($endpoints);
@@ -175,7 +175,7 @@ $title = 'Webhook Management';
                 </div>
             </div>
 
-            <!-- ─── Endpoints Table ─────────────────────────────────────────── -->
+            <!-- emndpoint list -->
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h5 class="card-title mb-0"><i class="ti ti-plug me-1"></i> Registered Endpoints</h5>
@@ -270,7 +270,7 @@ $title = 'Webhook Management';
                 </div>
             </div>
 
-            <!-- ─── Delivery Log ────────────────────────────────────────────── -->
+            <!-- delivery logs -->
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title mb-0"><i class="ti ti-history me-1"></i> Recent Delivery Log <small class="text-muted fw-normal">(last 50)</small></h5>
@@ -354,7 +354,7 @@ $title = 'Webhook Management';
 </div>
 <!-- END wrapper -->
 
-<!-- ─── Add Endpoint Modal ─────────────────────────────────────────────────── -->
+<!-- edpoint modal -->
 <div class="modal fade" id="addEndpointModal" tabindex="-1" aria-labelledby="addEndpointModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -419,7 +419,7 @@ $title = 'Webhook Management';
 <?php include('partials/footer-scripts.php'); ?>
 
 <script>
-// Generate random secret
+// Generate random secret for endpoint
 document.getElementById('generateSecret').addEventListener('click', function () {
     var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var secret = Array.from(crypto.getRandomValues(new Uint8Array(32)))
