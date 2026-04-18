@@ -3,7 +3,7 @@
 require_once 'config/db.php';
 require_once 'webhook_sender.php';
 
-// ─── Action Handler ───────────────────────────────────────────────────────────
+// ─action post handler
 
 $flash = null;
 
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } elseif (!filter_var($url, FILTER_VALIDATE_URL)) {
             $flash = ['type' => 'danger', 'msg' => 'Please enter a valid URL.'];
         } else {
-            $stmt = $pdo->prepare("
+            $stmt = $pdo2->prepare("
                 INSERT INTO webhook_endpoints (event, url, secret, active, created_at)
                 VALUES (:event, :url, :secret, 1, NOW())
             ");
@@ -31,21 +31,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($action === 'delete') {
         $id = (int) ($_POST['id'] ?? 0);
         if ($id > 0) {
-            $pdo->prepare("DELETE FROM webhook_endpoints WHERE id = ?")->execute([$id]);
+            $pdo2->prepare("DELETE FROM webhook_endpoints WHERE id = ?")->execute([$id]);
             $flash = ['type' => 'success', 'msg' => 'Endpoint deleted.'];
         }
 
     } elseif ($action === 'toggle') {
         $id = (int) ($_POST['id'] ?? 0);
         if ($id > 0) {
-            $pdo->prepare("UPDATE webhook_endpoints SET active = IF(active=1,0,1) WHERE id = ?")->execute([$id]);
+            $pdo2->prepare("UPDATE webhook_endpoints SET active = IF(active=1,0,1) WHERE id = ?")->execute([$id]);
             $flash = ['type' => 'success', 'msg' => 'Endpoint status updated.'];
         }
 
     } elseif ($action === 'test') {
         $id = (int) ($_POST['id'] ?? 0);
         if ($id > 0) {
-            $row = $pdo->prepare("SELECT * FROM webhook_endpoints WHERE id = ?");
+            $row = $pdo2->prepare("SELECT * FROM webhook_endpoints WHERE id = ?");
             $row->execute([$id]);
             $ep = $row->fetch();
             if ($ep) {
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'data'      => ['test' => true, 'message' => 'This is a test webhook delivery.'],
                     'timestamp' => date('c'),
                 ], $ep['secret']);
-                webhookLog($pdo, $ep['event'], $ep['url'], $result);
+                webhookLog($pdo2, $ep['event'], $ep['url'], $result);
                 $flash = $result['success']
                     ? ['type' => 'success', 'msg' => "Test delivered — HTTP {$result['http_code']}."]
                     : ['type' => 'warning', 'msg' => "Test failed — HTTP {$result['http_code']}. " . ($result['error'] ?? '')];
@@ -66,23 +66,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-// Restore flash from redirect
+// restore flash from redirect
 if (isset($_GET['flash'])) {
     [$ftype, $fmsg] = explode('|', urldecode($_GET['flash']), 2);
     $flash = ['type' => $ftype, 'msg' => $fmsg];
 }
 
-// ─── Fetch Data ───────────────────────────────────────────────────────────────
+// fetch data from db
 
 try {
-    $endpoints = $pdo->query("SELECT * FROM webhook_endpoints ORDER BY created_at DESC")->fetchAll();
+    $endpoints = $pdo2->query("SELECT * FROM webhook_endpoints ORDER BY created_at DESC")->fetchAll();
 } catch (Throwable $e) {
     $endpoints = [];
     //$flash = ['type' => 'danger', 'msg' => 'Could not load endpoints. Run the DB setup first.'];
 }
 
 try {
-    $logs = $pdo->query("SELECT * FROM webhook_log ORDER BY sent_at DESC LIMIT 50")->fetchAll();
+    $logs = $pdo2->query("SELECT * FROM webhook_log ORDER BY sent_at DESC LIMIT 50")->fetchAll();
 } catch (Throwable $e) {
     $logs = [];
 }

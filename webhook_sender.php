@@ -1,45 +1,14 @@
 <?php
-
-/*
- * webhook_sender.php
- *
- * Sends outbound webhooks to registered endpoints.
- * Can be used as a library (include + call dispatchWebhook()) or
- * called directly via HTTP POST for ad-hoc/test dispatches.
- *
- * Required DB tables (run once):
- *
- *   CREATE TABLE webhook_endpoints (
- *     id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
- *     event      VARCHAR(100)  NOT NULL,
- *     url        VARCHAR(2048) NOT NULL,
- *     secret     VARCHAR(255)  NOT NULL DEFAULT '',
- *     active     TINYINT(1)    NOT NULL DEFAULT 1,
- *     created_at DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP
- *   );
- *
- *   CREATE TABLE webhook_log (
- *     id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
- *     event      VARCHAR(100)  NOT NULL,
- *     url        VARCHAR(2048) NOT NULL,
- *     http_code  SMALLINT      NOT NULL DEFAULT 0,
- *     success    TINYINT(1)    NOT NULL DEFAULT 0,
- *     response   TEXT,
- *     retries    TINYINT       NOT NULL DEFAULT 0,
- *     error_msg  VARCHAR(500),
- *     sent_at    DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP
- *   );
- */
-
+//not working uet
 require_once __DIR__ . '/config/db.php';
 
-// ─── Config ───────────────────────────────────────────────────────────────────
+// config for sender?
 
 define('WEBHOOK_SECRET',      'change-me-to-a-strong-secret');
 define('WEBHOOK_TIMEOUT',     10);  // seconds per request
 define('WEBHOOK_MAX_RETRIES', 3);   // attempts after the first failure
 
-// ─── Core ─────────────────────────────────────────────────────────────────────
+// core script
 
 function webhookSign(string $body, string $secret): string {
     return 'sha256=' . hash_hmac('sha256', $body, $secret);
@@ -114,7 +83,7 @@ function webhookGetEndpoints(PDO $pdo, string $event): array {
     return $stmt->fetchAll();
 }
 
-// ─── Public API ───────────────────────────────────────────────────────────────
+// public api
 
 /**
  * Dispatch a webhook event to all registered active endpoints.
@@ -152,7 +121,7 @@ function dispatchWebhook(PDO $pdo, string $event, array $data): array {
     return ['dispatched' => count($results), 'results' => $results];
 }
 
-// ─── Direct HTTP call ─────────────────────────────────────────────────────────
+// http call handler
 //
 // When this file is requested directly via HTTP POST, it acts as a trigger
 // endpoint. Authenticate with X-API-Key and post JSON: { "event": "...", "data": {} }
@@ -172,7 +141,7 @@ if (basename(__FILE__) === basename($_SERVER['SCRIPT_FILENAME'] ?? '')) {
         exit;
     }
 
-    // ── Auth ──────────────────────────────────────────────────────────────────
+    //api token
 
     if (!defined('API_TOKEN')) {
         whSendResponse(false, 'API_TOKEN not configured', null, 500);
@@ -194,7 +163,7 @@ if (basename(__FILE__) === basename($_SERVER['SCRIPT_FILENAME'] ?? '')) {
         whSendResponse(false, 'Only POST method is allowed', null, 405);
     }
 
-    // ── Input ─────────────────────────────────────────────────────────────────
+    // php decode
 
     $input = json_decode(file_get_contents('php://input'), true);
     if ($input === null) {
@@ -212,10 +181,10 @@ if (basename(__FILE__) === basename($_SERVER['SCRIPT_FILENAME'] ?? '')) {
         whSendResponse(false, '"data" field must be an object', null, 400);
     }
 
-    // ── Dispatch ──────────────────────────────────────────────────────────────
+    // dispatch webhook and log results
 
     try {
-        $summary = dispatchWebhook($pdo, $event, $data);
+        $summary = dispatchWebhook($pdo2, $event, $data);
         whSendResponse(true, 'Webhook dispatched', $summary, 200);
     } catch (Throwable $e) {
         error_log('[Webhook] Dispatch error: ' . $e->getMessage());
