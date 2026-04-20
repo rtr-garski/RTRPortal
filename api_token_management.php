@@ -190,8 +190,7 @@ $title = 'API Token Management';
                         <table class="table table-custom mb-0">
                             <thead class="bg-light bg-opacity-25 thead-sm border-top border-light">
                                 <tr class="text-uppercase fs-xxs align-middle">
-                                    <th class="ps-3">Label</th>
-                                    <th>Token</th>
+                                    <th class="ps-3">Token</th>
                                     <th>Issued</th>
                                     <th>Expires</th>
                                     <th class="text-end pe-3">Actions</th>
@@ -200,7 +199,7 @@ $title = 'API Token Management';
                             <tbody>
                             <?php if (empty($tokens)): ?>
                                 <tr>
-                                    <td colspan="5" class="text-center text-muted py-5">
+                                    <td colspan="4" class="text-center text-muted py-5">
                                         <i class="ti ti-key-off fs-xxl d-block mb-2"></i>
                                         No tokens yet. Generate your first token to start submitting to the API.
                                     </td>
@@ -208,8 +207,7 @@ $title = 'API Token Management';
                             <?php else: ?>
                                 <?php foreach ($tokens as $tok): ?>
                                 <tr>
-                                    <td class="ps-3 fw-semibold"><?= htmlspecialchars($tok['label']) ?></td>
-                                    <td>
+                                    <td class="ps-3">
                                         <div class="d-flex align-items-center gap-2">
                                             <code class="fs-xs text-muted tok-value"><?= htmlspecialchars($tok['Token']) ?></code>
                                             <button type="button" class="btn btn-xs btn-soft-secondary copy-tok-btn" title="Copy token"
