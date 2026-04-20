@@ -26,9 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $flash = ['type' => 'danger', 'msg' => 'A label is required to identify your token.'];
         } else {
             $token = generateToken();
-            $stmt  = $pdo->prepare("
-                INSERT INTO API_Tokens (label, Token, active, Timestamp_Issued, Timestamp_Expiration)
-                VALUES (:label, :token, 1, NOW(), DATE_ADD(NOW(), INTERVAL 6 MONTH))
+            $stmt  = $pdo2->prepare("
+                INSERT INTO api_tokens (label, token, active, created_at)
+                VALUES (:label, :token, 1, NOW())
             ");
             $stmt->execute([':label' => $label, ':token' => $token]);
             // Pass the new token through the redirect so it shows exactly once
@@ -39,14 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($action === 'toggle') {
         $id = (int) ($_POST['id'] ?? 0);
         if ($id > 0) {
-            $pdo->prepare("UPDATE API_Tokens SET active = IF(active=1,0,1) WHERE id = ?")->execute([$id]);
+            $pdo2->prepare("UPDATE api_tokens SET active = IF(active=1,0,1) WHERE id = ?")->execute([$id]);
             $flash = ['type' => 'success', 'msg' => 'Token status updated.'];
         }
 
     } elseif ($action === 'delete') {
         $id = (int) ($_POST['id'] ?? 0);
         if ($id > 0) {
-            $pdo->prepare("DELETE FROM API_Tokens WHERE id = ?")->execute([$id]);
+            $pdo2->prepare("DELETE FROM api_tokens WHERE id = ?")->execute([$id]);
             $flash = ['type' => 'success', 'msg' => 'Token revoked and deleted.'];
         }
     }
@@ -73,7 +73,7 @@ if (!$flash && isset($_GET['flash'])) {
 
 //now to fetch tokeen from db
 try {
-    $tokens = $pdo->query("SELECT * FROM API_Tokens ORDER BY Timestamp_Issued DESC")->fetchAll();
+    $tokens = $pdo2->query("SELECT * FROM api_tokens ORDER BY created_at DESC")->fetchAll();
 } catch (Throwable $e) {
     $tokens = [];
     $flash  = ['type' => 'warning', 'msg' => 'Could not load tokens — run the DB setup first.'];
@@ -197,8 +197,8 @@ $title = 'API Token Management';
                                     <th class="ps-3">Label</th>
                                     <th>Token</th>
                                     <th>Status</th>
-                                    <th>Issued</th>
-                                    <th>Expires</th>
+                                    <th>Last Used</th>
+                                    <th>Created</th>
                                     <th class="text-end pe-3">Actions</th>
                                 </tr>
                             </thead>
@@ -215,7 +215,7 @@ $title = 'API Token Management';
                                 <tr class="<?= !$tok['active'] ? 'opacity-50' : '' ?>">
                                     <td class="ps-3 fw-semibold"><?= htmlspecialchars($tok['label']) ?></td>
                                     <td>
-                                        <code class="fs-xs text-muted"><?= htmlspecialchars(maskToken($tok['Token'])) ?></code>
+                                        <code class="fs-xs text-muted"><?= htmlspecialchars(maskToken($tok['token'])) ?></code>
                                     </td>
                                     <td>
                                         <?php if ($tok['active']): ?>
@@ -224,20 +224,10 @@ $title = 'API Token Management';
                                             <span class="badge badge-soft-danger">Revoked</span>
                                         <?php endif; ?>
                                     </td>
-                                    <td class="fs-xs text-muted"><?= date('M j, Y', strtotime($tok['Timestamp_Issued'])) ?></td>
-                                    <td class="fs-xs">
-                                        <?php
-                                        $exp     = strtotime($tok['Timestamp_Expiration']);
-                                        $now     = time();
-                                        $expDate = date('M j, Y', $exp);
-                                        if ($exp < $now): ?>
-                                            <span class="badge badge-soft-danger"><?= $expDate ?></span>
-                                        <?php elseif ($exp < strtotime('+30 days')): ?>
-                                            <span class="badge badge-soft-warning"><?= $expDate ?></span>
-                                        <?php else: ?>
-                                            <span class="text-muted"><?= $expDate ?></span>
-                                        <?php endif; ?>
+                                    <td class="fs-xs text-muted">
+                                        <?= $tok['last_used'] ? date('M j, Y g:i A', strtotime($tok['last_used'])) : '—' ?>
                                     </td>
+                                    <td class="fs-xs text-muted"><?= date('M j, Y', strtotime($tok['created_at'])) ?></td>
                                     <td class="text-end pe-3">
                                         <div class="d-flex align-items-center justify-content-end gap-1">
 
@@ -341,7 +331,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));</code></pre>
 
                     <div class="alert alert-info py-2 mb-0 fs-xs">
                         <i class="ti ti-info-circle me-1"></i>
-                        A 64-character secure token will be generated for you. <strong>You will only see it once</strong> — copy it immediately after creation. Tokens expire after <strong>6 months</strong>.
+                        A 64-character secure token will be generated for you. <strong>You will only see it once</strong> — copy it immediately after creation.
                     </div>
 
                 </div>
