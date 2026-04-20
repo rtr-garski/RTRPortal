@@ -36,13 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
 
-    } elseif ($action === 'toggle') {
-        $id = (int) ($_POST['id'] ?? 0);
-        if ($id > 0) {
-            $pdo->prepare("UPDATE API_Tokens SET active = IF(active=1,0,1) WHERE id = ?")->execute([$id]);
-            $flash = ['type' => 'success', 'msg' => 'Token status updated.'];
-        }
-
     } elseif ($action === 'delete') {
         $id = (int) ($_POST['id'] ?? 0);
         if ($id > 0) {
@@ -79,8 +72,7 @@ try {
     $flash  = ['type' => 'warning', 'msg' => 'Could not load tokens — run the DB setup first.'];
 }
 
-$total  = count($tokens);
-$active = count(array_filter($tokens, fn($t) => $t['active']));
+$total = count($tokens);
 
 $title = 'API Token Management';
 ?>
@@ -153,6 +145,10 @@ $title = 'API Token Management';
                         </div>
                     </div>
                 </div>
+                <?php
+                $expiredCount = count(array_filter($tokens, fn($t) => strtotime($t['Timestamp_Expiration']) < time()));
+                $validCount   = $total - $expiredCount;
+                ?>
                 <div class="col-md-4">
                     <div class="card mb-0">
                         <div class="card-body d-flex align-items-center gap-3 py-3">
@@ -160,8 +156,8 @@ $title = 'API Token Management';
                                 <i class="ti ti-circle-check fs-xl text-success"></i>
                             </span>
                             <div>
-                                <p class="text-muted mb-0 fs-xs text-uppercase fw-semibold">Active Tokens</p>
-                                <h4 class="mb-0"><?= $active ?></h4>
+                                <p class="text-muted mb-0 fs-xs text-uppercase fw-semibold">Valid Tokens</p>
+                                <h4 class="mb-0"><?= $validCount ?></h4>
                             </div>
                         </div>
                     </div>
@@ -170,11 +166,11 @@ $title = 'API Token Management';
                     <div class="card mb-0">
                         <div class="card-body d-flex align-items-center gap-3 py-3">
                             <span class="avatar-md rounded bg-danger-subtle d-flex align-items-center justify-content-center">
-                                <i class="ti ti-lock-off fs-xl text-danger"></i>
+                                <i class="ti ti-clock-off fs-xl text-danger"></i>
                             </span>
                             <div>
-                                <p class="text-muted mb-0 fs-xs text-uppercase fw-semibold">Revoked / Inactive</p>
-                                <h4 class="mb-0"><?= $total - $active ?></h4>
+                                <p class="text-muted mb-0 fs-xs text-uppercase fw-semibold">Expired</p>
+                                <h4 class="mb-0"><?= $expiredCount ?></h4>
                             </div>
                         </div>
                     </div>
@@ -196,7 +192,6 @@ $title = 'API Token Management';
                                 <tr class="text-uppercase fs-xxs align-middle">
                                     <th class="ps-3">Label</th>
                                     <th>Token</th>
-                                    <th>Status</th>
                                     <th>Issued</th>
                                     <th>Expires</th>
                                     <th class="text-end pe-3">Actions</th>
@@ -205,24 +200,23 @@ $title = 'API Token Management';
                             <tbody>
                             <?php if (empty($tokens)): ?>
                                 <tr>
-                                    <td colspan="6" class="text-center text-muted py-5">
+                                    <td colspan="5" class="text-center text-muted py-5">
                                         <i class="ti ti-key-off fs-xxl d-block mb-2"></i>
                                         No tokens yet. Generate your first token to start submitting to the API.
                                     </td>
                                 </tr>
                             <?php else: ?>
                                 <?php foreach ($tokens as $tok): ?>
-                                <tr class="<?= !$tok['active'] ? 'opacity-50' : '' ?>">
+                                <tr>
                                     <td class="ps-3 fw-semibold"><?= htmlspecialchars($tok['label']) ?></td>
                                     <td>
-                                        <code class="fs-xs text-muted"><?= htmlspecialchars(maskToken($tok['Token'])) ?></code>
-                                    </td>
-                                    <td>
-                                        <?php if ($tok['active']): ?>
-                                            <span class="badge badge-soft-success">Active</span>
-                                        <?php else: ?>
-                                            <span class="badge badge-soft-danger">Revoked</span>
-                                        <?php endif; ?>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <code class="fs-xs text-muted tok-value"><?= htmlspecialchars($tok['Token']) ?></code>
+                                            <button type="button" class="btn btn-xs btn-soft-secondary copy-tok-btn" title="Copy token"
+                                                    data-token="<?= htmlspecialchars($tok['Token']) ?>">
+                                                <i class="ti ti-copy"></i>
+                                            </button>
+                                        </div>
                                     </td>
                                     <td class="fs-xs text-muted"><?= date('M j, Y', strtotime($tok['Timestamp_Issued'])) ?></td>
                                     <td class="fs-xs">
@@ -240,17 +234,6 @@ $title = 'API Token Management';
                                     </td>
                                     <td class="text-end pe-3">
                                         <div class="d-flex align-items-center justify-content-end gap-1">
-
-                                            <!-- Toggle active/revoke -->
-                                            <form method="POST" class="d-inline">
-                                                <input type="hidden" name="action" value="toggle">
-                                                <input type="hidden" name="id" value="<?= (int) $tok['id'] ?>">
-                                                <button type="submit"
-                                                        class="btn btn-xs <?= $tok['active'] ? 'btn-soft-warning' : 'btn-soft-success' ?>"
-                                                        title="<?= $tok['active'] ? 'Revoke' : 'Re-activate' ?>">
-                                                    <i class="ti ti-<?= $tok['active'] ? 'ban' : 'check' ?>"></i>
-                                                </button>
-                                            </form>
 
                                             <!-- Delete -->
                                             <form method="POST" class="d-inline"
@@ -361,19 +344,27 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));</code></pre>
 <?php include('partials/footer-scripts.php'); ?>
 
 <script>
-// copy new token to clipboard
+// copy new token to clipboard (one-time reveal)
 var copyBtn = document.getElementById('copyNewToken');
 if (copyBtn) {
     copyBtn.addEventListener('click', function () {
         var input = document.getElementById('newTokenValue');
         navigator.clipboard.writeText(input.value).then(function () {
             copyBtn.innerHTML = '<i class="ti ti-check me-1"></i> Copied!';
-            setTimeout(function () {
-                copyBtn.innerHTML = '<i class="ti ti-copy me-1"></i> Copy';
-            }, 2000);
+            setTimeout(function () { copyBtn.innerHTML = '<i class="ti ti-copy me-1"></i> Copy'; }, 2000);
         });
     });
 }
+
+// copy token buttons in table
+document.querySelectorAll('.copy-tok-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(btn.dataset.token).then(function () {
+            btn.innerHTML = '<i class="ti ti-check"></i>';
+            setTimeout(function () { btn.innerHTML = '<i class="ti ti-copy"></i>'; }, 2000);
+        });
+    });
+});
 </script>
 
 </body>
