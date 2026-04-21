@@ -190,7 +190,7 @@ $title = 'API Token Management';
                         <table class="table table-custom mb-0">
                             <thead class="bg-light bg-opacity-25 thead-sm border-top border-light">
                                 <tr class="text-uppercase fs-xxs align-middle">
-                                    <th class="ps-3">Token</th>
+                                    <th>Token</th>
                                     <th></th>
                                     <th>Issued</th>
                                     <th>Expires</th>
@@ -209,7 +209,7 @@ $title = 'API Token Management';
                                 <?php foreach ($tokens as $tok): ?>
                                 <tr>
                                    
-                                    <td class="ps-3">
+                                    <td>
                                         <div class="input-group">
                                             <input type="text" class="form-control form-control-sm" readonly value="<?= htmlspecialchars($tok['Token']) ?>" />
                                             <button class="btn btn-sm btn-icon btn-light copy-tok-btn" type="button"
