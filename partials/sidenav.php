@@ -49,7 +49,7 @@
                             <span class="align-middle">Account Settings</span>
                         </a>
 
-                        <a href="javascript:void(0);" class="dropdown-item text-danger fw-semibold">
+                        <a href="logout.php" class="dropdown-item text-danger fw-semibold">
                             <i class="ti ti-logout me-1 fs-lg align-middle"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
