@@ -359,9 +359,8 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));</code></pre>
     </div>
 </div>
 <!-- End Modal -->
-<!-- API Key Page js -->
-<script src="../source/inspinia5/assets/js/pages/apps-api-keys.js"></script>
-
+<!-- Clipboard js -->
+ <script src="../source/inspinia5/assets/plugins/clipboard/clipboard.min.js"></script>
 
 <?php include('partials/customizer.php'); ?>
 <?php include('partials/footer-scripts.php'); ?>
