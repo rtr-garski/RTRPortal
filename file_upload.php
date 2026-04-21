@@ -109,6 +109,20 @@ $totalFiles  = count($files);
 $totalBytes  = array_sum(array_column($files, 'file_size'));
 $activeLinks = count(array_filter($files, fn($f) => $f['key_expires_at'] && strtotime($f['key_expires_at']) > time()));
 
+// ─── Pre-generate URLs for active links ───────────────────────────────────────
+$preloadedUrls = [];
+$activeFiles   = array_filter($files, fn($f) => $f['key_expires_at'] && strtotime($f['key_expires_at']) > time());
+if (!empty($activeFiles)) {
+    try {
+        $b2 = new BackblazeB2(B2_KEY_ID, B2_APP_KEY, B2_BUCKET_ID, B2_BUCKET_NAME);
+        foreach ($activeFiles as $f) {
+            $preloadedUrls[$f['id']] = $b2->generatePresignedUrl($f['b2_file_name']);
+        }
+    } catch (Throwable $e) {
+        // silently skip — links will still work via Get Link button
+    }
+}
+
 function formatBytes(int $bytes): string {
     if ($bytes >= 1073741824) return round($bytes / 1073741824, 2) . ' GB';
     if ($bytes >= 1048576)    return round($bytes / 1048576, 2)    . ' MB';
@@ -281,20 +295,25 @@ $title = 'File Storage';
                                     </td>
                                 </tr>
                                 <!-- inline link row -->
-                                <tr class="link-row-<?= (int) $f['id'] ?> d-none bg-light">
+                                <?php $preUrl = $preloadedUrls[$f['id']] ?? null; ?>
+                                <tr class="link-row-<?= (int) $f['id'] ?> <?= $preUrl ? '' : 'd-none' ?> bg-light">
                                     <td colspan="6" class="px-3 py-2">
                                         <div class="d-flex align-items-center gap-2 flex-wrap">
                                             <span class="fs-xxs text-muted text-uppercase fw-semibold">Presigned Link</span>
                                             <div class="input-group input-group-sm flex-grow-1">
-                                                <input type="text" class="form-control form-control-sm font-monospace row-link-input-<?= (int) $f['id'] ?>" readonly>
+                                                <input type="text" class="form-control form-control-sm font-monospace row-link-input-<?= (int) $f['id'] ?>"
+                                                       value="<?= htmlspecialchars($preUrl ?? '') ?>" readonly>
                                                 <button type="button" class="btn btn-sm btn-primary row-copy-btn-<?= (int) $f['id'] ?>" title="Copy">
                                                     <i class="ti ti-copy me-1"></i> Copy
                                                 </button>
-                                                <a href="#" target="_blank" class="btn btn-sm btn-soft-secondary row-open-btn-<?= (int) $f['id'] ?>">
+                                                <a href="<?= htmlspecialchars($preUrl ?? '#') ?>" target="_blank"
+                                                   class="btn btn-sm btn-soft-secondary row-open-btn-<?= (int) $f['id'] ?>">
                                                     <i class="ti ti-external-link me-1"></i> Open
                                                 </a>
                                             </div>
-                                            <span class="row-expiry-<?= (int) $f['id'] ?> fs-xxs text-danger"></span>
+                                            <span class="row-expiry-<?= (int) $f['id'] ?> fs-xxs text-danger">
+                                                <?= $preUrl && $exp ? 'Expires ' . date('M j, Y g:i A', $exp) : '' ?>
+                                            </span>
                                         </div>
                                     </td>
                                 </tr>
