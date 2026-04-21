@@ -1,7 +1,9 @@
 <?php
+ob_start();
 
 session_start();
 require_once 'config/db.php';
+ob_clean();
 
 header('Content-Type: application/json');
 

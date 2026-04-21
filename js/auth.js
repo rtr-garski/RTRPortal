@@ -18,27 +18,41 @@ document.addEventListener("DOMContentLoaded", () => {
 function login() {
   const usernameInput = document.getElementById("username");
   const passwordInput = document.getElementById("userPassword");
+  const btn           = document.getElementById("loginBtn");
+  const errDiv        = document.getElementById("loginError");
 
   if (!usernameInput || !passwordInput) return;
 
+  errDiv.classList.add("d-none");
+  errDiv.textContent = "";
+  btn.disabled  = true;
+  btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Signing in…';
+
+  function showError(msg) {
+    errDiv.textContent = msg;
+    errDiv.classList.remove("d-none");
+    btn.disabled  = false;
+    btn.innerHTML = "Sign In";
+  }
+
   fetch("login_handler.php", {
     method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
       username: usernameInput.value,
       password: passwordInput.value
     })
   })
-  .then(r => r.json())
-  .then(res => {
-    if (!res.success) {
-      const err = document.getElementById("loginError");
-      err.textContent = res.message;
-      err.classList.remove("d-none");
-      return;
-    }
+  .then(r => r.text())
+  .then(text => {
+    let res;
+    try { res = JSON.parse(text); }
+    catch { showError("Server error. Please try again."); return; }
+
+    if (!res.success) { showError(res.message); return; }
     location.href = "index.php";
   })
-  .catch(err => console.error("Login failed:", err));
+  .catch(() => showError("Could not reach the server. Please try again."));
 }
 
 
