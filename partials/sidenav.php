@@ -2,7 +2,8 @@
     <!-- Brand Logo -->
     <a href="index.php" class="logo">
         <span class="logo logo-light">
-            <span class="logo-lg"><img src="partials/rtr_logowhite.png" alt="logo" /></span>
+            <!-- <span class="logo-lg"><img src="partials/rtr_logowhite.png" alt="logo" /></span> -->
+            <span class="logo-lg"><img src="../source/inspinia5/assets/images/logo.png" alt="logo" /></span>
             <span class="logo-sm"><img src="partials/logo-icon.png" alt="small logo" /></span>
         </span>
 
