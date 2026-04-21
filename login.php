@@ -15,10 +15,10 @@
                                     <div class="card-body">
                                         <div class="auth-brand text-center mb-4">
                                             <a href="index.php" class="logo-dark">
-                                                <img src="../source/inspinia5/assets/images/logo-black.png" alt="dark logo" />
+                                                <img src="partials/rtr_logoblack2.png" alt="dark logo" />
                                             </a>
                                             <a href="index.php" class="logo-light">
-                                                <img src="../source/inspinia5/assets/images/logo.png" alt="logo" />
+                                                <img src="partials/rtr_logowhite2.png" alt="logo" />
                                             </a>
                                             <h4 class="fw-bold mt-4">Welcome to Admin</h4>
                                             <p class="text-muted w-lg-75 mx-auto">Let's get you signed in. Enter your username and password to continue.</p>
@@ -75,7 +75,7 @@
                                 </div>
 
                                 <div class="col-lg-6 d-none d-lg-block">
-                                    <div class="h-100 position-relative card-side-img rounded-end-4 rounded-end rounded-0 overflow-hidden" style="background-image: url('../source/inspinia5/assets/images/auth.jpg')">
+                                    <div class="h-100 position-relative card-side-img rounded-end-4 rounded-end rounded-0 overflow-hidden" style="background-image: url('https://picsum.photos/1514/1121')">
                                         <div class="p-4 card-img-overlay rounded-4 rounded-start-0 auth-overlay d-flex align-items-end justify-content-center"></div>
                                     </div>
                                 </div>
