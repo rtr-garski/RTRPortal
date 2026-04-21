@@ -2,8 +2,8 @@
     <!-- Brand Logo -->
     <a href="index.php" class="logo">
         <span class="logo logo-light">
-            <!-- <span class="logo-lg"><img src="partials/rtr_logowhite.png" alt="logo" /></span> -->
-            <span class="logo-lg"><img src="../source/inspinia5/assets/images/logo.png" alt="logo" /></span>
+            <span class="logo-lg"><img src="partials/rtr_logowhite.png" alt="logo" /></span>
+            <!-- <span class="logo-lg"><img src="../source/inspinia5/assets/images/logo.png" alt="logo" /></span> -->
             <span class="logo-sm"><img src="partials/logo-icon.png" alt="small logo" /></span>
         </span>
 
@@ -24,13 +24,13 @@
     </button>
 
     <div class="scrollbar" data-simplebar="">
-        <!-- <div id="user-profile-settings" class="sidenav-user" style="background: url(../source/inspinia5/assets/images/user-bg-pattern.svg)">
+        <div id="user-profile-settings" class="sidenav-user" style="background: url(../source/inspinia5/assets/images/user-bg-pattern.svg)">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <a href="#!" class="link-reset">
                         <img src="../source/inspinia5/assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle mb-2 avatar-md" />
                         <span class="sidenav-user-name fw-bold">John Smith</span>
-                        <span class="fs-12 fw-semibold" data-lang="user-role">Verifier</span>
+                        <!-- <span class="fs-12 fw-semibold" data-lang="user-role">Verifier</span> -->
                     </a>
                 </div>
                 <div>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
 
         <!--- Sidenav Menu -->
         <div id="sidenav-menu">
