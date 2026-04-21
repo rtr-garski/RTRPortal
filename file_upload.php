@@ -285,7 +285,7 @@ $title = 'File Storage';
                                     <td colspan="6" class="px-3 py-2">
                                         <div class="d-flex align-items-center gap-2 flex-wrap">
                                             <span class="fs-xxs text-muted text-uppercase fw-semibold">Presigned Link</span>
-                                            <div class="input-group input-group-sm flex-grow-1" style="max-width:600px">
+                                            <div class="input-group input-group-sm flex-grow-1">
                                                 <input type="text" class="form-control form-control-sm font-monospace row-link-input-<?= (int) $f['id'] ?>" readonly>
                                                 <button type="button" class="btn btn-sm btn-primary row-copy-btn-<?= (int) $f['id'] ?>" title="Copy">
                                                     <i class="ti ti-copy me-1"></i> Copy
