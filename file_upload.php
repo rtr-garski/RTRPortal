@@ -261,30 +261,15 @@ $title = 'File Storage';
                                             <span class="text-muted">—</span>
                                         <?php endif; ?>
                                     </td>
-                                    <td class="pe-3">
-                                        <div class="d-flex align-items-center gap-2 flex-wrap">
-
+                                    <td class="text-end pe-3">
+                                        <div class="d-flex align-items-center justify-content-end gap-1">
                                             <button type="button"
                                                     class="btn btn-xs btn-soft-primary get-link-btn"
                                                     data-id="<?= (int) $f['id'] ?>"
                                                     title="Generate 1-hour presigned link">
                                                 <i class="ti ti-link me-1"></i> Get Link
                                             </button>
-
-                                            <!-- inline link reveal -->
-                                            <div class="link-inline d-none input-group input-group-sm" style="min-width:260px;max-width:420px">
-                                                <input type="text" class="form-control form-control-sm font-monospace link-url-input" readonly>
-                                                <button type="button" class="btn btn-sm btn-primary copy-inline-btn" title="Copy">
-                                                    <i class="ti ti-copy"></i>
-                                                </button>
-                                                <a href="#" target="_blank" class="btn btn-sm btn-soft-secondary open-inline-btn" title="Open">
-                                                    <i class="ti ti-external-link"></i>
-                                                </a>
-                                            </div>
-
-                                            <span class="link-expiry fs-xxs text-muted d-none"></span>
-
-                                            <form method="POST" class="d-inline ms-auto"
+                                            <form method="POST" class="d-inline"
                                                   onsubmit="return confirm('Delete this file from B2 permanently?')">
                                                 <input type="hidden" name="action" value="delete">
                                                 <input type="hidden" name="id" value="<?= (int) $f['id'] ?>">
@@ -292,7 +277,24 @@ $title = 'File Storage';
                                                     <i class="ti ti-trash"></i>
                                                 </button>
                                             </form>
-
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- inline link row -->
+                                <tr class="link-row-<?= (int) $f['id'] ?> d-none bg-light">
+                                    <td colspan="6" class="px-3 py-2">
+                                        <div class="d-flex align-items-center gap-2 flex-wrap">
+                                            <span class="fs-xxs text-muted text-uppercase fw-semibold">Presigned Link</span>
+                                            <div class="input-group input-group-sm flex-grow-1" style="max-width:600px">
+                                                <input type="text" class="form-control form-control-sm font-monospace row-link-input-<?= (int) $f['id'] ?>" readonly>
+                                                <button type="button" class="btn btn-sm btn-primary row-copy-btn-<?= (int) $f['id'] ?>" title="Copy">
+                                                    <i class="ti ti-copy me-1"></i> Copy
+                                                </button>
+                                                <a href="#" target="_blank" class="btn btn-sm btn-soft-secondary row-open-btn-<?= (int) $f['id'] ?>">
+                                                    <i class="ti ti-external-link me-1"></i> Open
+                                                </a>
+                                            </div>
+                                            <span class="row-expiry-<?= (int) $f['id'] ?> fs-xxs text-danger"></span>
                                         </div>
                                     </td>
                                 </tr>
@@ -309,57 +311,118 @@ $title = 'File Storage';
     </div>
 </div>
 
+<!-- presigned URL modal -->
+<div class="modal fade" id="presignModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="ti ti-link me-1"></i> Presigned Download Link</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="presignLoading" class="text-center py-3">
+                    <div class="spinner-border spinner-border-sm text-primary me-2"></div>
+                    Generating secure link…
+                </div>
+                <div id="presignResult" class="d-none">
+                    <p class="text-muted fs-xs mb-2">
+                        This link expires in <strong>1 hour</strong>.
+                        <span id="presignExpiry" class="fw-semibold text-danger ms-1"></span>
+                    </p>
+                    <div class="input-group">
+                        <input type="text" id="presignUrl" class="form-control form-control-sm font-monospace" readonly>
+                        <button class="btn btn-sm btn-primary" id="copyPresignUrl">
+                            <i class="ti ti-copy me-1"></i> Copy
+                        </button>
+                        <a id="openPresignUrl" href="#" target="_blank" class="btn btn-sm btn-soft-secondary">
+                            <i class="ti ti-external-link me-1"></i> Open
+                        </a>
+                    </div>
+                    <div class="alert alert-warning mt-3 mb-0 py-2 fs-xs">
+                        <i class="ti ti-alert-triangle me-1"></i>
+                        Do not share this link publicly. It grants direct file access until it expires.
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php include('partials/customizer.php'); ?>
 <?php include('partials/footer-scripts.php'); ?>
 
 <script>
+var currentFileId = null;
+
 document.querySelectorAll('.get-link-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
-        var id      = btn.dataset.id;
-        var row     = btn.closest('tr');
-        var inline  = row.querySelector('.link-inline');
-        var urlInput = row.querySelector('.link-url-input');
-        var expiry  = row.querySelector('.link-expiry');
+        currentFileId = btn.dataset.id;
+        var modal   = new bootstrap.Modal(document.getElementById('presignModal'));
+        var loading = document.getElementById('presignLoading');
+        var result  = document.getElementById('presignResult');
 
-        btn.disabled = true;
-        btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span>';
+        loading.classList.remove('d-none');
+        result.classList.add('d-none');
+        document.getElementById('presignUrl').value = '';
+        document.getElementById('presignExpiry').textContent = '';
+        modal.show();
 
         fetch('file_upload.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: 'action=presign&id=' + encodeURIComponent(id)
+            body: 'action=presign&id=' + encodeURIComponent(currentFileId)
         })
         .then(function (r) { return r.json(); })
         .then(function (data) {
-            btn.disabled = false;
-            btn.innerHTML = '<i class="ti ti-refresh me-1"></i> Refresh';
+            loading.classList.add('d-none');
+            result.classList.remove('d-none');
             if (data.success) {
-                urlInput.value = data.url;
-                row.querySelector('.open-inline-btn').href = data.url;
+                // populate modal
+                document.getElementById('presignUrl').value = data.url;
+                document.getElementById('openPresignUrl').href = data.url;
+                document.getElementById('presignExpiry').textContent = '(expires ' + data.expires_at + ')';
+
+                // also populate inline row
+                var linkRow   = document.querySelector('.link-row-' + currentFileId);
+                var linkInput = document.querySelector('.row-link-input-' + currentFileId);
+                var openBtn   = document.querySelector('.row-open-btn-' + currentFileId);
+                var expiry    = document.querySelector('.row-expiry-' + currentFileId);
+                linkInput.value    = data.url;
+                openBtn.href       = data.url;
                 expiry.textContent = 'Expires ' + data.expires_at;
-                expiry.classList.remove('d-none');
-                inline.classList.remove('d-none');
+                linkRow.classList.remove('d-none');
             } else {
-                urlInput.value = 'Error: ' + data.message;
-                inline.classList.remove('d-none');
+                document.getElementById('presignUrl').value = 'Error: ' + data.message;
             }
         })
         .catch(function () {
-            btn.disabled = false;
-            btn.innerHTML = '<i class="ti ti-link me-1"></i> Get Link';
-            urlInput.value = 'Request failed.';
-            inline.classList.remove('d-none');
+            loading.classList.add('d-none');
+            result.classList.remove('d-none');
+            document.getElementById('presignUrl').value = 'Request failed. Please try again.';
         });
     });
 });
 
-document.addEventListener('click', function (e) {
-    var btn = e.target.closest('.copy-inline-btn');
-    if (!btn) return;
-    var input = btn.closest('.link-inline').querySelector('.link-url-input');
+document.getElementById('copyPresignUrl').addEventListener('click', function () {
+    var input = document.getElementById('presignUrl');
     navigator.clipboard.writeText(input.value).then(function () {
-        btn.innerHTML = '<i class="ti ti-check"></i>';
-        setTimeout(function () { btn.innerHTML = '<i class="ti ti-copy"></i>'; }, 2000);
+        var btn = document.getElementById('copyPresignUrl');
+        btn.innerHTML = '<i class="ti ti-check me-1"></i> Copied!';
+        setTimeout(function () { btn.innerHTML = '<i class="ti ti-copy me-1"></i> Copy'; }, 2000);
+    });
+});
+
+document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[class*="row-copy-btn-"]');
+    if (!btn) return;
+    var id    = btn.className.match(/row-copy-btn-(\d+)/)[1];
+    var input = document.querySelector('.row-link-input-' + id);
+    navigator.clipboard.writeText(input.value).then(function () {
+        btn.innerHTML = '<i class="ti ti-check me-1"></i> Copied!';
+        setTimeout(function () { btn.innerHTML = '<i class="ti ti-copy me-1"></i> Copy'; }, 2000);
     });
 });
 </script>
