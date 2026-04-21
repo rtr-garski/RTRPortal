@@ -210,12 +210,12 @@ $title = 'API Token Management';
                                     <td class="ps-3">
                                         <div class="d-flex align-items-center gap-2">
                                             <code class="fs-xs text-muted tok-value"><?= htmlspecialchars($tok['Token']) ?></code>
-                                            <button type="button" class="btn btn-xs btn-soft-secondary copy-tok-btn" title="Copy token"
+                                            <!-- <button type="button" class="btn btn-xs btn-soft-secondary copy-tok-btn" title="Copy token"
                                                     data-token="<?= htmlspecialchars($tok['Token']) ?>">
                                                 <i class="ti ti-copy"></i>
-                                            </button>
-                                            <i class="ti ti-copy copy-tok-btn" title="Copy token"
-                                                    data-token="<?= htmlspecialchars($tok['Token']) ?>"></i>
+                                            </button> -->
+                                            <i class="ti ti-copy onlyicon copy-tok-btn fs-lg" title="Copy token"
+                                               data-token="<?= htmlspecialchars($tok['Token']) ?>"></i>
                                         </div>
                                     </td>
                                     <td class="fs-xs text-muted"><?= date('M j, Y', strtotime($tok['Timestamp_Issued'])) ?></td>
