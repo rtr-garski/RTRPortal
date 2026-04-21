@@ -192,6 +192,7 @@ $title = 'API Token Management';
                                 <tr class="text-uppercase fs-xxs align-middle">
                                     <th class="ps-3">Token</th>
                                     <th class="ps-3">Token</th>
+                                    <th class="ps-3">Token</th>
                                     <th>Issued</th>
                                     <th>Expires</th>
                                     <th class="text-end pe-3">Actions</th>
@@ -222,9 +223,17 @@ $title = 'API Token Management';
                                     </td>
                                     <td>
                                         <div class="input-group">
-                                            <input type="text" class="form-control form-control-sm" id="key-<?= (int) $tok['id'] ?>" readonly value="<?= htmlspecialchars($tok['Token']) ?>" />
+                                            <input type="text" class="form-control form-control-sm" readonly value="<?= htmlspecialchars($tok['Token']) ?>" />
                                             <button class="btn btn-sm btn-icon btn-light copy-tok-btn" type="button"
                                                     data-token="<?= htmlspecialchars($tok['Token']) ?>">
+                                                <i class="ti ti-copy fs-lg"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form-control-sm" id="keyOne" readonly value="<?= htmlspecialchars($tok['Token']) ?>" />
+                                            <button class="btn btn-sm btn-icon btn-light" type="button" data-clipboard-target="#keyOne">
                                                 <i class="ti ti-copy fs-lg"></i>
                                             </button>
                                         </div>
@@ -350,6 +359,9 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));</code></pre>
     </div>
 </div>
 <!-- End Modal -->
+<!-- API Key Page js -->
+<script src="../source/inspinia5/assets/js/pages/apps-api-keys.js"></script>
+
 
 <?php include('partials/customizer.php'); ?>
 <?php include('partials/footer-scripts.php'); ?>
