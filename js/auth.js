@@ -31,7 +31,9 @@ function login() {
   .then(r => r.json())
   .then(res => {
     if (!res.success) {
-      document.getElementById("loginError").textContent = res.message;
+      const err = document.getElementById("loginError");
+      err.textContent = res.message;
+      err.classList.remove("d-none");
       return;
     }
     location.href = "index.php";
