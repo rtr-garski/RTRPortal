@@ -75,7 +75,7 @@
                                 </div>
 
                                 <div class="col-lg-6 d-none d-lg-block">
-                                    <div class="h-100 position-relative card-side-img rounded-end-4 rounded-end rounded-0 overflow-hidden" style="background-image: url('https://picsum.photos/1514/1121')">
+                                    <div class="h-100 position-relative card-side-img rounded-end-4 rounded-end rounded-0 overflow-hidden" style="background-image: url('https://loremflickr.com/1920/1080/technology')">
                                         <div class="p-4 card-img-overlay rounded-4 rounded-start-0 auth-overlay d-flex align-items-end justify-content-center"></div>
                                     </div>
                                 </div>
