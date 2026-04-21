@@ -215,6 +215,7 @@ $title = 'API Token Management';
                                                 <i class="ti ti-copy"></i>
                                             </button> -->
                                             <i class="ti ti-copy onlyicon copy-tok-btn fs-lg" title="Copy token"
+                                               style="cursor:pointer"
                                                data-token="<?= htmlspecialchars($tok['Token']) ?>"></i>
                                         </div>
                                     </td>
