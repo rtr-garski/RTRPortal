@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <?php $title = "Sign In"; include('/partials/title-meta.php'); ?> <?php include('/partials/head-css.php'); ?>
+        <?php $title = "New Password"; include('/partials/title-meta.php'); ?> <?php include('/partials/head-css.php'); ?>
     </head>
 
     <body>
@@ -20,8 +20,8 @@
                                             <a href="index.php" class="logo-light">
                                                 <img src="../source/inspinia5/assets/images/logo.png" alt="logo" />
                                             </a>
-                                            <h4 class="fw-bold mt-4">Welcome to Admin</h4>
-                                            <p class="text-muted w-lg-75 mx-auto">Let’s get you signed in. Enter your email and password to continue.</p>
+                                            <h4 class="fw-bold mt-4">Setup New Password!</h4>
+                                            <p class="text-muted w-lg-75 mx-auto">We've emailed you a 6-digit verification code. Please enter it below to confirm your Email Address.</p>
                                         </div>
 
                                         <form>
@@ -34,11 +34,26 @@
                                                     <span class="input-group-text bg-light">
                                                         <i class="ti ti-mail fs-xl text-muted"></i>
                                                     </span>
-                                                    <input type="email" class="form-control" id="userEmail" placeholder="you@example.com" required />
+                                                    <input type="email" class="form-control" id="userEmail" placeholder="you@example.com" disabled />
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
+                                                <label class="form-label">
+                                                    Enter your 6-digit code
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="d-flex gap-2 two-factor">
+                                                    <input type="text" class="form-control text-center" required />
+                                                    <input type="text" class="form-control text-center" required />
+                                                    <input type="text" class="form-control text-center" required />
+                                                    <input type="text" class="form-control text-center" required />
+                                                    <input type="text" class="form-control text-center" required />
+                                                    <input type="text" class="form-control text-center" required />
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3" data-password="bar">
                                                 <label for="userPassword" class="form-label">
                                                     Password
                                                     <span class="text-danger">*</span>
@@ -49,24 +64,44 @@
                                                     </span>
                                                     <input type="password" class="form-control" id="userPassword" placeholder="••••••••" required />
                                                 </div>
+                                                <div class="password-bar my-2"></div>
+                                                <p class="text-muted fs-xs mb-0">Use 8+ characters with letters, numbers & symbols.</p>
                                             </div>
 
-                                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input form-check-input-light fs-14" type="checkbox" id="rememberMe" />
-                                                    <label class="form-check-label" for="rememberMe">Keep me signed in</label>
+                                            <div class="mb-3">
+                                                <label for="confirmPassword" class="form-label">
+                                                    Confirm New Password
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text bg-light">
+                                                        <i class="ti ti-lock-password fs-xl text-muted"></i>
+                                                    </span>
+                                                    <input type="password" class="form-control" id="confirmPassword" placeholder="••••••••" required />
                                                 </div>
-                                                <a href="auth-card-reset-pass.php" class="text-decoration-underline link-offset-3 text-muted">Forgot Password?</a>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input form-check-input-light fs-14" type="checkbox" id="termAndPolicy" />
+                                                    <label class="form-check-label" for="termAndPolicy">Agree the Terms & Policy</label>
+                                                </div>
                                             </div>
 
                                             <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary fw-semibold py-2">Sign In</button>
+                                                <button type="submit" class="btn btn-primary fw-semibold py-2">Update Password</button>
                                             </div>
                                         </form>
 
-                                        <p class="text-muted text-center mt-4 mb-0">
-                                            New here?
-                                            <a href="auth-card-sign-up.php" class="text-decoration-underline link-offset-3 fw-semibold">Create an account</a>
+                                        <p class="mt-4 text-muted text-center mb-4">
+                                            Don’t have a code?
+                                            <a href="#" class="text-decoration-underline link-offset-2 fw-semibold">Resend</a>
+                                            or
+                                            <a href="#" class="text-decoration-underline link-offset-2 fw-semibold">Call Us</a>
+                                        </p>
+                                        <p class="text-muted text-center mb-0">
+                                            Return to
+                                            <a href="login.php" class="text-decoration-underline link-offset-3 fw-semibold">Sign in</a>
                                         </p>
 
                                         <p class="text-center text-muted mt-4 mb-0">
@@ -94,5 +129,11 @@
         <!-- end auth-fluid-->
 
         <?php include('/partials/footer-scripts.php'); ?>
+
+        <!-- Two Factor Validator Js -->
+        <script src="../source/inspinia5/assets/js/pages/auth-two-factor.js"></script>
+
+        <!-- Password Suggestion Js -->
+        <script src="../source/inspinia5/assets/js/pages/auth-password.js"></script>
     </body>
 </html>

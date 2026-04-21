@@ -272,10 +272,10 @@
                                             <div class="menu-arrow"></div>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-submenu-auth-card">
-                                            <a href="auth-card-sign-in.php" class="dropdown-item"><span data-lang="auth-card-sign-in">Sign In</span></a>
-                                            <a href="auth-card-sign-up.php" class="dropdown-item"><span data-lang="auth-card-sign-up">Sign Up</span></a>
-                                            <a href="auth-card-reset-pass.php" class="dropdown-item"><span data-lang="auth-card-reset-pass">Reset Password</span></a>
-                                            <a href="auth-card-new-pass.php" class="dropdown-item"><span data-lang="auth-card-new-pass">New Password</span></a>
+                                            <a href="login.php" class="dropdown-item"><span data-lang="auth-card-sign-in">Sign In</span></a>
+                                            <a href="register.php" class="dropdown-item"><span data-lang="auth-card-sign-up">Sign Up</span></a>
+                                            <a href="forgot-password.php" class="dropdown-item"><span data-lang="auth-card-reset-pass">Reset Password</span></a>
+                                            <a href="reset-password.php" class="dropdown-item"><span data-lang="auth-card-new-pass">New Password</span></a>
                                             <a href="auth-card-two-factor.php" class="dropdown-item"><span data-lang="auth-card-two-factor">Two Factor</span></a>
                                             <a href="auth-card-lock-screen.php" class="dropdown-item"><span data-lang="auth-card-lock-screen">Lock Screen</span></a>
                                             <a href="auth-card-success-mail.php" class="dropdown-item"><span data-lang="auth-card-success-mail">Success Mail</span></a>

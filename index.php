@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
     <head>
         <?php $title = "Projects Dashboard"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
     </head>

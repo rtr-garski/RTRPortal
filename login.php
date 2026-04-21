@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <?php $title = "Lock Screen"; include('/partials/title-meta.php'); ?> <?php include('/partials/head-css.php'); ?>
+        <?php $title = "Sign In"; include('/partials/title-meta.php'); ?> <?php include('/partials/head-css.php'); ?>
     </head>
 
     <body>
@@ -20,16 +20,24 @@
                                             <a href="index.php" class="logo-light">
                                                 <img src="../source/inspinia5/assets/images/logo.png" alt="logo" />
                                             </a>
-                                            <h4 class="fw-bold mt-4">Lock Screen!</h4>
-                                            <p class="text-muted w-lg-75 mx-auto">This screen is locked. Enter your password to continue.</p>
-                                        </div>
-
-                                        <div class="text-center mb-4">
-                                            <img src="../source/inspinia5/assets/images/users/user-1.jpg" class="rounded-circle img-thumbnail avatar-xxl mb-2" alt="thumbnail" />
-                                            <h5 class="fs-md">Damian D.</h5>
+                                            <h4 class="fw-bold mt-4">Welcome to Admin</h4>
+                                            <p class="text-muted w-lg-75 mx-auto">Let’s get you signed in. Enter your email and password to continue.</p>
                                         </div>
 
                                         <form>
+                                            <div class="mb-3">
+                                                <label for="userEmail" class="form-label">
+                                                    Email address
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text bg-light">
+                                                        <i class="ti ti-mail fs-xl text-muted"></i>
+                                                    </span>
+                                                    <input type="email" class="form-control" id="userEmail" placeholder="you@example.com" required />
+                                                </div>
+                                            </div>
+
                                             <div class="mb-3">
                                                 <label for="userPassword" class="form-label">
                                                     Password
@@ -43,14 +51,22 @@
                                                 </div>
                                             </div>
 
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input form-check-input-light fs-14" type="checkbox" id="rememberMe" />
+                                                    <label class="form-check-label" for="rememberMe">Keep me signed in</label>
+                                                </div>
+                                                <a href="forgot-password.php" class="text-decoration-underline link-offset-3 text-muted">Forgot Password?</a>
+                                            </div>
+
                                             <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary fw-semibold py-2">Unlock</button>
+                                                <button type="submit" class="btn btn-primary fw-semibold py-2">Sign In</button>
                                             </div>
                                         </form>
 
                                         <p class="text-muted text-center mt-4 mb-0">
-                                            Not you? Return to
-                                            <a href="auth-card-sign-in.php" class="text-decoration-underline link-offset-3 fw-semibold">Sign in</a>
+                                            New here?
+                                            <a href="register.php" class="text-decoration-underline link-offset-3 fw-semibold">Create an account</a>
                                         </p>
 
                                         <p class="text-center text-muted mt-4 mb-0">
@@ -75,8 +91,8 @@
                 </div>
             </div>
         </div>
-
         <!-- end auth-fluid-->
+
         <?php include('/partials/footer-scripts.php'); ?>
     </body>
 </html>

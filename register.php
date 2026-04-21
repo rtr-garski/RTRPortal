@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <?php $title = "New Password"; include('/partials/title-meta.php'); ?> <?php include('/partials/head-css.php'); ?>
+        <?php $title = "Create New Account"; include('/partials/title-meta.php'); ?> <?php include('/partials/head-css.php'); ?>
     </head>
 
     <body>
@@ -20,11 +20,24 @@
                                             <a href="index.php" class="logo-light">
                                                 <img src="../source/inspinia5/assets/images/logo.png" alt="logo" />
                                             </a>
-                                            <h4 class="fw-bold mt-4">Setup New Password!</h4>
-                                            <p class="text-muted w-lg-75 mx-auto">We've emailed you a 6-digit verification code. Please enter it below to confirm your Email Address.</p>
+                                            <h4 class="fw-bold mt-4">Create New Account</h4>
+                                            <p class="text-muted w-lg-75 mx-auto">Let’s get you started. Create your account by entering your details below.</p>
                                         </div>
 
                                         <form>
+                                            <div class="mb-3">
+                                                <label for="userName" class="form-label">
+                                                    Name
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text bg-light">
+                                                        <i class="ti ti-user fs-xl text-muted"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" id="userName" placeholder="Damian D." required />
+                                                </div>
+                                            </div>
+
                                             <div class="mb-3">
                                                 <label for="userEmail" class="form-label">
                                                     Email address
@@ -34,22 +47,7 @@
                                                     <span class="input-group-text bg-light">
                                                         <i class="ti ti-mail fs-xl text-muted"></i>
                                                     </span>
-                                                    <input type="email" class="form-control" id="userEmail" placeholder="you@example.com" disabled />
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label class="form-label">
-                                                    Enter your 6-digit code
-                                                    <span class="text-danger">*</span>
-                                                </label>
-                                                <div class="d-flex gap-2 two-factor">
-                                                    <input type="text" class="form-control text-center" required />
-                                                    <input type="text" class="form-control text-center" required />
-                                                    <input type="text" class="form-control text-center" required />
-                                                    <input type="text" class="form-control text-center" required />
-                                                    <input type="text" class="form-control text-center" required />
-                                                    <input type="text" class="form-control text-center" required />
+                                                    <input type="email" class="form-control" id="userEmail" placeholder="you@example.com" required />
                                                 </div>
                                             </div>
 
@@ -69,39 +67,20 @@
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="confirmPassword" class="form-label">
-                                                    Confirm New Password
-                                                    <span class="text-danger">*</span>
-                                                </label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text bg-light">
-                                                        <i class="ti ti-lock-password fs-xl text-muted"></i>
-                                                    </span>
-                                                    <input type="password" class="form-control" id="confirmPassword" placeholder="••••••••" required />
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3">
                                                 <div class="form-check">
-                                                    <input class="form-check-input form-check-input-light fs-14" type="checkbox" id="termAndPolicy" />
+                                                    <input class="form-check-input form-check-input-light fs-14" type="checkbox" checked id="termAndPolicy" />
                                                     <label class="form-check-label" for="termAndPolicy">Agree the Terms & Policy</label>
                                                 </div>
                                             </div>
 
                                             <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary fw-semibold py-2">Update Password</button>
+                                                <button type="submit" class="btn btn-primary fw-semibold py-2">Create Account</button>
                                             </div>
                                         </form>
 
-                                        <p class="mt-4 text-muted text-center mb-4">
-                                            Don’t have a code?
-                                            <a href="#" class="text-decoration-underline link-offset-2 fw-semibold">Resend</a>
-                                            or
-                                            <a href="#" class="text-decoration-underline link-offset-2 fw-semibold">Call Us</a>
-                                        </p>
-                                        <p class="text-muted text-center mb-0">
-                                            Return to
-                                            <a href="auth-card-sign-in.php" class="text-decoration-underline link-offset-3 fw-semibold">Sign in</a>
+                                        <p class="text-muted text-center mt-4 mb-0">
+                                            Already have an account?
+                                            <a href="login.php" class="text-decoration-underline link-offset-3 fw-semibold">Login</a>
                                         </p>
 
                                         <p class="text-center text-muted mt-4 mb-0">
@@ -129,9 +108,6 @@
         <!-- end auth-fluid-->
 
         <?php include('/partials/footer-scripts.php'); ?>
-
-        <!-- Two Factor Validator Js -->
-        <script src="../source/inspinia5/assets/js/pages/auth-two-factor.js"></script>
 
         <!-- Password Suggestion Js -->
         <script src="../source/inspinia5/assets/js/pages/auth-password.js"></script>

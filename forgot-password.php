@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <?php $title = "Two Factor Authentication"; include('/partials/title-meta.php'); ?> <?php include('/partials/head-css.php'); ?>
+        <?php $title = "Reset Password"; include('/partials/title-meta.php'); ?> <?php include('/partials/head-css.php'); ?>
     </head>
 
     <body>
@@ -20,43 +20,39 @@
                                             <a href="index.php" class="logo-light">
                                                 <img src="../source/inspinia5/assets/images/logo.png" alt="logo" />
                                             </a>
-                                            <h4 class="fw-bold mt-4">Request sent Successfully!</h4>
-                                        </div>
-
-                                        <div class="text-center mb-4">
-                                            <h5 class="text-muted fs-base mb-3">We've emailed you a 6-digit verification code we sent to</h5>
-
-                                            <div class="fw-bold fs-3">******6789</div>
+                                            <h4 class="fw-bold mt-4">Forgot Password ?</h4>
+                                            <p class="text-muted w-lg-75 mx-auto">Enter your email address and we'll send you a link to reset your password.</p>
                                         </div>
 
                                         <form>
-                                            <label class="form-label">
-                                                Enter your 6-digit code
-                                                <span class="text-danger">*</span>
-                                            </label>
-                                            <div class="d-flex gap-2 two-factor mb-3">
-                                                <input type="password" class="form-control text-center" required />
-                                                <input type="password" class="form-control text-center" required />
-                                                <input type="password" class="form-control text-center" required />
-                                                <input type="password" class="form-control text-center" required />
-                                                <input type="password" class="form-control text-center" required />
-                                                <input type="password" class="form-control text-center" required />
+                                            <div class="mb-3">
+                                                <label for="userEmail" class="form-label">
+                                                    Email address
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text bg-light">
+                                                        <i class="ti ti-mail fs-xl text-muted"></i>
+                                                    </span>
+                                                    <input type="email" class="form-control" id="userEmail" placeholder="you@example.com" required />
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input form-check-input-light fs-14" type="checkbox" id="termAndPolicy" />
+                                                    <label class="form-check-label" for="termAndPolicy">Agree the Terms & Policy</label>
+                                                </div>
                                             </div>
 
                                             <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary fw-semibold py-2">Confirm</button>
+                                                <button type="submit" class="btn btn-primary fw-semibold py-2">Send Request</button>
                                             </div>
                                         </form>
 
-                                        <p class="mt-4 text-muted text-center mb-4">
-                                            Don’t have a code?
-                                            <a href="#" class="text-decoration-underline link-offset-2 fw-semibold">Resend</a>
-                                            or
-                                            <a href="#" class="text-decoration-underline link-offset-2 fw-semibold">Call Us</a>
-                                        </p>
-                                        <p class="text-muted text-center mb-0">
+                                        <p class="text-muted text-center mt-4 mb-0">
                                             Return to
-                                            <a href="auth-card-sign-in.php" class="text-decoration-underline link-offset-3 fw-semibold">Sign in</a>
+                                            <a href="login.php" class="text-decoration-underline link-offset-3 fw-semibold">Sign in</a>
                                         </p>
 
                                         <p class="text-center text-muted mt-4 mb-0">
@@ -81,11 +77,8 @@
                 </div>
             </div>
         </div>
+
         <!-- end auth-fluid-->
-
         <?php include('/partials/footer-scripts.php'); ?>
-
-        <!-- Two Factor Validator Js -->
-        <script src="../source/inspinia5/assets/js/pages/auth-two-factor.js"></script>
     </body>
 </html>
