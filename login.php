@@ -55,10 +55,9 @@
 
                                             <div class="d-flex justify-content-between align-items-center mb-3">
                                                 <div class="form-check">
-                                                    <input class="form-check-input form-check-input-light fs-14" type="checkbox" id="rememberMe" />
+                                                    <input class="form-check-input form-check-input-light fs-14" type="checkbox" id="rememberMe" name="remember_me" value="1" />
                                                     <label class="form-check-label" for="rememberMe">Keep me signed in</label>
                                                 </div>
-                                                <a href="forgot-password.php" class="text-decoration-underline link-offset-3 text-muted">Forgot Password?</a>
                                             </div>
 
                                             <div class="d-grid">

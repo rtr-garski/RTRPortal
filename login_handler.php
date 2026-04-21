@@ -1,8 +1,17 @@
 <?php
 ob_start();
-
-session_start();
 require_once 'config/db.php';
+
+$remember = !empty($_POST['remember_me']);
+
+session_set_cookie_params([
+    'lifetime' => $remember ? 60 * 60 * 24 * 30 : 0,
+    'path'     => '/',
+    'secure'   => !empty($_SERVER['HTTPS']),
+    'httponly' => true,
+    'samesite' => 'Strict',
+]);
+session_start();
 ob_clean();
 
 header('Content-Type: application/json');

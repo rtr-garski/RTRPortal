@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <?php $title = "Reset Password"; include('/partials/title-meta.php'); ?> <?php include('/partials/head-css.php'); ?>
+        <?php $title = "Reset Password"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
     </head>
 
     <body>
@@ -57,17 +57,14 @@
 
                                         <p class="text-center text-muted mt-4 mb-0">
                                             ©
-                                            <script>
-                                                document.write(new Date().getFullYear())
-                                            </script>
-                                            Inspinia — by
-                                            <span class="fw-bold">WebAppLayers</span>
+                                            <script>document.write(new Date().getFullYear())</script>
+                                            RTR Client Portal
                                         </p>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6 d-none d-lg-block">
-                                    <div class="h-100 position-relative card-side-img rounded-end-4 rounded-end rounded-0 overflow-hidden" style="background-image: url(&quot;assets/images/auth.jpg&quot;)">
+                                    <div class="h-100 position-relative card-side-img rounded-end-4 rounded-end rounded-0 overflow-hidden" style="background-image: url('https://loremflickr.com/1514/1121/technology')">
                                         <div class="p-4 card-img-overlay rounded-4 rounded-start-0 auth-overlay d-flex align-items-end justify-content-center"></div>
                                     </div>
                                 </div>
@@ -79,6 +76,6 @@
         </div>
 
         <!-- end auth-fluid-->
-        <?php include('/partials/footer-scripts.php'); ?>
+        <?php include('partials/footer-scripts.php'); ?>
     </body>
 </html>

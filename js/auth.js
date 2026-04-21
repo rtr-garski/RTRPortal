@@ -39,8 +39,9 @@ function login() {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
-      username: usernameInput.value,
-      password: passwordInput.value
+      username:    usernameInput.value,
+      password:    passwordInput.value,
+      remember_me: document.getElementById("rememberMe").checked ? "1" : ""
     })
   })
   .then(r => r.text())
