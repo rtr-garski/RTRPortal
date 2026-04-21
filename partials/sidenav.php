@@ -29,7 +29,7 @@
                 <div>
                     <a href="#!" class="link-reset">
                         <!-- <img src="../source/inspinia5/assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle mb-2 avatar-md" /> -->
-                        <span class="sidenav-user-name fw-bold">Client Name</span>
+                        <span class="sidenav-user-name fw-bold"><?= htmlspecialchars($_SESSION['name'] ?? $_SESSION['user_name'] ?? 'User') ?></span>
                         <!-- <span class="fs-12 fw-semibold" data-lang="user-role">Verifier</span> -->
                     </a>
                 </div>

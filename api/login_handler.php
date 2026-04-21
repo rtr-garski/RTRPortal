@@ -41,6 +41,7 @@ if (!$user || !password_verify($password, $user['user_password'])) {
 session_regenerate_id(true);
 $_SESSION['user_id']   = $user['user_id'];
 $_SESSION['user_name'] = $user['user_name'];
+$_SESSION['name']      = $user['name'];
 
 $pdo2->prepare("UPDATE sys_users SET last_login = NOW() WHERE user_id = ?")
      ->execute([$user['user_id']]);

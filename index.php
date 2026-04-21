@@ -18,9 +18,6 @@
             <div class="content-page">
                 <div class="container-fluid">
                     
-                    <!-- DEBUG: remove after checking -->
-                    <pre style="background:#111;color:#0f0;padding:1rem;font-size:12px"><?php print_r($_SESSION); ?></pre>
-
                     <!-- container-->
                     <div id="content"></div>
                    
