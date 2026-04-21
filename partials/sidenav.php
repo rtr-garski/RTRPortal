@@ -146,6 +146,12 @@
                     </a>
                 </li>
                 <li class="side-nav-item">
+                    <a href="file_upload.php" class="side-nav-link">
+                        <span class="menu-icon"><i class="ti ti-cloud-upload"></i></span>
+                        <span class="menu-text">File Storage</span>
+                    </a>
+                </li>
+                <li class="side-nav-item">
                     <a href="api_token_management0421.php" class="side-nav-link">
                         <span class="menu-icon"><i class="ti ti-key"></i></span>
                         <span class="menu-text">API Tokens_Old</span>
