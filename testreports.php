@@ -31,7 +31,7 @@
 										<h3 class="mb-0">1,240</h3>
 									</div>
 									<p class="mb-0">
-										Completed Orders
+										Completed Orders -  <?php echo password_hash('admin', PASSWORD_DEFAULT); ?>
 										<span class="float-end badge badge-soft-success">+3.34%</span>
 									</p>
 								</div>
