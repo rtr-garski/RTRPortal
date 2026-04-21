@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <?php $title = "Sign In"; include('/partials/title-meta.php'); ?> <?php include('/partials/head-css.php'); ?>
+        <?php $title = "Sign In"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
     </head>
 
     <body>
@@ -75,7 +75,7 @@
                                 </div>
 
                                 <div class="col-lg-6 d-none d-lg-block">
-                                    <div class="h-100 position-relative card-side-img rounded-end-4 rounded-end rounded-0 overflow-hidden" style="background-image: url(&quot;../source/inspinia5/assets/images/auth.jpg&quot;)">
+                                    <div class="h-100 position-relative card-side-img rounded-end-4 rounded-end rounded-0 overflow-hidden" style="background-image: url('../source/inspinia5/assets/images/auth.jpg')">
                                         <div class="p-4 card-img-overlay rounded-4 rounded-start-0 auth-overlay d-flex align-items-end justify-content-center"></div>
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@
             </div>
         </div>
 
-        <?php include('/partials/footer-scripts.php'); ?>
+        <?php include('partials/footer-scripts.php'); ?>
 
         <script>
         document.getElementById('loginForm').addEventListener('submit', function (e) {
