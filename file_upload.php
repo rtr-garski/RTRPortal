@@ -2,7 +2,7 @@
 
 require_once 'config/db.php';
 require_once 'config/backblaze.php';
-require_once 'b2_helper.php';
+require_once 'config/b2_helper.php';
 
 $flash = null;
 
