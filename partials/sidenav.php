@@ -1,16 +1,16 @@
 <div class="sidenav-menu">
     <!-- Brand Logo -->
-    <!-- <a href="index.php" class="logo">
+    <a href="index.php" class="logo">
         <span class="logo logo-light">
-            <span class="logo-lg"><img src="../source/inspinia5/assets/images/logo.png" alt="logo" /></span>
-            <span class="logo-sm"><img src="../source/inspinia5/assets/images/logo-sm.png" alt="small logo" /></span>
+            <span class="logo-lg"><img src="partials/rtr_logowhite.png" alt="logo" /></span>
+            <span class="logo-sm"><img src="partials/logo-icon.png" alt="small logo" /></span>
         </span>
 
         <span class="logo logo-dark">
-            <span class="logo-lg"><img src="../source/inspinia5/assets/images/logo-black.png" alt="dark logo" /></span>
-            <span class="logo-sm"><img src="../source/inspinia5/assets/images/logo-sm.png" alt="small logo" /></span>
+            <span class="logo-lg"><img src="partials/rtr_logoblack.png" alt="dark logo" /></span>
+            <span class="logo-sm"><img src="partials/logo-icon.png" alt="small logo" /></span>
         </span>
-    </a> -->
+    </a>
 
     <!-- Sidebar Hover Menu Toggle Button -->
     <button class="button-on-hover">
