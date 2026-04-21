@@ -191,6 +191,7 @@ $title = 'API Token Management';
                             <thead class="bg-light bg-opacity-25 thead-sm border-top border-light">
                                 <tr class="text-uppercase fs-xxs align-middle">
                                     <th class="ps-3">Token</th>
+                                    <th class="ps-3">Token</th>
                                     <th>Issued</th>
                                     <th>Expires</th>
                                     <th class="text-end pe-3">Actions</th>
@@ -217,6 +218,15 @@ $title = 'API Token Management';
                                             <i class="ti ti-copy onlyicon copy-tok-btn fs-lg" title="Copy token"
                                                style="cursor:pointer"
                                                data-token="<?= htmlspecialchars($tok['Token']) ?>"></i>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form-control-sm" id="key-<?= (int) $tok['id'] ?>" readonly value="<?= htmlspecialchars($tok['Token']) ?>" />
+                                            <button class="btn btn-sm btn-icon btn-light copy-tok-btn" type="button"
+                                                    data-token="<?= htmlspecialchars($tok['Token']) ?>">
+                                                <i class="ti ti-copy fs-lg"></i>
+                                            </button>
                                         </div>
                                     </td>
                                     <td class="fs-xs text-muted"><?= date('M j, Y', strtotime($tok['Timestamp_Issued'])) ?></td>
@@ -361,6 +371,7 @@ if (copyBtn) {
 document.querySelectorAll('.copy-tok-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
         navigator.clipboard.writeText(btn.dataset.token).then(function () {
+            if (btn.classList.contains('onlyicon')) return;
             btn.innerHTML = '<i class="ti ti-check"></i>';
             setTimeout(function () { btn.innerHTML = '<i class="ti ti-copy"></i>'; }, 2000);
         });
