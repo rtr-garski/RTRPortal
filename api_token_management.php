@@ -191,7 +191,7 @@ $title = 'API Token Management';
                             <thead class="bg-light bg-opacity-25 thead-sm border-top border-light">
                                 <tr class="text-uppercase fs-xxs align-middle">
                                     <th class="ps-3">Token</th>
-                                  
+                                    <th></th>
                                     <th>Issued</th>
                                     <th>Expires</th>
                                     <th class="text-end pe-3">Actions</th>
@@ -218,7 +218,7 @@ $title = 'API Token Management';
                                             </button>
                                         </div>
                                     </td>
-                                    
+                                    <td></td>
                                     <td class="fs-xs text-muted"><?= date('M j, Y', strtotime($tok['Timestamp_Issued'])) ?></td>
                                     <td class="fs-xs">
                                         <?php
