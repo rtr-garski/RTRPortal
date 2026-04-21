@@ -57,27 +57,4 @@ function login() {
 }
 
 
-// --------------------
-// LOGOUT
-// --------------------
-
-function logout() {
-  fetch("api/auth/logout.php", { method: "POST" })
-    .then(() => {
-      window.location.href = "login.php";
-    })
-    .catch(err => console.error("Logout failed:", err));
-}
-
-function init_logout_buttons() {
-  document.querySelectorAll(".logout-btn").forEach(btn => {
-    if (btn.dataset.bound) return; // prevent double binding
-    btn.dataset.bound = "1";
-
-    btn.addEventListener("click", e => {
-      e.preventDefault();
-      logout();
-    });
-  });
-}
 
