@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
     <head>
         <?php $title = "Sign In"; include('partials/title-meta.php'); ?> <?php include('partials/head-css.php'); ?>
     </head>
@@ -75,7 +75,7 @@
                                 </div>
 
                                 <div class="col-lg-6 d-none d-lg-block">
-                                    <div class="h-100 position-relative card-side-img rounded-end-4 rounded-end rounded-0 overflow-hidden" style="background-image: url('https://loremflickr.com/1920/1080/technology')">
+                                    <div class="h-100 position-relative card-side-img rounded-end-4 rounded-end rounded-0 overflow-hidden" style="background-image: url('https://loremflickr.com/1514/1121/technology')">
                                         <div class="p-4 card-img-overlay rounded-4 rounded-start-0 auth-overlay d-flex align-items-end justify-content-center"></div>
                                     </div>
                                 </div>
@@ -88,41 +88,5 @@
 
         <?php include('partials/footer-scripts.php'); ?>
 
-        <script>
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            var btn      = document.getElementById('loginBtn');
-            var errorDiv = document.getElementById('loginError');
-
-            errorDiv.classList.add('d-none');
-            errorDiv.textContent = '';
-            btn.disabled = true;
-            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Signing in…';
-
-            fetch('login_handler.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(new FormData(this))
-            })
-            .then(function (r) { return r.json(); })
-            .then(function (data) {
-                if (data.success) {
-                    window.location.href = data.redirect;
-                } else {
-                    errorDiv.textContent = data.message;
-                    errorDiv.classList.remove('d-none');
-                    btn.disabled = false;
-                    btn.innerHTML = 'Sign In';
-                }
-            })
-            .catch(function () {
-                errorDiv.textContent = 'Something went wrong. Please try again.';
-                errorDiv.classList.remove('d-none');
-                btn.disabled = false;
-                btn.innerHTML = 'Sign In';
-            });
-        });
-        </script>
     </body>
 </html>
