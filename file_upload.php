@@ -321,6 +321,9 @@ $title = 'File Storage';
                         <button class="btn btn-sm btn-primary" id="copyPresignUrl">
                             <i class="ti ti-copy me-1"></i> Copy
                         </button>
+                        <a id="openPresignUrl" href="#" target="_blank" class="btn btn-sm btn-soft-secondary">
+                            <i class="ti ti-external-link me-1"></i> Open
+                        </a>
                     </div>
                     <div class="alert alert-warning mt-3 mb-0 py-2 fs-xs">
                         <i class="ti ti-alert-triangle me-1"></i>
@@ -363,6 +366,7 @@ document.querySelectorAll('.get-link-btn').forEach(function (btn) {
             result.classList.remove('d-none');
             if (data.success) {
                 document.getElementById('presignUrl').value = data.url;
+                document.getElementById('openPresignUrl').href = data.url;
                 document.getElementById('presignExpiry').textContent = '(expires ' + data.expires_at + ')';
             } else {
                 document.getElementById('presignUrl').value = 'Error: ' + data.message;
