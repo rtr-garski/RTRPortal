@@ -139,7 +139,7 @@ $title = 'API Token Management';
                                 <i class="ti ti-key fs-xl text-primary"></i>
                             </span>
                             <div>
-                                <p class="text-muted mb-0 fs-xs text-uppercase fw-semibold">Total Tokens</p>
+                                <p class="text-muted mb-0 fs-xs text-uppercase fw-semibold">Total</p>
                                 <h4 class="mb-0"><?= $total ?></h4>
                             </div>
                         </div>
@@ -156,7 +156,7 @@ $title = 'API Token Management';
                                 <i class="ti ti-circle-check fs-xl text-success"></i>
                             </span>
                             <div>
-                                <p class="text-muted mb-0 fs-xs text-uppercase fw-semibold">Valid Tokens</p>
+                                <p class="text-muted mb-0 fs-xs text-uppercase fw-semibold">Valid</p>
                                 <h4 class="mb-0"><?= $validCount ?></h4>
                             </div>
                         </div>
