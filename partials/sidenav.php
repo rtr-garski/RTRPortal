@@ -151,11 +151,26 @@
                         <span class="menu-text">File Storage</span>
                     </a>
                 </li>
+               
+
+                <li class="side-nav-title mt-2" data-lang="apps">Old Webprogram</li>
+
                 <li class="side-nav-item">
-                    <a href="api_token_management0421.php" class="side-nav-link">
-                        <span class="menu-icon"><i class="ti ti-key"></i></span>
-                        <span class="menu-text">API Tokens_Old</span>
+                    <a data-bs-toggle="collapse" href="#archive" aria-expanded="false" aria-controls="archive" class="side-nav-link">
+                        <span class="menu-icon"><i class="ti ti-archive"></i></span>
+                        <span class="menu-text" data-lang="archive">Archive</span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="archive">
+                        <ul class="sub-menu">
+                            <li class="side-nav-item">
+                                <a href="api_token_management0421.php" class="side-nav-link">
+                                    <span class="menu-icon"><i class="ti ti-key"></i></span>
+                                    <span class="menu-text">API Tokens_Old</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
 
             </ul>
