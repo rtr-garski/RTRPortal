@@ -6,3 +6,6 @@ if (empty($_SESSION['user_id'])) {
     header('Location: ' . $base . '/login.php');
     exit;
 }
+?>
+<!doctype html>
+<html lang="en" data-bs-theme="dark">

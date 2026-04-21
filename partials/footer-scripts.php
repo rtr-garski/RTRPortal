@@ -4,5 +4,5 @@
 <!-- App js -->
 <script src="../source/inspinia5/assets/js/app.js"></script>
 
-<script src="js/auth.js?v=3"></script>
+<script src="js/auth.js?v=4"></script>
 <script src="js/dashboard.js"></script>

@@ -35,7 +35,7 @@ function login() {
     btn.innerHTML = "Sign In";
   }
 
-  fetch("login_handler.php", {
+  fetch("api/login_handler.php", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({

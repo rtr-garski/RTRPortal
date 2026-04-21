@@ -1,5 +1,4 @@
 <?php include 'partials/main.php'; ?>
-<?php include 'partials/html.php' ?>
     <head>
         <?php $title = "Projects Dashboard"; include('partials/title-meta.php'); ?> 
         

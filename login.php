@@ -1,3 +1,11 @@
+<?php
+require_once 'config/session.php';
+if (!empty($_SESSION['user_id'])) {
+    $base = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
+    header('Location: ' . $base . '/index.php');
+    exit;
+}
+?>
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
     <head>
