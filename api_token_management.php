@@ -191,8 +191,7 @@ $title = 'API Token Management';
                             <thead class="bg-light bg-opacity-25 thead-sm border-top border-light">
                                 <tr class="text-uppercase fs-xxs align-middle">
                                     <th class="ps-3">Token</th>
-                                    <th class="ps-3">Token</th>
-                                    <th class="ps-3">Token</th>
+                                  
                                     <th>Issued</th>
                                     <th>Expires</th>
                                     <th class="text-end pe-3">Actions</th>
@@ -209,19 +208,8 @@ $title = 'API Token Management';
                             <?php else: ?>
                                 <?php foreach ($tokens as $tok): ?>
                                 <tr>
+                                   
                                     <td class="ps-3">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <code class="fs-xs text-muted tok-value"><?= htmlspecialchars($tok['Token']) ?></code>
-                                            <!-- <button type="button" class="btn btn-xs btn-soft-secondary copy-tok-btn" title="Copy token"
-                                                    data-token="<?= htmlspecialchars($tok['Token']) ?>">
-                                                <i class="ti ti-copy"></i>
-                                            </button> -->
-                                            <i class="ti ti-copy onlyicon copy-tok-btn fs-lg" title="Copy token"
-                                               style="cursor:pointer"
-                                               data-token="<?= htmlspecialchars($tok['Token']) ?>"></i>
-                                        </div>
-                                    </td>
-                                    <td>
                                         <div class="input-group">
                                             <input type="text" class="form-control form-control-sm" readonly value="<?= htmlspecialchars($tok['Token']) ?>" />
                                             <button class="btn btn-sm btn-icon btn-light copy-tok-btn" type="button"
@@ -230,14 +218,7 @@ $title = 'API Token Management';
                                             </button>
                                         </div>
                                     </td>
-                                    <td>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control form-control-sm" id="keyOne" readonly value="<?= htmlspecialchars($tok['Token']) ?>" />
-                                            <button class="btn btn-sm btn-icon btn-light" type="button" data-clipboard-target="#keyOne">
-                                                <i class="ti ti-copy fs-lg"></i>
-                                            </button>
-                                        </div>
-                                    </td>
+                                    
                                     <td class="fs-xs text-muted"><?= date('M j, Y', strtotime($tok['Timestamp_Issued'])) ?></td>
                                     <td class="fs-xs">
                                         <?php
