@@ -39,7 +39,7 @@ if ($token === '') {
 }
 
 $stmt = $pdo->prepare(
-    "SELECT id FROM API_Tokens WHERE Token = ? AND active = 1 AND Timestamp_Expiration > NOW()"
+    "SELECT id FROM API_Tokens WHERE Token = ? AND Timestamp_Expiration > NOW()"
 );
 $stmt->execute([$token]);
 if (!$stmt->fetch()) {
