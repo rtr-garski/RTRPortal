@@ -7,7 +7,7 @@ if (empty($_SESSION['user_id'])) {
 }
 
 require_once __DIR__ . '/../config/db.php';
-require_once __DIR__ . '/../webhook_sender.php';
+require_once __DIR__ . '/../lib/webhook_sender.php';
 header('Content-Type: application/json');
 
 $action = $_POST['action'] ?? '';

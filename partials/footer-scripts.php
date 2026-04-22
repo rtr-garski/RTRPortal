@@ -10,3 +10,4 @@
 <script src="js/api_token_management.js?v=7"></script>
 <script src="js/webhook_management.js?v=7"></script>
 <script src="js/b2b_test.js?v=1"></script>
+<script src="js/api_portal.js?v=1"></script>

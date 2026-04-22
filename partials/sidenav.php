@@ -63,7 +63,7 @@
             <ul class="side-nav">
                 <li class="side-nav-title mt-2" data-lang="main">Main</li>
                 <li class="side-nav-item">
-                    <a href="api.php" class="side-nav-link">
+                    <a href="#" data-page="api_portal" class="side-nav-link nav-link">
                         <span class="menu-icon"><i class="ti ti-api"></i></span>
                         <span class="menu-text">API Portal</span>
                     </a>
