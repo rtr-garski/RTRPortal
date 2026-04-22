@@ -70,6 +70,7 @@ function init_file_upload() {
 
         var id = btn.dataset.id;
         btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span>';
 
         fetch('api/file_upload.php', {
             method: 'POST',
@@ -83,11 +84,13 @@ function init_file_upload() {
             } else {
                 showFlash('danger', data.message);
                 btn.disabled = false;
+                btn.innerHTML = '<i class="ti ti-trash"></i>';
             }
         })
         .catch(function () {
             showFlash('danger', 'Delete failed. Please try again.');
             btn.disabled = false;
+            btn.innerHTML = '<i class="ti ti-trash"></i>';
         });
     };
     contentEl.addEventListener('click', contentEl._deleteHandler);
