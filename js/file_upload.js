@@ -32,7 +32,7 @@ function init_file_upload() {
                     btn.innerHTML = '<i class="ti ti-cloud-upload me-1"></i> Upload';
                     if (data.success) {
                         window._fileFlashPending = { type: 'success', msg: data.message };
-                        window.loadPage('file_upload');
+                        document.dispatchEvent(new CustomEvent('spa:loadPage', { detail: 'file_upload' }));
                     } else {
                         showFlash('danger', data.message);
                     }
@@ -63,7 +63,7 @@ function init_file_upload() {
         .then(function (data) {
             if (data.success) {
                 window._fileFlashPending = { type: 'success', msg: data.message };
-                window.loadPage('file_upload');
+                document.dispatchEvent(new CustomEvent('spa:loadPage', { detail: 'file_upload' }));
             } else {
                 showFlash('danger', data.message);
                 btn.disabled = false;

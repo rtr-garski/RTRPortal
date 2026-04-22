@@ -76,6 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPage(link.dataset.page);
   });
 
+  document.addEventListener("spa:loadPage", e => loadPage(e.detail));
+
   window.loadPage = loadPage;
   loadPage("dashboard");
 
