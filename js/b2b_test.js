@@ -9,6 +9,14 @@ function init_b2b_test() {
     const progressLbl  = document.getElementById('b2b-progress-label');
     const resultCard   = document.getElementById('b2b-result-card');
 
+    // Auto-populate a random active token from the DB
+    const tokenEl = document.getElementById('b2b-token');
+    if (tokenEl && !tokenEl.value) {
+        fetch('api/b2b_token.php')
+            .then(function (r) { return r.json(); })
+            .then(function (data) { if (data.token) tokenEl.value = data.token; });
+    }
+
     function showFlash(el, type, msg) {
         el.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
             ${msg}
