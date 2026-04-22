@@ -121,6 +121,10 @@ function formatBytes(int $bytes): string {
     <div class="card">
         <div class="card-header">
             <h5 class="card-title mb-0"><i class="ti ti-cloud me-1"></i> Stored Files</h5>
+            <div class="card-action">
+                <a href="#!" class="card-action-item" data-action="card-toggle"><i class="ti ti-chevron-up"></i></a>
+                <a href="#!" class="card-action-item" data-action="card-refresh"><i class="ti ti-refresh"></i></a>
+            </div>
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">

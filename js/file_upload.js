@@ -10,6 +10,12 @@ function init_file_upload() {
         el.innerHTML = msg + '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
     }
 
+    // Show any flash queued by a previous reload
+    if (window._fileFlashPending) {
+        showFlash(window._fileFlashPending.type, window._fileFlashPending.msg);
+        window._fileFlashPending = null;
+    }
+
     // ─── Upload ───────────────────────────────────────────────────────────────
     var uploadForm = document.getElementById('uploadForm');
     if (uploadForm) {
@@ -22,12 +28,13 @@ function init_file_upload() {
             fetch('api/file_upload.php', { method: 'POST', body: new FormData(uploadForm) })
                 .then(function (r) { return r.json(); })
                 .then(function (data) {
-                    showFlash(data.success ? 'success' : 'danger', data.message);
                     btn.disabled = false;
                     btn.innerHTML = '<i class="ti ti-cloud-upload me-1"></i> Upload';
                     if (data.success) {
-                        uploadForm.reset();
-                        if (typeof loadPage === 'function') loadPage('file_upload');
+                        window._fileFlashPending = { type: 'success', msg: data.message };
+                        window.loadPage('file_upload');
+                    } else {
+                        showFlash('danger', data.message);
                     }
                 })
                 .catch(function () {
@@ -54,8 +61,13 @@ function init_file_upload() {
         })
         .then(function (r) { return r.json(); })
         .then(function (data) {
-            showFlash(data.success ? 'success' : 'danger', data.message);
-            if (data.success && typeof loadPage === 'function') loadPage('file_upload');
+            if (data.success) {
+                window._fileFlashPending = { type: 'success', msg: data.message };
+                window.loadPage('file_upload');
+            } else {
+                showFlash('danger', data.message);
+                btn.disabled = false;
+            }
         })
         .catch(function () {
             showFlash('danger', 'Delete failed. Please try again.');
