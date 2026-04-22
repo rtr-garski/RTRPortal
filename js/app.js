@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const content = document.getElementById("content");
 
   function loadPage(page) {
-    fetch(`pages/${page}.php`)
+    fetch(`pages/${page}.php`, { cache: 'no-store' })
       .then(r => {
         if (r.status === 401) {
           window.location.href = "login.php";
