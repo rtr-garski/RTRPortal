@@ -121,13 +121,13 @@
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="webhook_management.php" class="side-nav-link">
+                    <a href="#" data-page="webhook_management" class="side-nav-link nav-link">
                         <span class="menu-icon"><i class="ti ti-webhook"></i></span>
                         <span class="menu-text">Webhooks</span>
                     </a>
                 </li>
                 <li class="side-nav-item">
-                    <a href="api_token_management.php" class="side-nav-link">
+                    <a href="#" data-page="api_token_management" class="side-nav-link nav-link">
                         <span class="menu-icon"><i class="ti ti-key"></i></span>
                         <span class="menu-text">API Tokens</span>
                     </a>

@@ -19,21 +19,14 @@ function init_file_upload() {
     // ─── Reload helper (bypasses app.js entirely) ─────────────────────────────
     function reloadPage(flashType, flashMsg) {
         window._fileFlashPending = { type: flashType, msg: flashMsg };
-        console.log('[fu] reloadPage: fetching pages/file_upload.php');
         fetch('pages/file_upload.php', { cache: 'no-store' })
-            .then(function (r) {
-                console.log('[fu] reloadPage: status=' + r.status + ' ok=' + r.ok);
-                return r.text();
-            })
+            .then(function (r) { return r.text(); })
             .then(function (html) {
-                console.log('[fu] reloadPage: html.length=' + html.length);
-                if (!html) { showFlash('danger', 'Empty response from server.'); return; }
+                if (!html) return;
                 contentEl.innerHTML = html;
-                console.log('[fu] reloadPage: content replaced, calling init');
                 init_file_upload();
             })
-            .catch(function (err) {
-                console.error('[fu] reloadPage error:', err);
+            .catch(function () {
                 showFlash('danger', 'Could not reload file list. Please refresh.');
             });
     }
