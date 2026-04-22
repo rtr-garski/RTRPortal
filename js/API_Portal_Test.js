@@ -1,4 +1,4 @@
-function init_api_portal() {
+function init_API_Portal_Test() {
     var root = document.getElementById('api-portal-root');
     if (!root) return;
 
@@ -74,7 +74,7 @@ function init_api_portal() {
         fd.append('api_key',   keyEl.value);
         fd.append('json_body', bodyEl.value);
 
-        fetch('api/api_portal.php', { method: 'POST', body: fd })
+        fetch('api/API_Portal_Test.php', { method: 'POST', body: fd })
             .then(function (r) { return r.json(); })
             .then(function (data) {
                 if (data.formError) {

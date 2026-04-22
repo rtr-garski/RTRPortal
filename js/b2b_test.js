@@ -1,15 +1,16 @@
 function init_b2b_test() {
-    const contentEl  = document.getElementById('content');
-    const flash      = document.getElementById('b2b-flash');
-    const btn        = document.getElementById('b2b-upload-btn');
+    const contentEl    = document.getElementById('content');
+    const flash        = document.getElementById('b2b-flash');
+    const genFlash     = document.getElementById('b2b-gen-flash');
+    const genResult    = document.getElementById('b2b-gen-result');
     const progressWrap = document.getElementById('b2b-progress-wrap');
     const progressBar  = document.getElementById('b2b-progress-bar');
     const progressPct  = document.getElementById('b2b-progress-pct');
     const progressLbl  = document.getElementById('b2b-progress-label');
     const resultCard   = document.getElementById('b2b-result-card');
 
-    function showFlash(type, msg) {
-        flash.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
+    function showFlash(el, type, msg) {
+        el.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
             ${msg}
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>`;
@@ -17,7 +18,7 @@ function init_b2b_test() {
 
     function setProgress(pct, label) {
         progressWrap.classList.remove('d-none');
-        progressBar.style.width = pct + '%';
+        progressBar.style.width  = pct + '%';
         progressPct.textContent  = pct + '%';
         progressLbl.textContent  = label;
     }
@@ -25,96 +26,132 @@ function init_b2b_test() {
     function resetProgress() {
         progressWrap.classList.add('d-none');
         progressBar.style.width = '0%';
+        progressBar.classList.add('progress-bar-animated');
     }
 
     if (contentEl._b2bHandler) contentEl.removeEventListener('click', contentEl._b2bHandler);
     contentEl._b2bHandler = async function (e) {
-        if (!e.target.closest('#b2b-upload-btn')) return;
 
-        const token   = document.getElementById('b2b-token').value.trim();
-        const orderId = document.getElementById('b2b-order-id').value.trim();
-        const uuid    = document.getElementById('b2b-uuid').value.trim();
-        const fileEl  = document.getElementById('b2b-file');
-        const file    = fileEl.files[0];
+        // ── Step 1: Generate Presigned URL ──────────────────────────────
+        if (e.target.closest('#b2b-gen-btn')) {
+            const token     = document.getElementById('b2b-token').value.trim();
+            const orderId   = document.getElementById('b2b-order-id').value.trim();
+            const uuid      = document.getElementById('b2b-uuid').value.trim();
+            const extension = document.getElementById('b2b-extension').value.trim();
+            const genBtn    = document.getElementById('b2b-gen-btn');
 
-        flash.innerHTML = '';
-        resultCard.classList.add('d-none');
-        resetProgress();
+            genFlash.innerHTML = '';
+            genResult.classList.add('d-none');
 
-        if (!token)   return showFlash('warning', 'API Token is required.');
-        if (!orderId) return showFlash('warning', 'Order ID is required.');
-        if (!file)    return showFlash('warning', 'Please select a file.');
+            if (!token)   return showFlash(genFlash, 'warning', 'API Token is required.');
+            if (!orderId) return showFlash(genFlash, 'warning', 'Order ID is required.');
 
-        const ext = file.name.includes('.') ? file.name.split('.').pop() : 'bin';
+            genBtn.disabled = true;
+            genBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Generating…';
 
-        btn.disabled = true;
-        setProgress(10, 'Requesting presigned URL...');
+            try {
+                const body = new URLSearchParams({ token, order_id: orderId });
+                if (uuid)      body.append('uuid',      uuid);
+                if (extension) body.append('extension', extension);
 
-        // Step 1 — get presigned URL from our API
-        let info;
-        try {
-            const body = new URLSearchParams({ token, order_id: orderId, extension: ext });
-            if (uuid) body.append('uuid', uuid);
+                const r    = await fetch('api/b2b_presign.php', { method: 'POST', body });
+                const info = await r.json();
 
-            const r = await fetch('api/b2b_presign.php', { method: 'POST', body });
-            info = await r.json();
-        } catch (err) {
-            btn.disabled = false;
-            resetProgress();
-            return showFlash('danger', 'Network error fetching presigned URL: ' + err.message);
-        }
-
-        if (!info.success) {
-            btn.disabled = false;
-            resetProgress();
-            return showFlash('danger', info.message || 'Failed to get presigned URL.');
-        }
-
-        setProgress(30, 'Uploading to Backblaze B2...');
-
-        // Step 2 — PUT file directly to B2 via XHR (so we get progress events)
-        await new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('PUT', info.presigned_url);
-            xhr.setRequestHeader('X-Bz-File-Name', encodeURIComponent(info.b2_file_name));
-            xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream');
-
-            xhr.upload.onprogress = function (ev) {
-                if (ev.lengthComputable) {
-                    const pct = Math.round(30 + (ev.loaded / ev.total) * 65);
-                    setProgress(pct, 'Uploading... ' + Math.round((ev.loaded / 1024 / 1024) * 10) / 10 + ' MB');
-                }
-            };
-
-            xhr.onload = function () {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    resolve();
+                if (!info.success) {
+                    showFlash(genFlash, 'danger', info.message || 'Failed to generate presigned URL.');
                 } else {
-                    reject(new Error('B2 returned HTTP ' + xhr.status + ': ' + xhr.responseText));
+                    document.getElementById('gen-folder').textContent    = info.folder;
+                    document.getElementById('gen-filename').textContent  = info.filename;
+                    document.getElementById('gen-b2path').textContent    = info.b2_file_name;
+                    document.getElementById('gen-url-display').value     = info.presigned_url;
+                    document.getElementById('gen-expires').textContent   = info.expires_in;
+                    genResult.classList.remove('d-none');
+
+                    // Populate Step 2
+                    document.getElementById('b2b-presigned-url').value = info.presigned_url;
+
+                    // Store info on result card for after upload
+                    resultCard.dataset.folder   = info.folder;
+                    resultCard.dataset.filename = info.filename;
+                    resultCard.dataset.b2path   = info.b2_file_name;
+                    resultCard.dataset.url      = info.presigned_url;
                 }
-            };
+            } catch (err) {
+                showFlash(genFlash, 'danger', 'Network error: ' + err.message);
+            }
 
-            xhr.onerror = () => reject(new Error('Network error during upload.'));
-            xhr.send(file);
-        }).then(() => {
-            setProgress(100, 'Done!');
-            progressBar.classList.remove('progress-bar-animated');
+            genBtn.disabled = false;
+            genBtn.innerHTML = '<i class="ti ti-link me-1"></i> Generate Presigned URL';
+            return;
+        }
 
-            // Populate result card
-            document.getElementById('res-folder').textContent   = info.folder;
-            document.getElementById('res-filename').textContent = info.filename;
-            document.getElementById('res-b2path').textContent   = info.b2_file_name;
-            const link = document.getElementById('res-presigned');
-            link.href        = info.presigned_url;
-            link.textContent = info.presigned_url;
+        // ── Copy URL button ─────────────────────────────────────────────
+        if (e.target.closest('#b2b-copy-url')) {
+            const url = document.getElementById('gen-url-display').value;
+            if (!url) return;
+            navigator.clipboard.writeText(url).then(() => {
+                const btn = document.getElementById('b2b-copy-url');
+                btn.innerHTML = '<i class="ti ti-check"></i>';
+                setTimeout(() => { btn.innerHTML = '<i class="ti ti-copy"></i>'; }, 1500);
+            });
+            return;
+        }
 
-            resultCard.classList.remove('d-none');
-        }).catch(err => {
-            showFlash('danger', 'Upload failed: ' + err.message);
+        // ── Step 2: Upload File ─────────────────────────────────────────
+        if (e.target.closest('#b2b-upload-btn')) {
+            const presignedUrl = document.getElementById('b2b-presigned-url').value.trim();
+            const fileEl       = document.getElementById('b2b-file');
+            const file         = fileEl.files[0];
+            const uploadBtn    = document.getElementById('b2b-upload-btn');
+
+            flash.innerHTML = '';
+            resultCard.classList.add('d-none');
             resetProgress();
-        });
 
-        btn.disabled = false;
+            if (!presignedUrl) return showFlash(flash, 'warning', 'Presigned URL is required. Generate one above first.');
+            if (!file)         return showFlash(flash, 'warning', 'Please select a file.');
+
+            uploadBtn.disabled = true;
+            setProgress(10, 'Uploading to Backblaze B2...');
+
+            await new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open('PUT', presignedUrl);
+                xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream');
+
+                xhr.upload.onprogress = function (ev) {
+                    if (ev.lengthComputable) {
+                        const pct = Math.round(10 + (ev.loaded / ev.total) * 88);
+                        setProgress(pct, 'Uploading... ' + Math.round((ev.loaded / 1024 / 1024) * 10) / 10 + ' MB');
+                    }
+                };
+
+                xhr.onload = function () {
+                    if (xhr.status >= 200 && xhr.status < 300) resolve();
+                    else reject(new Error('B2 returned HTTP ' + xhr.status + ': ' + xhr.responseText));
+                };
+
+                xhr.onerror = () => reject(new Error('Network error during upload.'));
+                xhr.send(file);
+            }).then(() => {
+                setProgress(100, 'Done!');
+                progressBar.classList.remove('progress-bar-animated');
+
+                document.getElementById('res-folder').textContent   = resultCard.dataset.folder   || '—';
+                document.getElementById('res-filename').textContent = resultCard.dataset.filename || file.name;
+                document.getElementById('res-b2path').textContent   = resultCard.dataset.b2path   || '—';
+                const link = document.getElementById('res-presigned');
+                link.href        = resultCard.dataset.url || presignedUrl;
+                link.textContent = resultCard.dataset.url || presignedUrl;
+
+                resultCard.classList.remove('d-none');
+            }).catch(err => {
+                showFlash(flash, 'danger', 'Upload failed: ' + err.message);
+                resetProgress();
+            });
+
+            uploadBtn.disabled = false;
+        }
     };
 
     contentEl.addEventListener('click', contentEl._b2bHandler);
