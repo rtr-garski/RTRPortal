@@ -73,8 +73,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!link) return;
 
     e.preventDefault();
+    e.stopPropagation();
     loadPage(link.dataset.page);
-  });
+  }, true);
 
   window.loadPage = loadPage;
   loadPage("dashboard");

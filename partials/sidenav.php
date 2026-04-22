@@ -135,7 +135,7 @@
                 <li class="side-nav-item">
                     <a href="#" data-page="file_upload" class="side-nav-link">
                         <span class="menu-icon"><i class="ti ti-cloud-upload"></i></span>
-                        <span class="menu-text">File Storage</span>
+                        <span class="menu-text">File Upload</span>
                     </a>
                 </li>
                
