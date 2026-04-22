@@ -71,7 +71,11 @@
             <div id="simple-user-dropdown" class="topbar-item nav-user">
                 <div class="dropdown">
                     <a class="topbar-link dropdown-toggle drop-arrow-none px-2" data-bs-toggle="dropdown" href="#!" aria-haspopup="false" aria-expanded="false">
-                        <img src="../source/inspinia5/assets/images/users/user-1.jpg" width="32" class="rounded-circle me-lg-2 d-flex" alt="user-image" />
+                        <?php $initials = strtoupper(substr($_SESSION['name'] ?? $_SESSION['user_name'] ?? 'U', 0, 1)); ?>
+                        <span class="rounded-circle me-lg-2 d-flex align-items-center justify-content-center bg-primary text-white fw-bold"
+                              style="width:32px;height:32px;font-size:14px;flex-shrink:0">
+                            <?= $initials ?>
+                        </span>
                         <div class="d-lg-flex align-items-center gap-1 d-none">
                             <h5 class="my-0"><?= htmlspecialchars($_SESSION['name'] ?? $_SESSION['user_name'] ?? 'User') ?></h5>
                             <i class="ti ti-chevron-down align-middle"></i>

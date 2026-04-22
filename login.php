@@ -44,7 +44,7 @@ if (!empty($_SESSION['user_id'])) {
                                                     <span class="input-group-text bg-light">
                                                         <i class="ti ti-user fs-xl text-muted"></i>
                                                     </span>
-                                                    <input type="text" class="form-control" id="username" name="username" placeholder="your username" required />
+                                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required />
                                                 </div>
                                             </div>
 
