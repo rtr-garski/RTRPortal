@@ -14,7 +14,14 @@ function init_b2b_test() {
     if (tokenEl && !tokenEl.value) {
         fetch('api/b2b_token.php')
             .then(function (r) { return r.json(); })
-            .then(function (data) { if (data.token) tokenEl.value = data.token; });
+            .then(function (data) {
+                if (data.token) {
+                    tokenEl.value = data.token;
+                } else {
+                    console.warn('b2b_token: no active token found', data);
+                }
+            })
+            .catch(function (err) { console.error('b2b_token fetch failed:', err); });
     }
 
     function showFlash(el, type, msg) {

@@ -9,11 +9,11 @@ if (empty($_SESSION['user_id'])) {
 require_once __DIR__ . '/../config/db.php';
 header('Content-Type: application/json');
 
-$row = $pdo->query(
-    "SELECT Token FROM API_Tokens WHERE active = 1 AND Timestamp_Expiration > NOW() ORDER BY RAND() LIMIT 1"
-)->fetch();
-
-echo json_encode([
-    'success' => (bool) $row,
-    'token'   => $row ? $row['Token'] : '',
-]);
+try {
+    $row = $pdo->query(
+        "SELECT Token FROM API_Tokens WHERE active = 1 AND Timestamp_Expiration > NOW() ORDER BY RAND() LIMIT 1"
+    )->fetch();
+    echo json_encode(['success' => (bool) $row, 'token' => $row ? $row['Token'] : '']);
+} catch (Throwable $e) {
+    echo json_encode(['success' => false, 'token' => '', 'error' => $e->getMessage()]);
+}

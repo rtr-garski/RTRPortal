@@ -18,7 +18,7 @@
         "width": "fluid",
         "position": "fixed",
         "orientation": "vertical",
-        "sidenav-size": "on-hover",
+        "sidenav-size": "condensed",
         "sidenav-user": true,
         "topbar-color": "light",
         "sidenav-color": "dark",
