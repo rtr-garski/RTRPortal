@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const content = document.getElementById("content");
 
   function loadPage(page) {
+    content.innerHTML =
+      '<div class="d-flex justify-content-center align-items-center" style="min-height:200px">' +
+      '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading…</span></div>' +
+      '</div>';
+
     fetch(`pages/${page}.php`)
       .then(r => {
         if (r.status === 401) {
