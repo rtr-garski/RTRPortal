@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch(`pages/${page}.php`)
       .then(r => {
         if (r.status === 401) {
-          window.location.href = "login.php";
+          window.location.href = "logout.php";
           return;
         }
         return r.text();
