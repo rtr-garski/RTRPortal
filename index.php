@@ -36,7 +36,7 @@
         <?php include('partials/customizer.php'); ?> <?php include('partials/footer-scripts.php'); ?>
 
         <!-- js links-->
-        <script src="js/app.js?v=2"></script>
+        <script src="js/app.js"></script>
 
     </body>
 </html>
