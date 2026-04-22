@@ -3,8 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const content = document.getElementById("content");
 
   function loadPage(page) {
-    page = page.replace(/-/g, '_');
-    fetch(`pages/${page}.php`, { cache: 'no-store' })
+    fetch(`pages/${page}.php`)
       .then(r => {
         if (r.status === 401) {
           window.location.href = "login.php";
@@ -15,31 +14,28 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(html => {
         if (!html) return;
 
-        // 1. Inject page HTML
         // stop page-specific behaviors
         window.stopLockPolling?.();
 
         content.innerHTML = html;
 
-        // 2. Run page-specific init (email-compose, dashboard, etc.)
+        // Run page-specific init
         window[`init_${page.replace(/-/g, "_")}`]?.();
 
-        // 3. Bind ALL logout buttons (VERY IMPORTANT)
+        // Bind ALL logout buttons
         window.init_logout_buttons?.();
 
-        // 4. Update menu state
+        // Update menu state
         setActiveMenu(page);
       })
       .catch(err => console.error("Load error:", err));
   }
 
   function setActiveMenu(page) {
-    // 1. Remove all active states
     document.querySelectorAll(".side-nav-link").forEach(link => {
       link.classList.remove("active");
     });
 
-    // 2. Find active page link
     const activeLink = document.querySelector(
       `.side-nav-link[data-page="${page}"]`
     );
@@ -47,17 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     activeLink.classList.add("active");
 
-    // 3. Check if inside a collapse (Email submenu)
     const activeCollapse = activeLink.closest(".collapse");
 
-    // 4. Close unrelated collapses
     document.querySelectorAll(".collapse.show").forEach(collapse => {
       if (collapse !== activeCollapse) {
         bootstrap.Collapse.getOrCreateInstance(collapse).hide();
       }
     });
 
-    // 5. If inside Main Column → open collapse & highlight parent
     if (activeCollapse) {
       bootstrap.Collapse.getOrCreateInstance(activeCollapse).show();
 
@@ -77,9 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPage(link.dataset.page);
   });
 
-  document.addEventListener("spa:loadPage", e => loadPage(e.detail));
-
-  window.loadPage = loadPage;
   loadPage("dashboard");
 
 });
