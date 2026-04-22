@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const content = document.getElementById("content");
 
   function loadPage(page) {
+    page = page.replace(/-/g, '_');
     fetch(`pages/${page}.php`, { cache: 'no-store' })
       .then(r => {
         if (r.status === 401) {
