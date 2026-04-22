@@ -138,7 +138,12 @@
                         <span class="menu-text">File Upload</span>
                     </a>
                 </li>
-               
+                <li class="side-nav-item">
+                    <a href="#" data-page="b2b_test" class="side-nav-link nav-link">
+                        <span class="menu-icon"><i class="ti ti-test-pipe"></i></span>
+                        <span class="menu-text">B2 Upload Test</span>
+                    </a>
+                </li>
 
                 <li class="side-nav-title mt-2" data-lang="apps">Old Webprogram</li>
 
