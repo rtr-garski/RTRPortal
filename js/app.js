@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const content = document.getElementById("content");
 
-  window.loadPage = function loadPage(page) {
+  function loadPage(page) {
     fetch(`pages/${page}.php`)
       .then(r => {
         if (r.status === 401) {
@@ -76,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPage(link.dataset.page);
   });
 
+  window.loadPage = loadPage;
   loadPage("dashboard");
 
 });

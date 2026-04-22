@@ -27,7 +27,7 @@ function init_file_upload() {
                     btn.innerHTML = '<i class="ti ti-cloud-upload me-1"></i> Upload';
                     if (data.success) {
                         uploadForm.reset();
-                        if (typeof loadPage === 'function') loadPage('file-upload');
+                        if (typeof loadPage === 'function') loadPage('file_upload');
                     }
                 })
                 .catch(function () {
@@ -55,7 +55,7 @@ function init_file_upload() {
         .then(function (r) { return r.json(); })
         .then(function (data) {
             showFlash(data.success ? 'success' : 'danger', data.message);
-            if (data.success && typeof loadPage === 'function') loadPage('file-upload');
+            if (data.success && typeof loadPage === 'function') loadPage('file_upload');
         })
         .catch(function () {
             showFlash('danger', 'Delete failed. Please try again.');
