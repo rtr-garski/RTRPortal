@@ -69,16 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.addEventListener("click", e => {
-    const link = e.target.closest(".side-nav-link[data-page]");
+    const link = e.target.closest(".nav-link[data-page]");
     if (!link) return;
 
     e.preventDefault();
-    e.stopPropagation();
     loadPage(link.dataset.page);
-  }, true);
+  });
 
   window.loadPage = loadPage;
   loadPage("dashboard");
 
 });
-
