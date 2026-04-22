@@ -1,6 +1,7 @@
 function init_file_upload() {
 
     var currentFileId = null;
+    var contentEl = document.getElementById('content');
 
     // ─── Flash helper ─────────────────────────────────────────────────────────
     function showFlash(type, msg) {
@@ -10,10 +11,24 @@ function init_file_upload() {
         el.innerHTML = msg + '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
     }
 
-    // Show any flash queued by a previous reload
     if (window._fileFlashPending) {
         showFlash(window._fileFlashPending.type, window._fileFlashPending.msg);
         window._fileFlashPending = null;
+    }
+
+    // ─── Reload helper (bypasses app.js entirely) ─────────────────────────────
+    function reloadPage(flashType, flashMsg) {
+        window._fileFlashPending = { type: flashType, msg: flashMsg };
+        fetch('pages/file_upload.php', { cache: 'no-store' })
+            .then(function (r) { return r.text(); })
+            .then(function (html) {
+                if (!html) return;
+                contentEl.innerHTML = html;
+                init_file_upload();
+            })
+            .catch(function () {
+                showFlash('danger', 'Could not reload file list. Please refresh.');
+            });
     }
 
     // ─── Upload ───────────────────────────────────────────────────────────────
@@ -31,8 +46,7 @@ function init_file_upload() {
                     btn.disabled = false;
                     btn.innerHTML = '<i class="ti ti-cloud-upload me-1"></i> Upload';
                     if (data.success) {
-                        window._fileFlashPending = { type: 'success', msg: data.message };
-                        document.dispatchEvent(new CustomEvent('spa:loadPage', { detail: 'file_upload' }));
+                        reloadPage('success', data.message);
                     } else {
                         showFlash('danger', data.message);
                     }
@@ -45,8 +59,11 @@ function init_file_upload() {
         });
     }
 
-    // ─── Delete ───────────────────────────────────────────────────────────────
-    document.addEventListener('click', function (e) {
+    // ─── Delete (named handler stored on contentEl to prevent accumulation) ───
+    if (contentEl._deleteHandler) {
+        contentEl.removeEventListener('click', contentEl._deleteHandler);
+    }
+    contentEl._deleteHandler = function (e) {
         var btn = e.target.closest('.delete-btn');
         if (!btn) return;
         if (!confirm('Delete this file from B2 permanently?')) return;
@@ -62,8 +79,7 @@ function init_file_upload() {
         .then(function (r) { return r.json(); })
         .then(function (data) {
             if (data.success) {
-                window._fileFlashPending = { type: 'success', msg: data.message };
-                document.dispatchEvent(new CustomEvent('spa:loadPage', { detail: 'file_upload' }));
+                reloadPage('success', data.message);
             } else {
                 showFlash('danger', data.message);
                 btn.disabled = false;
@@ -73,7 +89,8 @@ function init_file_upload() {
             showFlash('danger', 'Delete failed. Please try again.');
             btn.disabled = false;
         });
-    });
+    };
+    contentEl.addEventListener('click', contentEl._deleteHandler);
 
     // ─── Presign (Get Link) ───────────────────────────────────────────────────
     document.querySelectorAll('.get-link-btn').forEach(function (btn) {
@@ -134,8 +151,11 @@ function init_file_upload() {
         });
     }
 
-    // ─── Copy inline row ──────────────────────────────────────────────────────
-    document.addEventListener('click', function (e) {
+    // ─── Copy inline row (named handler to prevent accumulation) ─────────────
+    if (contentEl._copyHandler) {
+        contentEl.removeEventListener('click', contentEl._copyHandler);
+    }
+    contentEl._copyHandler = function (e) {
         var btn = e.target.closest('[class*="row-copy-btn-"]');
         if (!btn) return;
         var id    = btn.className.match(/row-copy-btn-(\d+)/)[1];
@@ -144,5 +164,6 @@ function init_file_upload() {
             btn.innerHTML = '<i class="ti ti-check me-1"></i> Copied!';
             setTimeout(function () { btn.innerHTML = '<i class="ti ti-copy me-1"></i> Copy'; }, 2000);
         });
-    });
+    };
+    contentEl.addEventListener('click', contentEl._copyHandler);
 }
