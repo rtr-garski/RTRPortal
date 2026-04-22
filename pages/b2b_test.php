@@ -4,15 +4,6 @@ if (empty($_SESSION['user_id'])) {
     http_response_code(401);
     exit;
 }
-require_once __DIR__ . '/../config/db.php';
-
-$testToken = '';
-try {
-    $row = $pdo->query(
-        "SELECT Token FROM API_Tokens WHERE active = 1 AND Timestamp_Expiration > NOW() ORDER BY RAND() LIMIT 1"
-    )->fetch();
-    if ($row) $testToken = $row['Token'];
-} catch (Throwable $e) {}
 ?>
 
 <div class="container-fluid">
@@ -40,7 +31,6 @@ try {
                         <div class="col-sm-6">
                             <label class="form-label">API Token <span class="text-danger">*</span></label>
                             <input type="text" id="b2b-token" class="form-control font-monospace"
-                                   value="<?= htmlspecialchars($testToken, ENT_QUOTES, 'UTF-8') ?>"
                                    placeholder="Paste an active API token">
                         </div>
                         <div class="col-sm-6">
