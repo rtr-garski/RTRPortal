@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const content = document.getElementById("content");
 
-  function loadPage(page) {
+  window.loadPage = function loadPage(page) {
     fetch(`pages/${page}.php`)
       .then(r => {
         if (r.status === 401) {
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.addEventListener("click", e => {
-    const link = e.target.closest(".nav-link[data-page]");
+    const link = e.target.closest(".side-nav-link[data-page]");
     if (!link) return;
 
     e.preventDefault();

@@ -133,7 +133,7 @@
                     </a>
                 </li>
                 <li class="side-nav-item">
-                    <a href="file_upload.php" class="side-nav-link">
+                    <a href="#" data-page="file_upload" class="side-nav-link">
                         <span class="menu-icon"><i class="ti ti-cloud-upload"></i></span>
                         <span class="menu-text">File Storage</span>
                     </a>
