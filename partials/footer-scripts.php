@@ -13,4 +13,6 @@
 <script src="js/api_portal_test.js?v=1"></script>
 <script src="js/order_entry.js?v=1"></script>
 <script src="js/order_details.js?v=1"></script>
+<script src="js/client_reports.js?v=1"></script>
+<script src="js/client_order_details.js?v=1"></script>
 <script src="../source/inspinia5/assets/js/pages/custom-table.js"></script>

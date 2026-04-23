@@ -1,0 +1,237 @@
+<?php
+require_once __DIR__ . '/../config/session.php';
+if (empty($_SESSION['user_id'])) {
+    http_response_code(401);
+    exit;
+}
+require_once __DIR__ . '/../config/db.php';
+
+$stmt = $pdo->query("
+    SELECT io.*,
+        (SELECT COUNT(*) FROM API_Input_Order_Locations iol
+         WHERE iol._kf_API_Input_Order_ID = io.__kp_API_Input_Order_ID) AS location_count
+    FROM API_Input_Orders io
+");
+$orders = $stmt->fetchAll();
+
+$clientIds = array_unique(array_filter(array_column($orders, '_kf_Client_ID')));
+$clientMap = [];
+if (!empty($clientIds)) {
+    $placeholders = implode(',', array_fill(0, count($clientIds), '?'));
+    $cStmt = $pdo2->prepare("SELECT client_sysid, client_name FROM sys_client WHERE client_sysid IN ($placeholders)");
+    $cStmt->execute(array_values($clientIds));
+    foreach ($cStmt->fetchAll() as $c) {
+        $clientMap[$c['client_sysid']] = trim($c['client_name']);
+    }
+}
+
+$statuses = [
+    ['label' => 'New Request',  'class' => 'badge-soft-secondary'],
+    ['label' => 'In Review',    'class' => 'badge-soft-info'],
+    ['label' => 'In Progress',  'class' => 'badge-soft-success'],
+    ['label' => 'Canceled',     'class' => 'badge-soft-danger'],
+    ['label' => 'Completed',    'class' => 'badge-soft-primary'],
+];
+
+$counts = ['New Request' => 0, 'In Review' => 0, 'In Progress' => 0, 'Canceled' => 0, 'Completed' => 0];
+
+foreach ($orders as &$row) {
+    $s = $statuses[array_rand($statuses)];
+    $row['_status'] = $s;
+    $counts[$s['label']]++;
+    $row['_client_name'] = $clientMap[$row['_kf_Client_ID']] ?? '—';
+}
+unset($row);
+
+$clientOptions = [];
+foreach ($orders as $o) {
+    if (!empty($o['_kf_Client_ID']) && !empty($o['_client_name']) && $o['_client_name'] !== '—') {
+        $clientOptions[$o['_kf_Client_ID']] = $o['_client_name'];
+    }
+}
+asort($clientOptions);
+?>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="#">Reports</a></li>
+                        <li class="breadcrumb-item active">Client Portal</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Client Portal</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-cols-xxl-5 row-cols-md-3 row-cols-1 align-items-center g-1">
+        <div class="col">
+            <div class="card mb-1">
+                <div class="card-body">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <div class="avatar-md flex-shrink-0">
+                            <span class="avatar-title text-bg-secondary rounded-circle fs-22">
+                                <i class="ti ti-file-plus"></i>
+                            </span>
+                        </div>
+                        <h3 class="mb-0"><?= $counts['New Request'] ?></h3>
+                    </div>
+                    <p class="mb-0">New Request</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card mb-1">
+                <div class="card-body">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <div class="avatar-md flex-shrink-0">
+                            <span class="avatar-title text-bg-info rounded-circle fs-22">
+                                <i class="ti ti-eye"></i>
+                            </span>
+                        </div>
+                        <h3 class="mb-0"><?= $counts['In Review'] ?></h3>
+                    </div>
+                    <p class="mb-0">In Review</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card mb-1">
+                <div class="card-body">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <div class="avatar-md flex-shrink-0">
+                            <span class="avatar-title text-bg-success rounded-circle fs-22">
+                                <i class="ti ti-alarm-snooze"></i>
+                            </span>
+                        </div>
+                        <h3 class="mb-0"><?= $counts['In Progress'] ?></h3>
+                    </div>
+                    <p class="mb-0">In Progress</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card mb-1">
+                <div class="card-body">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <div class="avatar-md flex-shrink-0">
+                            <span class="avatar-title text-bg-danger rounded-circle fs-22">
+                                <i class="ti ti-x"></i>
+                            </span>
+                        </div>
+                        <h3 class="mb-0"><?= $counts['Canceled'] ?></h3>
+                    </div>
+                    <p class="mb-0">Canceled</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card mb-1">
+                <div class="card-body">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <div class="avatar-md flex-shrink-0">
+                            <span class="avatar-title text-bg-primary rounded-circle fs-22">
+                                <i class="ti ti-check"></i>
+                            </span>
+                        </div>
+                        <h3 class="mb-0"><?= $counts['Completed'] ?></h3>
+                    </div>
+                    <p class="mb-0">Completed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+
+    <div class="row">
+        <div class="col-12">
+            <div data-table data-table-rows-per-page="10" class="card">
+                <div class="card-header border-light justify-content-between">
+                    <div class="d-flex gap-2">
+                        <div class="app-search">
+                            <input data-table-search type="search" class="form-control" placeholder="Search order..." />
+                            <i class="ti ti-search app-search-icon text-muted"></i>
+                        </div>
+                        <button data-table-delete-selected class="btn btn-danger d-none">Delete</button>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="me-2 fw-semibold">Filter By:</span>
+                        <div class="app-search">
+                            <select data-table-filter="client" class="form-select form-control my-1 my-md-0">
+                                <option value="All">All Clients</option>
+                                <?php foreach ($clientOptions as $clientId => $clientName): ?>
+                                <option value="<?= htmlspecialchars($clientName) ?>"><?= htmlspecialchars($clientName) ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <i class="ti ti-truck app-search-icon text-muted"></i>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-1">
+                        <a href="#" class="btn btn-primary ms-1"> <i class="ti ti-plus fs-sm me-2"></i> Add Order </a>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-custom table-centered table-select table-hover w-100 mb-0" id="api-orders">
+                        <thead class="bg-light align-middle bg-opacity-25 thead-sm">
+                            <tr class="text-uppercase fs-xxs">
+                                <th class="ps-3" style="width: 1%">
+                                    <input data-table-select-all class="form-check-input form-check-input-light fs-14 mt-0" type="checkbox" value="option" />
+                                </th>
+                                <th data-table-sort="orderid">Order ID</th>
+                                <th data-table-sort data-column="date">Order Date</th>
+                                <th>Patient Name</th>
+                                <th data-table-sort data-column="client">Requester</th>
+                                <th data-table-sort="locationcount">Location(s)</th>
+                                <th>Service</th>
+                                <th data-table-sort data-column="status">Status</th>
+                                <th class="text-center" style="width: 1%">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($orders as $row): ?>
+                            <tr>
+                                <td class="ps-3">
+                                    <input class="form-check-input form-check-input-light fs-14 product-item-check mt-0" type="checkbox" value="option" />
+                                </td>
+                                <td><h5 class="fs-sm mb-0 fw-medium"><a href="#" class="link-reset client-order-detail-link" data-order-id="<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?>">#<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?></a></h5></td>
+                                <td><?= htmlspecialchars(date('Y-m-d', strtotime($row['API_Input_Timestamp']))) ?></td>
+                                <td><?= htmlspecialchars($row['Pat_Name']) ?></td>
+                                <td><?= htmlspecialchars($row['_client_name']) ?></td>
+                                <td><?= (int)$row['location_count'] ?> Location(s)</td>
+                                <td><?= htmlspecialchars($row['_kf_Service_Type_ID_Str']) ?></td>
+                                <td><span class="badge <?= $row['_status']['class'] ?> fs-xxs badge-label"><?= $row['_status']['label'] ?></span></td>
+                                <td>
+                                    <div class="d-flex justify-content-center gap-1">
+                                        <a href="#" class="btn btn-light btn-icon btn-sm rounded-circle client-order-detail-link" data-order-id="<?= htmlspecialchars($row['__kp_API_Input_Order_ID']) ?>"><i class="ti ti-eye fs-lg"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer border-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div data-table-pagination-info="orders"></div>
+                        <div data-table-pagination></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->
+
+</div>
+<!-- container -->

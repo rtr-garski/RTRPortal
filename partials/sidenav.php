@@ -79,20 +79,10 @@
                 </li>
 
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables" class="side-nav-link">
-                        <span class="menu-icon"><i class="ti ti-table-column"></i></span>
-                        <span class="menu-text" data-lang="">Reports</span>
-                        <span class="menu-arrow"></span>
+                    <a href="#" data-page="client_reports" class="side-nav-link nav-link">
+                        <span class="menu-icon"><i class="ti ti-users"></i></span>
+                        <span class="menu-text">Client Portal</span>
                     </a>
-                    <div class="collapse" id="tables">
-                        <ul class="sub-menu">
-                            <li class="side-nav-item">
-                                <a href="client_reports.php" class="side-nav-link">
-                                    <span class="menu-text">Client Portal</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
 
                 <li class="side-nav-item">
