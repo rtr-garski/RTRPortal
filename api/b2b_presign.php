@@ -56,7 +56,7 @@ if ($order_id === '') {
 }
 
 $order_id = preg_replace('/[^a-zA-Z0-9_-]/', '_', $order_id);
-$filename = preg_replace('/[^a-zA-Z0-9._-]/', '_', $filename) ?: 'file.bin';
+$filename = preg_replace('/[^a-zA-Z0-9._-]/', '_', $filename) ?: (bin2hex(random_bytes(8)) . '.bin');
 
 // --- Build B2 path ---
 $folder     = $order_id;

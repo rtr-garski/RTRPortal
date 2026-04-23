@@ -37,9 +37,9 @@ if (empty($_SESSION['user_id'])) {
                             <label class="form-label">Order ID <span class="text-danger">*</span></label>
                             <input type="text" id="b2b-order-id" class="form-control" placeholder="e.g. ORD123">
                         </div>
-                        <div class="col-12">
-                            <label class="form-label">File <span class="text-danger">*</span></label>
-                            <input type="file" id="b2b-file" class="form-control">
+                        <div class="col-sm-6">
+                            <label class="form-label">Filename <span class="text-muted fw-normal">(optional — auto-generated if blank)</span></label>
+                            <input type="text" id="b2b-filename" class="form-control font-monospace" placeholder="e.g. photo.jpg">
                         </div>
                     </div>
 
@@ -101,6 +101,10 @@ if (empty($_SESSION['user_id'])) {
                         <label class="form-label">Presigned URL <span class="text-danger">*</span></label>
                         <input type="text" id="b2b-presigned-url" class="form-control font-monospace"
                                placeholder="Generate above or paste a presigned URL manually">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">File <span class="text-danger">*</span></label>
+                        <input type="file" id="b2b-file" class="form-control">
                     </div>
 
                     <button id="b2b-upload-btn" class="btn btn-success w-100">

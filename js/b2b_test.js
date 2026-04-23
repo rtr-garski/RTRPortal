@@ -51,22 +51,21 @@ function init_b2b_test() {
         if (e.target.closest('#b2b-gen-btn')) {
             const token    = document.getElementById('b2b-token').value.trim();
             const orderId  = document.getElementById('b2b-order-id').value.trim();
-            const fileEl   = document.getElementById('b2b-file');
-            const filename = fileEl.files[0] ? fileEl.files[0].name : '';
+            const filename = document.getElementById('b2b-filename').value.trim();
             const genBtn   = document.getElementById('b2b-gen-btn');
 
             genFlash.innerHTML = '';
             genResult.classList.add('d-none');
 
-            if (!token)    return showFlash(genFlash, 'warning', 'API Token is required.');
-            if (!orderId)  return showFlash(genFlash, 'warning', 'Order ID is required.');
-            if (!filename) return showFlash(genFlash, 'warning', 'Please select a file first.');
+            if (!token)   return showFlash(genFlash, 'warning', 'API Token is required.');
+            if (!orderId) return showFlash(genFlash, 'warning', 'Order ID is required.');
 
             genBtn.disabled = true;
             genBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Generating…';
 
             try {
-                const body = new URLSearchParams({ token, order_id: orderId, filename });
+                const body = new URLSearchParams({ token, order_id: orderId });
+                if (filename) body.append('filename', filename);
 
                 const r    = await fetch('api/b2b_presign.php', { method: 'POST', body });
                 const info = await r.json();

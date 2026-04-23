@@ -9,5 +9,5 @@
 <script src="js/file_upload.js?v=7"></script>
 <script src="js/api_token_management.js?v=7"></script>
 <script src="js/webhook_management.js?v=7"></script>
-<script src="js/b2b_test.js?v=15"></script>
+<script src="js/b2b_test.js?v=16"></script>
 <script src="js/api_portal_test.js?v=1"></script>
