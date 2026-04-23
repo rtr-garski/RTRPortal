@@ -37,6 +37,10 @@ if (empty($_SESSION['user_id'])) {
                             <label class="form-label">Order ID <span class="text-danger">*</span></label>
                             <input type="text" id="b2b-order-id" class="form-control" placeholder="e.g. ORD123">
                         </div>
+                        <div class="col-12">
+                            <label class="form-label">File <span class="text-danger">*</span></label>
+                            <input type="file" id="b2b-file" class="form-control">
+                        </div>
                     </div>
 
                     <button id="b2b-gen-btn" class="btn btn-primary">
@@ -98,10 +102,6 @@ if (empty($_SESSION['user_id'])) {
                         <input type="text" id="b2b-presigned-url" class="form-control font-monospace"
                                placeholder="Generate above or paste a presigned URL manually">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">File <span class="text-danger">*</span></label>
-                        <input type="file" id="b2b-file" class="form-control">
-                    </div>
 
                     <button id="b2b-upload-btn" class="btn btn-success w-100">
                         <i class="ti ti-cloud-upload me-1"></i> Upload to B2
@@ -137,9 +137,12 @@ if (empty($_SESSION['user_id'])) {
                             <tr><th>Presigned URL</th><td><a id="res-presigned" href="#" target="_blank" class="text-truncate d-block" style="max-width:400px">View</a></td></tr>
                         </tbody>
                     </table>
-                    <div class="mt-3">
-                        <a id="res-download" href="#" target="_blank" class="btn btn-outline-primary">
-                            <i class="ti ti-download me-1"></i> Download File
+                    <div class="mt-3 d-flex gap-2">
+                        <a id="res-download-public" href="#" target="_blank" class="btn btn-outline-secondary">
+                            <i class="ti ti-world me-1"></i> Public Download
+                        </a>
+                        <a id="res-download-secure" href="#" target="_blank" class="btn btn-outline-primary">
+                            <i class="ti ti-lock me-1"></i> Secure Download <small class="ms-1 opacity-75">(1hr)</small>
                         </a>
                     </div>
                 </div>

@@ -58,15 +58,15 @@ function init_b2b_test() {
             genFlash.innerHTML = '';
             genResult.classList.add('d-none');
 
-            if (!token)   return showFlash(genFlash, 'warning', 'API Token is required.');
-            if (!orderId) return showFlash(genFlash, 'warning', 'Order ID is required.');
+            if (!token)    return showFlash(genFlash, 'warning', 'API Token is required.');
+            if (!orderId)  return showFlash(genFlash, 'warning', 'Order ID is required.');
+            if (!filename) return showFlash(genFlash, 'warning', 'Please select a file first.');
 
             genBtn.disabled = true;
             genBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Generating…';
 
             try {
-                const body = new URLSearchParams({ token, order_id: orderId });
-                if (filename) body.append('filename', filename);
+                const body = new URLSearchParams({ token, order_id: orderId, filename });
 
                 const r    = await fetch('api/b2b_presign.php', { method: 'POST', body });
                 const info = await r.json();
@@ -178,7 +178,15 @@ function init_b2b_test() {
                 document.getElementById('res-b2path').textContent   = folder !== '—' ? folder + '/' + file.name : '—';
                 document.getElementById('res-file-id').textContent  = b2res.fileId;
                 document.getElementById('res-etag').textContent     = b2res.etag;
-                document.getElementById('res-download').href        = 'https://f004.backblazeb2.com/file/RTR-ClientUpload/' + folder + '/' + file.name;
+
+                const b2Path = folder + '/' + file.name;
+                document.getElementById('res-download-public').href = 'https://f004.backblazeb2.com/file/RTR-ClientUpload/' + b2Path;
+
+                fetch('api/b2b_download.php?path=' + encodeURIComponent(b2Path))
+                    .then(r => r.json())
+                    .then(d => {
+                        if (d.success) document.getElementById('res-download-secure').href = d.url;
+                    });
                 const link = document.getElementById('res-presigned');
                 link.href        = resultCard.dataset.url || presignedUrl;
                 link.textContent = resultCard.dataset.url || presignedUrl;
