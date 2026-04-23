@@ -132,7 +132,6 @@ function init_b2b_test() {
             await new Promise((resolve, reject) => {
                 const xhr = new XMLHttpRequest();
                 xhr.open('PUT', presignedUrl);
-                xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream');
 
                 xhr.upload.onprogress = function (ev) {
                     if (ev.lengthComputable) {
