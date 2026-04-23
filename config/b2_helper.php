@@ -130,10 +130,11 @@ class BackblazeB2 {
             throw new RuntimeException('B2 presign failed: ' . ($resp['message'] ?? 'unknown'));
         }
 
+        $encodedPath = implode('/', array_map('rawurlencode', explode('/', $this->bucketName . '/' . $b2FileName)));
+
         return $this->downloadUrl
-            . '/file/' . rawurlencode($this->bucketName)
-            . '/' . rawurlencode($b2FileName)
-            . '?Authorization=' . urlencode($resp['authorizationToken']);
+            . '/file/' . $encodedPath
+            . '?Authorization=' . rawurlencode($resp['authorizationToken']);
     }
 
     // Returns uploadUrl + authorizationToken so an external client can upload directly
