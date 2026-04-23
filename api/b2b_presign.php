@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 /**
  * Public API endpoint — no PHP session required.
  * Same as b2_presign.php but uses the second B2 bucket (B2B_* credentials).
@@ -41,7 +39,7 @@ if ($token === '') {
 }
 
 $stmt = $pdo->prepare(
-    "SELECT id FROM API_Tokens WHERE Token = ? AND Timestamp_Expiration > NOW()"
+    "SELECT 1 FROM API_Tokens WHERE Token = ? AND Timestamp_Expiration > NOW()"
 );
 $stmt->execute([$token]);
 if (!$stmt->fetch()) {
