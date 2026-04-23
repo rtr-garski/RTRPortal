@@ -75,8 +75,6 @@ function init_b2b_test() {
                     showFlash(genFlash, 'danger', info.message || 'Failed to generate presigned URL.');
                 } else {
                     document.getElementById('gen-folder').textContent    = info.folder;
-                    document.getElementById('gen-filename').textContent  = info.filename;
-                    document.getElementById('gen-b2path').textContent    = info.b2_file_name;
                     document.getElementById('gen-url-display').value     = info.presigned_url;
                     document.getElementById('gen-expires').textContent   = info.expires_in;
                     genResult.classList.remove('d-none');
@@ -174,9 +172,10 @@ function init_b2b_test() {
                 setProgress(100, 'Done!');
                 progressBar.classList.remove('progress-bar-animated');
 
-                document.getElementById('res-folder').textContent   = resultCard.dataset.folder   || '—';
-                document.getElementById('res-filename').textContent = resultCard.dataset.filename || file.name;
-                document.getElementById('res-b2path').textContent   = resultCard.dataset.b2path   || '—';
+                const folder = resultCard.dataset.folder || '—';
+                document.getElementById('res-folder').textContent   = folder;
+                document.getElementById('res-filename').textContent = file.name;
+                document.getElementById('res-b2path').textContent   = folder !== '—' ? folder + '/' + file.name : '—';
                 document.getElementById('res-file-id').textContent  = b2res.fileId;
                 document.getElementById('res-etag').textContent     = b2res.etag;
                 const link = document.getElementById('res-presigned');

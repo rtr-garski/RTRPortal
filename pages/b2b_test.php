@@ -53,8 +53,6 @@ if (empty($_SESSION['user_id'])) {
                         <table class="table table-sm table-borderless mb-0" style="font-size:.82rem">
                             <tbody>
                                 <tr><th style="width:110px">Folder</th><td id="gen-folder" class="font-monospace text-break"></td></tr>
-                                <tr><th>Filename</th><td id="gen-filename" class="font-monospace text-break"></td></tr>
-                                <tr><th>B2 Path</th><td id="gen-b2path" class="font-monospace text-break"></td></tr>
                                 <tr>
                                     <th>Presigned URL</th>
                                     <td>
