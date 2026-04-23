@@ -29,7 +29,7 @@ if (empty($_SESSION['user_id'])) {
 
                     <div class="row g-3 mb-3">
                         <div class="col-sm-6">
-                            <label class="form-label">API Token <span class="text-danger">*</span></label>
+                            <label class="form-label">API Token<span class="text-danger">*</span></label>
                             <input type="text" id="b2b-token" class="form-control font-monospace"
                                    placeholder="Paste an active API token">
                         </div>
@@ -43,7 +43,7 @@ if (empty($_SESSION['user_id'])) {
                         </div>
                         <div class="col-sm-6">
                             <label class="form-label">Extension <span class="text-muted fw-normal">(optional)</span></label>
-                            <input type="text" id="b2b-extension" class="form-control" placeholder="e.g. pdf, jpg (default: bin)">
+                            <input type="text" id="b2b-extension" class="form-control" placeholder="e.g. pdf, jpg (default: pdf)">
                         </div>
                     </div>
 
