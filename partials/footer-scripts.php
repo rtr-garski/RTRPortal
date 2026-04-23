@@ -11,3 +11,6 @@
 <script src="js/webhook_management.js?v=7"></script>
 <script src="js/b2b_test.js?v=17"></script>
 <script src="js/api_portal_test.js?v=1"></script>
+<script src="js/order_entry.js?v=1"></script>
+<script src="js/order_details.js?v=1"></script>
+<script src="../source/inspinia5/assets/js/pages/custom-table.js"></script>

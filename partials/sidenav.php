@@ -68,34 +68,15 @@
                         <span class="menu-text">API Portal</span>
                     </a>
                 </li>
-                <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#dashboards" aria-expanded="false" aria-controls="dashboards" class="side-nav-link">
-                        <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
-                        <span class="menu-text" data-lang="dashboards">Dashboards</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="dashboards">
-                        <ul class="sub-menu">
-                            <li class="side-nav-item">
-                                <a href="javascript:void(0);" class="side-nav-link">
-                                    <span class="menu-text" data-lang="dashboard-ecommerce">Ecommerce</span>
-                                </a>
-                            </li>
-                            <li class="side-nav-item">
-                                <a href="javascript:void(0);" class="side-nav-link">
-                                    <span class="menu-text" data-lang="dashboard-analytics">Analytics</span>
-                                </a>
-                            </li>
-                            <li class="side-nav-item">
-                                <a href="javascript:void(0);" class="side-nav-link">
-                                    <span class="menu-text" data-lang="dashboard-projects">Projects</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
                 
                 <li class="side-nav-title mt-2" data-lang="apps">RecordHost Portal</li>
+
+                <li class="side-nav-item">
+                    <a href="#" data-page="order_entry" class="side-nav-link nav-link">
+                        <span class="menu-icon"><i class="ti ti-clipboard-list"></i></span>
+                        <span class="menu-text">Order Entry Portal</span>
+                    </a>
+                </li>
 
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables" class="side-nav-link">
@@ -106,16 +87,10 @@
                     <div class="collapse" id="tables">
                         <ul class="sub-menu">
                             <li class="side-nav-item">
-                                <a href="reports.php" class="side-nav-link">
-                                    <span class="menu-text">Order Entry Portal</span>
-                                </a>
-                            </li>
-                            <li class="side-nav-item">
                                 <a href="client_reports.php" class="side-nav-link">
                                     <span class="menu-text">Client Portal</span>
                                 </a>
                             </li>
-                           
                         </ul>
                     </div>
                 </li>
@@ -145,25 +120,7 @@
                     </a>
                 </li>
 
-                <li class="side-nav-title mt-2" data-lang="apps">Old Webprogram</li>
-
-                <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#archive" aria-expanded="false" aria-controls="archive" class="side-nav-link">
-                        <span class="menu-icon"><i class="ti ti-archive"></i></span>
-                        <span class="menu-text" data-lang="archive">Archive</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="archive">
-                        <ul class="sub-menu">
-                            <li class="side-nav-item">
-                                <a href="api_token_management0421.php" class="side-nav-link">
-                                    <span class="menu-icon"><i class="ti ti-key"></i></span>
-                                    <span class="menu-text">API Tokens_Old</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                
 
             </ul>
         </div>
