@@ -171,17 +171,18 @@ function init_b2b_test() {
                 setProgress(100, 'Done!');
                 progressBar.classList.remove('progress-bar-animated');
 
-                const folder = resultCard.dataset.folder || '—';
+                const folder  = resultCard.dataset.folder   || '—';
+                const b2Path  = resultCard.dataset.b2path   || '';
+                const b2File  = resultCard.dataset.filename || file.name;
                 document.getElementById('res-folder').textContent   = folder;
-                document.getElementById('res-filename').textContent = file.name;
-                document.getElementById('res-b2path').textContent   = folder !== '—' ? folder + '/' + file.name : '—';
+                document.getElementById('res-filename').textContent = b2File;
+                document.getElementById('res-b2path').textContent   = b2Path || '—';
                 document.getElementById('res-file-id').textContent  = b2res.fileId;
                 document.getElementById('res-etag').textContent     = b2res.etag;
 
-                const b2Path = folder + '/' + file.name;
                 document.getElementById('res-download-public').href = 'https://f004.backblazeb2.com/file/RTR-ClientUpload/' + b2Path;
 
-                fetch('api/b2b_download.php?path=' + encodeURIComponent(b2Path))
+                fetch('api/b2b_download.php?path=' + encodeURIComponent(b2Path || folder + '/' + file.name))
                     .then(r => r.json())
                     .then(d => {
                         if (d.success) document.getElementById('res-download-secure').href = d.url;
