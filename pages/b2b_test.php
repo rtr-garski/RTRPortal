@@ -39,7 +39,7 @@ if (empty($_SESSION['user_id'])) {
                         </div>
                         <div class="col-sm-6">
                             <label class="form-label">Filename <span class="text-muted fw-normal">(optional — auto-generated if blank)</span></label>
-                            <input type="text" id="b2b-filename" class="form-control font-monospace" placeholder="e.g. photo.jpg">
+                            <input type="text" id="b2b-filename" class="form-control font-monospace" placeholder="e.g. garry.pdf">
                         </div>
                     </div>
 
