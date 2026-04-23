@@ -178,6 +178,7 @@ function init_b2b_test() {
                 document.getElementById('res-b2path').textContent   = folder !== '—' ? folder + '/' + file.name : '—';
                 document.getElementById('res-file-id').textContent  = b2res.fileId;
                 document.getElementById('res-etag').textContent     = b2res.etag;
+                document.getElementById('res-download').href        = 'https://f004.backblazeb2.com/file/RTR-ClientUpload/' + folder + '/' + file.name;
                 const link = document.getElementById('res-presigned');
                 link.href        = resultCard.dataset.url || presignedUrl;
                 link.textContent = resultCard.dataset.url || presignedUrl;

@@ -137,6 +137,11 @@ if (empty($_SESSION['user_id'])) {
                             <tr><th>Presigned URL</th><td><a id="res-presigned" href="#" target="_blank" class="text-truncate d-block" style="max-width:400px">View</a></td></tr>
                         </tbody>
                     </table>
+                    <div class="mt-3">
+                        <a id="res-download" href="#" target="_blank" class="btn btn-outline-primary">
+                            <i class="ti ti-download me-1"></i> Download File
+                        </a>
+                    </div>
                 </div>
             </div>
 
