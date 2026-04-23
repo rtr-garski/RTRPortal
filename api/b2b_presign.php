@@ -81,9 +81,9 @@ $expiresIn  = 3600;
 try {
     $b2  = new BackblazeB2(B2B_KEY_ID, B2B_APP_KEY, B2B_BUCKET_ID, B2B_BUCKET_NAME);
     $url = $b2->generatePresignedUploadUrl($b2FileName, $expiresIn);
-} catch (Exception $e) {
+} catch (Throwable $e) {
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'B2 error: ' . $e->getMessage()]);
+    echo json_encode(['success' => false, 'message' => 'B2 error: ' . $e->getMessage() . ' (' . get_class($e) . ' in ' . basename($e->getFile()) . ':' . $e->getLine() . ')']);
     exit;
 }
 
