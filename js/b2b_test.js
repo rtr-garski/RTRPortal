@@ -49,11 +49,11 @@ function init_b2b_test() {
 
         // ── Step 1: Generate Presigned URL ──────────────────────────────
         if (e.target.closest('#b2b-gen-btn')) {
-            const token     = document.getElementById('b2b-token').value.trim();
-            const orderId   = document.getElementById('b2b-order-id').value.trim();
-            const uuid      = document.getElementById('b2b-uuid').value.trim();
-            const extension = document.getElementById('b2b-extension').value.trim();
-            const genBtn    = document.getElementById('b2b-gen-btn');
+            const token    = document.getElementById('b2b-token').value.trim();
+            const orderId  = document.getElementById('b2b-order-id').value.trim();
+            const fileEl   = document.getElementById('b2b-file');
+            const filename = fileEl.files[0] ? fileEl.files[0].name : '';
+            const genBtn   = document.getElementById('b2b-gen-btn');
 
             genFlash.innerHTML = '';
             genResult.classList.add('d-none');
@@ -66,8 +66,7 @@ function init_b2b_test() {
 
             try {
                 const body = new URLSearchParams({ token, order_id: orderId });
-                if (uuid)      body.append('uuid',      uuid);
-                if (extension) body.append('extension', extension);
+                if (filename) body.append('filename', filename);
 
                 const r    = await fetch('api/b2b_presign.php', { method: 'POST', body });
                 const info = await r.json();
@@ -85,6 +84,13 @@ function init_b2b_test() {
                     // Populate Step 2
                     document.getElementById('b2b-presigned-url').value = info.presigned_url;
 
+                    // Populate cURL card
+                    const curlCmd = 'curl -X PUT "' + info.presigned_url + '" \\\n' +
+                                    '  -H "Content-Type: application/octet-stream" \\\n' +
+                                    '  --data-binary @/path/to/your/file';
+                    document.getElementById('b2b-curl-cmd').textContent = curlCmd;
+                    document.getElementById('b2b-curl-card').classList.remove('d-none');
+
                     // Store info on result card for after upload
                     resultCard.dataset.folder   = info.folder;
                     resultCard.dataset.filename = info.filename;
@@ -97,6 +103,17 @@ function init_b2b_test() {
 
             genBtn.disabled = false;
             genBtn.innerHTML = '<i class="ti ti-link me-1"></i> Generate Presigned URL';
+            return;
+        }
+
+        // ── Copy cURL command ───────────────────────────────────────────
+        if (e.target.closest('#b2b-copy-curl')) {
+            const cmd = document.getElementById('b2b-curl-cmd').textContent;
+            navigator.clipboard.writeText(cmd).then(() => {
+                const btn = document.getElementById('b2b-copy-curl');
+                btn.textContent = 'Copied!';
+                setTimeout(() => { btn.textContent = 'Copy'; }, 1500);
+            });
             return;
         }
 
@@ -141,19 +158,27 @@ function init_b2b_test() {
                 };
 
                 xhr.onload = function () {
-                    if (xhr.status >= 200 && xhr.status < 300) resolve();
-                    else reject(new Error('B2 returned HTTP ' + xhr.status + ': ' + xhr.responseText));
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resolve({
+                            fileId: xhr.getResponseHeader('x-amz-version-id') || '—',
+                            etag:   (xhr.getResponseHeader('ETag') || '—').replace(/"/g, '')
+                        });
+                    } else {
+                        reject(new Error('B2 returned HTTP ' + xhr.status + ': ' + xhr.responseText));
+                    }
                 };
 
                 xhr.onerror = () => reject(new Error('Network error during upload.'));
                 xhr.send(file);
-            }).then(() => {
+            }).then((b2res) => {
                 setProgress(100, 'Done!');
                 progressBar.classList.remove('progress-bar-animated');
 
                 document.getElementById('res-folder').textContent   = resultCard.dataset.folder   || '—';
                 document.getElementById('res-filename').textContent = resultCard.dataset.filename || file.name;
                 document.getElementById('res-b2path').textContent   = resultCard.dataset.b2path   || '—';
+                document.getElementById('res-file-id').textContent  = b2res.fileId;
+                document.getElementById('res-etag').textContent     = b2res.etag;
                 const link = document.getElementById('res-presigned');
                 link.href        = resultCard.dataset.url || presignedUrl;
                 link.textContent = resultCard.dataset.url || presignedUrl;

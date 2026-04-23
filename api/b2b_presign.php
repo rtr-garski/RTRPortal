@@ -29,7 +29,7 @@ $p = array_merge($_GET, $_POST);
 $token     = trim($p['token']     ?? '');
 $order_id  = trim($p['order_id']  ?? '');
 $uuid      = trim($p['uuid']      ?? '');
-$extension = trim($p['extension'] ?? 'bin');
+$filename  = trim($p['filename']  ?? '');
 
 // --- Auth ---
 if ($token === '') {
@@ -55,25 +55,11 @@ if ($order_id === '') {
     exit;
 }
 
-$order_id  = preg_replace('/[^a-zA-Z0-9_-]/', '_', $order_id);
-$extension = preg_replace('/[^a-zA-Z0-9]/', '', $extension) ?: 'bin';
-
-if ($uuid === '') {
-    $uuid = sprintf(
-        '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-        mt_rand(0, 0xffff), mt_rand(0, 0xffff),
-        mt_rand(0, 0xffff),
-        mt_rand(0, 0x0fff) | 0x4000,
-        mt_rand(0, 0x3fff) | 0x8000,
-        mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
-    );
-}
-$uuid_safe = preg_replace('/[^a-zA-Z0-9_-]/', '_', $uuid);
+$order_id = preg_replace('/[^a-zA-Z0-9_-]/', '_', $order_id);
+$filename = preg_replace('/[^a-zA-Z0-9._-]/', '_', $filename) ?: 'file.bin';
 
 // --- Build B2 path ---
-$folder     = $order_id . '_' . $uuid_safe;
-$datetime   = date('Ymd_His');
-$filename   = $order_id . '_' . $uuid_safe . '_' . $datetime . '.' . $extension;
+$folder     = $order_id;
 $b2FileName = $folder . '/' . $filename;
 $expiresIn  = 3600;
 

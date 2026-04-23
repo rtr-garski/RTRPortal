@@ -37,14 +37,6 @@ if (empty($_SESSION['user_id'])) {
                             <label class="form-label">Order ID <span class="text-danger">*</span></label>
                             <input type="text" id="b2b-order-id" class="form-control" placeholder="e.g. ORD123">
                         </div>
-                        <div class="col-sm-6">
-                            <label class="form-label">UUID <span class="text-muted fw-normal">(optional)</span></label>
-                            <input type="text" id="b2b-uuid" class="form-control font-monospace" placeholder="Auto-generated if blank">
-                        </div>
-                        <div class="col-sm-6">
-                            <label class="form-label">Extension <span class="text-muted fw-normal">(optional)</span></label>
-                            <input type="text" id="b2b-extension" class="form-control" placeholder="e.g. pdf, jpg (default: pdf)">
-                        </div>
                     </div>
 
                     <button id="b2b-gen-btn" class="btn btn-primary">
@@ -77,6 +69,20 @@ if (empty($_SESSION['user_id'])) {
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+
+            <!-- cURL Test Card — shown after presigned URL is generated -->
+            <div id="b2b-curl-card" class="card d-none">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-dark">cURL</span>
+                        <h5 class="card-title mb-0">Test via Terminal</h5>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary" id="b2b-copy-curl" type="button">Copy</button>
+                </div>
+                <div class="card-body p-0">
+                    <pre id="b2b-curl-cmd" class="mb-0 p-3" style="font-size:.78rem;white-space:pre-wrap;word-break:break-all;background:#1a1e2e;color:#c3e88d;border-radius:0 0 .375rem .375rem"></pre>
                 </div>
             </div>
 
@@ -128,6 +134,8 @@ if (empty($_SESSION['user_id'])) {
                             <tr><th>Folder</th><td id="res-folder" class="font-monospace"></td></tr>
                             <tr><th>Filename</th><td id="res-filename" class="font-monospace"></td></tr>
                             <tr><th>B2 Path</th><td id="res-b2path" class="font-monospace text-break"></td></tr>
+                            <tr><th>File ID</th><td id="res-file-id" class="font-monospace text-break"></td></tr>
+                            <tr><th>ETag (MD5)</th><td id="res-etag" class="font-monospace"></td></tr>
                             <tr><th>Presigned URL</th><td><a id="res-presigned" href="#" target="_blank" class="text-truncate d-block" style="max-width:400px">View</a></td></tr>
                         </tbody>
                     </table>
