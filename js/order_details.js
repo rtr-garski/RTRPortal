@@ -108,25 +108,19 @@ function init_order_details() {
         var apiRhModal = new bootstrap.Modal(apiRhModalEl);
 
         apiRhBtn.addEventListener('click', function () {
-            apiRhModalEl.querySelector('#apiRhResponsePlaceholder').style.display = '';
-            apiRhModalEl.querySelector('#apiRhResponseBody').style.display = 'none';
-            apiRhModalEl.querySelector('#apiRhResponseMeta').style.display = 'none';
+            apiRhModalEl.querySelector('#apiRhResponseWrap').style.display = 'none';
             apiRhModal.show();
         });
 
         apiRhSendBtn.addEventListener('click', function () {
             var sendBtn     = this;
-            var placeholder = apiRhModalEl.querySelector('#apiRhResponsePlaceholder');
+            var respWrap    = apiRhModalEl.querySelector('#apiRhResponseWrap');
             var respBody    = apiRhModalEl.querySelector('#apiRhResponseBody');
-            var respMeta    = apiRhModalEl.querySelector('#apiRhResponseMeta');
             var statusBadge = apiRhModalEl.querySelector('#apiRhStatusBadge');
             var elapsedEl   = apiRhModalEl.querySelector('#apiRhElapsed');
 
             sendBtn.disabled = true;
             sendBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Sending&hellip;';
-            placeholder.style.display = '';
-            respBody.style.display = 'none';
-            respMeta.style.display = 'none';
 
             var body = new FormData();
             body.append('method',     apiRhModalEl.querySelector('#apiRhMethod').value);
@@ -139,14 +133,16 @@ function init_order_details() {
                 .then(function (r) { return r.json(); })
                 .then(function (data) {
                     sendBtn.disabled = false;
-                    sendBtn.innerHTML = '<i class="ti ti-player-play me-1"></i>Send';
-                    placeholder.style.display = 'none';
+                    sendBtn.innerHTML = '<i class="ti ti-api me-1"></i> Send to API-RH';
+                    respWrap.style.display = '';
 
                     if (!data.success) {
+                        statusBadge.className = 'badge bg-danger';
+                        statusBadge.textContent = 'Error';
+                        elapsedEl.textContent = '';
                         respBody.style.color = '#dc3545';
                         respBody.style.borderColor = '#dc3545';
                         respBody.textContent = data.message;
-                        respBody.style.display = '';
                         return;
                     }
 
@@ -154,20 +150,18 @@ function init_order_details() {
                     statusBadge.className = 'badge ' + (ok ? 'bg-success' : 'bg-danger');
                     statusBadge.textContent = data.status;
                     elapsedEl.textContent = data.elapsed + ' ms';
-                    respMeta.style.display = '';
-
                     respBody.style.color = ok ? '#198754' : '#dc3545';
                     respBody.style.borderColor = ok ? '#198754' : '#dc3545';
                     respBody.textContent = data.body;
-                    respBody.style.display = '';
                 })
                 .catch(function (err) {
                     sendBtn.disabled = false;
-                    sendBtn.innerHTML = '<i class="ti ti-player-play me-1"></i>Send';
-                    placeholder.style.display = 'none';
+                    sendBtn.innerHTML = '<i class="ti ti-api me-1"></i> Send to API-RH';
+                    respWrap.style.display = '';
+                    statusBadge.className = 'badge bg-danger';
+                    statusBadge.textContent = 'Error';
                     respBody.style.color = '#dc3545';
                     respBody.textContent = 'Error: ' + err.message;
-                    respBody.style.display = '';
                 });
         });
     }
