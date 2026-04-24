@@ -18,6 +18,70 @@ function init_order_details() {
         });
     }
 
+    // Release to System modal
+    var releaseBtn = document.getElementById('releaseToSystemBtn');
+    var releaseModalEl = document.getElementById('releaseToSystemModal');
+    if (releaseBtn && releaseModalEl) {
+        var releaseModal = new bootstrap.Modal(releaseModalEl);
+
+        releaseBtn.addEventListener('click', function () {
+            document.getElementById('fmConnStatus').innerHTML = '';
+            document.getElementById('fmResponseWrap').style.display = 'none';
+            releaseModal.show();
+        });
+
+        document.getElementById('fmTestConnBtn').addEventListener('click', function () {
+            var statusEl = document.getElementById('fmConnStatus');
+            statusEl.innerHTML = '<span class="text-muted fs-xs">Testing&hellip;</span>';
+            var body = new FormData();
+            body.append('action', 'test');
+            body.append('fm_server',   document.getElementById('fmServer').value);
+            body.append('fm_database', document.getElementById('fmDatabase').value);
+            body.append('fm_layout',   document.getElementById('fmLayout').value);
+            body.append('fm_user',     document.getElementById('fmUser').value);
+            body.append('fm_pass',     document.getElementById('fmPass').value);
+            fetch('api/release_order.php', { method: 'POST', body: body })
+                .then(function (r) { return r.json(); })
+                .then(function (data) {
+                    statusEl.innerHTML = data.success
+                        ? '<span class="badge bg-success"><i class="ti ti-check me-1"></i>' + data.message + '</span>'
+                        : '<span class="badge bg-danger"><i class="ti ti-x me-1"></i>' + data.message + '</span>';
+                });
+        });
+
+        document.getElementById('fmSendBtn').addEventListener('click', function () {
+            var sendBtn     = this;
+            var responseWrap = document.getElementById('fmResponseWrap');
+            var responseBody = document.getElementById('fmResponseBody');
+            sendBtn.disabled = true;
+            sendBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Sending&hellip;';
+            var body = new FormData();
+            body.append('action', 'release');
+            body.append('fm_server',   document.getElementById('fmServer').value);
+            body.append('fm_database', document.getElementById('fmDatabase').value);
+            body.append('fm_layout',   document.getElementById('fmLayout').value);
+            body.append('fm_user',     document.getElementById('fmUser').value);
+            body.append('fm_pass',     document.getElementById('fmPass').value);
+            body.append('payload',     document.getElementById('fmPayload').value);
+            fetch('api/release_order.php', { method: 'POST', body: body })
+                .then(function (r) { return r.json(); })
+                .then(function (data) {
+                    sendBtn.disabled = false;
+                    sendBtn.innerHTML = '<i class="ti ti-send me-1"></i> Send to FileMaker';
+                    responseWrap.style.display = '';
+                    responseBody.className = 'p-3 rounded border bg-light';
+                    if (data.success) {
+                        responseBody.style.borderColor = '#198754';
+                        responseBody.style.color = '#198754';
+                    } else {
+                        responseBody.style.borderColor = '#dc3545';
+                        responseBody.style.color = '#dc3545';
+                    }
+                    responseBody.textContent = JSON.stringify(data, null, 2);
+                });
+        });
+    }
+
     var modalEl = document.getElementById('changeInfoModal');
     if (!modalEl) return;
 

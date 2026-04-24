@@ -400,6 +400,74 @@ if (!empty($insurance)) {
 </div>
 <!-- container -->
 
+<!-- Release to System Modal -->
+<div class="modal fade" id="releaseToSystemModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="ti ti-send me-2"></i>Release to System &mdash; Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted fs-xs mb-3">Configure the FileMaker connection, verify the payload, then click <strong>Send to FileMaker</strong>.</p>
+
+                <!-- Connection Settings -->
+                <div class="row g-2 mb-2">
+                    <div class="col-md-5">
+                        <label class="form-label fw-semibold fs-xs text-uppercase text-muted">Server URL</label>
+                        <input type="text" class="form-control form-control-sm" id="fmServer" value="https://a048803.fmphost.com">
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label fw-semibold fs-xs text-uppercase text-muted">Database</label>
+                        <input type="text" class="form-control form-control-sm" id="fmDatabase" value="DBM">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label fw-semibold fs-xs text-uppercase text-muted">Layout</label>
+                        <input type="text" class="form-control form-control-sm" id="fmLayout" placeholder="e.g. Orders_API">
+                    </div>
+                    <div class="col-md-2 d-flex flex-column">
+                        <label class="form-label fw-semibold fs-xs text-uppercase text-muted">Test</label>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" id="fmTestConnBtn">Test Conn.</button>
+                    </div>
+                </div>
+                <div class="row g-2 mb-2">
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold fs-xs text-uppercase text-muted">Username</label>
+                        <input type="text" class="form-control form-control-sm" id="fmUser" value="garryapi">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold fs-xs text-uppercase text-muted">Password</label>
+                        <input type="password" class="form-control form-control-sm" id="fmPass" value="kBk3e3yTrmAc4WaqexdjzER73">
+                    </div>
+                    <div class="col-md-4 d-flex flex-column justify-content-end">
+                        <div id="fmConnStatus"></div>
+                    </div>
+                </div>
+
+                <hr class="my-3">
+
+                <!-- Payload -->
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <label class="form-label fw-semibold fs-xs text-uppercase text-muted mb-0">Payload (fieldData)</label>
+                    <span class="text-muted fs-xs">Edit field names to match your FileMaker layout fields</span>
+                </div>
+                <textarea class="form-control font-monospace" id="fmPayload" rows="12" style="font-size:12px"><?= htmlspecialchars(json_encode(['fieldData' => $fmPayload], JSON_PRETTY_PRINT)) ?></textarea>
+
+                <!-- Response -->
+                <div id="fmResponseWrap" class="mt-3" style="display:none">
+                    <label class="form-label fw-semibold fs-xs text-uppercase text-muted mb-1">FileMaker Response</label>
+                    <pre class="p-3 rounded border bg-light" id="fmResponseBody" style="font-size:12px;max-height:150px;overflow-y:auto;margin:0"></pre>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" id="fmSendBtn"><i class="ti ti-send me-1"></i> Send to FileMaker</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Release to System Modal -->
+
 <!-- Change Info Modal -->
 <div class="modal fade" id="changeInfoModal" tabindex="-1" aria-labelledby="changeInfoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
