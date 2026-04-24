@@ -123,11 +123,9 @@ function init_order_details() {
             sendBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Sending&hellip;';
 
             var body = new FormData();
-            body.append('method',     apiRhModalEl.querySelector('#apiRhMethod').value);
-            body.append('url',        apiRhModalEl.querySelector('#apiRhUrl').value);
-            body.append('token_type', apiRhModalEl.querySelector('#apiRhTokenType').value);
-            body.append('token',      apiRhModalEl.querySelector('#apiRhToken').value);
-            body.append('payload',    apiRhModalEl.querySelector('#apiRhPayload').value);
+            body.append('method',  apiRhModalEl.querySelector('#apiRhMethod').value);
+            body.append('url',     apiRhModalEl.querySelector('#apiRhUrl').value);
+            body.append('payload', apiRhModalEl.querySelector('#apiRhPayload').value);
 
             fetch('api/proxy_request.php', { method: 'POST', body: body })
                 .then(function (r) { return r.json(); })

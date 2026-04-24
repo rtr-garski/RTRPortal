@@ -7,20 +7,13 @@ if (empty($_SESSION['user_id'])) {
 
 header('Content-Type: application/json');
 
-$method     = strtoupper($_POST['method']     ?? 'GET');
-$url        = trim($_POST['url']              ?? '');
-$token_type = trim($_POST['token_type']       ?? 'Bearer');
-$token      = trim($_POST['token']            ?? '');
-$payload    = trim($_POST['payload']          ?? '');
+$method  = strtoupper($_POST['method']  ?? 'GET');
+$url     = trim($_POST['url']          ?? '');
+$payload = trim($_POST['payload']      ?? '');
 
 if (!$url) {
     echo json_encode(['success' => false, 'message' => 'URL is required']);
     exit;
-}
-
-if ($token) {
-    $separator = strpos($url, '?') === false ? '?' : '&';
-    $url .= $separator . 'token=' . urlencode($token);
 }
 
 $headers = ['Content-Type: application/json', 'Accept: application/json'];

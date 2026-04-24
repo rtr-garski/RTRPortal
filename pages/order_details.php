@@ -421,19 +421,7 @@ if (!empty($insurance)) {
                     </div>
                     <div class="col-md-10">
                         <label class="form-label fw-semibold fs-xs text-uppercase text-muted">URL</label>
-                        <input type="text" class="form-control form-control-sm font-monospace" id="apiRhUrl" value="https://api.recordhost.net/v1/deployOrderToFM/">
-                    </div>
-                </div>
-                <div class="row g-2 mb-2">
-                    <div class="col-md-2">
-                        <label class="form-label fw-semibold fs-xs text-uppercase text-muted">Token Type</label>
-                        <select class="form-select form-select-sm" id="apiRhTokenType">
-                            <option value="Token">Token</option>
-                        </select>
-                    </div>
-                    <div class="col-md-10">
-                        <label class="form-label fw-semibold fs-xs text-uppercase text-muted">Token</label>
-                        <input type="text" class="form-control form-control-sm font-monospace" id="apiRhToken" value="7b054c1e-f890-46d0-9a71-f61268f44707">
+                        <input type="text" class="form-control form-control-sm font-monospace" id="apiRhUrl" value="https://api.recordhost.net/v1/deployOrderToFM/?token=7b054c1e-f890-46d0-9a71-f61268f44707">
                     </div>
                 </div>
 
