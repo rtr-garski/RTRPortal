@@ -88,8 +88,9 @@ if (!empty($insurance)) {
                                 <p class="text-muted mb-3"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
                                 <span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span>
                             </div>
-                            <div class="ms-auto">
+                            <div class="ms-auto d-flex gap-2">
                                 <a href="javascript: void(0);" class="btn btn-success" id="releaseToSystemBtn"><i class="ti ti-send me-1"></i> Release to System</a>
+                                <a href="javascript: void(0);" class="btn btn-primary" id="releaseToApiBtn"><i class="ti ti-api me-1"></i> Release to API-RH</a>
                             </div>
                         </div>
                         <div class="card-body px-4">
@@ -399,6 +400,81 @@ if (!empty($insurance)) {
 
 </div>
 <!-- container -->
+
+<!-- API-RH Modal -->
+<div class="modal fade" id="apiRhModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1100px">
+        <div class="modal-content border-0 shadow-lg">
+            <div class="modal-header py-2 px-3" style="background:#1e1e2e">
+                <span class="text-white fw-semibold fs-sm"><i class="ti ti-api me-2"></i>Release to API-RH</span>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-0">
+                <!-- URL Bar -->
+                <div class="px-3 py-2 border-bottom" style="background:#f4f4f8">
+                    <div class="input-group">
+                        <select class="form-select fw-bold text-white border-0 rounded-start" id="apiRhMethod" style="max-width:100px;background:#ef6c00">
+                            <option value="GET">GET</option>
+                            <option value="POST" selected>POST</option>
+                            <option value="PUT">PUT</option>
+                            <option value="PATCH">PATCH</option>
+                            <option value="DELETE">DELETE</option>
+                        </select>
+                        <input type="text" class="form-control font-monospace border-start-0" id="apiRhUrl" placeholder="https://api.recordhost.net/endpoint" style="font-size:13px">
+                        <button class="btn btn-warning fw-bold px-4" type="button" id="apiRhSendBtn"><i class="ti ti-player-play me-1"></i>Send</button>
+                    </div>
+                </div>
+
+                <!-- Two-column body -->
+                <div class="row g-0" style="min-height:440px">
+                    <!-- Left: Auth + Payload -->
+                    <div class="col-md-6 border-end d-flex flex-column">
+                        <!-- Auth -->
+                        <div class="px-3 py-2 border-bottom" style="background:#fafafa">
+                            <div class="fw-semibold fs-xs text-uppercase text-muted mb-2">Authorization</div>
+                            <div class="input-group input-group-sm">
+                                <select class="form-select border-end-0" id="apiRhTokenType" style="max-width:95px">
+                                    <option value="Bearer">Bearer</option>
+                                    <option value="Token">Token</option>
+                                    <option value="Basic">Basic</option>
+                                    <option value="ApiKey">API Key</option>
+                                </select>
+                                <input type="text" class="form-control font-monospace" id="apiRhToken" placeholder="Enter token">
+                            </div>
+                        </div>
+                        <!-- Body -->
+                        <div class="px-3 py-2 d-flex flex-column flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="fw-semibold fs-xs text-uppercase text-muted">Body</div>
+                                <span class="badge bg-secondary fs-xxs">raw / JSON</span>
+                            </div>
+                            <textarea class="form-control font-monospace flex-grow-1" id="apiRhPayload" style="font-size:12px;resize:none;min-height:320px"><?= htmlspecialchars(json_encode($fmPayload, JSON_PRETTY_PRINT)) ?></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Right: Response -->
+                    <div class="col-md-6 d-flex flex-column">
+                        <div class="px-3 py-2 border-bottom d-flex justify-content-between align-items-center" style="background:#fafafa">
+                            <div class="fw-semibold fs-xs text-uppercase text-muted">Response</div>
+                            <div id="apiRhResponseMeta" style="display:none">
+                                <span class="badge" id="apiRhStatusBadge"></span>
+                                <span class="text-muted fs-xs ms-2" id="apiRhElapsed"></span>
+                            </div>
+                        </div>
+                        <div class="px-3 py-3 flex-grow-1 d-flex flex-column">
+                            <div id="apiRhResponsePlaceholder" class="text-center text-muted my-auto py-5">
+                                <i class="ti ti-player-play fs-1 d-block mb-2 opacity-25"></i>
+                                <span class="fs-sm">Hit <strong>Send</strong> to get a response</span>
+                            </div>
+                            <pre class="rounded border flex-grow-1 p-3 m-0" id="apiRhResponseBody" style="font-size:12px;overflow-y:auto;display:none;max-height:380px"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End API-RH Modal -->
 
 <!-- Release to System Modal -->
 <div class="modal fade" id="releaseToSystemModal" tabindex="-1" aria-hidden="true">
