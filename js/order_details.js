@@ -136,37 +136,39 @@ function init_order_details() {
                 sendBtn.disabled = false;
                 sendBtn.innerHTML = '<i class="ti ti-api me-1"></i> Send to API-RH';
             }
-            function showResp(color, status, elapsed, text) {
+            function showResp(ok, status, elapsed, text) {
                 respWrap.style.display = '';
-                statusBadge.className = 'badge ' + (color === 'green' ? 'bg-success' : 'bg-danger');
+                statusBadge.className = 'badge ' + (ok ? 'bg-success' : 'bg-danger');
                 statusBadge.textContent = status;
                 elapsedEl.textContent = elapsed || '';
-                respBody.style.color = color === 'green' ? '#198754' : '#dc3545';
-                respBody.style.borderColor = color === 'green' ? '#198754' : '#dc3545';
+                respBody.style.color = ok ? '#198754' : '#dc3545';
+                respBody.style.borderColor = ok ? '#198754' : '#dc3545';
                 respBody.textContent = text;
             }
 
-            fetch('api/proxy_request.php', { method: 'POST', body: body, signal: controller.signal })
-                .then(function (r) { return r.text(); })
-                .then(function (text) {
-                    clearTimeout(timeout);
-                    resetBtn();
-                    var data;
-                    try { data = JSON.parse(text); } catch (e) {
-                        showResp('red', 'Error', '', 'Invalid response:\n' + text);
-                        return;
-                    }
-                    if (!data.success) {
-                        showResp('red', 'Error', '', data.message);
-                        return;
-                    }
-                    var ok = data.status >= 200 && data.status < 300;
-                    showResp(ok ? 'green' : 'red', data.status, data.elapsed + ' ms', data.body);
+            var start = Date.now();
+            fetch(apiRhModalEl.querySelector('#apiRhUrl').value, {
+                method:  apiRhModalEl.querySelector('#apiRhMethod').value,
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body:    apiRhModalEl.querySelector('#apiRhPayload').value,
+                signal:  controller.signal
+            })
+                .then(function (r) {
+                    var elapsed = Date.now() - start;
+                    var ok = r.ok;
+                    var status = r.status;
+                    return r.text().then(function (text) {
+                        clearTimeout(timeout);
+                        resetBtn();
+                        var pretty;
+                        try { pretty = JSON.stringify(JSON.parse(text), null, 2); } catch (e) { pretty = text; }
+                        showResp(ok, status, elapsed + ' ms', pretty);
+                    });
                 })
                 .catch(function (err) {
                     clearTimeout(timeout);
                     resetBtn();
-                    showResp('red', 'Error', '', err.name === 'AbortError' ? 'Request timed out (20s)' : 'Fetch error: ' + err.message);
+                    showResp(false, 'Error', '', err.name === 'AbortError' ? 'Request timed out (20s)' : 'Fetch error: ' + err.message);
                 });
         });
     }
