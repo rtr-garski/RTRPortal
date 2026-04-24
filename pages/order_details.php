@@ -430,7 +430,6 @@ if (!empty($insurance)) {
                 <!-- Payload -->
                 <div class="d-flex justify-content-between align-items-center mb-1">
                     <label class="form-label fw-semibold fs-xs text-uppercase text-muted mb-0">Payload (JSON Body)</label>
-                    <span class="text-muted fs-xs">Edit field names to match the API</span>
                 </div>
                 <textarea class="form-control font-monospace" id="apiRhPayload" rows="12" style="font-size:12px"><?= htmlspecialchars(json_encode($fmPayload, JSON_PRETTY_PRINT)) ?></textarea>
 
