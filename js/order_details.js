@@ -1,6 +1,24 @@
 function init_order_details() {
     var contentEl = document.getElementById('content');
 
+    var reloadLink = document.getElementById('order-detail-reload');
+    if (reloadLink) {
+        reloadLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            var orderId = this.dataset.orderId;
+            fetch('pages/order_details.php?order_id=' + encodeURIComponent(orderId), { cache: 'no-store' })
+                .then(function (r) {
+                    if (r.status === 401) { window.location.href = 'logout.php'; return null; }
+                    return r.text();
+                })
+                .then(function (html) {
+                    if (!html) return;
+                    contentEl.innerHTML = html;
+                    init_order_details();
+                });
+        });
+    }
+
     contentEl.querySelectorAll('.order-entry-nav').forEach(function (el) {
         el.addEventListener('click', function (e) {
             e.preventDefault();
