@@ -6,6 +6,8 @@ if (empty($_SESSION['user_id'])) {
 }
 
 header('Content-Type: application/json');
+// Catch any PHP warnings/notices that would break JSON output
+ob_start();
 
 $method  = strtoupper($_POST['method']  ?? 'GET');
 $url     = trim($_POST['url']          ?? '');
@@ -23,8 +25,11 @@ curl_setopt_array($ch, [
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HEADER         => true,
     CURLOPT_HTTPHEADER     => $headers,
-    CURLOPT_TIMEOUT        => 30,
+    CURLOPT_TIMEOUT        => 15,
+    CURLOPT_CONNECTTIMEOUT => 10,
     CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_SSL_VERIFYPEER => false,
+    CURLOPT_SSL_VERIFYHOST => false,
 ]);
 
 if ($method === 'POST') {
@@ -43,8 +48,10 @@ $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
 $curlError  = curl_error($ch);
 curl_close($ch);
 
-if ($curlError) {
-    echo json_encode(['success' => false, 'message' => 'Request error: ' . $curlError]);
+ob_end_clean();
+
+if ($raw === false || $curlError) {
+    echo json_encode(['success' => false, 'message' => 'cURL error: ' . ($curlError ?: 'unknown')]);
     exit;
 }
 
