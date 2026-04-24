@@ -89,7 +89,7 @@ if (!empty($insurance)) {
                                 <span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span>
                             </div>
                             <div class="ms-auto d-flex gap-2">
-                                <a href="javascript: void(0);" class="btn btn-success" id="releaseToSystemBtn"><i class="ti ti-send me-1"></i> Release to System</a>
+                                <a href="javascript: void(0);" class="btn btn-success" id="releaseToSystemBtn"><i class="ti ti-send me-1"></i> Release the Kraken</a>
                                 <a href="javascript: void(0);" class="btn btn-primary" id="releaseToApiBtn"><i class="ti ti-api me-1"></i> Release to API-RH</a>
                             </div>
                         </div>
@@ -485,7 +485,7 @@ if (!empty($insurance)) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <p class="text-muted fs-xs mb-3">Configure the FileMaker connection, verify the payload, then click <strong>Send to FileMaker</strong>.</p>
+                <p class="text-muted fs-xs mb-3">Test FileMaker</p>
 
                 <!-- Connection Settings -->
                 <div class="row g-2 mb-2">
@@ -524,8 +524,7 @@ if (!empty($insurance)) {
 
                 <!-- Payload -->
                 <div class="d-flex justify-content-between align-items-center mb-1">
-                    <label class="form-label fw-semibold fs-xs text-uppercase text-muted mb-0">Payload (fieldData)</label>
-                    <span class="text-muted fs-xs">Edit field names to match your FileMaker layout fields</span>
+                    <label class="form-label fw-semibold fs-xs text-uppercase text-muted mb-0">Payload</label>
                 </div>
                 <textarea class="form-control font-monospace" id="fmPayload" rows="12" style="font-size:12px"><?= htmlspecialchars(json_encode(['fieldData' => $fmPayload], JSON_PRETTY_PRINT)) ?></textarea>
 

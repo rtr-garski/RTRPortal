@@ -82,6 +82,77 @@ function init_order_details() {
         });
     }
 
+    // API-RH modal
+    var apiRhBtn     = document.getElementById('releaseToApiBtn');
+    var apiRhModalEl = document.getElementById('apiRhModal');
+    if (apiRhBtn && apiRhModalEl) {
+        var apiRhModal = new bootstrap.Modal(apiRhModalEl);
+
+        apiRhBtn.addEventListener('click', function () {
+            document.getElementById('apiRhResponsePlaceholder').style.display = '';
+            document.getElementById('apiRhResponseBody').style.display = 'none';
+            document.getElementById('apiRhResponseMeta').style.display = 'none';
+            apiRhModal.show();
+        });
+
+        document.getElementById('apiRhSendBtn').addEventListener('click', function () {
+            var sendBtn     = this;
+            var placeholder = document.getElementById('apiRhResponsePlaceholder');
+            var respBody    = document.getElementById('apiRhResponseBody');
+            var respMeta    = document.getElementById('apiRhResponseMeta');
+            var statusBadge = document.getElementById('apiRhStatusBadge');
+            var elapsedEl   = document.getElementById('apiRhElapsed');
+
+            sendBtn.disabled = true;
+            sendBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Sending…';
+            placeholder.style.display = '';
+            respBody.style.display = 'none';
+            respMeta.style.display = 'none';
+
+            var body = new FormData();
+            body.append('method',     document.getElementById('apiRhMethod').value);
+            body.append('url',        document.getElementById('apiRhUrl').value);
+            body.append('token_type', document.getElementById('apiRhTokenType').value);
+            body.append('token',      document.getElementById('apiRhToken').value);
+            body.append('payload',    document.getElementById('apiRhPayload').value);
+
+            fetch('api/proxy_request.php', { method: 'POST', body: body })
+                .then(function (r) { return r.json(); })
+                .then(function (data) {
+                    sendBtn.disabled = false;
+                    sendBtn.innerHTML = '<i class="ti ti-player-play me-1"></i>Send';
+                    placeholder.style.display = 'none';
+
+                    if (!data.success) {
+                        respBody.style.color = '#dc3545';
+                        respBody.style.borderColor = '#dc3545';
+                        respBody.textContent = data.message;
+                        respBody.style.display = '';
+                        return;
+                    }
+
+                    var ok = data.status >= 200 && data.status < 300;
+                    statusBadge.className = 'badge ' + (ok ? 'bg-success' : 'bg-danger');
+                    statusBadge.textContent = data.status;
+                    elapsedEl.textContent = data.elapsed + ' ms';
+                    respMeta.style.display = '';
+
+                    respBody.style.color = ok ? '#198754' : '#dc3545';
+                    respBody.style.borderColor = ok ? '#198754' : '#dc3545';
+                    respBody.textContent = data.body;
+                    respBody.style.display = '';
+                })
+                .catch(function (err) {
+                    sendBtn.disabled = false;
+                    sendBtn.innerHTML = '<i class="ti ti-player-play me-1"></i>Send';
+                    placeholder.style.display = 'none';
+                    respBody.style.color = '#dc3545';
+                    respBody.textContent = 'Error: ' + err.message;
+                    respBody.style.display = '';
+                });
+        });
+    }
+
     var modalEl = document.getElementById('changeInfoModal');
     if (!modalEl) return;
 

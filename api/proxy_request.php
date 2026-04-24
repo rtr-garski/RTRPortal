@@ -1,0 +1,65 @@
+<?php
+require_once __DIR__ . '/../config/session.php';
+if (empty($_SESSION['user_id'])) {
+    http_response_code(401);
+    exit;
+}
+
+header('Content-Type: application/json');
+
+$method     = strtoupper($_POST['method']     ?? 'GET');
+$url        = trim($_POST['url']              ?? '');
+$token_type = trim($_POST['token_type']       ?? 'Bearer');
+$token      = trim($_POST['token']            ?? '');
+$payload    = trim($_POST['payload']          ?? '');
+
+if (!$url) {
+    echo json_encode(['success' => false, 'message' => 'URL is required']);
+    exit;
+}
+
+$headers = ['Content-Type: application/json', 'Accept: application/json'];
+if ($token) {
+    $headers[] = "Authorization: $token_type $token";
+}
+
+$ch = curl_init($url);
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HEADER         => true,
+    CURLOPT_HTTPHEADER     => $headers,
+    CURLOPT_TIMEOUT        => 30,
+    CURLOPT_FOLLOWLOCATION => true,
+]);
+
+if ($method === 'POST') {
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload ?: '{}');
+} elseif ($method !== 'GET') {
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+    if ($payload) curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+}
+
+$start      = microtime(true);
+$raw        = curl_exec($ch);
+$elapsed    = round((microtime(true) - $start) * 1000);
+$httpCode   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+$curlError  = curl_error($ch);
+curl_close($ch);
+
+if ($curlError) {
+    echo json_encode(['success' => false, 'message' => 'Request error: ' . $curlError]);
+    exit;
+}
+
+$body    = substr($raw, $headerSize);
+$decoded = json_decode($body, true);
+$pretty  = $decoded !== null ? json_encode($decoded, JSON_PRETTY_PRINT) : $body;
+
+echo json_encode([
+    'success' => true,
+    'status'  => $httpCode,
+    'elapsed' => $elapsed,
+    'body'    => $pretty,
+]);
