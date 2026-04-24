@@ -1,9 +1,8 @@
 function init_order_details() {
     var contentEl = document.getElementById('content');
 
-    var backBtn = document.getElementById('order-entry-back-btn');
-    if (backBtn) {
-        backBtn.addEventListener('click', function (e) {
+    contentEl.querySelectorAll('.order-entry-nav').forEach(function (el) {
+        el.addEventListener('click', function (e) {
             e.preventDefault();
             fetch('pages/order_entry.php', { cache: 'no-store' })
                 .then(function (r) {
@@ -16,7 +15,7 @@ function init_order_details() {
                     init_order_entry();
                 });
         });
-    }
+    });
 
     // Release to System modal
     var releaseBtn = document.getElementById('releaseToSystemBtn');
@@ -85,36 +84,38 @@ function init_order_details() {
     // API-RH modal
     var apiRhBtn     = document.getElementById('releaseToApiBtn');
     var apiRhModalEl = document.getElementById('apiRhModal');
-    if (apiRhBtn && apiRhModalEl) {
+    var apiRhSendBtn = document.getElementById('apiRhSendBtn');
+
+    if (apiRhBtn && apiRhModalEl && apiRhSendBtn) {
         var apiRhModal = new bootstrap.Modal(apiRhModalEl);
 
         apiRhBtn.addEventListener('click', function () {
-            document.getElementById('apiRhResponsePlaceholder').style.display = '';
-            document.getElementById('apiRhResponseBody').style.display = 'none';
-            document.getElementById('apiRhResponseMeta').style.display = 'none';
+            apiRhModalEl.querySelector('#apiRhResponsePlaceholder').style.display = '';
+            apiRhModalEl.querySelector('#apiRhResponseBody').style.display = 'none';
+            apiRhModalEl.querySelector('#apiRhResponseMeta').style.display = 'none';
             apiRhModal.show();
         });
 
-        document.getElementById('apiRhSendBtn').addEventListener('click', function () {
+        apiRhSendBtn.addEventListener('click', function () {
             var sendBtn     = this;
-            var placeholder = document.getElementById('apiRhResponsePlaceholder');
-            var respBody    = document.getElementById('apiRhResponseBody');
-            var respMeta    = document.getElementById('apiRhResponseMeta');
-            var statusBadge = document.getElementById('apiRhStatusBadge');
-            var elapsedEl   = document.getElementById('apiRhElapsed');
+            var placeholder = apiRhModalEl.querySelector('#apiRhResponsePlaceholder');
+            var respBody    = apiRhModalEl.querySelector('#apiRhResponseBody');
+            var respMeta    = apiRhModalEl.querySelector('#apiRhResponseMeta');
+            var statusBadge = apiRhModalEl.querySelector('#apiRhStatusBadge');
+            var elapsedEl   = apiRhModalEl.querySelector('#apiRhElapsed');
 
             sendBtn.disabled = true;
-            sendBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Sending…';
+            sendBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Sending&hellip;';
             placeholder.style.display = '';
             respBody.style.display = 'none';
             respMeta.style.display = 'none';
 
             var body = new FormData();
-            body.append('method',     document.getElementById('apiRhMethod').value);
-            body.append('url',        document.getElementById('apiRhUrl').value);
-            body.append('token_type', document.getElementById('apiRhTokenType').value);
-            body.append('token',      document.getElementById('apiRhToken').value);
-            body.append('payload',    document.getElementById('apiRhPayload').value);
+            body.append('method',     apiRhModalEl.querySelector('#apiRhMethod').value);
+            body.append('url',        apiRhModalEl.querySelector('#apiRhUrl').value);
+            body.append('token_type', apiRhModalEl.querySelector('#apiRhTokenType').value);
+            body.append('token',      apiRhModalEl.querySelector('#apiRhToken').value);
+            body.append('payload',    apiRhModalEl.querySelector('#apiRhPayload').value);
 
             fetch('api/proxy_request.php', { method: 'POST', body: body })
                 .then(function (r) { return r.json(); })

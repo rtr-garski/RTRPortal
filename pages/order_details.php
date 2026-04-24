@@ -67,7 +67,7 @@ if (!empty($insurance)) {
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="#">Reports</a></li>
-                        <li class="breadcrumb-item"><a href="#" id="order-entry-back-btn">Orders</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="order-entry-nav">Orders</a></li>
                         <li class="breadcrumb-item active">Order Details</li>
                     </ol>
                 </div>
@@ -84,7 +84,7 @@ if (!empty($insurance)) {
                     <div class="card">
                         <div class="card-header align-items-start p-4">
                             <div>
-                                <h3 class="mb-1 d-flex fs-xl align-items-center">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></h3>
+                                <h3 class="mb-1 d-flex fs-xl align-items-center"><a href="#" class="order-entry-nav link-reset text-decoration-none">Order #<?= htmlspecialchars($order['__kp_API_Input_Order_ID']) ?></a></h3>
                                 <p class="text-muted mb-3"><i class="ti ti-calendar"></i> <?= date('d M, Y', strtotime($order['API_Input_Timestamp'])) ?> <small class="text-muted"><?= date('g:i A', strtotime($order['API_Input_Timestamp'])) ?></small></p>
                                 <span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span>
                             </div>
