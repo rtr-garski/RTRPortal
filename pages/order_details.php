@@ -47,6 +47,16 @@ $recTypeOptions = [
     'Non-Privileged',
     'Pharmacy Prescription',
 ];
+
+$fmPayload = ['Order_ID' => $order['__kp_API_Input_Order_ID'], 'Service_Type' => $order['_kf_Service_Type_ID_Str'], 'Service_Subtype' => $order['_kf_Service_Subtype_ID_Str'], 'LOR_Date' => $order['LOR_Date'], 'Employer_Name' => $order['Employer_Name'], 'Pat_Name' => $order['Pat_Name'], 'Pat_AKA' => $order['Pat_AKA'], 'Pat_DOB' => $order['Pat_DOB'], 'Pat_SSN' => $order['PAT_SSN'], 'Pat_Address_Street' => $order['Pat_Address_Street'], 'Pat_Address_City' => $order['Pat_Address_City'], 'Pat_Address_State' => $order['Pat_Address_State'], 'Pat_Address_Zip' => $order['Pat_Address_Zip']];
+if (!empty($locations)) {
+    $loc = $locations[0];
+    $fmPayload += ['Loc_Name' => $loc['Loc_Name'], 'Loc_Address_Street' => $loc['Loc_Address_Street'], 'Loc_Address_City' => $loc['Loc_Address_City'], 'Loc_Address_State' => $loc['Loc_Address_State'], 'Loc_Address_Zip' => $loc['Loc_Address_Zip'], 'Loc_Phone' => $loc['Loc_Address_Phone'], 'Loc_Fax' => $loc['Loc_Address_Phone_Fax'], 'Rec_Type' => $loc['Rec_Type'], 'Rec_Dates_Needed' => $loc['Rec_Dates_Needed'], 'Special_Instructions' => $loc['Special_Instructions']];
+}
+if (!empty($insurance)) {
+    $ins = $insurance[0];
+    $fmPayload += ['Ins_Name' => $ins['Ins_Name'], 'Ins_Address_Street' => $ins['Ins_Address_Street'], 'Ins_Address_City' => $ins['Ins_Address_City'], 'Ins_Address_State' => $ins['Ins_Address_State'], 'Ins_Address_Zip' => $ins['Ins_Address_Zip'], 'Ins_Phone' => $ins['Ins_Address_Phone'], 'Ins_Fax' => $ins['Ins_Address_Phone_Fax'], 'Adj_Claim_ID' => $ins['Adj_Claim_ID'], 'Adj_Name' => $ins['Adj_Name'], 'Adj_Phone' => $ins['Adj_Phone'], 'Adj_Fax' => $ins['Adj_Phone_Fax'], 'Adj_Email' => $ins['Adj_Email']];
+}
 ?>
 
 <div class="container-fluid">
@@ -79,7 +89,7 @@ $recTypeOptions = [
                                 <span class="badge badge-soft-info fs-xxs badge-label"><i class="ti ti-inbox fs-sm align-middle"></i> Order Received</span>
                             </div>
                             <div class="ms-auto">
-                                <a href="javascript: void(0);" class="btn btn-success"><i class="ti ti-send me-1"></i> Release to System</a>
+                                <a href="javascript: void(0);" class="btn btn-success" id="releaseToSystemBtn"><i class="ti ti-send me-1"></i> Release to System</a>
                             </div>
                         </div>
                         <div class="card-body px-4">
