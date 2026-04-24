@@ -19,9 +19,6 @@ if (!$url) {
 }
 
 $headers = ['Content-Type: application/json', 'Accept: application/json'];
-if ($token) {
-    $headers[] = "Authorization: $token_type $token";
-}
 
 $ch = curl_init($url);
 curl_setopt_array($ch, [

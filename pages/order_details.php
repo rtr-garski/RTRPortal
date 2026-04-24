@@ -417,9 +417,6 @@ if (!empty($insurance)) {
                         <select class="form-select form-select-sm" id="apiRhMethod">
                             <option value="GET">GET</option>
                             <option value="POST" selected>POST</option>
-                            <option value="PUT">PUT</option>
-                            <option value="PATCH">PATCH</option>
-                            <option value="DELETE">DELETE</option>
                         </select>
                     </div>
                     <div class="col-md-10">
@@ -431,10 +428,7 @@ if (!empty($insurance)) {
                     <div class="col-md-2">
                         <label class="form-label fw-semibold fs-xs text-uppercase text-muted">Token Type</label>
                         <select class="form-select form-select-sm" id="apiRhTokenType">
-                            <option value="Bearer">Bearer</option>
                             <option value="Token">Token</option>
-                            <option value="Basic">Basic</option>
-                            <option value="ApiKey">API Key</option>
                         </select>
                     </div>
                     <div class="col-md-10">
@@ -459,7 +453,7 @@ if (!empty($insurance)) {
                         <span class="badge" id="apiRhStatusBadge"></span>
                         <span class="text-muted fs-xs" id="apiRhElapsed"></span>
                     </div>
-                    <pre class="p-3 rounded border bg-light" id="apiRhResponseBody" style="font-size:12px;max-height:150px;overflow-y:auto;margin:0"></pre>
+                    <pre class="p-3 rounded border bg-light" id="apiRhResponseBody" style="font-size:12px;max-height:150px;overflow-y:auto;margin:0;white-space:pre-wrap;word-break:break-all"></pre>
                 </div>
             </div>
             <div class="modal-footer">
