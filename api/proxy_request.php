@@ -18,6 +18,11 @@ if (!$url) {
     exit;
 }
 
+if ($token) {
+    $separator = strpos($url, '?') === false ? '?' : '&';
+    $url .= $separator . 'token=' . urlencode($token);
+}
+
 $headers = ['Content-Type: application/json', 'Accept: application/json'];
 
 $ch = curl_init($url);

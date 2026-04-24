@@ -444,7 +444,7 @@ if (!empty($insurance)) {
                     <label class="form-label fw-semibold fs-xs text-uppercase text-muted mb-0">Payload (JSON Body)</label>
                     <span class="text-muted fs-xs">Edit field names to match the API</span>
                 </div>
-                <textarea class="form-control font-monospace" id="apiRhPayload" rows="12" style="font-size:12px"><?= htmlspecialchars(json_encode(array_merge(['token' => '7b054c1e-f890-46d0-9a71-f61268f44707'], $fmPayload), JSON_PRETTY_PRINT)) ?></textarea>
+                <textarea class="form-control font-monospace" id="apiRhPayload" rows="12" style="font-size:12px"><?= htmlspecialchars(json_encode($fmPayload, JSON_PRETTY_PRINT)) ?></textarea>
 
                 <!-- Response -->
                 <div id="apiRhResponseWrap" class="mt-3" style="display:none">
