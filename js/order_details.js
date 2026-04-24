@@ -109,6 +109,8 @@ function init_order_details() {
 
         apiRhBtn.addEventListener('click', function () {
             apiRhModalEl.querySelector('#apiRhResponseWrap').style.display = 'none';
+            apiRhSendBtn.disabled = false;
+            apiRhSendBtn.innerHTML = '<i class="ti ti-api me-1"></i> Send to API-RH';
             apiRhModal.show();
         });
 
@@ -127,39 +129,44 @@ function init_order_details() {
             body.append('url',     apiRhModalEl.querySelector('#apiRhUrl').value);
             body.append('payload', apiRhModalEl.querySelector('#apiRhPayload').value);
 
-            fetch('api/proxy_request.php', { method: 'POST', body: body })
-                .then(function (r) { return r.json(); })
-                .then(function (data) {
-                    sendBtn.disabled = false;
-                    sendBtn.innerHTML = '<i class="ti ti-api me-1"></i> Send to API-RH';
-                    respWrap.style.display = '';
+            var controller = new AbortController();
+            var timeout = setTimeout(function () { controller.abort(); }, 20000);
 
-                    if (!data.success) {
-                        statusBadge.className = 'badge bg-danger';
-                        statusBadge.textContent = 'Error';
-                        elapsedEl.textContent = '';
-                        respBody.style.color = '#dc3545';
-                        respBody.style.borderColor = '#dc3545';
-                        respBody.textContent = data.message;
+            function resetBtn() {
+                sendBtn.disabled = false;
+                sendBtn.innerHTML = '<i class="ti ti-api me-1"></i> Send to API-RH';
+            }
+            function showResp(color, status, elapsed, text) {
+                respWrap.style.display = '';
+                statusBadge.className = 'badge ' + (color === 'green' ? 'bg-success' : 'bg-danger');
+                statusBadge.textContent = status;
+                elapsedEl.textContent = elapsed || '';
+                respBody.style.color = color === 'green' ? '#198754' : '#dc3545';
+                respBody.style.borderColor = color === 'green' ? '#198754' : '#dc3545';
+                respBody.textContent = text;
+            }
+
+            fetch('api/proxy_request.php', { method: 'POST', body: body, signal: controller.signal })
+                .then(function (r) { return r.text(); })
+                .then(function (text) {
+                    clearTimeout(timeout);
+                    resetBtn();
+                    var data;
+                    try { data = JSON.parse(text); } catch (e) {
+                        showResp('red', 'Error', '', 'Invalid response:\n' + text);
                         return;
                     }
-
+                    if (!data.success) {
+                        showResp('red', 'Error', '', data.message);
+                        return;
+                    }
                     var ok = data.status >= 200 && data.status < 300;
-                    statusBadge.className = 'badge ' + (ok ? 'bg-success' : 'bg-danger');
-                    statusBadge.textContent = data.status;
-                    elapsedEl.textContent = data.elapsed + ' ms';
-                    respBody.style.color = ok ? '#198754' : '#dc3545';
-                    respBody.style.borderColor = ok ? '#198754' : '#dc3545';
-                    respBody.textContent = data.body;
+                    showResp(ok ? 'green' : 'red', data.status, data.elapsed + ' ms', data.body);
                 })
                 .catch(function (err) {
-                    sendBtn.disabled = false;
-                    sendBtn.innerHTML = '<i class="ti ti-api me-1"></i> Send to API-RH';
-                    respWrap.style.display = '';
-                    statusBadge.className = 'badge bg-danger';
-                    statusBadge.textContent = 'Error';
-                    respBody.style.color = '#dc3545';
-                    respBody.textContent = 'Error: ' + err.message;
+                    clearTimeout(timeout);
+                    resetBtn();
+                    showResp('red', 'Error', '', err.name === 'AbortError' ? 'Request timed out (20s)' : 'Fetch error: ' + err.message);
                 });
         });
     }
