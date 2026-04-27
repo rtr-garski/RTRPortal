@@ -1,10 +1,14 @@
 function init_test_insurance() {
-    const contentEl  = document.getElementById('content');
-    const form       = document.getElementById('insMatchForm');
-    const btn        = document.getElementById('insMatchBtn');
-    const spinner    = document.getElementById('insMatchSpinner');
-    const alertEl    = document.getElementById('insMatchAlert');
-    const tbody      = document.getElementById('insMatchTbody');
+    const contentEl = document.getElementById('content');
+    const form      = document.getElementById('insMatchForm');
+    const btn       = document.getElementById('insMatchBtn');
+    const spinner   = document.getElementById('insMatchSpinner');
+    const alertEl   = document.getElementById('insMatchAlert');
+    const tbody     = document.getElementById('insMatchTbody');
+
+    // Init the custom table once — captures placeholder row, sets up all listeners
+    const ct = new CustomTable({ tableSelector: '#insResultsCard' });
+    const tableInstance = ct.tables[0] ?? null;
 
     function escHtml(str) {
         return String(str ?? '')
@@ -45,15 +49,14 @@ function init_test_insurance() {
             `).join('');
         }
 
-        // Strip stale event listeners from controls before reinit
-        const card = document.getElementById('insResultsCard');
-        ['[data-table-search]', '[data-table-set-rows-per-page]'].forEach(sel => {
-            const el = card.querySelector(sel);
-            if (el) el.replaceWith(el.cloneNode(true));
-        });
-
-        // Reinit plugin — rows are already in tbody so Table constructor picks them up
-        new CustomTable({ tableSelector: '#insResultsCard' });
+        if (tableInstance) {
+            const newRows = Array.from(tbody.querySelectorAll('tr'));
+            tableInstance.rows = newRows;
+            tableInstance.filteredRows = [...newRows];
+            tableInstance.currentPage = 1;
+            if (tableInstance.searchInput) tableInstance.searchInput.value = '';
+            tableInstance.update();
+        }
     }
 
     if (contentEl._insMatchHandler) form.removeEventListener('submit', contentEl._insMatchHandler);
