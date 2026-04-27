@@ -52,7 +52,7 @@ if (empty($_SESSION['user_id'])) {
     <!-- Results Table -->
     <div class="row">
         <div class="col-12">
-            <div data-table data-table-rows-per-page="10" class="card" id="insResultsCard">
+            <div class="card" id="insResultsCard">
 
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="card-title mb-0">Results</h4>
@@ -62,12 +62,12 @@ if (empty($_SESSION['user_id'])) {
                 <div class="card-header border-light justify-content-between">
                     <div class="d-flex gap-2">
                         <div class="app-search">
-                            <input data-table-search type="search" class="form-control" placeholder="Filter results..." />
+                            <input type="search" id="insMatchFilter" class="form-control" placeholder="Filter results..." />
                             <i class="ti ti-search app-search-icon text-muted"></i>
                         </div>
                     </div>
                     <div>
-                        <select data-table-set-rows-per-page class="form-select form-control my-1 my-md-0">
+                        <select id="insMatchPerPage" class="form-select form-control my-1 my-md-0">
                             <option value="5">5</option>
                             <option value="10" selected>10</option>
                             <option value="15">15</option>
@@ -88,7 +88,7 @@ if (empty($_SESSION['user_id'])) {
                             </tr>
                         </thead>
                         <tbody id="insMatchTbody">
-                            <tr id="insMatchPlaceholder">
+                            <tr>
                                 <td colspan="5" class="text-center text-muted py-5">Enter search fields and click Search.</td>
                             </tr>
                         </tbody>
@@ -97,8 +97,8 @@ if (empty($_SESSION['user_id'])) {
 
                 <div class="card-footer border-0">
                     <div class="d-flex justify-content-between align-items-center">
-                        <div data-table-pagination-info="results"></div>
-                        <div data-table-pagination></div>
+                        <div id="insPaginationInfo" class="text-muted" style="font-size:.82rem"></div>
+                        <ul id="insPagination" class="pagination pagination-sm mb-0"></ul>
                     </div>
                 </div>
 
