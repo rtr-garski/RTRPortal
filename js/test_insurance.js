@@ -76,6 +76,7 @@ function init_test_insurance() {
         clearAlert();
         btn.disabled = true;
         spinner.classList.remove('d-none');
+        const queryStart = performance.now();
 
         fetch('api/insurance_match.php', {
             method: 'POST',
@@ -84,6 +85,10 @@ function init_test_insurance() {
             .then(r => r.json())
             .then(data => {
                 if (!data.success) { showAlert('danger', data.message ?? 'Search failed.'); return; }
+                const ms = (performance.now() - queryStart).toFixed(0);
+                const qt = document.getElementById('insQueryTime');
+                qt.textContent = `Query completed in ${ms} ms`;
+                qt.classList.remove('d-none');
                 renderResults(data.results);
             })
             .catch(() => showAlert('danger', 'Request failed. Please try again.'))

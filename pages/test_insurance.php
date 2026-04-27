@@ -19,9 +19,10 @@ if (empty($_SESSION['user_id'])) {
         </div>
     </div>
 
-    <!-- Search Form -->
-    <div class="row g-4 pb-3">
-        <div class="col-xl-4 col-lg-5">
+    <div class="row g-4 pb-4">
+
+        <!-- Search Form -->
+        <div class="col-xl-3 col-lg-4">
             <div class="card">
                 <div class="card-header">Search</div>
                 <div class="card-body">
@@ -35,7 +36,7 @@ if (empty($_SESSION['user_id'])) {
                             <label class="form-label" for="ins_address">Address</label>
                             <input type="text" class="form-control" id="ins_address" placeholder="e.g. 1234 Main St">
                         </div>
-                        <div class="mb-4">
+                        <div class="mb-3">
                             <label class="form-label" for="ins_csz">City, State ZIP</label>
                             <input type="text" class="form-control" id="ins_csz" placeholder="e.g. Modesto, CA 95350">
                         </div>
@@ -43,15 +44,14 @@ if (empty($_SESSION['user_id'])) {
                             <span id="insMatchSpinner" class="spinner-border spinner-border-sm me-1 d-none"></span>
                             Search
                         </button>
+                        <div id="insQueryTime" class="text-muted text-center mt-2 d-none" style="font-size:.78rem"></div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Results Table -->
-    <div class="row">
-        <div class="col-12">
+        <!-- Results Table -->
+        <div class="col-xl-9 col-lg-8">
             <div data-table data-table-rows-per-page="10" class="card" id="insResultsCard">
 
                 <div class="card-header">
@@ -80,9 +80,9 @@ if (empty($_SESSION['user_id'])) {
                         <thead class="bg-light align-middle bg-opacity-25 thead-sm">
                             <tr class="text-uppercase fs-xxs">
                                 <th class="ps-3" style="width:8%">Match</th>
-                                <th style="width:34%">Name</th>
+                                <th style="width:32%">Name</th>
                                 <th style="width:28%">Address</th>
-                                <th style="width:22%">City / State / ZIP</th>
+                                <th style="width:24%">City / State / ZIP</th>
                                 <th class="text-end pe-3" style="width:8%">ID</th>
                             </tr>
                         </thead>
@@ -103,6 +103,7 @@ if (empty($_SESSION['user_id'])) {
 
             </div>
         </div>
+
     </div>
 
 </div>
