@@ -109,6 +109,12 @@
                         <span class="menu-text">B2 Upload Test</span>
                     </a>
                 </li>
+                <li class="side-nav-item">
+                    <a href="#" data-page="test_insurance" class="side-nav-link nav-link">
+                        <span class="menu-icon"><i class="ti ti-building-bank"></i></span>
+                        <span class="menu-text">Insurance Match</span>
+                    </a>
+                </li>
 
                 
 
