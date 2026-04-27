@@ -26,21 +26,21 @@ function fieldScore($input, $candidate) {
     // 1. Direct similarity
     similar_text($input, $candidate, $simPct);
 
-    // 2. Word overlap — how many input words appear in the candidate
+    // 2. Word overlap — whole-word match only ("pa" must not match inside "tampa")
     $words   = array_filter(explode(' ', $input), fn($w) => strlen($w) > 1);
     $wordPct = 0;
     if ($words) {
         $hits = 0;
         foreach ($words as $w) {
-            if (strpos($candidate, $w) !== false) $hits++;
+            if (preg_match('/\b' . preg_quote($w, '/') . '\b/', $candidate)) $hits++;
         }
         $wordPct = ($hits / count($words)) * 100;
     }
 
-    // 3. Substring — input is fully contained in candidate (or vice versa)
+    // 3. Whole-word contains check
     $containsPct = 0;
-    if (strpos($candidate, $input) !== false) $containsPct = 95;
-    elseif (strpos($input, $candidate) !== false) $containsPct = 85;
+    if (preg_match('/\b' . preg_quote($input, '/') . '\b/', $candidate)) $containsPct = 95;
+    elseif ($candidate !== '' && preg_match('/\b' . preg_quote($candidate, '/') . '\b/', $input)) $containsPct = 85;
 
     return max($simPct, $wordPct, $containsPct);
 }
