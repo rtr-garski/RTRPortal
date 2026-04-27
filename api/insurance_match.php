@@ -9,6 +9,71 @@ if (empty($_SESSION['user_id'])) {
 require_once __DIR__ . '/../config/db.php';
 header('Content-Type: application/json');
 
+// Normalize: lowercase, strip punctuation, collapse spaces
+function normalizeStr($s) {
+    $s = strtolower(trim((string)$s));
+    $s = preg_replace('/[^\w\s]/', ' ', $s);
+    return trim(preg_replace('/\s+/', ' ', $s));
+}
+
+// Score one field using three methods, return the best
+function fieldScore($input, $candidate) {
+    $input     = normalizeStr($input);
+    $candidate = normalizeStr($candidate);
+
+    if ($input === '' || $candidate === '') return 0;
+
+    // 1. Direct similarity
+    similar_text($input, $candidate, $simPct);
+
+    // 2. Word overlap — how many input words appear in the candidate
+    $words   = array_filter(explode(' ', $input), fn($w) => strlen($w) > 1);
+    $wordPct = 0;
+    if ($words) {
+        $hits = 0;
+        foreach ($words as $w) {
+            if (strpos($candidate, $w) !== false) $hits++;
+        }
+        $wordPct = ($hits / count($words)) * 100;
+    }
+
+    // 3. Substring — input is fully contained in candidate (or vice versa)
+    $containsPct = 0;
+    if (strpos($candidate, $input) !== false) $containsPct = 95;
+    elseif (strpos($input, $candidate) !== false) $containsPct = 85;
+
+    return max($simPct, $wordPct, $containsPct);
+}
+
+// Weighted score — skip fields the user left blank (redistribute weight)
+function matchScore($inputName, $inputAddress, $inputCSZ, $row) {
+    $fields = [
+        'name' => [$inputName,    $row['INS_Name']       ?? '', 0.50],
+        'addr' => [$inputAddress, $row['Address_Street'] ?? '', 0.30],
+        'csz'  => [$inputCSZ,     $row['Address_CSZ']    ?? '', 0.20],
+    ];
+
+    $totalWeight = 0;
+    $score       = 0;
+    $breakdown   = [];
+
+    foreach ($fields as $key => [$input, $candidate, $weight]) {
+        if (trim($input) === '') {
+            $breakdown[$key] = null;
+            continue;
+        }
+        $pct = fieldScore($input, $candidate);
+        $breakdown[$key] = round($pct, 1);
+        $score       += $pct * $weight;
+        $totalWeight += $weight;
+    }
+
+    // Normalize to filled fields only
+    $final = $totalWeight > 0 ? $score / $totalWeight : 0;
+
+    return [round($final, 1), $breakdown];
+}
+
 $action = $_POST['action'] ?? '';
 
 if ($action === 'search') {
@@ -26,21 +91,17 @@ if ($action === 'search') {
 
     $results = [];
     foreach ($candidates as $row) {
-        similar_text($inputName,    (string)($row['INS_Name']       ?? ''), $namePct);
-        similar_text($inputAddress, (string)($row['Address_Street'] ?? ''), $addrPct);
-        similar_text($inputCSZ,     (string)($row['Address_CSZ']    ?? ''), $cszPct);
-
-        $score = ($namePct * 0.50) + ($addrPct * 0.30) + ($cszPct * 0.20);
+        [$score, $bd] = matchScore($inputName, $inputAddress, $inputCSZ, $row);
 
         $results[] = [
-            'id'         => $row['__kp_INS_ID'],
-            'name'       => $row['INS_Name'],
-            'address'    => $row['Address_Street'],
-            'csz'        => $row['Address_CSZ'],
-            'match_pct'  => round($score, 1),
-            'name_pct'   => round($namePct, 1),
-            'addr_pct'   => round($addrPct, 1),
-            'csz_pct'    => round($cszPct, 1),
+            'id'        => $row['__kp_INS_ID'],
+            'name'      => $row['INS_Name'],
+            'address'   => $row['Address_Street'],
+            'csz'       => $row['Address_CSZ'],
+            'match_pct' => $score,
+            'name_pct'  => $bd['name'],
+            'addr_pct'  => $bd['addr'],
+            'csz_pct'   => $bd['csz'],
         ];
     }
 
