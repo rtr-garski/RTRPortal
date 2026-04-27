@@ -3,53 +3,26 @@ function init_test_insurance() {
     const form      = document.getElementById('insMatchForm');
     const btn       = document.getElementById('insMatchBtn');
     const spinner   = document.getElementById('insMatchSpinner');
-    const alert     = document.getElementById('insMatchAlert');
+    const alertEl   = document.getElementById('insMatchAlert');
     const count     = document.getElementById('insMatchCount');
-    const placeholder = document.getElementById('insMatchPlaceholder');
-    const tableWrap = document.getElementById('insMatchTableWrap');
     const tbody     = document.getElementById('insMatchTbody');
 
     function showAlert(type, msg) {
-        alert.className = `alert alert-${type} py-2`;
-        alert.innerHTML = msg;
-        alert.classList.remove('d-none');
+        alertEl.className = `alert alert-${type} py-2`;
+        alertEl.innerHTML = msg;
+        alertEl.classList.remove('d-none');
     }
 
     function clearAlert() {
-        alert.classList.add('d-none');
+        alertEl.classList.add('d-none');
     }
 
     function pctBadge(pct) {
-        let cls = 'bg-danger';
-        if (pct >= 80) cls = 'bg-success';
-        else if (pct >= 60) cls = 'bg-warning text-dark';
-        else if (pct >= 40) cls = 'bg-secondary';
-        return `<span class="badge ${cls}">${pct}%</span>`;
-    }
-
-    function renderResults(results) {
-        if (!results.length) {
-            placeholder.textContent = 'No matches found.';
-            placeholder.classList.remove('d-none');
-            tableWrap.classList.add('d-none');
-            count.classList.add('d-none');
-            return;
-        }
-
-        tbody.innerHTML = results.map(r => `
-            <tr title="Name: ${r.name_pct}% | Address: ${r.addr_pct}% | CSZ: ${r.csz_pct}%">
-                <td class="ps-3">${pctBadge(r.match_pct)}</td>
-                <td>${escHtml(r.name)}</td>
-                <td>${escHtml(r.address)}</td>
-                <td>${escHtml(r.csz)}</td>
-                <td class="pe-3 text-end text-muted" style="font-size:.78rem">${escHtml(r.id)}</td>
-            </tr>
-        `).join('');
-
-        placeholder.classList.add('d-none');
-        tableWrap.classList.remove('d-none');
-        count.textContent = `${results.length} result${results.length !== 1 ? 's' : ''}`;
-        count.classList.remove('d-none');
+        let cls = 'badge-soft-danger';
+        if (pct >= 90)      cls = 'badge-soft-success';
+        else if (pct >= 70) cls = 'badge-soft-warning';
+        else if (pct >= 50) cls = 'badge-soft-secondary';
+        return `<span class="badge ${cls} fs-xxs">${pct}%</span>`;
     }
 
     function escHtml(str) {
@@ -58,6 +31,33 @@ function init_test_insurance() {
             .replace(/</g, '&lt;')
             .replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;');
+    }
+
+    function renderResults(results) {
+        if (!results.length) {
+            tbody.innerHTML = `<tr><td colspan="5" class="text-center text-muted py-5">No matches found.</td></tr>`;
+            count.classList.add('d-none');
+            return;
+        }
+
+        tbody.innerHTML = results.map(r => `
+            <tr title="Name: ${r.name_pct ?? '-'}% | Address: ${r.addr_pct ?? '-'}% | CSZ: ${r.csz_pct ?? '-'}%">
+                <td class="ps-3">${pctBadge(r.match_pct)}</td>
+                <td><span class="fw-medium">${escHtml(r.name)}</span></td>
+                <td class="text-muted">${escHtml(r.address)}</td>
+                <td class="text-muted">${escHtml(r.csz)}</td>
+                <td class="text-end pe-3 text-muted fs-xs">${escHtml(r.id)}</td>
+            </tr>
+        `).join('');
+
+        count.textContent = `${results.length} result${results.length !== 1 ? 's' : ''}`;
+        count.classList.remove('d-none');
+
+        // Reinit Inspinia custom table plugin to pick up new rows
+        const card = document.getElementById('insResultsCard');
+        if (card && window.CustomTable) {
+            window.CustomTable.init(card);
+        }
     }
 
     if (contentEl._insMatchHandler) {

@@ -19,9 +19,8 @@ if (empty($_SESSION['user_id'])) {
         </div>
     </div>
 
-    <div class="row g-4 pb-4">
-
-        <!-- Search Form -->
+    <!-- Search Form -->
+    <div class="row g-4 pb-3">
         <div class="col-xl-4 col-lg-5">
             <div class="card">
                 <div class="card-header">Search</div>
@@ -48,35 +47,63 @@ if (empty($_SESSION['user_id'])) {
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Results -->
-        <div class="col-xl-8 col-lg-7">
-            <div class="card">
+    <!-- Results Table -->
+    <div class="row">
+        <div class="col-12">
+            <div data-table data-table-rows-per-page="10" class="card" id="insResultsCard">
+
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>Results</span>
+                    <h4 class="card-title mb-0">Results</h4>
                     <span id="insMatchCount" class="badge bg-secondary d-none"></span>
                 </div>
-                <div class="card-body p-0">
-                    <div id="insMatchPlaceholder" class="text-muted text-center py-5" style="font-size:.875rem">
-                        Enter search fields and click Search.
+
+                <div class="card-header border-light justify-content-between">
+                    <div class="d-flex gap-2">
+                        <div class="app-search">
+                            <input data-table-search type="search" class="form-control" placeholder="Filter results..." />
+                            <i class="ti ti-search app-search-icon text-muted"></i>
+                        </div>
                     </div>
-                    <div id="insMatchTableWrap" class="d-none table-responsive">
-                        <table class="table table-hover table-sm mb-0">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th class="ps-3" style="width:8%">Match</th>
-                                    <th style="width:32%">Name</th>
-                                    <th style="width:28%">Address</th>
-                                    <th style="width:24%">City / State / ZIP</th>
-                                    <th class="pe-3 text-end" style="width:8%">ID</th>
-                                </tr>
-                            </thead>
-                            <tbody id="insMatchTbody"></tbody>
-                        </table>
+                    <div>
+                        <select data-table-set-rows-per-page class="form-select form-control my-1 my-md-0">
+                            <option value="5">5</option>
+                            <option value="10" selected>10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
                     </div>
                 </div>
+
+                <div class="table-responsive">
+                    <table class="table table-custom table-centered table-hover w-100 mb-0">
+                        <thead class="bg-light align-middle bg-opacity-25 thead-sm">
+                            <tr class="text-uppercase fs-xxs">
+                                <th class="ps-3" style="width:8%">Match</th>
+                                <th style="width:34%">Name</th>
+                                <th style="width:28%">Address</th>
+                                <th style="width:22%">City / State / ZIP</th>
+                                <th class="text-end pe-3" style="width:8%">ID</th>
+                            </tr>
+                        </thead>
+                        <tbody id="insMatchTbody">
+                            <tr id="insMatchPlaceholder">
+                                <td colspan="5" class="text-center text-muted py-5">Enter search fields and click Search.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card-footer border-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div data-table-pagination-info="results"></div>
+                        <div data-table-pagination></div>
+                    </div>
+                </div>
+
             </div>
         </div>
-
     </div>
+
 </div>
