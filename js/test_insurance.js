@@ -85,9 +85,12 @@ function init_test_insurance() {
             .then(r => r.json())
             .then(data => {
                 if (!data.success) { showAlert('danger', data.message ?? 'Search failed.'); return; }
-                const ms = (performance.now() - queryStart).toFixed(0);
+                const ms  = Math.round(performance.now() - queryStart);
+                const sec = Math.floor(ms / 1000);
+                const rem = ms % 1000;
+                const timeStr = sec > 0 ? `${sec}s ${rem}ms` : `${ms}ms`;
                 const qt = document.getElementById('insQueryTime');
-                qt.textContent = `Query completed in ${ms} ms`;
+                qt.textContent = `Query: ${timeStr}`;
                 qt.classList.remove('d-none');
                 renderResults(data.results);
             })

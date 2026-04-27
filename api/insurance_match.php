@@ -16,7 +16,7 @@ function normalizeStr($s) {
     return trim(preg_replace('/\s+/', ' ', $s));
 }
 
-// Score one field using three methods, return the best
+// Score one field using four methods, return the best
 function fieldScore($input, $candidate) {
     $input     = normalizeStr($input);
     $candidate = normalizeStr($candidate);
@@ -26,23 +26,49 @@ function fieldScore($input, $candidate) {
     // 1. Direct similarity
     similar_text($input, $candidate, $simPct);
 
-    // 2. Word overlap — whole-word match only ("pa" must not match inside "tampa")
-    $words   = array_filter(explode(' ', $input), fn($w) => strlen($w) > 1);
+    $inputWords     = array_values(array_filter(explode(' ', $input),     fn($w) => strlen($w) > 1));
+    $candidateWords = array_values(array_filter(explode(' ', $candidate), fn($w) => strlen($w) > 1));
+
+    $iCount = count($inputWords);
+    $cCount = count($candidateWords) ?: 1;
+
+    // 2. Dice coefficient word overlap — penalises when candidate has more words than input
+    //    "cardiology" in "stanislaus cardiology network" → 2×1/(1+3) = 50%, not 100%
     $wordPct = 0;
-    if ($words) {
+    if ($inputWords) {
         $hits = 0;
-        foreach ($words as $w) {
+        foreach ($inputWords as $w) {
             if (preg_match('/\b' . preg_quote($w, '/') . '\b/', $candidate)) $hits++;
         }
-        $wordPct = ($hits / count($words)) * 100;
+        $wordPct = (2 * $hits / ($iCount + $cCount)) * 100;
     }
 
-    // 3. Whole-word contains check
-    $containsPct = 0;
-    if (preg_match('/\b' . preg_quote($input, '/') . '\b/', $candidate)) $containsPct = 95;
-    elseif ($candidate !== '' && preg_match('/\b' . preg_quote($candidate, '/') . '\b/', $input)) $containsPct = 85;
+    // 3. Substring overlap — "cardio" or "stan" matches any word containing it.
+    //    Require 4+ chars to avoid "pa" matching inside "tampa".
+    $substringPct = 0;
+    if ($inputWords && $candidateWords) {
+        $hits = 0;
+        foreach ($inputWords as $iw) {
+            if (strlen($iw) < 4) continue;
+            foreach ($candidateWords as $cw) {
+                if (strpos($cw, $iw) !== false) { $hits++; break; }
+            }
+        }
+        $eligibleWords = count(array_filter($inputWords, fn($w) => strlen($w) >= 4));
+        if ($eligibleWords > 0) $substringPct = ($hits / $eligibleWords) * 85;
+    }
 
-    return max($simPct, $wordPct, $containsPct);
+    // 4. Contains check — scaled by word coverage so a 1-word input in a 3-word candidate
+    //    scores lower than a full phrase match
+    $containsPct = 0;
+    if (preg_match('/\b' . preg_quote($input, '/') . '\b/', $candidate)) {
+        $coverage     = min(1.0, $iCount / $cCount);
+        $containsPct  = 95 * (0.4 + 0.6 * $coverage);
+    } elseif ($candidate !== '' && preg_match('/\b' . preg_quote($candidate, '/') . '\b/', $input)) {
+        $containsPct = 85;
+    }
+
+    return max($simPct, $wordPct, $substringPct, $containsPct);
 }
 
 // Weighted score — skip fields the user left blank (redistribute weight)
