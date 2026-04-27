@@ -44,7 +44,6 @@ if (empty($_SESSION['user_id'])) {
                             <span id="insMatchSpinner" class="spinner-border spinner-border-sm me-1 d-none"></span>
                             Search
                         </button>
-                        <div id="insQueryTime" class="text-muted text-center mt-2 d-none" style="font-size:.78rem"></div>
                     </form>
                 </div>
             </div>
@@ -54,8 +53,9 @@ if (empty($_SESSION['user_id'])) {
         <div class="col-xl-9 col-lg-8">
             <div data-table data-table-rows-per-page="10" class="card" id="insResultsCard">
 
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="card-title mb-0">Results</h4>
+                    <span id="insQueryTime" class="d-none text-muted" style="font-size:.78rem"></span>
                 </div>
 
                 <div class="card-header border-light justify-content-between">
