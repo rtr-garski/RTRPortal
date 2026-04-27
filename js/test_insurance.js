@@ -4,7 +4,6 @@ function init_test_insurance() {
     const btn        = document.getElementById('insMatchBtn');
     const spinner    = document.getElementById('insMatchSpinner');
     const alertEl    = document.getElementById('insMatchAlert');
-    const countBadge = document.getElementById('insMatchCount');
     const tbody      = document.getElementById('insMatchTbody');
 
     function escHtml(str) {
@@ -45,9 +44,6 @@ function init_test_insurance() {
                 </tr>
             `).join('');
         }
-
-        countBadge.textContent = `${results.length} result${results.length !== 1 ? 's' : ''}`;
-        countBadge.classList.toggle('d-none', !results.length);
 
         // Strip stale event listeners from controls before reinit
         const card = document.getElementById('insResultsCard');

@@ -1,4 +1,6 @@
 function init_client_reports() {
+    new CustomTable({ tableSelector: '#clientReportsCard' });
+
     var contentEl = document.getElementById('content');
 
     if (contentEl._clientReportsHandler) {

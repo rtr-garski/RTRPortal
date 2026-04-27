@@ -54,9 +54,8 @@ if (empty($_SESSION['user_id'])) {
         <div class="col-12">
             <div data-table data-table-rows-per-page="10" class="card" id="insResultsCard">
 
-                <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="card-header">
                     <h4 class="card-title mb-0">Results</h4>
-                    <span id="insMatchCount" class="badge bg-secondary d-none"></span>
                 </div>
 
                 <div class="card-header border-light justify-content-between">

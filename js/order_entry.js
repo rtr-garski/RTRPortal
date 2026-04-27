@@ -1,4 +1,6 @@
 function init_order_entry() {
+    new CustomTable({ tableSelector: '#orderEntryCard' });
+
     var contentEl = document.getElementById('content');
 
     if (contentEl._orderEntryHandler) {

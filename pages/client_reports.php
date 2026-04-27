@@ -153,7 +153,7 @@ asort($clientOptions);
 
     <div class="row">
         <div class="col-12">
-            <div data-table data-table-rows-per-page="10" class="card">
+            <div data-table data-table-rows-per-page="10" class="card" id="clientReportsCard">
                 <div class="card-header border-light justify-content-between">
                     <div class="d-flex gap-2">
                         <div class="app-search">
