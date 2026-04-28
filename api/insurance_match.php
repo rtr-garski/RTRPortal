@@ -199,7 +199,7 @@ if ($action === 'search_loc') {
         exit;
     }
 
-    $stmt = $pdo->query("SELECT __kp_LOC_ID, LOC_Name, Address_CSZ, Phone FROM LOC");
+    $stmt = $pdo->query("SELECT __kp_LOC_ID, LOC_Name, Address_CSZ, Phone FROM LOC WHERE (`X-inactive` != 1 OR `X-inactive` IS NULL)");
     $candidates = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $results = [];
@@ -207,14 +207,15 @@ if ($action === 'search_loc') {
         [$score, $bd] = locMatchScore($inputName, $inputCSZ, $inputPhone, $row);
 
         $results[] = [
-            'id'        => $row['__kp_LOC_ID'],
-            'name'      => $row['LOC_Name'],
-            'csz'       => $row['Address_CSZ'],
-            'phone'     => $row['Phone'],
-            'match_pct' => $score,
-            'name_pct'  => $bd['name'],
-            'csz_pct'   => $bd['csz'],
-            'phone_pct' => $bd['phone'],
+            'id'         => $row['__kp_LOC_ID'],
+            'name'       => $row['LOC_Name'],
+            'csz'        => $row['Address_CSZ'],
+            'phone_raw'  => $row['Phone'],
+            'phone'      => sanitizePhone($row['Phone']),
+            'match_pct'  => $score,
+            'name_pct'   => $bd['name'],
+            'csz_pct'    => $bd['csz'],
+            'phone_pct'  => $bd['phone'],
         ];
     }
 

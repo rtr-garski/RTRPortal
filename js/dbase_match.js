@@ -85,7 +85,7 @@ function init_dbase_match() {
                     <td class="ps-3">${pctBadge(r.match_pct)}</td>
                     <td><span class="fw-medium">${escHtml(r.name)}</span></td>
                     <td class="text-muted">${escHtml(r.csz)}</td>
-                    <td class="text-muted">${escHtml(r.phone)}</td>
+                    <td class="text-muted" title="Original: ${escHtml(r.phone_raw)}" style="cursor:default">${escHtml(r.phone)}</td>
                     <td class="text-end pe-3 text-muted fs-xs">${escHtml(r.id)}</td>
                 </tr>
             `).join('');
@@ -100,6 +100,17 @@ function init_dbase_match() {
             locTableInstance.update();
         }
     }
+
+    // Strip non-digits on input
+    const locPhoneEl = document.getElementById('loc_phone');
+    locPhoneEl.addEventListener('input', function() {
+        const pos = this.selectionStart;
+        const cleaned = this.value.replace(/[^0-9]/g, '');
+        if (this.value !== cleaned) {
+            this.value = cleaned;
+            this.setSelectionRange(pos - 1, pos - 1);
+        }
+    });
 
     if (contentEl._locMatchHandler) locForm.removeEventListener('submit', contentEl._locMatchHandler);
     contentEl._locMatchHandler = function(e) {

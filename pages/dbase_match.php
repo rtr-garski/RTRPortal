@@ -130,7 +130,7 @@ if (empty($_SESSION['user_id'])) {
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="loc_phone">Phone</label>
-                            <input type="text" class="form-control" id="loc_phone" placeholder="e.g. (310) 825-9111">
+                            <input type="text" class="form-control" id="loc_phone" placeholder="e.g. 3108259111" maxlength="15" inputmode="numeric">
                         </div>
                         <button type="submit" class="btn btn-primary w-100" id="locMatchBtn">
                             <span id="locMatchSpinner" class="spinner-border spinner-border-sm me-1 d-none"></span>
