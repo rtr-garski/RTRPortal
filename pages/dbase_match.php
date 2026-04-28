@@ -9,12 +9,12 @@ if (empty($_SESSION['user_id'])) {
 
     <div class="page-title-head d-flex align-items-center">
         <div class="flex-grow-1">
-            <h4 class="page-main-title m-0">Insurance Match</h4>
+            <h4 class="page-main-title m-0">Dbase Match</h4>
         </div>
         <div class="text-end">
             <ol class="breadcrumb m-0 py-0">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">RTR</a></li>
-                <li class="breadcrumb-item active">Insurance Match</li>
+                <li class="breadcrumb-item active">Dbase Match</li>
             </ol>
         </div>
     </div>
@@ -87,6 +87,98 @@ if (empty($_SESSION['user_id'])) {
                             </tr>
                         </thead>
                         <tbody id="insMatchTbody">
+                            <tr>
+                                <td colspan="5" class="text-center text-muted py-5">Enter search fields and click Search.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card-footer border-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div data-table-pagination-info="results"></div>
+                        <div data-table-pagination></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="my-2">
+
+    <!-- LOC Section -->
+    <h5 class="mb-3 text-muted fw-semibold" style="font-size:.82rem; text-transform:uppercase; letter-spacing:.05em">Records Location</h5>
+
+    <div class="row g-4 pb-4">
+
+        <!-- LOC Search Form -->
+        <div class="col-xl-3 col-lg-4">
+            <div class="card">
+                <div class="card-header">Search</div>
+                <div class="card-body">
+                    <div id="locMatchAlert" class="d-none alert py-2" style="font-size:.82rem"></div>
+                    <form id="locMatchForm">
+                        <div class="mb-3">
+                            <label class="form-label" for="loc_name">Name</label>
+                            <input type="text" class="form-control" id="loc_name" placeholder="e.g. UCLA Medical Center">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="loc_csz">City, State ZIP</label>
+                            <input type="text" class="form-control" id="loc_csz" placeholder="e.g. Los Angeles, CA 90024">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="loc_phone">Phone</label>
+                            <input type="text" class="form-control" id="loc_phone" placeholder="e.g. (310) 825-9111">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" id="locMatchBtn">
+                            <span id="locMatchSpinner" class="spinner-border spinner-border-sm me-1 d-none"></span>
+                            Search
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOC Results Table -->
+        <div class="col-xl-9 col-lg-8">
+            <div data-table data-table-rows-per-page="10" class="card" id="locResultsCard">
+
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title mb-0">Results</h4>
+                    <span id="locQueryTime" class="d-none text-muted" style="font-size:.78rem"></span>
+                </div>
+
+                <div class="card-header border-light justify-content-between">
+                    <div class="d-flex gap-2">
+                        <div class="app-search">
+                            <input data-table-search type="search" class="form-control" placeholder="Filter results..." />
+                            <i class="ti ti-search app-search-icon text-muted"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <select data-table-set-rows-per-page class="form-select form-control my-1 my-md-0">
+                            <option value="5">5</option>
+                            <option value="10" selected>10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-custom table-centered table-hover w-100 mb-0">
+                        <thead class="bg-light align-middle bg-opacity-25 thead-sm">
+                            <tr class="text-uppercase fs-xxs">
+                                <th class="ps-3" style="width:8%">Match</th>
+                                <th style="width:32%">Name</th>
+                                <th style="width:26%">City / State / ZIP</th>
+                                <th style="width:18%">Phone</th>
+                                <th class="text-end pe-3" style="width:8%">ID</th>
+                            </tr>
+                        </thead>
+                        <tbody id="locMatchTbody">
                             <tr>
                                 <td colspan="5" class="text-center text-muted py-5">Enter search fields and click Search.</td>
                             </tr>

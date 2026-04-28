@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../config/session.php';
 if (empty($_SESSION['user_id'])) {
     http_response_code(401);
-    echo json_encode(['success' => false, 'message' => 'Unauthorized']);
+    echo json_encode(['success' => false, 'message' => 'Unauthorized, Re-login required.']);
     exit;
 }
 
@@ -100,6 +100,55 @@ function matchScore($inputName, $inputAddress, $inputCSZ, $row) {
     return [round($final, 1), $breakdown];
 }
 
+// Strip phone to digits only
+function sanitizePhone($s) {
+    return preg_replace('/[^0-9]/', '', (string)$s);
+}
+
+// Phone score — compare digit-only strings
+function phoneScore($input, $candidate) {
+    $input     = sanitizePhone($input);
+    $candidate = sanitizePhone($candidate);
+
+    if ($input === '' || $candidate === '') return 0;
+    if ($input === $candidate) return 100;
+
+    similar_text($input, $candidate, $simPct);
+
+    $containsPct = 0;
+    if (strpos($candidate, $input) !== false) $containsPct = 90;
+    elseif (strpos($input, $candidate) !== false) $containsPct = 80;
+
+    return max($simPct, $containsPct);
+}
+
+// LOC weighted score
+function locMatchScore($inputName, $inputCSZ, $inputPhone, $row) {
+    $fields = [
+        'name'  => [$inputName,  $row['LOC_Name']    ?? '', 0.50, false],
+        'csz'   => [$inputCSZ,   $row['Address_CSZ'] ?? '', 0.30, false],
+        'phone' => [$inputPhone, $row['Phone']        ?? '', 0.20, true],
+    ];
+
+    $totalWeight = 0;
+    $score       = 0;
+    $breakdown   = [];
+
+    foreach ($fields as $key => [$input, $candidate, $weight, $isPhone]) {
+        if (trim($input) === '') {
+            $breakdown[$key] = null;
+            continue;
+        }
+        $pct = $isPhone ? phoneScore($input, $candidate) : fieldScore($input, $candidate);
+        $breakdown[$key] = round($pct, 1);
+        $score       += $pct * $weight;
+        $totalWeight += $weight;
+    }
+
+    $final = $totalWeight > 0 ? $score / $totalWeight : 0;
+    return [round($final, 1), $breakdown];
+}
+
 $action = $_POST['action'] ?? '';
 
 if ($action === 'search') {
@@ -128,6 +177,44 @@ if ($action === 'search') {
             'name_pct'  => $bd['name'],
             'addr_pct'  => $bd['addr'],
             'csz_pct'   => $bd['csz'],
+        ];
+    }
+
+    usort($results, fn($a, $b) => $b['match_pct'] <=> $a['match_pct']);
+
+    echo json_encode([
+        'success' => true,
+        'results' => array_slice($results, 0, 10),
+    ]);
+    exit;
+}
+
+if ($action === 'search_loc') {
+    $inputName  = trim($_POST['name']  ?? '');
+    $inputCSZ   = trim($_POST['csz']   ?? '');
+    $inputPhone = trim($_POST['phone'] ?? '');
+
+    if ($inputName === '' && $inputCSZ === '' && $inputPhone === '') {
+        echo json_encode(['success' => false, 'message' => 'At least one search field is required.']);
+        exit;
+    }
+
+    $stmt = $pdo->query("SELECT __kp_LOC_ID, LOC_Name, Address_CSZ, Phone FROM LOC");
+    $candidates = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $results = [];
+    foreach ($candidates as $row) {
+        [$score, $bd] = locMatchScore($inputName, $inputCSZ, $inputPhone, $row);
+
+        $results[] = [
+            'id'        => $row['__kp_LOC_ID'],
+            'name'      => $row['LOC_Name'],
+            'csz'       => $row['Address_CSZ'],
+            'phone'     => $row['Phone'],
+            'match_pct' => $score,
+            'name_pct'  => $bd['name'],
+            'csz_pct'   => $bd['csz'],
+            'phone_pct' => $bd['phone'],
         ];
     }
 

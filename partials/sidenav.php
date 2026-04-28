@@ -110,9 +110,9 @@
                     </a>
                 </li>
                 <li class="side-nav-item">
-                    <a href="#" data-page="test_insurance" class="side-nav-link nav-link">
-                        <span class="menu-icon"><i class="ti ti-building-bank"></i></span>
-                        <span class="menu-text">Insurance Match</span>
+                    <a href="#" data-page="dbase_match" class="side-nav-link nav-link">
+                        <span class="menu-icon"><i class="ti ti-database-search"></i></span>
+                        <span class="menu-text">Dbase Match</span>
                     </a>
                 </li>
 
