@@ -228,4 +228,64 @@ if ($action === 'search_loc') {
     exit;
 }
 
+if ($action === 'search_csl') {
+    $inputName     = trim($_POST['name']     ?? '');
+    $inputAttorney = trim($_POST['attorney'] ?? '');
+    $inputAddress  = trim($_POST['address']  ?? '');
+    $inputCSZ      = trim($_POST['csz']      ?? '');
+
+    if ($inputName === '' && $inputAttorney === '' && $inputAddress === '' && $inputCSZ === '') {
+        echo json_encode(['success' => false, 'message' => 'At least one search field is required.']);
+        exit;
+    }
+
+    $stmt = $pdo->query("SELECT __kp_CSL_ID, CSL_Name, Attorney_Name, Address_Street, Address_CSZ FROM CSL");
+    $candidates = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $results = [];
+    foreach ($candidates as $row) {
+        $fields = [
+            'name'     => [$inputName,     $row['CSL_Name']       ?? '', 0.30],
+            'attorney' => [$inputAttorney, $row['Attorney_Name']  ?? '', 0.35],
+            'addr'     => [$inputAddress,  $row['Address_Street'] ?? '', 0.15],
+            'csz'      => [$inputCSZ,      $row['Address_CSZ']    ?? '', 0.20],
+        ];
+
+        $totalWeight = 0;
+        $score       = 0;
+        $breakdown   = [];
+
+        foreach ($fields as $key => [$input, $candidate, $weight]) {
+            if (trim($input) === '') { $breakdown[$key] = null; continue; }
+            $pct = fieldScore($input, $candidate);
+            $breakdown[$key] = round($pct, 1);
+            $score       += $pct * $weight;
+            $totalWeight += $weight;
+        }
+
+        $final = $totalWeight > 0 ? round($score / $totalWeight, 1) : 0;
+
+        $results[] = [
+            'id'           => $row['__kp_CSL_ID'],
+            'name'         => $row['CSL_Name'],
+            'attorney'     => $row['Attorney_Name'],
+            'address'      => $row['Address_Street'],
+            'csz'          => $row['Address_CSZ'],
+            'match_pct'    => $final,
+            'name_pct'     => $breakdown['name'],
+            'attorney_pct' => $breakdown['attorney'],
+            'addr_pct'     => $breakdown['addr'],
+            'csz_pct'      => $breakdown['csz'],
+        ];
+    }
+
+    usort($results, fn($a, $b) => $b['match_pct'] <=> $a['match_pct']);
+
+    echo json_encode([
+        'success' => true,
+        'results' => array_slice($results, 0, 10),
+    ]);
+    exit;
+}
+
 echo json_encode(['success' => false, 'message' => 'Invalid action.']);

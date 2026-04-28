@@ -152,6 +152,90 @@ function init_dbase_match() {
     locForm.addEventListener('submit', contentEl._locMatchHandler);
     // ── end LOC section ──────────────────────────────────────────
 
+    // ── CSL section ──────────────────────────────────────────────
+    const cslForm    = document.getElementById('cslMatchForm');
+    const cslBtn     = document.getElementById('cslMatchBtn');
+    const cslSpinner = document.getElementById('cslMatchSpinner');
+    const cslAlertEl = document.getElementById('cslMatchAlert');
+    const cslTbody   = document.getElementById('cslMatchTbody');
+
+    const cslCt            = new CustomTable({ tableSelector: '#cslResultsCard' });
+    const cslTableInstance = cslCt.tables[0] ?? null;
+
+    function showCslAlert(type, msg) {
+        cslAlertEl.className = `alert alert-${type} py-2`;
+        cslAlertEl.innerHTML = msg;
+        cslAlertEl.classList.remove('d-none');
+    }
+    function clearCslAlert() { cslAlertEl.classList.add('d-none'); }
+
+    function renderCslResults(results) {
+        if (!results.length) {
+            cslTbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-5">No matches found.</td></tr>`;
+        } else {
+            cslTbody.innerHTML = results.map(r => `
+                <tr title="Firm: ${r.name_pct ?? '-'}% | Attorney: ${r.attorney_pct ?? '-'}% | Addr: ${r.addr_pct ?? '-'}% | CSZ: ${r.csz_pct ?? '-'}%">
+                    <td class="ps-3">${pctBadge(r.match_pct)}</td>
+                    <td><span class="fw-medium">${escHtml(r.name)}</span></td>
+                    <td class="text-muted">${escHtml(r.attorney)}</td>
+                    <td class="text-muted">${escHtml(r.address)}</td>
+                    <td class="text-muted">${escHtml(r.csz)}</td>
+                    <td class="text-end pe-3 text-muted fs-xs">${escHtml(r.id)}</td>
+                </tr>
+            `).join('');
+        }
+
+        if (cslTableInstance) {
+            const newRows = Array.from(cslTbody.querySelectorAll('tr'));
+            cslTableInstance.rows = newRows;
+            cslTableInstance.filteredRows = [...newRows];
+            cslTableInstance.currentPage = 1;
+            if (cslTableInstance.searchInput) cslTableInstance.searchInput.value = '';
+            cslTableInstance.update();
+        }
+    }
+
+    if (contentEl._cslMatchHandler) cslForm.removeEventListener('submit', contentEl._cslMatchHandler);
+    contentEl._cslMatchHandler = function(e) {
+        if (e.target !== cslForm) return;
+        e.preventDefault();
+
+        const name     = document.getElementById('csl_name').value.trim();
+        const attorney = document.getElementById('csl_attorney').value.trim();
+        const address  = document.getElementById('csl_address').value.trim();
+        const csz      = document.getElementById('csl_csz').value.trim();
+
+        if (!name && !attorney && !address && !csz) {
+            showCslAlert('danger', 'Please enter at least one search field.');
+            return;
+        }
+
+        clearCslAlert();
+        cslBtn.disabled = true;
+        cslSpinner.classList.remove('d-none');
+        const cslStart = performance.now();
+
+        fetch('api/insurance_match.php', {
+            method: 'POST',
+            body: new URLSearchParams({ action: 'search_csl', name, attorney, address, csz })
+        })
+            .then(r => r.json())
+            .then(data => {
+                if (!data.success) { showCslAlert('danger', data.message ?? 'Search failed.'); return; }
+                const ms  = Math.round(performance.now() - cslStart);
+                const sec = Math.floor(ms / 1000);
+                const rem = ms % 1000;
+                const qt  = document.getElementById('cslQueryTime');
+                qt.textContent = `Query: ${sec > 0 ? sec + 's ' + rem : ms}ms`;
+                qt.classList.remove('d-none');
+                renderCslResults(data.results);
+            })
+            .catch(() => showCslAlert('danger', 'Request failed. Please try again.'))
+            .finally(() => { cslBtn.disabled = false; cslSpinner.classList.add('d-none'); });
+    };
+    cslForm.addEventListener('submit', contentEl._cslMatchHandler);
+    // ── end CSL section ──────────────────────────────────────────
+
     if (contentEl._insMatchHandler) form.removeEventListener('submit', contentEl._insMatchHandler);
     contentEl._insMatchHandler = function(e) {
         if (e.target !== form) return;

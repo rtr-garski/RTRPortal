@@ -19,6 +19,8 @@ if (empty($_SESSION['user_id'])) {
         </div>
     </div>
 
+    <h5 class="mb-3 text-muted fw-semibold" style="font-size:.82rem; text-transform:uppercase; letter-spacing:.05em">Insurance Carriers</h5>
+
     <div class="row g-4 pb-4">
 
         <!-- Search Form -->
@@ -130,7 +132,7 @@ if (empty($_SESSION['user_id'])) {
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="loc_phone">Phone</label>
-                            <input type="text" class="form-control" id="loc_phone" placeholder="e.g. 3108259111" maxlength="15" inputmode="numeric">
+                            <input type="text" class="form-control" id="loc_phone" placeholder="e.g. 3108259111" maxlength="15" inputmode="numeric" autocomplete="off" autocorrect="off" autocapitalize="off">
                         </div>
                         <button type="submit" class="btn btn-primary w-100" id="locMatchBtn">
                             <span id="locMatchSpinner" class="spinner-border spinner-border-sm me-1 d-none"></span>
@@ -181,6 +183,103 @@ if (empty($_SESSION['user_id'])) {
                         <tbody id="locMatchTbody">
                             <tr>
                                 <td colspan="5" class="text-center text-muted py-5">Enter search fields and click Search.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card-footer border-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div data-table-pagination-info="results"></div>
+                        <div data-table-pagination></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="my-2">
+
+    <!-- CSL Section -->
+    <h5 class="mb-3 text-muted fw-semibold" style="font-size:.82rem; text-transform:uppercase; letter-spacing:.05em">Opposing Counsel</h5>
+
+    <div class="row g-4 pb-4">
+
+        <!-- CSL Search Form -->
+        <div class="col-xl-3 col-lg-4">
+            <div class="card">
+                <div class="card-header">Search</div>
+                <div class="card-body">
+                    <div id="cslMatchAlert" class="d-none alert py-2" style="font-size:.82rem"></div>
+                    <form id="cslMatchForm">
+                        <div class="mb-3">
+                            <label class="form-label" for="csl_name">Firm Name</label>
+                            <input type="text" class="form-control" id="csl_name" placeholder="e.g. Smith & Associates">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="csl_attorney">Attorney Name</label>
+                            <input type="text" class="form-control" id="csl_attorney" placeholder="e.g. John Smith">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="csl_address">Address</label>
+                            <input type="text" class="form-control" id="csl_address" placeholder="e.g. 123 Main St">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="csl_csz">City, State ZIP</label>
+                            <input type="text" class="form-control" id="csl_csz" placeholder="e.g. Los Angeles, CA 90001">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" id="cslMatchBtn">
+                            <span id="cslMatchSpinner" class="spinner-border spinner-border-sm me-1 d-none"></span>
+                            Search
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- CSL Results Table -->
+        <div class="col-xl-9 col-lg-8">
+            <div data-table data-table-rows-per-page="10" class="card" id="cslResultsCard">
+
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title mb-0">Results</h4>
+                    <span id="cslQueryTime" class="d-none text-muted" style="font-size:.78rem"></span>
+                </div>
+
+                <div class="card-header border-light justify-content-between">
+                    <div class="d-flex gap-2">
+                        <div class="app-search">
+                            <input data-table-search type="search" class="form-control" placeholder="Filter results..." />
+                            <i class="ti ti-search app-search-icon text-muted"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <select data-table-set-rows-per-page class="form-select form-control my-1 my-md-0">
+                            <option value="5">5</option>
+                            <option value="10" selected>10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-custom table-centered table-hover w-100 mb-0">
+                        <thead class="bg-light align-middle bg-opacity-25 thead-sm">
+                            <tr class="text-uppercase fs-xxs">
+                                <th class="ps-3" style="width:7%">Match</th>
+                                <th style="width:22%">Firm Name</th>
+                                <th style="width:20%">Attorney</th>
+                                <th style="width:22%">Address</th>
+                                <th style="width:21%">City / State / ZIP</th>
+                                <th class="text-end pe-3" style="width:8%">ID</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cslMatchTbody">
+                            <tr>
+                                <td colspan="6" class="text-center text-muted py-5">Enter search fields and click Search.</td>
                             </tr>
                         </tbody>
                     </table>
