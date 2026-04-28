@@ -199,7 +199,7 @@ if ($action === 'search_loc') {
         exit;
     }
 
-    $stmt = $pdo->query("SELECT __kp_LOC_ID, LOC_Name, Address_CSZ, Phone FROM LOC WHERE (`X-inactive` != 1 OR `X-inactive` IS NULL)");
+    $stmt = $pdo->query("SELECT __kp_LOC_ID, LOC_Name, Address_CSZ, Phone FROM LOC WHERE `X-Inactive` IS NULL");
     $candidates = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $results = [];
