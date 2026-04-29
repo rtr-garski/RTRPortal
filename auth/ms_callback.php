@@ -29,12 +29,19 @@ function ms_get(string $url, string $accessToken): ?array {
     return $response ? json_decode($response, true) : null;
 }
 
-// Validate CSRF state
-if (empty($_GET['state']) || $_GET['state'] !== ($_SESSION['ms_oauth_state'] ?? '')) {
+// Validate CSRF state against the Lax cookie set in ms_login.php
+if (empty($_GET['state']) || $_GET['state'] !== ($_COOKIE['ms_oauth_state'] ?? '')) {
     header('Location: ../login.php?sso_error=state_mismatch');
     exit;
 }
-unset($_SESSION['ms_oauth_state']);
+// Clear the state cookie
+setcookie('ms_oauth_state', '', [
+    'expires'  => time() - 3600,
+    'path'     => '/',
+    'secure'   => !empty($_SERVER['HTTPS']),
+    'httponly' => true,
+    'samesite' => 'Lax',
+]);
 
 // Microsoft returned an error (e.g. user cancelled)
 if (!empty($_GET['error'])) {
@@ -61,6 +68,7 @@ $tokenData = ms_post(
 );
 
 if (empty($tokenData['access_token'])) {
+    error_log('[MS SSO] token_failed: ' . json_encode(array_diff_key($tokenData ?? [], ['access_token' => 1, 'refresh_token' => 1])));
     header('Location: ../login.php?sso_error=token_failed');
     exit;
 }
