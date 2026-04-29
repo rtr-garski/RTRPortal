@@ -90,9 +90,7 @@ $stmt->execute([$email]);
 $user = $stmt->fetch();
 
 if (!$user) {
-    // TEMP DEBUG — remove after diagnosing
-    header('Content-Type: text/plain');
-    echo "Unauthorized.\n\nMicrosoft returned email: " . htmlspecialchars($email) . "\n\nMake sure this exactly matches the user_name in sys_users (case-insensitive).";
+    header('Location: ../login.php?sso_error=unauthorized');
     exit;
 }
 
@@ -104,5 +102,8 @@ $_SESSION['name']      = $user['name'];
 $pdo2->prepare("UPDATE sys_users SET last_login = NOW() WHERE user_id = ?")
      ->execute([$user['user_id']]);
 
-header('Location: ../index.php');
+session_write_close();
+
+$base = rtrim(dirname(dirname($_SERVER['SCRIPT_NAME'])), '/\\');
+header('Location: ' . $base . '/index.php');
 exit;
