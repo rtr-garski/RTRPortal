@@ -111,7 +111,7 @@ $base = rtrim(dirname(dirname($_SERVER['SCRIPT_NAME'])), '/\\');
 <head>
     <meta http-equiv="refresh" content="0;url=<?= htmlspecialchars($base) ?>/index.php">
 </head>
-<body>Signed in. Redirecting...</body>
+<body></body>
 </html>
 <?php
 exit;
