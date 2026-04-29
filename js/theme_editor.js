@@ -21,10 +21,17 @@ function applyRTRTheme(theme) {
     ].join('\n');
 }
 
-applyRTRTheme();
-
 function init_theme_editor() {
     const contentEl = document.getElementById('content');
+
+    // Apply theme on this page, then remove style tag when navigating away
+    applyRTRTheme();
+    const observer = new MutationObserver(() => {
+        const el = document.getElementById('rtr-theme-style');
+        if (el) el.remove();
+        observer.disconnect();
+    });
+    observer.observe(contentEl, { childList: true });
 
     const PRESETS = [
         {
