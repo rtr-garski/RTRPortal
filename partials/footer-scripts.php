@@ -16,4 +16,5 @@
 <script src="js/client_reports.js?v=2"></script>
 <script src="js/client_order_details.js?v=1"></script>
 <script src="js/dbase_match.js?v=4"></script>
+<script src="js/theme_editor.js?v=1"></script>
 <script src="../source/inspinia5/assets/js/pages/custom-table.js"></script>

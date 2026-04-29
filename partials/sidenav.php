@@ -116,7 +116,13 @@
                     </a>
                 </li>
 
-                
+                <li class="side-nav-title mt-2">Settings</li>
+                <li class="side-nav-item">
+                    <a href="#" data-page="theme_editor" class="side-nav-link nav-link">
+                        <span class="menu-icon"><i class="ti ti-palette"></i></span>
+                        <span class="menu-text">Theme Editor</span>
+                    </a>
+                </li>
 
             </ul>
         </div>
