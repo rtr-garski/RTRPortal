@@ -76,7 +76,7 @@ if (!empty($_SESSION['user_id'])) {
                                         <p class="text-center text-muted mt-4 mb-0">
                                             ©
                                             <script>document.write(new Date().getFullYear())</script>
-                                            RTR Portal
+                                            RTR-Order Entry Portal
                                         </p>
                                     </div>
                                 </div>
