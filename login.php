@@ -34,6 +34,34 @@ if (!empty($_SESSION['user_id'])) {
 
                                         <div id="loginError" class="alert alert-danger d-none"></div>
 
+                                        <?php if (!empty($_GET['sso_error'])): ?>
+                                        <div class="alert alert-danger">
+                                            <?php
+                                            $ssoErrors = [
+                                                'unauthorized'    => 'Your Microsoft account is not authorised to access this portal.',
+                                                'state_mismatch'  => 'Sign-in session expired. Please try again.',
+                                                'token_failed'    => 'Could not retrieve token from Microsoft. Please try again.',
+                                                'no_email'        => 'Could not retrieve your email address from Microsoft.',
+                                            ];
+                                            $key = htmlspecialchars($_GET['sso_error']);
+                                            echo $ssoErrors[$key] ?? 'Microsoft sign-in failed. Please try again.';
+                                            ?>
+                                        </div>
+                                        <?php endif; ?>
+
+                                        <div class="d-grid mb-3">
+                                            <a href="auth/ms_login.php" class="btn btn-outline-secondary fw-semibold py-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 23 23" class="me-2" style="vertical-align:text-bottom"><path fill="#f25022" d="M0 0h11v11H0z"/><path fill="#00a4ef" d="M0 12h11v11H0z"/><path fill="#7fba00" d="M12 0h11v11H12z"/><path fill="#ffb900" d="M12 12h11v11H12z"/></svg>
+                                                Sign in with Microsoft
+                                            </a>
+                                        </div>
+
+                                        <div class="d-flex align-items-center gap-2 mb-3">
+                                            <hr class="flex-grow-1 m-0">
+                                            <span class="text-muted small">or</span>
+                                            <hr class="flex-grow-1 m-0">
+                                        </div>
+
                                         <form id="loginForm">
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">
