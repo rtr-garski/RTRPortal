@@ -123,6 +123,12 @@
                         <span class="menu-text">Theme Editor</span>
                     </a>
                 </li>
+                <li class="side-nav-item">
+                    <a href="#" data-page="login_logs" class="side-nav-link nav-link">
+                        <span class="menu-icon"><i class="ti ti-login"></i></span>
+                        <span class="menu-text">Login Logs</span>
+                    </a>
+                </li>
 
             </ul>
         </div>

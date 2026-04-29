@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../config/session.php';
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../config/ms_sso.php';
+require_once __DIR__ . '/../config/login_log.php';
 
 function ms_post(string $url, array $fields): ?array {
     $ch = curl_init($url);
@@ -90,6 +91,7 @@ $stmt->execute([$email]);
 $user = $stmt->fetch();
 
 if (!$user) {
+    write_login_log($pdo2, null, $email, 'microsoft_sso', 'failed', 'unauthorized_sso');
     header('Location: ../login.php?sso_error=unauthorized');
     exit;
 }
@@ -101,6 +103,8 @@ $_SESSION['name']      = $user['name'];
 
 $pdo2->prepare("UPDATE sys_users SET last_login = NOW() WHERE user_id = ?")
      ->execute([$user['user_id']]);
+
+write_login_log($pdo2, $user['user_id'], $user['user_name'], 'microsoft_sso', 'success');
 
 session_write_close();
 

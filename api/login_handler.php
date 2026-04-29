@@ -1,6 +1,7 @@
 <?php
 ob_start();
 require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../config/login_log.php';
 
 $remember = !empty($_POST['remember_me']);
 
@@ -34,6 +35,7 @@ $stmt->execute([$username]);
 $user = $stmt->fetch();
 
 if (!$user || !password_verify($password, $user['user_password'])) {
+    write_login_log($pdo2, $user['user_id'] ?? null, $username, 'password', 'failed', 'wrong_password');
     echo json_encode(['success' => false, 'message' => 'Invalid username or password.']);
     exit;
 }
@@ -45,5 +47,7 @@ $_SESSION['name']      = $user['name'];
 
 $pdo2->prepare("UPDATE sys_users SET last_login = NOW() WHERE user_id = ?")
      ->execute([$user['user_id']]);
+
+write_login_log($pdo2, $user['user_id'], $user['user_name'], 'password', 'success');
 
 echo json_encode(['success' => true, 'redirect' => 'index.php']);
