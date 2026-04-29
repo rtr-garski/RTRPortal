@@ -105,5 +105,13 @@ $pdo2->prepare("UPDATE sys_users SET last_login = NOW() WHERE user_id = ?")
 session_write_close();
 
 $base = rtrim(dirname(dirname($_SERVER['SCRIPT_NAME'])), '/\\');
-header('Location: ' . $base . '/index.php');
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="0;url=<?= htmlspecialchars($base) ?>/index.php">
+</head>
+<body>Signed in. Redirecting...</body>
+</html>
+<?php
 exit;
