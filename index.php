@@ -1,6 +1,6 @@
 <?php include 'partials/main.php'; ?>
     <head>
-        <?php $title = "RTR Client Portal"; include('partials/title-meta.php'); ?> 
+        <?php $title = "RTR Order Entry Portal"; include('partials/title-meta.php'); ?> 
         
         <?php include('partials/custom-css.php'); ?> 
         <?php include('partials/head-css.php'); ?>
