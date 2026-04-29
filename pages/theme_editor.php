@@ -17,7 +17,7 @@ if (empty($_SESSION['user_id'])) {
                         <li class="breadcrumb-item active">Theme Editor</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Theme Editor TEST</h4>
+                <h4 class="page-title">Theme Editor</h4>
             </div>
         </div>
     </div>
