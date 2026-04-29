@@ -90,7 +90,9 @@ $stmt->execute([$email]);
 $user = $stmt->fetch();
 
 if (!$user) {
-    header('Location: ../login.php?sso_error=unauthorized');
+    // TEMP DEBUG — remove after diagnosing
+    header('Content-Type: text/plain');
+    echo "Unauthorized.\n\nMicrosoft returned email: " . htmlspecialchars($email) . "\n\nMake sure this exactly matches the user_name in sys_users (case-insensitive).";
     exit;
 }
 
