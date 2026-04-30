@@ -4,6 +4,9 @@ if (empty($_SESSION['user_id'])) {
     http_response_code(401);
     exit;
 }
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../config/access.php';
+require_page_access('api_portal_test', $pdo2);
 require_once __DIR__ . '/../apiportal/functions2.php';
 
 $scheme      = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')

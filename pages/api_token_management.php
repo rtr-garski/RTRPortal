@@ -5,6 +5,8 @@ if (empty($_SESSION['user_id'])) {
     exit;
 }
 require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../config/access.php';
+require_page_access('api_token_management', $pdo2);
 
 try {
     $tokens = $pdo->query("SELECT * FROM API_Tokens ORDER BY Timestamp_Issued DESC")->fetchAll();

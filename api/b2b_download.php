@@ -7,6 +7,8 @@ if (empty($_SESSION['user_id'])) {
 }
 
 require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../config/access.php';
+require_page_access('b2b_test', $pdo2, true);
 require_once __DIR__ . '/../config/backblaze.php';
 require_once __DIR__ . '/../config/b2_helper.php';
 

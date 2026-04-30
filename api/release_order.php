@@ -5,6 +5,9 @@ if (empty($_SESSION['user_id'])) {
     exit;
 }
 
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../config/access.php';
+require_page_access('order_entry', $pdo2, true);
 header('Content-Type: application/json');
 
 $action    = $_POST['action']      ?? '';
