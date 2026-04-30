@@ -1,34 +1,47 @@
 <?php
 // pdo2 is already open (included via main.php → db.php)
-$dept = $_SESSION['department'] ?? 'all';
+$dept = $_SESSION['department'] ?? '';
 
-// All active sections
-$sections = $pdo2->query(
-    "SELECT id, label FROM nav_sections WHERE is_active = 1 ORDER BY sort_order"
-)->fetchAll();
+$sections = [];
+$bySection = [];
+$byParent  = [];
 
-// Items visible to this department — must have an explicit row in nav_item_departments.
-$stmt = $pdo2->prepare("
-    SELECT ni.*
-    FROM nav_items ni
-    INNER JOIN nav_item_departments d ON d.item_id = ni.id
-    WHERE ni.is_active = 1
-      AND d.department = ?
-      AND d.is_active = 1
-    ORDER BY ni.section_id, ni.sort_order
-");
-$stmt->execute([$dept]);
-$allItems = $stmt->fetchAll();
+try {
+    $sections = $pdo2->query(
+        "SELECT id, label FROM nav_sections WHERE is_active = 1 ORDER BY sort_order"
+    )->fetchAll();
 
-// Index: top-level items per section, children per parent item
-$bySection  = [];   // section_id → [item, ...]
-$byParent   = [];   // parent_id  → [item, ...]
-foreach ($allItems as $item) {
-    if ($item['parent_id'] === null) {
-        $bySection[$item['section_id']][] = $item;
+    if ($dept && $dept !== 'all') {
+        // Filter by explicit department rows
+        $stmt = $pdo2->prepare("
+            SELECT ni.*
+            FROM nav_items ni
+            INNER JOIN nav_item_departments d ON d.item_id = ni.id
+            WHERE ni.is_active = 1
+              AND d.department = ?
+              AND d.is_active = 1
+            ORDER BY ni.section_id, ni.sort_order
+        ");
+        $stmt->execute([$dept]);
     } else {
-        $byParent[$item['parent_id']][] = $item;
+        // No department set yet — show all active items
+        $stmt = $pdo2->query("
+            SELECT * FROM nav_items
+            WHERE is_active = 1
+            ORDER BY section_id, sort_order
+        ");
     }
+
+    foreach ($stmt->fetchAll() as $item) {
+        if ($item['parent_id'] === null) {
+            $bySection[$item['section_id']][] = $item;
+        } else {
+            $byParent[$item['parent_id']][] = $item;
+        }
+    }
+} catch (PDOException $e) {
+    // Tables not created yet — sidebar will render empty, no fatal error
+    error_log('[sidenav] DB error: ' . $e->getMessage());
 }
 ?>
 <div class="sidenav-menu">
