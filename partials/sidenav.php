@@ -1,5 +1,5 @@
 <?php
-// pdo2 is already open (included via main.php → db.php)
+require_once __DIR__ . '/../config/db.php';
 $dept = $_SESSION['department'] ?? '';
 
 $sections = [];
