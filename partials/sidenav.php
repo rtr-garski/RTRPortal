@@ -73,6 +73,9 @@ try {
                 <div>
                     <a href="#!" class="link-reset">
                         <span class="sidenav-user-name fw-bold"><?= htmlspecialchars($_SESSION['name'] ?? $_SESSION['user_name'] ?? 'User') ?></span>
+                        <?php if (!empty($_SESSION['department'])): ?>
+                        <span class="fs-12 fw-semibold d-block"><?= htmlspecialchars($_SESSION['department']) ?></span>
+                        <?php endif; ?>
                     </a>
                 </div>
                 <div>
