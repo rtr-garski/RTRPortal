@@ -121,6 +121,7 @@ try {
                 <li class="side-nav-item">
 <?php if ($hasChildren): ?>
                     <a href="#<?= $collapseId ?>" data-bs-toggle="collapse"
+                       aria-expanded="false" aria-controls="<?= $collapseId ?>"
                        class="side-nav-link nav-link">
                         <?php if ($icon): ?><span class="menu-icon"><i class="<?= $icon ?>"></i></span><?php endif; ?>
                         <span class="menu-text"><?= $label ?></span>
