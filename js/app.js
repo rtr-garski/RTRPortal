@@ -37,8 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setActiveMenu(page) {
-    document.querySelectorAll(".side-nav-link").forEach(link => {
-      link.classList.remove("active");
+    document.querySelectorAll(".side-nav-item.active").forEach(li => {
+      li.classList.remove("active");
     });
 
     const activeLink = document.querySelector(
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     if (!activeLink) return;
 
-    activeLink.classList.add("active");
+    activeLink.closest(".side-nav-item")?.classList.add("active");
 
     const activeCollapse = activeLink.closest(".collapse");
 
@@ -58,12 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (activeCollapse) {
       bootstrap.Collapse.getOrCreateInstance(activeCollapse).show();
-
-      const parentToggle = document.querySelector(
-        `[href="#${activeCollapse.id}"]`
-      );
-
-      parentToggle?.classList.add("active");
+      activeCollapse.closest(".side-nav-item")?.classList.add("active");
     }
   }
 
