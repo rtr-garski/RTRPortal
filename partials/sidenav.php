@@ -11,8 +11,13 @@ try {
         "SELECT id, label FROM nav_sections WHERE is_active = 1 ORDER BY sort_order"
     )->fetchAll();
 
-    if ($dept && $dept !== 'all') {
-        // Filter by explicit department rows
+    if ($dept === 'all') {
+        $stmt = $pdo2->query("
+            SELECT * FROM nav_items
+            WHERE is_active = 1
+            ORDER BY section_id, sort_order
+        ");
+    } else {
         $stmt = $pdo2->prepare("
             SELECT ni.*
             FROM nav_items ni
@@ -23,13 +28,6 @@ try {
             ORDER BY ni.section_id, ni.sort_order
         ");
         $stmt->execute([$dept]);
-    } else {
-        // No department set yet — show all active items
-        $stmt = $pdo2->query("
-            SELECT * FROM nav_items
-            WHERE is_active = 1
-            ORDER BY section_id, sort_order
-        ");
     }
 
     foreach ($stmt->fetchAll() as $item) {
