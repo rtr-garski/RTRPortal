@@ -2,38 +2,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const content = document.getElementById("content");
 
+  const FADE = 180;
+
   function loadPage(page) {
-    content.innerHTML =
-      '<div class="d-flex justify-content-center align-items-center" style="min-height:200px">' +
-      '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading…</span></div>' +
-      '</div>';
+    content.classList.add('rtr-fading');
 
-    fetch(`pages/${page}.php`)
-      .then(r => {
-        if (r.status === 401) {
-          window.location.href = "logout.php";
-          return;
-        }
-        return r.text();
-      })
-      .then(html => {
-        if (!html) return;
+    setTimeout(() => {
+      content.innerHTML =
+        '<div class="rtr-loader"><img src="partials/logo-icon.png" alt="Loading"></div>';
+      content.classList.remove('rtr-fading');
 
-        // stop page-specific behaviors
-        window.stopLockPolling?.();
+      fetch(`pages/${page}.php`)
+        .then(r => {
+          if (r.status === 401) { window.location.href = "logout.php"; return; }
+          return r.text();
+        })
+        .then(html => {
+          if (!html) return;
 
-        content.innerHTML = html;
+          window.stopLockPolling?.();
 
-        // Run page-specific init
-        window[`init_${page.replace(/-/g, "_")}`]?.();
+          content.classList.add('rtr-fading');
+          setTimeout(() => {
+            content.innerHTML = html;
+            content.classList.remove('rtr-fading');
 
-        // Bind ALL logout buttons
-        window.init_logout_buttons?.();
-
-        // Update menu state
-        setActiveMenu(page);
-      })
-      .catch(err => console.error("Load error:", err));
+            window[`init_${page.replace(/-/g, "_")}`]?.();
+            window.init_logout_buttons?.();
+            setActiveMenu(page);
+          }, FADE);
+        })
+        .catch(err => console.error("Load error:", err));
+    }, FADE);
   }
 
   function setActiveMenu(page) {
